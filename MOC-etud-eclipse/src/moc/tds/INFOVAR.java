@@ -20,7 +20,7 @@ public class INFOVAR implements INFO {
 	}
 
 	/**
-	 * Represnete un emplacement memoire : depend de la machine
+	 * Represente un emplacement memoire : depend de la machine
 	 * 
 	 */
 	protected Emplacement empl;

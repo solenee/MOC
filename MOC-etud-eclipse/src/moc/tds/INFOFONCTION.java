@@ -16,12 +16,12 @@ public class INFOFONCTION implements INFO {
 	 * Le type de la variable
 	 */
 	protected DTYPE retour;
-	protected List<DTYPE> parametres;
+	protected PARAMETRES parametres;
 
 	public DTYPE getRetour() {
 		return retour;
 	}
-
+	
 	/**
 	 * Une variable a un type et un emplacement pour sa valeur
 	 * @param t
@@ -29,9 +29,14 @@ public class INFOFONCTION implements INFO {
 	 */
 	public INFOFONCTION(DTYPE r) {
 		retour = r;
-		parametres = new ArrayList<DTYPE> ();
+		parametres = new PARAMETRES();
 	}
 
+	public INFOFONCTION(DTYPE r, PARAMETRES params){
+		retour = r;
+		parametres = params;
+	}
+	
 	public void addParametre (DTYPE p){
 		parametres.add(p);
 	}
