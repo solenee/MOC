@@ -9,6 +9,11 @@ option version = 0.0.1;
 option k=2;
 --attributes 
 
+-- la table de symboles
+inh tds : TDS for ENTITES, FONCTION, PARFS, PARF, PARFSX, TYPE, REFS, 
+                   STYPE, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+-- la table de symboles des fonctions
+inh tds_fonction : TDS for ENTITES, FONCTION, INSTS, INST, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
 -- le fichier source
 inh source : MOCSourceFile for PROGRAMME;
 -- la machine cible pour la generation de code
@@ -86,7 +91,7 @@ term ident is  "[a-z][_0-9A-Za-z]*";
 compil ASM;
 
 --production rules
-PROGRAMME -> #init ENTITES #gen;
+PROGRAMME -> #init #tds ENTITES #gen;
 global
    machine : IMachine;
 -- transmission de la machine cible  (choisie par l'option -m au lancement) 
@@ -101,6 +106,13 @@ do
    end
 end
 }
+--tds associée à entites
+#tds {
+local
+do
+    ENTITES^tds := nil;
+end
+}   
 -- ecrit le code dans un fichier
 #gen {
 local
@@ -112,9 +124,10 @@ ENTITES -> ;
 ENTITES ->   asm #tds ASM ENTITES #gen;
 #tds {
 do
+  ENTITES1^tds := ENTITES^tds;
   -- Remplacer 'null' par la table courante pour que
   -- le code  ASM puisse acceder aux variables de MC ou MOC
-  ASM^tds_asm := null; 
+  ASM^tds_asm := ENTITES^tds; 
 end
 }
 #gen {
@@ -123,7 +136,13 @@ do
 end
 }
 
-ENTITES ->  FONCTION ENTITES ;
+ENTITES ->  #tds FONCTION ENTITES ;
+#tds {
+do
+  ENTITES1^tds := ENTITES^tds;
+  FONCTION^tds := ENTITES^tds;
+end
+}
 --fonctions
 FONCTION ->  TYPE ident  paro PARFS parf BLOC ;
 -- parametres de fonctions
