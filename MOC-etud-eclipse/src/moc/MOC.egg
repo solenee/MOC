@@ -25,6 +25,9 @@ syn code_asm : STRING for ASM;
 -- la TDS courante
 inh tds_asm : TDS for ASM;
 
+-- code genere
+syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX;
+
 --terminals
 space separateur is  "[\r\n\t ]+";     
 space comm is  "\/\/[^\n]*\n";
@@ -89,7 +92,7 @@ compil ASM;
 PROGRAMME -> #init ENTITES #gen;
 global
    machine : IMachine;
--- transmission de la machine cible  (choisie par l'option -m au lancement) 
+-- transmission de la machine cible (choisie par l'option -m au lancement) 
 #init {
 local
 do
@@ -101,11 +104,12 @@ do
    end
 end
 }
+
 -- ecrit le code dans un fichier
 #gen {
 local
 do
-   machine.writeCode(PROGRAMME^source.getFileName(),"; no code\n"); 
+   machine.writeCode(PROGRAMME^source.getFileName(),"; ENTITIES^code + \n"); 
 end
 }
 ENTITES -> ;
@@ -140,21 +144,79 @@ REFS -> mult REFS ;
 STYPE-> void  ;
 STYPE-> int ;
 STYPE-> char ;
+
 -- corps de methode et bloc d'instructions
-BLOC ->  aco INSTS acf ;
+BLOC ->  aco INSTS acf #gen ;
+#gen {
+do
+   -- write "; tds:\n" + t;
+   -- write "; taille des locales = " + (INSTS^dep - BLOC^hdep)+ "\n";
+   -- Le code du bloc est celui de ses instructions
+   -- plus le code pour liberer la place occupee
+   -- par les variables locales (POP (0) taille)
+   BLOC^code := INSTS^code + BLOC^machine.genFree(0); -- INSTS^dep - BLOC^hdep*) ;
+end
+}
 -- instructions
-INSTS ->   ;
-INSTS ->  INST INSTS  ;
+INSTS ->  #gen ;
+#gen {
+do
+    -- no code
+    INSTS^code := "";
+end
+}
+INSTS ->  INST INSTS #gen ;
+#gen {
+do
+    -- append codes
+    INSTS^code := INST^code + INSTS1^code;
+end
+}
 -- declaration de variable locale avec ou sans init
-INST ->  TYPE ident  AFFX pv ;
+INST ->  TYPE ident  AFFX pv #gen ;
+#gen {
+do
+    -- to do
+    INST^code := ";to do : declaration de variable locale avec ou sans init\n";
+end
+}
 -- instruction expression (affectation et appel de procedure)
-INST -> E pv ;
+INST -> E pv #gen ;
+#gen {
+do
+    -- to do
+    INST^code := ";to do : instruction expression (affectation et appel de procedure)";
+end
+}
 -- bloc d'instructions
-INST ->  BLOC  ;
+INST ->  BLOC #gen;
+#gen {
+do
+    INST^code := BLOC^code;
+end
+}
 -- conditionnelle
-INST ->   si paro E parf BLOC SIX ;
-SIX ->    sinon BLOC ;
-SIX -> ;
+INST ->   si paro E parf BLOC SIX #gen ;
+#gen {
+do
+    -- to do
+    INST^code := ";to do : -- conditionnelle"; --INST^machine.genIf(E^code, BLOC^code, SIX^code);
+end
+}
+SIX ->    sinon BLOC #gen;
+#gen {
+do
+    -- to do
+    SIX^code := ";to do : -- conditionnelle else"; -- BLOC^code 
+end
+}
+SIX -> #gen ;
+#gen {
+do
+    -- to do
+    SIX^code := ""; 
+end
+}
 -- retour de fonction
 INST ->  retour  E pv ;
 -- inline asm
@@ -163,7 +225,7 @@ INST ->  asm   #tds ASM #gen ;
 do
   -- A remplacer par la table courante pour que
   -- l'assembleur puisse acceder aux variables
-  ASM^tds_asm := null; 
+  ASM^tds_asm := null;
 end
 }
 
@@ -172,6 +234,7 @@ do
   -- ASM^code_asm contient le code assembleur inline
   -- dans lequel les noms de variables ont ete remplaces
   -- par leurs adresses.
+  INST^code := INST^machine.genCodeInLine(ASM^code_asm);
 end
 }
 

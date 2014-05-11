@@ -24,7 +24,55 @@ public interface IMachine {
 	 * @param code
 	 * @throws MOCException
 	 */
-
 	void writeCode(String fileName, String code) throws MOCException;
+	
+	/**
+	 * Generate the code to free a specific size of space into the the stack
+	 * 
+	 * @param size size of the space to free
+	 * @throws MOCException
+	 */
+	public String genFree(int size);
 
+	/**
+	 * Generate a specified comment
+	 * 
+	 * @param c the comment
+	 * @throws MOCException
+	 */
+	public String genComment(String c);
+	
+	/**
+	 * Insert ASM code in line
+	 * 
+	 * @param c code to insert
+	 * @throws MOCException
+	 */
+	public String genCodeInLine(String c);
+	
+	/**
+	 * Generate a label
+	 * @throws MOCException
+	 */
+	public String genLabel();
+	
+	/**
+	 * Generate a "if then ..."
+	 * 
+	 * @param codeCondition
+	 * @param codeThen
+	 * @param codeElse
+	 * @throws MOCException
+	 */
+	public String genIf(String codeCondition, String codeThen, String codeElse);
+	
+	/**
+	 * Generate a "... else end"
+	 * 
+	 * @param codeCondition
+	 * @param codeIf
+	 * @param codeElse
+	 * @throws MOCException
+	 */
+	public String genElse(String codeCondition, String codeIf, String codeElse);
 }
