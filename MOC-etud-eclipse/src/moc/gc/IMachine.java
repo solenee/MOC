@@ -61,18 +61,9 @@ public interface IMachine {
 	 * 
 	 * @param codeCondition
 	 * @param codeThen
-	 * @param codeElse
+	 * @param codeElse vaut "" s'il n'y a pas de else
 	 * @throws MOCException
 	 */
 	public String genIf(String codeCondition, String codeThen, String codeElse);
 	
-	/**
-	 * Generate a "... else end"
-	 * 
-	 * @param codeCondition
-	 * @param codeIf
-	 * @param codeElse
-	 * @throws MOCException
-	 */
-	public String genElse(String codeCondition, String codeIf, String codeElse);
 }
