@@ -26,7 +26,7 @@ syn code_asm : STRING for ASM;
 inh tds_asm : TDS for ASM;
 
 -- code genere
-syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX, E;
+syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX, E, OPREL, OPADD, OPMUL, OPUN;
 
 --terminals
 space separateur is  "[\r\n\t ]+";     
@@ -261,12 +261,42 @@ A ->   R AX  ;
 AX -> OPREL R;
 AX ->  ;
 -- operateurs relationnels
-OPREL -> inf ;
-OPREL -> sup ;
-OPREL -> infeg ;
-OPREL -> supeg ;
-OPREL -> eg ;
-OPREL -> neg ;
+OPREL -> inf  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genInf()";
+end
+}
+OPREL -> sup  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genSup()";
+end
+}
+OPREL -> infeg  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genInfEgal()";
+end
+}
+OPREL -> supeg  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genSupEgal()";
+end
+}
+OPREL -> eg  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genEgal()";
+end
+}
+OPREL -> neg  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genDifferent()";
+end
+}
 R ->  T  RX ;
 -- additions ...
 RX ->   OPADD  T RX  ;
