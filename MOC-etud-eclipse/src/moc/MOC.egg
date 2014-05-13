@@ -26,7 +26,7 @@ syn code_asm : STRING for ASM;
 inh tds_asm : TDS for ASM;
 
 -- code genere
-syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX;
+syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX, E;
 
 --terminals
 space separateur is  "[\r\n\t ]+";     
@@ -218,7 +218,13 @@ do
 end
 }
 -- retour de fonction
-INST ->  retour  E pv ;
+INST ->  retour  E pv #gen;
+#gen {
+do
+  -- transmettre la valeur de E
+  INST^code := E^code;
+end
+}
 -- inline asm
 INST ->  asm   #tds ASM #gen ;
 #tds {
