@@ -1,0 +1,56 @@
+-- affectation
+E −> A affect R #gen
+#gen {
+do
+    -- to do
+    E^code := "; ? to do : -- affectation";
+    calculer  -- ?
+end
+}
+
+E −> A
+
+-- relation
+A −> R OPREL R
+A −> R
+
+
+
+−− a d d i t i o n s . . .
+R −> R OPADD T
+R −> T
+OPADD −> p l u s
+OPADD −> moins
+OPADD −> ou
+−− m u l t i p l i c a t i o n , . . .
+T −> T
+
+
+-- e x p r e s s i o n s de b a s e
+−− Constante e n t i e r e
+F −> e n t i e r
+−− Constante c h a i n e
+F −> c h a i n e
+−− Constante c a r a c t e r e
+F −> c a r a c t e r e
+−− e x p r e s s i o n u n a i r e
+F −> OPUN F
+OPUN −> p l u s
+OPUN −> moins
+OPUN −> non
+−− p o i n t e u r n u l l
+F −> n u l l
+−− e x p r e s s i o n p a r e n t h e s e e
+F −> paro E p a r f
+F −> paro TYPE p a r f F
+−− a p p e l de sous−programme
+F −> i d e n t paro ARGS p a r f
+−− a c c è s v a r i a b l e
+F −> i d e n t
+−−−− a c c e s zone p o i n t e e
+F −> mult F
+−− arguments a p p e l de f o n c t i o n
+ARGS −>
+ARGS −> E ARGSX
+ARGSX −>
+ARGSX −> v i r g E ARGSX
