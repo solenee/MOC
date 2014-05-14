@@ -85,7 +85,41 @@ public interface IMachine {
 	 */
 	public String genDeclarationInitialisee(String ident, int taille, String initCode);
 	
+	/**
+	 * Generate a unary operation
+	 * 
+	 * @param codeOp code of the unary operator
+	 * @param codeFacteur code generating the value of the facteur
+	 * @throws MOCException
+	 */
+	public String genOpUnaire(String codeOp, String codeFacteur);
 	
+	/**
+	 * Generate an integer unary operation : -
+	 * @param codeFacteur code generating the value of the facteur
+	 * @throws MOCException
+	 */
+	public String genIMoins(String codeFacteur);
 	
+	/**
+	 * Generate a boolean unary operation : not 
+	 * @param codeFacteur code generating the value of the facteur
+	 * @throws MOCException
+	 */
+	public String genBNegation(String codeFacteur);
+	
+	/**
+	 * Generate an integer constant
+	 * @param c 
+	 * @throws MOCException
+	 */
+	public String genEntier(String c);
+	
+	/**
+	 * Generate a character  
+	 * @param c
+	 * @throws MOCException
+	 */
+	public String genCaractere(String c);
 	
 }

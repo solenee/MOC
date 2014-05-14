@@ -76,5 +76,31 @@ public class MTAM extends AbstractMachine {
 				+ initCode;
 	}
 
+	@Override
+	public String genOpUnaire(String codeOp, String codeFacteur) {
+		return codeFacteur +
+				"SUBR "+codeOp+"\n";
+	}
+
+	@Override
+	public String genIMoins(String codeFacteur) {
+		return genOpUnaire("INeg", codeFacteur);
+	}
+
+	@Override
+	public String genBNegation(String codeFacteur) {
+		return genOpUnaire("BNeg", codeFacteur);
+	}
+
+	@Override
+	public String genEntier(String c) {
+		throw new RuntimeException("Undefined method");
+	}
+
+	@Override
+	public String genCaractere(String c) {
+		throw new RuntimeException("Undefined method");
+	}
+
 
 }

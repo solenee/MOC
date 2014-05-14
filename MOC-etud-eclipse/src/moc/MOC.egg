@@ -26,10 +26,11 @@ syn code_asm : STRING for ASM;
 inh tds_asm : TDS for ASM;
 
 -- code genere
-syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX, E, OPREL, OPADD, OPMUL, OPUN;
+syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX, E, F; --, OPREL, OPADD, OPMUL;
 
 -- indique si AFFX est une affectation ( -> affect ...)
 syn estAffectation : BOOLEAN for AFFX;
+syn op : STRING for OPUN;
 
 --terminaux
 space separateur is  "[\r\n\t ]+";     
@@ -365,31 +366,136 @@ OPMUL -> et ;
 
 -- expressions de base
 -- Constante entiere
-F -> entier   ;
+F -> entier  #gen;
+#gen {
+do
+  --F^type := new DTYPE("int", F^machine.getTaille("int"));
+  F^code := F^machine.genEntier(entier^txt);
+end
+}
 -- Constante chaine
-F -> chaine ;
+F -> chaine  #gen;
+#gen {
+do
+  --F^type := pointeur sur char;
+  F^code := F^machine.genComment("chaine de caracteres "+chaine^txt+ "to do"); -- pointeur sur un tableau de caracteres ?
+end
+}
 -- Constante caractere
-F -> caractere ;
+F -> caractere #gen;
+#gen {
+do
+  --F^type := new DTYPE("char", F^machine.getTaille("char"));
+  F^code := F^machine.genCaractere(caractere^txt);
+end
+}
 
 -- expression unaire
-F ->  OPUN  F  ;
+F ->  OPUN  F #gen;
+#gen {
+local
+--  t : STRING
+  op : STRING;
+do
+  op := OPUN^op;
+--t = F.getType().getNom();
+  if op.equals("plus") then
+    F^code := F1^code; -- if t = "int" 
+  elseif op.equals("moins") then
+    F^code := F^machine.genIMoins(F1^code);
+  elseif op.equals("non") then
+    F^code := F^machine.genBNegation(F1^code);
+  else
+    error(DebugMessageOPUN, op);
+  end
+end
+}
 -- operateurs unaires
-OPUN -> plus ;
-OPUN -> moins ;
-OPUN -> non;
+OPUN -> plus  #gen;
+#gen {
+do
+  -- pre: s'applique a un entier
+  OPUN^op := "plus";
+end
+}
+OPUN -> moins  #gen;
+#gen {
+do
+  -- pre: s'applique a un entier
+  OPUN^op := "moins";
+end
+}
+OPUN -> non  #gen;
+#gen {
+do
+  -- pre: s'applique a un booleen
+  OPUN^op := "non";
+end
+}
 
 -- pointeur NULL
-F -> null  ;
+F -> null  #gen;
+#gen {
+do
+  F^code := F^machine.genComment("pointeur null : to do");
+end
+}
 
 -- expression parenthesee
-F ->  paro E parf ;
-F ->  paro TYPE parf  F ;
+F ->  paro E parf #gen;
+#gen {
+do
+  F^code := E^code;
+end
+}
+-- cast ?
+F ->  paro TYPE parf  F  #gen;
+#gen {
+do
+  F^code := F^machine.genComment("cast : to do") + F1^code; 
+end
+}
 
 -- appel de sous-programme
-F ->  ident paro ARGS parf ;
-F ->  ident ;
+F ->  ident paro ARGS parf #gen ;
+#gen {
+do
+    F^code := F^machine.genComment("appel du sous-programme "+ident^txt+" : to do");
+end
+}
+-- access variable
+F -> ident #gen;
+--global 
+--  iv : INFOVAR ;
+--  t : DTYPE;
+#gen{
+--local
+--  i:INFO;
+do
+--  i := F^tds.chercherGlobalement(ident^txt);
+--  if i = null then
+--    error(UndefinedVariable, ident^txt);
+--  end
+--  match i 
+--  with INFOVAR then
+--    iv := i;
+--    F^adr := iv.getDep();
+--    t := iv.getType();
+--    FACTEUR^type := t;
+    F^code := F^machine.genComment("acces a " + ident^txt+" : to do");
+--  else
+--    error(FunctionUsedAsVariable, ident^txt);
+--  end
+end
+}
 ---- acces zone pointee
-F -> mult F ;
+F -> mult F #gen ;
+#gen {
+do
+    F^code := F^machine.genComment("acces a une zone pointee : to do");
+end
+}
+
 -- arguments appel de sous-programme
 ARGS -> ;
 ARGS -> E ARGSX  ;

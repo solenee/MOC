@@ -24,13 +24,11 @@ do
 end
 }
 
-
-
 −− additions
 R −> R OPADD T  #gen;
 #gen {
 do
-  R^code := R1^code + T^OPREL^machine.genInf()";
+  R^code := R1^code + T^code + OPADD^code;
 end
 }
 R −> T  #gen;
@@ -46,6 +44,27 @@ OPADD −> ou
 −− multiplication
 T −> T OPMUL F  #gen;
 #gen {
+local
+--  t : STRING
+  op : STRING; -- mult / div / mod / et
+do
+  op := OPUN^op;
+--typeT = T.getType().getNom();
+--typeF = F.getType().getNom()
+=====================================================
+  if op.equals("mult") then
+    F^code := TF1^code; -- if t = "int" 
+  elseif op.equals("moins") then
+    F^code := F^machine.genIMoins(F1^code);
+  elseif op.equals("non") then
+    F^code := F^machine.genBNegation(F1^code);
+  else
+    error(DebugMessageOPUN, op);
+  end
+end
+}
+
+#gen {
 do
   T^code := T1^code + F^code + OPMUL^code;
 end
@@ -56,83 +75,3 @@ do
   T^code := F^code;
 end
 }
-
--- expressions de base
-−− Constante entiere
-F −> entier  #gen;
-#gen {
-do
-  F^type := new DTYPE("int", F^machine.getTaille("int"));
-  F^code := F^machine.genConstante(entier^txt);
-end
-}
-−− Constante chaine
-F −> chaine #gen;
-#gen {
-do
-  F^type := pointeur sur char;
-  F^code := "chaine de caracteres "+chaine^txt; -- pointeur sur un tableau de caracteres
-end
-}
-−− Constante  caractere
-F −> caractere #gen;
-#gen {
-do
-  F^type := new DTYPE("char", F^machine.getTaille("char"));
-  F^code := F^machine.genConstante(caractere^txt);
-end
-}
-−− expression unaire
-F −> OPUN F  #gen;
-#gen {
-do
-  T^code := F^code + OPUN^code;
-end
-}
-OPUN −> plus
-OPUN −> moins
-OPUN −> non
-−− pointeur nul
-F −> null
-−− expression parenthesee
-F −> paro E parf  #gen;
-#gen {
-do
-  T^code := E^code;
-end
-}
-F −> paro TYPE parf  #gen;
-#gen {
-do
-  T^code := TYPE^code;
-end
-}
-
-−− access variable
-F −> ident #gen;
-global 
-  iv : INFOVAR ;
-  t : DTYPE;
-#gen{
-local
-  i:INFO;
-do
-  i := F^tds.chercherGlobalement(ident^txt);
-  if i = null then
-    error(UndefinedVariable, ident^txt);
-  end
-  match i 
-  with INFOVAR then
-    iv := i;
-    F^adr := iv.getDep();
-    t := iv.getType();
-    FACTEUR^type := t;
-    -- commentaire laisse dans le code
-    F^code := F^machine.genComment("\t; acces a " + ident^txt);
-  else
-    error(FunctionUsedAsVariable, ident^txt);
-  end
-end
-}
-−−−− acces zone pointee
-F −> mult F 
