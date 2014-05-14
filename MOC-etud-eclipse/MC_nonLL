@@ -3,20 +3,50 @@ E −> A affect R #gen
 #gen {
 do
     -- to do
-    E^code := "; ? to do : -- affectation";
-    calculer  -- ?
+    E^code := R^machine.genAffectation(A^code, R^code)";
 end
 }
 
-E −> A
+E −> A #gen;
+#gen {
+do
+  E^code := A^code;
+end
+}
 
 -- relation
 A −> R OPREL R  #gen;
 #gen {
+local
+--  t : STRING
+  op : STRING; -- inf/sup/infegal/supegal/egal/different
 do
-  A^code := R^code + R1^code + OPREL^code;
+  op := OPREL^op;
+--type1 = R.getType().getNom();
+--type2 = R1.getType().getNom();
+--if (~type.equals(R1.getType().getNom()) then
+--	error(OpTypeIncompatible, type1, type2);
+--else
+  if op.equals("inf") then
+    A^code := R^machine.genIInferieur(R^code, R1^code); -- if t = "int" 
+  elseif op.equals("sup") then
+    A^code := R^machine.genISuperieur(R^code, R1^code); -- if t = "int" 
+  elseif op.equals("infegal") then
+    A^code := R^machine.genIInfEgal(R^code, R1^code); -- if t = "int"
+  elseif op.equals("supegal") then
+    A^code := R^machine.genISupEgal(R^code, R1^code); -- if t = "int"
+  elseif op.equals("egal") then
+    A^code := R^machine.genIEgal(R^code, R1^code); -- if t = "int"
+  --A^code := R^machine.genBEgal(R^code, R1^code); -- if t = "bool"
+  elseif op.equals("different") then
+    A^code := R^machine.genIDifferent(R^code, R1^code); -- if t = "int"
+  --A^code := R^machine.genBDifferent(R^code, R1^code); -- if t = "bool"
+  else
+    error(DebugMessageOPREL, op);
+  end
 end
 }
+
 A −> R #gen;
 #gen {
 do
@@ -27,19 +57,25 @@ end
 −− additions
 R −> R OPADD T  #gen;
 #gen {
+local
+--  t : STRING
+  op : STRING; -- plus / moins / ou
 do
-  R^code := R1^code + T^code + OPADD^code;
+  op := OPADD^op;
+--typeR = R1.getType().getNom();
+--typeT = T.getType().getNom();
+--typeR.equals(typeT);
+  if op.equals("plus") then
+    R^code := R1^machine.genIAddition(R1^code, T^code); -- if t = "int" 
+  elseif op.equals("moins") then
+    R^code := R1^machine.genISoustraction(R1^code, T^code); -- if t = "int" 
+  elseif op.equals("ou") then
+    R^code := R1^machine.genBOu(R1^code, T^code); -- if t = "bool"     
+  else
+    error(DebugMessageOPADD, op);
+  end
 end
 }
-R −> T  #gen;
-#gen {
-do
-  R^code := T^code;
-end
-}
-OPADD −> plus
-OPADD −> moins
-OPADD −> ou
 
 −− multiplication
 T −> T OPMUL F  #gen;
@@ -50,25 +86,22 @@ local
 do
   op := OPUN^op;
 --typeT = T.getType().getNom();
---typeF = F.getType().getNom()
-=====================================================
+--typeF = F.getType().getNom();
+--typeT.equals(typeF);
   if op.equals("mult") then
-    F^code := TF1^code; -- if t = "int" 
-  elseif op.equals("moins") then
-    F^code := F^machine.genIMoins(F1^code);
-  elseif op.equals("non") then
-    F^code := F^machine.genBNegation(F1^code);
+    T^code := F^machine.genIMultiplication(T1^code, F^code); -- if t = "int" 
+  elseif op.equals("div") then
+    T^code := F^machine.genIDivision(T1^code, F^code); -- if t = "int" 
+  elseif op.equals("mod") then
+    T^code := F^machine.genIModulo(T1^code, F^code); -- if t = "int"
+  elseif op.equals("et") then
+    T^code := F^machine.genBEt(T1^code, F^code); -- if t = "bool"     
   else
-    error(DebugMessageOPUN, op);
+    error(DebugMessageOPMUL, op);
   end
 end
 }
 
-#gen {
-do
-  T^code := T1^code + F^code + OPMUL^code;
-end
-}
 T −> F  #gen;
 #gen {
 do

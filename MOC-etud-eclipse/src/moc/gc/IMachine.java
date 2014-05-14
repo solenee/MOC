@@ -83,7 +83,7 @@ public interface IMachine {
 	 * @param initCode initialization code
 	 * @throws MOCException
 	 */
-	public String genDeclarationInitialisee(String ident, int taille, String initCode);
+	public String genDefinition(String ident, int taille, String initCode);
 	
 	/**
 	 * Generate a unary operation
@@ -121,5 +121,12 @@ public interface IMachine {
 	 * @throws MOCException
 	 */
 	public String genCaractere(String c);
+
+	/**
+	 * Generate the code for calling a fonction  
+	 * @param etiquette label of the fonction
+	 * @throws MOCException
+	 */
+	public String genCall(String etiquette);
 	
 }

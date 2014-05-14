@@ -70,8 +70,7 @@ public class MTAM extends AbstractMachine {
 	}
 
 	@Override
-	public String genDeclarationInitialisee(String ident, int taille,
-			String initCode) {
+	public String genDefinition(String ident, int taille, String initCode) {
 		return genComment("declaration avec initialisation de "+ident+ "de taille "+taille)
 				+ initCode;
 	}
@@ -102,5 +101,9 @@ public class MTAM extends AbstractMachine {
 		throw new RuntimeException("Undefined method");
 	}
 
+	@Override
+	public String genCall(String etiquette) {
+		return genComment("Appel de" + etiquette) + "CALL[SB] " + etiquette + "\n";
+	}
 
 }

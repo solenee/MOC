@@ -8,7 +8,23 @@ option auto = true;
 option version = 0.0.1;
 option k=2;
 --attributes 
-
+inh type : DTYPE for TYPE;
+-- la table de symboles
+inh tds : TDS for ENTITES, FONCTION, PARFS, PARF, PARFSX, TYPE, REFS, 
+                   STYPE, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+syn stds : TDS for INST;
+-- la table de symboles des fonctions
+inh tds_fonction : TDS for ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+syn stds_fonction : TDS for FONCTION;
+-- la liste de parametres
+inh hparams : PARAMETRES for PARFS, PARF, PARFSX, ARGS, ARGSX;
+syn params : PARAMETRES for PARFS, PARF, PARFSX, ARGS, ARGSX;
+-- la liste des parametres à mettre dans la tds du bloc associé à la fonction
+inh htdspar : TDS for PARFS, PARF, PARFSX;
+syn tdspar : TDS for PARFS, PARF, PARFSX;
+-- l'adresse des variables
+inh hadr : INTEGER for ENTITES, FONCTION, PARFS, PARF, PARFSX, BLOC, INSTS, INST, SIX;
+syn adr : INTEGER for PARF, INST;
 -- le fichier source
 inh source : MOCSourceFile for PROGRAMME;
 -- la machine cible pour la generation de code
@@ -30,7 +46,7 @@ syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX, E, F; --, OPREL, OPADD, 
 
 -- indique si AFFX est une affectation ( -> affect ...)
 syn estAffectation : BOOLEAN for AFFX;
-syn op : STRING for OPUN;
+syn op : STRING for OPUN, OPMUL, OPADD, OPREL;
 
 --terminaux
 space separateur is  "[\r\n\t ]+";     
@@ -184,7 +200,7 @@ local
 do
     -- to do
     if (AFFX^estAffectation) then
-        leCode := INST^machine.genDeclarationInitialisee();
+        leCode := INST^machine.genDefinition();
     else 
         leCode := INST^machine.genDeclaration();
     end     
@@ -195,7 +211,7 @@ end
 INST -> E pv #gen ;
 #gen {
 do
-    -- to do : E^code + consommer valeur ("POP")
+    -- to do : E^code + consommer valeur ("POP") : cas affectation
     INST^code := ";to do : instruction expression (affectation et appel de procedure)";
 end
 }
@@ -229,7 +245,7 @@ do
 end
 }
 -- retour de fonction
-INST ->  retour  E pv #gen;
+INST ->  retour E pv #gen;
 #gen {
 do
   -- transmettre la valeur de E
@@ -237,7 +253,7 @@ do
 end
 }
 -- inline asm
-INST ->  asm   #tds ASM #gen ;
+INST ->  asm #tds ASM #gen ;
 #tds {
 do
   -- A remplacer par la table courante pour que
@@ -311,37 +327,37 @@ end
 OPREL -> inf  #gen;
 #gen {
 do
-  OPREL^code := "OPREL^machine.genInf()";
+  OPREL^op := "inf";
 end
 }
 OPREL -> sup  #gen;
 #gen {
 do
-  OPREL^code := "OPREL^machine.genSup()";
+  OPREL^op := "sup";
 end
 }
 OPREL -> infeg  #gen;
 #gen {
 do
-  OPREL^code := "OPREL^machine.genInfEgal()";
+  OPREL^op := "infegal";
 end
 }
 OPREL -> supeg  #gen;
 #gen {
 do
-  OPREL^code := "OPREL^machine.genSupEgal()";
+  OPREL^op := "supegal";
 end
 }
 OPREL -> eg  #gen;
 #gen {
 do
-  OPREL^code := "OPREL^machine.genEgal()";
+  OPREL^op := "egal";
 end
 }
 OPREL -> neg  #gen;
 #gen {
 do
-  OPREL^code := "OPREL^machine.genDifferent()";
+  OPREL^op := "different";
 end
 }
 
@@ -350,18 +366,61 @@ R ->  T  RX ;
 RX ->   OPADD  T RX  ;
 RX -> ;
 -- operateurs additifs
-OPADD -> plus ;
-OPADD -> moins ;
-OPADD -> ou ;
+OPADD -> plus #gen;
+#gen {
+do
+  -- pre: s'applique a 2 entiers
+  OPADD^op := "plus";
+end
+}
+OPADD -> moins #gen;
+#gen {
+do
+  -- pre: s'applique a 2 entiers
+  OPADD^op := "moins";
+end
+}
+OPADD -> ou #gen;
+#gen {
+do
+  -- pre: s'applique a 2 booleens
+  OPADD^op := "ou";
+end
+}
+
 -- multiplication, ...
 T ->  F  TX  ;
 TX ->   OPMUL  F TX  ;
 TX ->  ;
 -- operateurs multiplicatifs
-OPMUL -> mult ;
-OPMUL -> div ;
-OPMUL -> mod ;
-OPMUL -> et ;
+OPMUL -> mult #gen;
+#gen {
+do
+  -- pre: s'applique a 2 entiers
+  OPMUL^op := "mult";
+end
+}
+OPMUL -> div #gen;
+#gen {
+do
+  -- pre: s'applique a 2 entiers
+  OPMUL^op := "mult";
+end
+}
+OPMUL -> mod #gen;
+#gen {
+do
+  -- pre: s'applique a 2 entiers
+  OPMUL^op := "mod";
+end
+}
+OPMUL -> et #gen;
+#gen {
+do
+  -- pre: s'applique a 2 booleens
+  OPMUL^op := "et";
+end
+}
 
 
 -- expressions de base
@@ -457,10 +516,30 @@ end
 }
 
 -- appel de sous-programme
-F ->  ident paro ARGS parf #gen ;
-#gen {
+F ->  ident paro #params ARGS parf #gen;
+
+#params {
 do
-    F^code := F^machine.genComment("appel du sous-programme "+ident^txt+" : to do");
+  ARGS^hparams := new PARAMETRES;
+end
+}
+
+#gen {
+local
+  i : INFOFONCTION;
+  p : PARAMETRES; 
+do
+  i := F^tds_fonction.chercherLocalement(ident^txt);
+  if (i = null) then
+    -- write fonction inexistante
+  else
+    p := i.getParametres();
+    if (! p.compareTo(ARGS^params)) then
+      -- write parametres d'appel erronés
+    else
+      F^code := ARGS^code + F^machine.genCall(ident^txt);
+    end
+  end
 end
 }
 -- access variable
@@ -497,10 +576,69 @@ end
 }
 
 -- arguments appel de sous-programme
-ARGS -> ;
-ARGS -> E ARGSX  ;
-ARGSX ->  ;
-ARGSX -> virg  E ARGSX ;
+ARGS -> #params #gen;
+#params {
+do
+  ARGS^params := ARGS^hparams;
+end
+}
+
+#gen {
+do
+  ARGS^code := "";
+end
+}
+
+ARGS -> E #params1 ARGSX #params2 #gen;
+#params1 {
+do
+  ARGSX^hparams := ARGS^hparams.inserer(E^type);
+end
+}
+
+#params2 {
+do
+  ARGS^params := ARGSX^params;
+end
+}
+
+#gen {
+do
+  ARGS^code := E^code + ARGSX^code;
+end
+}
+
+ARGSX ->  #params #gen;
+#params {
+do
+  ARGSX^params := ARGSX^hparams;
+end
+}
+
+#gen {
+do
+  ARGSX^code := "";
+end
+}
+
+ARGSX -> virg  E #params1 ARGSX #params2 #gen;
+#params1 {
+do
+  ARGSX1^hparams := ARGSX^hparams.inserer(E^type);
+end
+}
+
+#params2 {
+do
+  ARGSX^params := ARGSX1^params;
+end
+}
+
+#gen {
+do
+  ARGSX^code := E^code + ARGSX^code;
+end
+}
 
 ----====decommenter pour ============ MOC extension =================
 --ENTITES ->  IMPLEMENTATION ENTITES ;
