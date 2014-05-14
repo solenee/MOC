@@ -11,46 +11,128 @@ end
 E −> A
 
 -- relation
-A −> R OPREL R
-A −> R
+A −> R OPREL R  #gen;
+#gen {
+do
+  A^code := R^code + R1^code + OPREL^code;
+end
+}
+A −> R #gen;
+#gen {
+do
+  A^code := R^code;
+end
+}
 
 
 
-−− a d d i t i o n s . . .
-R −> R OPADD T
-R −> T
-OPADD −> p l u s
+−− additions
+R −> R OPADD T  #gen;
+#gen {
+do
+  R^code := R1^code + T^OPREL^machine.genInf()";
+end
+}
+R −> T  #gen;
+#gen {
+do
+  R^code := T^code;
+end
+}
+OPADD −> plus
 OPADD −> moins
 OPADD −> ou
-−− m u l t i p l i c a t i o n , . . .
-T −> T
 
+−− multiplication
+T −> T OPMUL F  #gen;
+#gen {
+do
+  T^code := T1^code + F^code + OPMUL^code;
+end
+}
+T −> F  #gen;
+#gen {
+do
+  T^code := F^code;
+end
+}
 
--- e x p r e s s i o n s de b a s e
-−− Constante e n t i e r e
-F −> e n t i e r
-−− Constante c h a i n e
-F −> c h a i n e
-−− Constante c a r a c t e r e
-F −> c a r a c t e r e
-−− e x p r e s s i o n u n a i r e
-F −> OPUN F
-OPUN −> p l u s
+-- expressions de base
+−− Constante entiere
+F −> entier  #gen;
+#gen {
+do
+  F^type := new DTYPE("int", F^machine.getTaille("int"));
+  F^code := F^machine.genConstante(entier^txt);
+end
+}
+−− Constante chaine
+F −> chaine #gen;
+#gen {
+do
+  F^type := pointeur sur char;
+  F^code := "chaine de caracteres "+chaine^txt; -- pointeur sur un tableau de caracteres
+end
+}
+−− Constante  caractere
+F −> caractere #gen;
+#gen {
+do
+  F^type := new DTYPE("char", F^machine.getTaille("char"));
+  F^code := F^machine.genConstante(caractere^txt);
+end
+}
+−− expression unaire
+F −> OPUN F  #gen;
+#gen {
+do
+  T^code := F^code + OPUN^code;
+end
+}
+OPUN −> plus
 OPUN −> moins
 OPUN −> non
-−− p o i n t e u r n u l l
-F −> n u l l
-−− e x p r e s s i o n p a r e n t h e s e e
-F −> paro E p a r f
-F −> paro TYPE p a r f F
-−− a p p e l de sous−programme
-F −> i d e n t paro ARGS p a r f
-−− a c c è s v a r i a b l e
-F −> i d e n t
-−−−− a c c e s zone p o i n t e e
-F −> mult F
-−− arguments a p p e l de f o n c t i o n
-ARGS −>
-ARGS −> E ARGSX
-ARGSX −>
-ARGSX −> v i r g E ARGSX
+−− pointeur nul
+F −> null
+−− expression parenthesee
+F −> paro E parf  #gen;
+#gen {
+do
+  T^code := E^code;
+end
+}
+F −> paro TYPE parf  #gen;
+#gen {
+do
+  T^code := TYPE^code;
+end
+}
+
+−− access variable
+F −> ident #gen;
+global 
+  iv : INFOVAR ;
+  t : DTYPE;
+#gen{
+local
+  i:INFO;
+do
+  i := F^tds.chercherGlobalement(ident^txt);
+  if i = null then
+    error(UndefinedVariable, ident^txt);
+  end
+  match i 
+  with INFOVAR then
+    iv := i;
+    F^adr := iv.getDep();
+    t := iv.getType();
+    FACTEUR^type := t;
+    -- commentaire laisse dans le code
+    F^code := F^machine.genComment("\t; acces a " + ident^txt);
+  else
+    error(FunctionUsedAsVariable, ident^txt);
+  end
+end
+}
+−−−− acces zone pointee
+F −> mult F 
