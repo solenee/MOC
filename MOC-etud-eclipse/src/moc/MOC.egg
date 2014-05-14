@@ -28,7 +28,10 @@ inh tds_asm : TDS for ASM;
 -- code genere
 syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX;
 
---terminals
+-- indique si AFFX est une affectation ( -> affect ...)
+syn estAffectation : BOOLEAN for AFFX;
+
+--terminaux
 space separateur is  "[\r\n\t ]+";     
 space comm is  "\/\/[^\n]*\n";
 sugar paro is  "\(";
@@ -175,17 +178,25 @@ end
 -- declaration de variable locale avec ou sans init
 INST ->  TYPE ident  AFFX pv #gen ;
 #gen {
+local
+    leCode : STRING ;
 do
     -- to do
-    INST^code := ";to do : declaration de variable locale avec ou sans init\n";
+    if (AFFX^estAffectation) then
+        leCode := INST^machine.genDeclarationInitialisee();
+    else 
+        leCode := INST^machine.genDeclaration();
+    end     
+    INST^code := leCode;
 end
 }
 -- instruction expression (affectation et appel de procedure)
 INST -> E pv #gen ;
 #gen {
 do
-    -- to do
+    -- to do : E^code + consommer valeur ("POP")
     INST^code := ";to do : instruction expression (affectation et appel de procedure)";
+    
 end
 }
 -- bloc d'instructions
@@ -200,7 +211,7 @@ INST ->   si paro E parf BLOC SIX #gen ;
 #gen {
 do
     -- to do
-    INST^code := ";to do : -- conditionnelle"; --INST^machine.genIf(E^code, BLOC^code, SIX^code);
+    INST^code := ";to do : -- conditionnelle"; -- INST^machine.genIf(E^code, BLOC^code, SIX^code);
 end
 }
 SIX ->    sinon BLOC #gen;
@@ -218,7 +229,13 @@ do
 end
 }
 -- retour de fonction
-INST ->  retour  E pv ;
+INST ->  retour  E pv #gen ;
+#gen {
+do
+    -- to do : E^code + retour(laisser la valeur en sommet de pile : nope)
+    INST^code := "; ? to do : -- retour"; -- ?
+end
+}
 -- inline asm
 INST ->  asm   #tds ASM #gen ;
 #tds {
@@ -234,6 +251,7 @@ do
   -- ASM^code_asm contient le code assembleur inline
   -- dans lequel les noms de variables ont ete remplaces
   -- par leurs adresses.
+  -- to test
   INST^code := INST^machine.genCodeInLine(ASM^code_asm);
 end
 }
@@ -246,14 +264,50 @@ end
 -- T = expression figurant dans une expression additive (TERME)
 -- F = expression figurant dans une expression multiplicative (FACTEUR)
 -----------------------------------------------------------------------
-E ->   A  AFFX ;
--- affectation
-AFFX -> affect  A  ;
-AFFX -> ;
+E ->   A  AFFX #gen ;
+#gen {
+do
+    -- to do
+end
+}
+
+-- affectation : laisse en somment de pile la valeur affectee
+AFFX -> affect  A  #gen;
+#gen {
+do
+    -- to do : mettre en sommet de pile calculer 
+    AFFX^estAffectation := true;
+end
+}
+AFFX -> #gen ;
+#gen {
+do
+    -- to do
+    AFFX^estAffectation := false;
+end
+}
+
 -- relation
-A ->   R AX  ;
-AX -> OPREL R;
-AX ->  ;
+A ->   R AX #gen;
+#gen {
+do
+    -- to do
+end
+}
+
+AX -> OPREL R #gen;
+#gen {
+do
+    -- to do
+end
+}
+
+AX ->  #gen;
+#gen {
+do
+    -- to do
+end
+}
 -- operateurs relationnels
 OPREL -> inf ;
 OPREL -> sup ;
@@ -261,6 +315,8 @@ OPREL -> infeg ;
 OPREL -> supeg ;
 OPREL -> eg ;
 OPREL -> neg ;
+
+
 R ->  T  RX ;
 -- additions ...
 RX ->   OPADD  T RX  ;
@@ -278,6 +334,8 @@ OPMUL -> mult ;
 OPMUL -> div ;
 OPMUL -> mod ;
 OPMUL -> et ;
+
+
 -- expressions de base
 -- Constante entiere
 F -> entier   ;
@@ -285,17 +343,21 @@ F -> entier   ;
 F -> chaine ;
 -- Constante caractere
 F -> caractere ;
+
 -- expression unaire
 F ->  OPUN  F  ;
 -- operateurs unaires
 OPUN -> plus ;
 OPUN -> moins ;
 OPUN -> non;
+
 -- pointeur NULL
 F -> null  ;
+
 -- expression parenthesee
 F ->  paro E parf ;
 F ->  paro TYPE parf  F ;
+
 -- appel de sous-programme
 F ->  ident paro ARGS parf ;
 F ->  ident ;
@@ -306,6 +368,7 @@ ARGS -> ;
 ARGS -> E ARGSX  ;
 ARGSX ->  ;
 ARGSX -> virg  E ARGSX ;
+
 ----====decommenter pour ============ MOC extension =================
 --ENTITES ->  IMPLEMENTATION ENTITES ;
 ---- definition d'une classe
