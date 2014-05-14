@@ -49,18 +49,31 @@ public class MTAM extends AbstractMachine {
 		String code;
 		String labelEndIf = genLabel();
 		// check the condition
-		code = genComment("\t; if\n") + codeCondition + "\n" + "\tJUMPIF(0) ";
+		code = genComment("\t; if") + codeCondition + "\n" + "\tJUMPIF(0) ";
 		if (codeElse == "") {
 			code += labelEndIf + "\n"
-					+ genComment("\t; then\n") + codeThen + "\n";
+					+ genComment("\t; then") + codeThen + "\n";
 		} else {
 			String labelElse = genLabel();
 			code += labelElse + "\n"
-					+ genComment("\t; then\n") +   codeThen + "\n" + "\tJUMP " + labelEndIf + "\n" 
-					+ genComment("\t; else\n") + labelElse + "\n" + codeElse + "\n";
+					+ genComment("\t; then") +   codeThen + "\n" + "\tJUMP " + labelEndIf + "\n" 
+					+ genComment("\t; else") + labelElse + "\n" + codeElse + "\n";
 		}
 		code += labelEndIf + "\n" + "\t; end if\n";
 		return code;
+	}
+
+	@Override
+	public String genDeclaration(String ident, int taille) {
+		return genComment("declaration sans initialisation de "+ident+ "de taille "+taille)
+				+ "PUSH "+taille; 
+	}
+
+	@Override
+	public String genDeclarationInitialisee(String ident, int taille,
+			String initCode) {
+		return genComment("declaration avec initialisation de "+ident+ "de taille "+taille)
+				+ initCode;
 	}
 
 

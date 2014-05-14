@@ -66,4 +66,26 @@ public interface IMachine {
 	 */
 	public String genIf(String codeCondition, String codeThen, String codeElse);
 	
+	/**
+	 * Generate a variable declaration without initialization
+	 * 
+	 * @param ident identifier of the declared variable
+	 * @param taille size of the variable
+	 * @throws MOCException
+	 */
+	public String genDeclaration(String ident, int taille);
+	
+	/**
+	 * Generate a variable declaration with an initialization
+	 * 
+	 * @param ident identifier of the declared variable
+	 * @param taille size of the variable
+	 * @param initCode initialization code
+	 * @throws MOCException
+	 */
+	public String genDeclarationInitialisee(String ident, int taille, String initCode);
+	
+	
+	
+	
 }

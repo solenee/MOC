@@ -26,7 +26,7 @@ syn code_asm : STRING for ASM;
 inh tds_asm : TDS for ASM;
 
 -- code genere
-syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX;
+syn code : STRING for ENTITIES, BLOC, INSTS, INST, SIX, E, OPREL, OPADD, OPMUL, OPUN;
 
 -- indique si AFFX est une affectation ( -> affect ...)
 syn estAffectation : BOOLEAN for AFFX;
@@ -196,7 +196,6 @@ INST -> E pv #gen ;
 do
     -- to do : E^code + consommer valeur ("POP")
     INST^code := ";to do : instruction expression (affectation et appel de procedure)";
-    
 end
 }
 -- bloc d'instructions
@@ -229,11 +228,11 @@ do
 end
 }
 -- retour de fonction
-INST ->  retour  E pv #gen ;
+INST ->  retour  E pv #gen;
 #gen {
 do
-    -- to do : E^code + retour(laisser la valeur en sommet de pile : nope)
-    INST^code := "; ? to do : -- retour"; -- ?
+  -- transmettre la valeur de E
+  INST^code := E^code;
 end
 }
 -- inline asm
@@ -251,7 +250,6 @@ do
   -- ASM^code_asm contient le code assembleur inline
   -- dans lequel les noms de variables ont ete remplaces
   -- par leurs adresses.
-  -- to test
   INST^code := INST^machine.genCodeInLine(ASM^code_asm);
 end
 }
@@ -309,13 +307,42 @@ do
 end
 }
 -- operateurs relationnels
-OPREL -> inf ;
-OPREL -> sup ;
-OPREL -> infeg ;
-OPREL -> supeg ;
-OPREL -> eg ;
-OPREL -> neg ;
-
+OPREL -> inf  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genInf()";
+end
+}
+OPREL -> sup  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genSup()";
+end
+}
+OPREL -> infeg  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genInfEgal()";
+end
+}
+OPREL -> supeg  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genSupEgal()";
+end
+}
+OPREL -> eg  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genEgal()";
+end
+}
+OPREL -> neg  #gen;
+#gen {
+do
+  OPREL^code := "OPREL^machine.genDifferent()";
+end
+}
 
 R ->  T  RX ;
 -- additions ...
