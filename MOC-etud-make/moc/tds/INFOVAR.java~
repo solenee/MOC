@@ -1,0 +1,26 @@
+package moc.tds;
+
+public class INFOVAR implements INFO {
+	// le deplacement
+	private int dep;
+	private DTYPE type;
+
+	public DTYPE getType(){
+		return type;
+	}
+
+	public int getDep() {
+		return dep;
+	}
+
+	public INFOVAR(DTYPE t, int d) {
+		type = t; 
+		dep  = d;
+	}
+
+	// affichage
+	public String toString() {
+		return "; VAR : " + "type=" + type + " dep = " + dep;
+	}
+
+}

@@ -1,0 +1,19 @@
+; Generated code for tests/testTailleBloc.moc.
+; Do not modify by hand
+; inline code_asm
+
+
+	CALL (LB) _main
+
+
+	HALT
+
+
+_unBloc:
+	POP(0)1
+	RETURN (3) 1
+_main:
+	POP(0)1
+	RETURN (0) 1
+
+;

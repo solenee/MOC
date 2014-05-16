@@ -1,0 +1,10 @@
+//--------------------------------------------------
+// INFO la classe representant une info de TDS
+//--------------------------------------------------
+package bloc.lib;
+
+public interface INFO {
+
+
+
+}

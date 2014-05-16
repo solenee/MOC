@@ -1,0 +1,1355 @@
+----------------------------------------------------------------------------------------------------------
+-- Grammaires de MC et MOC                         --
+-- La grammaire de MOC est obtenue en decommentant --
+-- les parties indiquees.                          --
+-----------------------------------------------------
+--options
+option auto = true;
+option version = 0.0.1;
+option k=2;
+
+-- verification du retour 
+inh typeRet : DTYPE for BLOC, INSTS, INST, SIX;
+syn isRet   : BOOLEAN for BLOC, INSTS, INST, SIX;
+-- decl type 
+inh tInt  : DTYPE for PARFS, PARFSX, PARF, TYPE, STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh tChar : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh tPointeurNull : DTYPE for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh tVoid  : DTYPE for PARFS, PARFSX, STYPE, ENTITES, TYPE, PARF, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+--attributes 
+syn type  : DTYPE for TYPE, REFS, STYPE, F, E, A, T, R, AFFX;
+inh htype : DTYPE for REFS;
+-- affectation 
+syn affectable : BOOLEAN for F, A, R, T, E;
+syn vide       : BOOLEAN for TX, RX, AX, AFFX;
+-- initialisation 
+  
+-- la table de symboles
+inh tds  : TDS for ENTITES, FONCTION, PARFS, PARF, PARFSX, TYPE, REFS, 
+                   STYPE, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+syn stds : TDS for INST;
+-- la table de symboles des fonctions
+inh tds_fonction  : TDS for ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+syn stds_fonction : TDS for FONCTION, ENTITES;
+-- la liste de parametres
+inh hparams : PARAMETRES for PARFS, PARF, PARFSX, ARGS, ARGSX;
+syn params  : PARAMETRES for PARFS, PARF, PARFSX, ARGS, ARGSX;
+-- la liste des parametres à mettre dans la tds du bloc associé à la fonction
+inh htdspar : TDS for PARFS, PARF, PARFSX;
+syn tdspar  : TDS for PARFS, PARF, PARFSX;
+-- l'adresse des variables
+inh hadr : INTEGER for ENTITES, FONCTION, PARFS, PARF, PARFSX, BLOC, INSTS, INST, SIX;
+syn adr  : INTEGER for PARF, INST, INSTS;
+syn last_adr : INTEGER for PARFS, PARFSX; -- vaut l'adresse du dernier parametre
+-- le fichier source
+inh source : MOCSourceFile for PROGRAMME;
+-- la machine cible pour la generation de code
+inh machine : IMachine for 
+         ENTITES, FONCTION, INST, BLOC, INSTS, SIX,
+         PARFS, PARF, PARFSX, ARGS,ARGSX, 
+         E, AFFX, A, AX, R, RX, T, TX, F
+--         -- decommenter la ligne suivante pour MOC
+--       ,IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS
+--         -- fin extension MOC
+         ;
+-- ces attributs permettent de recuperer les instructions du code ASM inline       
+syn code_asm : STRING for ASM;
+-- la TDS courante
+inh tds_asm : TDS for ASM;
+-- code genere
+syn code : STRING for ENTITES, FONCTION, BLOC;
+
+--terminaux
+space separateur is  "[\r\n\t ]+";     
+space comm is  "\/\/[^\n]*\n";
+sugar paro is  "\(";
+sugar parf is  "\)";
+sugar aco is  "\{";     
+sugar acf is  "\}"; 
+sugar virg is  ",";
+sugar pv is  "\;";
+sugar affect is  "=";
+sugar si is  "if";
+sugar sinon is  "else";
+sugar void is  "void";
+sugar asm is  "asm";
+sugar int is  "int";
+sugar char is  "char";
+sugar retour is  "return";
+sugar null is  "NULL";
+sugar nil is  "nil";
+sugar inf is  "\<";
+sugar infeg is  "\<=";
+sugar sup is  "\>";
+sugar supeg is  "\>=";
+sugar eg is  "==";
+sugar neg is  "\!=";
+sugar plus is  "\+";
+sugar moins is  "\-";
+sugar ou is  "\|\|";
+sugar mult is  "\*";
+sugar div is  "\/";
+sugar mod is  "\%" ; 
+sugar et is  "\&\&";
+sugar non is  "\!";
+
+
+term entier is  "[0-9]+";
+term caractere is  "\'[^\']\'";
+term chaine is  "\"[^\"]*\"";
+term ident is  "[a-z][_0-9A-Za-z]*";
+-- --decommenter pour MOC
+--term identc is  "[A-Z][_0-9A-Za-z]*";   -- nom de classe
+--term chaineo is  "@\"[^\"]*\"";         -- chaine MOC
+-- --fin extension MOC
+
+-- pour les instructions en assembleur 'inline'
+compil ASM;
+
+--production rules
+PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen;
+global
+   machine : IMachine;
+-- transmission de la machine cible  (choisie par l'option -m au lancement) 
+#initType {
+do 
+  ENTITES^tInt := new DTYPE("int", 1);
+  ENTITES^tChar   := new DTYPE("char", 1);
+  ENTITES^tPointeurNull := new POINTEURNULL();
+  ENTITES^tVoid := new DTYPE("void", 0);
+end 
+}
+
+#init {
+local
+do
+   machine := PROGRAMME^source.getMachine();
+   if machine = null then
+     error(NO_MACH, PROGRAMME^source.getMachName());
+   else
+     ENTITES^machine := machine;
+   end
+end
+}
+--tds associées à entites
+#tds {
+local
+do
+    ENTITES^tds := nil;
+    ENTITES^tds_fonction := new TDS();
+end
+}   
+--adresse de l'entité d'origine
+#adresse {
+do
+  ENTITES^hadr := 0;
+end
+}
+--verifie l'existence d'une fonction main
+#main {
+local
+  i : INFO;
+do
+  i := ENTITES^stds_fonction.chercherLocalement("main");
+  if (i = null) then
+    error(NO_MAIN,"");
+  end
+end
+}
+-- ecrit le code dans un fichier
+#gen {
+local
+do
+    machine.writeCode(PROGRAMME^source.getFileName(), ENTITES^code + "\n;"); 
+end
+}
+ENTITES -> #tds_fonction #gen ;
+#gen {
+do
+  ENTITES^code := "";
+end
+}
+#tds_fonction {
+do
+  ENTITES^stds_fonction := ENTITES^tds_fonction;
+end
+}  
+
+ENTITES ->   asm #tds ASM ENTITES #tds_fonction #gen;
+#tds {
+do
+  ENTITES1^tds := ENTITES^tds;
+  -- Remplacer 'null' par la table courante pour que
+  -- le code  ASM puisse acceder aux variables de MC ou MOC
+  ASM^tds_asm := ENTITES^tds; 
+end
+}
+
+#gen {
+do
+  ENTITES^code := ASM^code_asm + ENTITES1^code;-- ASM^code_asm contient le code ASM inline;
+end
+}
+
+#tds_fonction {
+do
+  ENTITES^stds_fonction := ENTITES1^stds_fonction;
+end
+}
+
+ENTITES ->  FONCTION #tds_fonction ENTITES #stds_fonction #gen ;
+#tds_fonction {
+do
+  ENTITES1^tds_fonction := FONCTION^stds_fonction;
+end
+}
+#stds_fonction {
+do
+  ENTITES^stds_fonction := ENTITES1^stds_fonction;
+end
+}
+#gen {
+do
+  ENTITES^code := FONCTION^code + ENTITES1^code;
+end
+}
+
+--fonctions
+FONCTION ->  TYPE ident  paro #params #adresse PARFS parf #tds #passeTypeRet BLOC #tds_fonction #verifReturn #aff #gen ;
+#gen {
+local
+    tailleparams : INTEGER;
+do
+  tailleparams := - PARFS^last_adr -1;
+  write "Taille des parametres de " + ident^txt + " : "+ tailleparams +"\n";
+  FONCTION^code := FONCTION^machine.genFonction(ident^txt, tailleparams, TYPE^type.getTaille(), BLOC^code);
+end
+}
+#aff {
+do
+  write "\n";
+  write "\n";
+  write "Table des fonctions visibles par " + ident^txt;
+  write "\n";
+  write FONCTION^tds_fonction.toString();
+  --write "\n";
+end
+}
+#verifReturn {
+do
+   if ~TYPE^type.isVoid() & ~BLOC^isRet then 
+      error(B_22, "vous avez oublie le retour");
+   end   
+end 
+}
+
+#params {
+do
+  PARFS^hparams := new PARAMETRES();		-- creation du conteneur des parametres
+  PARFS^htdspar := new TDS(FONCTION^tds);       -- creation de la tds de la fonction 
+end
+}
+
+#adresse {
+do
+  PARFS^hadr := -1;  				-- initialisation des adresses parametre
+  BLOC^hadr := 3;				-- initialisation des adresse de bloc
+end
+}
+
+#tds {
+do
+  BLOC^tds := PARFS^tdspar; 
+end
+}
+
+#passeTypeRet {
+do 
+    BLOC^typeRet := TYPE^type;
+end 
+}
+
+#tds_fonction {
+local
+  i : INFOFONCTION;
+  t : TDS;
+  s : String;
+do
+  i := new INFOFONCTION(TYPE^type, PARFS^params);
+  t := FONCTION^tds_fonction;
+  s := "Already_declared";
+  if (t.chercherLocalement(ident^txt) != null) then
+        error(B_01, "fonction deja existante");   -- write fonction existante
+  else
+    t.inserer(ident^txt, i);
+  end
+  FONCTION^stds_fonction := t;
+end
+}
+
+-- parametres de fonctions
+PARFS ->  #params #last_adr;
+#params {
+do
+  PARFS^params := PARFS^hparams;
+  PARFS^tdspar := PARFS^htdspar;
+end
+}
+#last_adr {
+do
+  PARFS^last_adr := PARFS^hadr;
+end
+}
+
+PARFS -> PARF #params1 #adresse PARFSX #params2 #last_adr;
+#params1 {
+do
+  PARFSX^hparams := PARF^params;
+  PARFSX^htdspar := PARF^tdspar;
+end
+}
+#adresse {
+do
+  PARFSX^hadr := PARF^adr;
+end
+}
+#params2 {
+do
+  PARFS^params := PARFSX^params;
+  PARFS^tdspar := PARFSX^tdspar;
+end
+}
+#last_adr {
+do
+  PARFS^last_adr := PARFSX^last_adr;
+end
+}
+
+PARFSX ->  #params #last_adr;
+#params {
+do
+  PARFSX^params := PARFSX^hparams;
+  PARFSX^tdspar := PARFSX^htdspar;
+end
+}
+#last_adr {
+do
+  PARFSX^last_adr := PARFSX^hadr;
+end
+}
+
+PARFSX ->  virg PARF #params1 #adresse PARFSX #params2 #last_adr;
+#params1 {
+do
+  PARFSX1^hparams := PARF^params;
+  PARFSX1^htdspar := PARF^tdspar;
+end
+}
+#adresse {
+do
+  PARFSX1^hadr := PARF^adr;
+end
+}
+#params2 {
+do
+  PARFSX^params := PARFSX1^params;
+  PARFSX^tdspar := PARFSX1^tdspar;
+end
+}
+#last_adr {
+do
+  PARFSX^last_adr := PARFSX1^last_adr;
+end
+}
+
+PARF ->  TYPE ident #params #adresse;
+#params {
+local
+  p : PARAMETRES;
+  i : INFOVAR;
+  t : TDS;
+do
+  i := new INFOVAR(TYPE^type, new Emplacement(PARF^hadr, null));
+  p := PARF^hparams;
+  p.inserer(TYPE^type);
+  PARF^params := p;
+  t := PARF^htdspar;
+  if (t.chercherLocalement(ident^txt) = null) then
+    t.inserer(ident^txt, i);
+  else
+        error(B_02, "nom de parametre deja existant ");   -- write fonction existante
+    -- write nom de parametre deja utilise
+  end
+  PARF^tdspar := t;
+end
+}
+#adresse {
+local
+  taille : INTEGER;
+do
+  taille := TYPE^type.getTaille();
+  PARF^adr := PARF^hadr - taille;
+end
+}
+
+-- les types (de base et pointeurs)
+TYPE -> STYPE #recapTypePointeur  REFS #creatType ;
+#creatType {
+do
+	TYPE^type := REFS^type;
+end
+}
+
+#recapTypePointeur {
+do
+	REFS^htype := STYPE^type;
+end
+}
+
+REFS -> #syntheseType ;
+#syntheseType{
+do 
+	REFS^type := REFS^htype;
+end
+}
+
+REFS -> mult #recapType REFS #creatType ;
+#recapType{
+do
+	REFS1^htype := REFS^htype;
+end
+}
+
+#creatType{
+do 
+	REFS^type := new POINTEUR(REFS1^type);
+end
+}
+
+-- types de base
+STYPE-> void #creatType ;
+#creatType {
+do
+	STYPE^type := STYPE^tVoid;
+end
+}
+
+STYPE-> int  #creatType ;
+#creatType {
+do
+	STYPE^type := STYPE^tInt;
+end
+}
+
+STYPE-> char  #creatType ;
+#creatType {
+do
+	STYPE^type := STYPE^tChar;
+end
+}
+
+-- corps de methode et bloc d'instructions
+BLOC ->  aco #tds #passeTypeRet INSTS acf #isReturn #gen ;
+global        
+  t : TDS;
+#tds {
+do
+   t :=  new TDS(BLOC^tds);
+   INSTS^tds := t;
+end
+}
+#passeTypeRet {
+do 
+   INSTS^typeRet := BLOC^typeRet;
+end 
+}
+#isReturn {
+do
+   BLOC^isRet := INSTS^isRet;
+end 
+}
+#gen {
+local 
+    tailleBloc : INTEGER;
+do
+   tailleBloc := INSTS^adr - BLOC^hadr;
+   write "; tds:\n" + t;
+   write "; taille des locales = " + tailleBloc+ "\n";
+   -- Le code du bloc est celui de ses instructions
+   -- plus le code pour liberer la place occupee
+   -- par les variables locales (POP (0) taille)
+   BLOC^code := BLOC^machine.genFree(tailleBloc) ;--INSTS^code + BLOC^machine.genFree(tailleBloc) ;
+end
+}
+
+-- instructions
+INSTS ->  #isReturn #adr ;
+#adr {
+do
+  INSTS^adr := INSTS^hadr;
+end
+}
+#isReturn{
+do 
+   INSTS^isRet := false;
+end
+}
+
+INSTS -> #passeType INST #tds #adresse INSTS #isReturn #adr;
+#passeType {
+do
+   INST^typeRet := INSTS^typeRet;
+   INSTS1^typeRet := INSTS^typeRet;
+end 
+}
+
+#tds {
+do
+  INSTS1^tds := INST^stds;
+end
+}
+
+#adresse {
+do
+  INSTS1^hadr := INST^adr;
+end
+}
+#isReturn {
+do 
+  INSTS^isRet := INST^isRet | INSTS1^isRet;
+end
+}
+#adr {
+do
+  INSTS^adr := INSTS1^adr;
+end
+}
+
+-- declaration de variable locale avec ou sans init
+INST ->  TYPE ident  AFFX pv #tds #adresse #verifCompatibilite #isReturn ;
+
+#tds {
+local
+  i : INFO;
+do
+  i := INST^tds.chercherLocalement(ident^txt);
+  if (i != null) then
+        error(B_03, "nom de variable deja utilise ");   -- write fonction existante
+    -- write nom de variable deja utilise
+  else
+    i := new INFOVAR(TYPE^type, new Emplacement(INST^hadr, null));
+    INST^tds.inserer(ident^txt, i);
+  end
+  INST^stds := INST^tds;
+end
+}
+
+#adresse {
+do
+  INST^adr := INST^hadr + TYPE^type.getTaille();
+end
+}
+
+#verifCompatibilite {
+local 
+   compValue : BOOLEAN;
+do
+	if AFFX^type != null then
+		compValue := TYPE^type.compareTo(AFFX^type);
+		if ~compValue then 
+			error(B_04 , "affectation non compatible");
+		end 
+	end
+end  
+}
+
+#isReturn{
+do 
+   INST^isRet := false;
+end 
+}
+
+
+-- instruction expression (affectation et appel de procedure)
+INST -> E pv #adresse #stds #isReturn ;
+
+#adresse {
+do
+  INST^adr := INST^hadr;
+end
+}
+
+#stds {
+do
+  INST^stds := INST^tds;
+end
+}
+#isReturn{ 
+do
+   INST^isRet := false;
+end
+}
+
+
+-- bloc d'instructions
+INST ->  #passeTypeRet #tds BLOC  #adresse #stds #isReturn ;
+#passeTypeRet{
+do
+   BLOC^typeRet := INST^typeRet;
+end
+}
+#adresse {
+do
+  INST^adr := INST^hadr;
+end
+}
+
+#stds {
+do
+  INST^stds := INST^tds;
+end
+}
+
+#tds {
+do
+  BLOC^tds := new TDS(INST^tds);
+end
+}
+#isReturn{ 
+do
+   INST^isRet := false;
+end
+}
+
+
+-- conditionnelle
+INST ->   si paro E parf #tds #passeTypeRet BLOC SIX #adresse #stds #isReturn ;
+#passeTypeRet{
+do
+   BLOC^typeRet := INST^typeRet;
+   SIX^typeRet := INST^typeRet;
+end 
+}
+#adresse {
+do
+  INST^adr := INST^hadr;
+end
+}
+
+#stds {
+do
+  INST^stds := INST^tds;
+end
+}
+
+#tds {
+do
+  BLOC^tds := new TDS(INST^tds);
+end
+}
+
+#isReturn {
+do
+  INST^isRet := BLOC^isRet & SIX^isRet;
+end
+}
+SIX ->    sinon #tds #passeTypeRet BLOC #isReturn ;
+
+#tds {
+do
+  BLOC^tds := new TDS(SIX^tds);
+end
+}
+
+#passeTypeRet {
+do
+   BLOC^typeRet := SIX^typeRet;
+end
+}
+
+#isReturn {
+do
+   SIX^isRet := BLOC^isRet;
+end 
+}
+
+SIX -> #isReturn ;
+#isReturn {
+do
+   SIX^isRet := false;
+end 
+}
+
+
+-- retour de fonction
+INST ->  retour  E pv #adresse #tds #verifReturn #isReturn ;
+
+#adresse {
+do
+  INST^adr := INST^hadr;
+end
+}
+
+#tds {
+do
+  INST^stds := INST^tds;
+end
+}
+#verifReturn {
+do
+   if ~INST^typeRet.compareTo(E^type) then 
+      error(B_21, "faux retour");
+   end 
+end 
+}
+
+#isReturn {
+do
+   INST^isRet := true;
+end 
+}
+
+
+-- inline asm
+INST ->  asm   #tds ASM #gen #adresse #stds #isReturn ;
+
+#adresse {
+do
+  INST^adr := INST^hadr;
+end
+}
+
+#stds {
+do
+  INST^stds := INST^tds;
+end
+}
+
+#tds {
+do
+  -- A remplacer par la table courante pour que
+  -- l'assembleur puisse acceder aux variables
+  ASM^tds_asm := INST^tds; 
+end
+}
+
+#gen {
+do
+  -- ASM^code_asm contient le code assembleur inline
+  -- dans lequel les noms de variables ont ete remplaces
+  -- par leurs adresses.
+end
+}
+
+#isReturn {
+do
+   INST^isRet := false;
+end 
+}
+
+
+-- les expressions
+-----------------------------------------------------------------------
+-- E = expression (y compris l'affectation)
+-- A = expression figurant dans une affectation
+-- R = expression figurant dans une expresion relationnelle
+-- T = expression figurant dans une expression additive (TERME)
+-- F = expression figurant dans une expression multiplicative (FACTEUR)
+-----------------------------------------------------------------------
+-- ici je demande est ce que j ai besoin de verifier la compatibilite des types 
+-- Si AFFX^type est nul alors pas besoin de verifier 
+E ->   A  AFFX #verifCompatible #getType #estAffectable #verifAffectable ;
+#verifCompatible {
+local 
+   compValue : BOOLEAN;
+do
+	if ~AFFX^vide then
+		compValue := A^type.compareTo(AFFX^type);
+		if ~compValue then 
+			error(B_6 , "affectation : type non compatible");
+			-- ecrire erreur de typage d affectation 
+		end 
+	end
+end  
+}
+-- j affecte a E le type du cote gauche de l affectation 
+#getType {
+do
+	E^type := A^type;
+end
+}
+
+#estAffectable{
+do
+   if AFFX^vide then
+       E^affectable := A^affectable;
+   else 
+       E^affectable := false; 
+   end  
+end 
+}
+#verifAffectable {
+local 
+  affect : BOOLEAN;
+do
+  if ~AFFX^vide then
+  affect := A^affectable;
+  if ~affect then 
+      error(B_05 , "Le cote gauche n est pas affectable");
+    -- ecrire non affectable 
+  end 
+ end 
+end 
+}
+
+-- affectation
+AFFX -> affect A #getType #estVide ;
+#getType {
+do 
+   AFFX^type := A^type;
+end 
+}
+#estVide{
+do
+   AFFX^vide := false;
+end 
+}
+
+AFFX ->  #getType #estVide ;
+#getType {
+do 
+	AFFX^type := null;
+end 
+}
+#estVide{
+do
+   AFFX^vide := true;
+end 
+}
+
+
+-- relation
+A ->   R AX  #verifType #getType #estAffectable ;
+#verifType {
+do
+   if ~AX^vide then 
+	  if ~R^type.isOperable() then 
+		error(B_20, "Les operations ne peuvent etre faites que sur les entiers");
+	  end
+   end 
+end 
+}
+#getType{
+do
+	if AX^vide then 
+		A^type := R^type;
+	else 
+		A^type := A^tInt;
+	end 
+   
+end 
+}
+#estAffectable {
+do 
+	if AX^vide then 
+		A^affectable := R^affectable;
+	else 
+		A^affectable := false;
+	end 
+end 
+}
+
+
+AX -> OPREL R #verifType #extension ;
+#verifType {
+do
+	if ~R^type.isOperable() then 
+		error(B_20, "Les operations ne peuvent etre faites que sur les entiers");
+	end
+end 
+}
+
+#extension {
+do
+   AX^vide := false; 
+end 
+}
+
+AX -> #extension ;
+#extension{
+do 
+   AX^vide := true; 
+end 
+}
+-- operateurs relationnels
+OPREL -> inf ;
+OPREL -> sup ;
+OPREL -> infeg ;
+OPREL -> supeg ;
+OPREL -> eg ;
+OPREL -> neg ;
+
+R ->  T RX #verifType #getType #estAffectable;
+#verifType {
+do
+  if ~RX^vide then 
+	if ~T^type.isOperable() then 
+		error(B_20, "Les operations ne peuvent etre faites que sur les entiers");
+	end
+  end 
+end 
+}
+
+#getType{
+do
+	if RX^vide then 
+		R^type := T^type;
+	else 
+		R^type := R^tInt;
+	end 
+   
+end 
+}
+#estAffectable {
+do 
+	if RX^vide then 
+		R^affectable := T^affectable;
+	else 
+		R^affectable := false;
+	end 
+end 
+}
+
+
+-- additions ...
+RX ->   OPADD  T #verifType RX #extension ;
+#verifType {
+do
+	if ~T^type.isOperable() then 
+		error(B_20, "Les operations ne peuvent etre faites que sur les entiers");
+	end
+end 
+}
+#extension {
+do 
+   RX^vide := false; 
+end 
+}
+
+RX -> #extension ;
+#extension {
+do
+   RX^vide := true; 
+end
+}
+-- operateurs additifs
+OPADD -> plus ;
+OPADD -> moins ;
+OPADD -> ou ;
+
+-- multiplication, ...
+T ->  F TX   #verifType #getType #estAffectable ;
+#verifType {
+do
+  if ~ TX^vide then 
+	if ~F^type.isOperable() then 
+		error(B_20, "Les operations ne peuvent etre faites que sur les entiers");
+	end
+ end 
+end 
+}
+
+#getType{
+do
+   if TX^vide then 
+		T^type := F^type;
+	else 
+		T^type := T^tInt;
+	end 
+end 
+}
+#estAffectable {
+do 
+	if TX^vide then 
+		T^affectable := F^affectable;
+	else 
+		T^affectable := false;
+	end 
+end 
+}
+
+TX ->  OPMUL  F #verifType TX #extension ;
+#verifType {
+do
+	if ~F^type.isOperable() then 
+		error(B_20, "Les operations ne peuvent etre faites que sur les entiers");
+	end
+end 
+}
+#extension {
+do
+  TX^vide := false;
+end 
+}
+
+
+TX -> #extension ;
+#extension {
+do
+  TX^vide := true;
+end 
+}
+
+
+-- operateurs multiplicatifs
+OPMUL -> mult;
+OPMUL -> div ;
+OPMUL -> mod ;
+OPMUL -> et  ;
+
+-- expressions de base
+-- Constante entiere
+F -> entier  #getType #estAffectable;
+#getType {
+do
+   F^type := F^tInt;
+end 
+}
+#estAffectable{
+do 
+   F^affectable := false;
+end 
+}
+
+
+-- Constante chaine
+F -> chaine  #getType #estAffectable ;
+#getType {
+do 
+
+   F^type := new POINTEUR(F^tChar);
+end 
+}
+#estAffectable{
+do 
+   F^affectable := false;
+end 
+}
+
+
+-- Constante caractere
+F -> caractere  #getType #estAffectable ;
+#getType {
+do 
+   F^type := F^tChar;
+end 
+}
+#estAffectable{
+do 
+   F^affectable := false;
+end 
+}
+
+
+
+-- expression unaire
+F ->  OPUN  F  #verifType #getType #estAffectable ;
+#verifType {
+do
+	if ~F1^type.isOperable() then 
+		error(B_20, "Les operations ne peuvent etre faites que sur les entiers");
+	end
+end 
+}
+#getType{
+do
+   F^type := F1^type;
+end 
+}
+#estAffectable{
+do 
+   F^affectable := false;
+end 
+}
+
+
+-- operateurs unaires
+OPUN -> plus ;
+OPUN -> moins ;
+OPUN -> non;
+-- pointeur NULL
+F -> null  #getType #estAffectable ;
+#getType {
+do 
+   F^type := F^tPointeurNull;
+end
+}
+#estAffectable{
+do 
+   F^affectable := false;
+end 
+}
+
+
+-- expression parenthesee
+F ->  paro E parf #getType #estAffectable ;
+#getType {
+do 
+   F^type := E^type;
+end 
+}
+#estAffectable{
+do 
+   F^affectable := E^affectable;
+end 
+}
+
+
+F ->  paro TYPE parf  F #verifCast #getType #estAffectable ;
+----- cast est ce que c est castable et puis effectue le cast 
+#verifCast{
+do
+   if ~ F1^type.castableTo(TYPE^type) then 
+			error(B_13 , "Impossible de caster");
+      -- ecrire ne peut pas etre caster 
+   end 
+end
+}
+#getType{
+do
+   F^type := TYPE^type;
+end 
+}
+
+#estAffectable{
+do 
+   F^affectable := F1^affectable;
+end 
+}
+
+
+-- appel de sous-programme
+F ->  ident  paro #params ARGS parf #gen #getType #estAffectable ;
+-- on verifie ici la declaration de la fonction et on recupere le infofonction
+global 	 
+  i : INFOFONCTION;
+
+#params {
+do
+  ARGS^hparams := new PARAMETRES();
+end
+}
+
+#gen {
+local
+  in : INFO;
+  p : PARAMETRES; 
+do
+  in := F^tds_fonction.chercherLocalement(ident^txt);
+  if (in = null) then
+    error(B_14 , "la fonction appelee n existe pas ");
+  else
+    match in with INFOFONCTION then
+        i := in;
+    else
+        error(B_17 , " c est pas une fonction");
+    end
+    p := i.getParametres();
+    if (! p.compareTo(ARGS^params)) then
+      error(B_15 , " parametres d'appel erronés");
+    else
+      -- F^code := ARGS^code + MTAM.genCall(ident^txt);
+    end
+  end
+end
+}
+
+#getType {
+do
+   F^type := i.getRetour();
+end 
+}
+#estAffectable{
+do 
+   F^affectable := false;
+end 
+}
+
+F ->  ident #verifVar #getType #estAffectable ;
+global 
+   i : INFOVAR;
+
+#verifVar {
+local 
+  t : TDS;
+  iTemp : INFO;
+do 
+  t := F^tds;
+  iTemp := t.chercherGlobalement(ident^txt);
+  if (iTemp = null) then
+     error(B_16 , "la variable n existe pas :"); 
+  else
+     match iTemp with INFOVAR then
+        i := iTemp;
+    else
+        error(B_17 , " c est pas une variable ca");
+    end
+
+  end
+end 
+}
+
+#getType {
+do
+   F^type := i.getType();
+end 
+}
+#estAffectable{
+do 
+   F^affectable := true;
+end 
+}
+
+
+---- acces zone pointee
+F -> mult F #getType #estAffectable ;
+#getType{
+do 
+    match F1^type with POINTEUR then
+        F^type := F1^type.getType();
+    else
+        error(B_18 , " c est pas un pointeur");
+    end 
+end
+}
+
+#estAffectable{
+do 
+   F^affectable := true;
+end 
+}
+
+-- arguments appel de sous-programme
+ARGS -> #params #gen;
+#params {
+do
+  ARGS^params := ARGS^hparams;
+end
+}
+
+#gen {
+do
+  -- ARGS^code := "";
+end
+}
+
+ARGS -> E #params1 ARGSX #params2 #gen;
+#params1 {
+do
+  ARGS^hparams.inserer(E^type);
+  ARGSX^hparams := ARGS^hparams;
+end
+}
+
+#params2 {
+do
+  ARGS^params := ARGSX^params;
+end
+}
+
+#gen {
+do
+  -- ARGS^code := E^code + ARGSX^code;
+end
+}
+
+ARGSX ->  #params #gen;
+#params {
+do
+  ARGSX^params := ARGSX^hparams;
+end
+}
+
+#gen {
+do
+  -- ARGSX^code := "";
+end
+}
+
+ARGSX -> virg  E #params1 ARGSX #params2 #gen;
+#params1 {
+do
+  ARGSX^hparams.inserer(E^type);
+  ARGSX1^hparams := ARGSX^hparams;
+end
+}
+
+#params2 {
+do
+  ARGSX^params := ARGSX1^params;
+end
+}
+
+#gen {
+do
+  -- ARGSX^code := E^code + ARGSX^code;
+end
+}
+
+----====decommenter pour ============ MOC extension =================
+--ENTITES ->  IMPLEMENTATION ENTITES ;
+---- definition d'une classe
+--IMPLEMENTATION ->  classe identc SUPER aco ATTRIBUTS acf METHODES fin ;
+---- surclasse
+--SUPER -> ;
+--SUPER -> dpts identc  ;
+----attributs
+--ATTRIBUTS -> ;
+--ATTRIBUTS -> TYPE ident pv ATTRIBUTS;
+-- -- methodes
+--METHODES -> ;
+--METHODES ->  METHODE  METHODES ;
+--METHODE ->  QUAL PTYPE   MPARFS BLOC ;
+-- --qualificateur attribut ou methode :  + = de classe, - = d'instance
+--QUAL -> plus;
+--QUAL -> moins;
+-- --type classe 
+--STYPE-> identc ;
+-- -- type BOOL
+--STYPE-> bool ;
+-- -- type "any"
+--TYPE -> id  ;
+---- type argument (ou retour) de methode entre parentheses
+--PTYPE-> paro TYPE parf ;
+---- parametres de methodes
+--MPARFS -> ;
+--MPARFS ->  MPARF MPARFS ;
+-- -- selecteur sans parametre
+--MPARF ->  ident  ;
+-- -- selecteur  + type parametre + nom parametre
+--MPARF ->   ident dpts  PTYPE ident;
+---- object nil
+--F -> nil   ;
+----Constante 'YES'
+--F -> yes   ;
+---- Constante 'NO'
+--F -> no   ;
+-- -- chaine MOC (commence par @)
+--F -> chaineo ;
+--  --self = this de Java
+--F -> self  ;
+--F -> super  ;
+-- -- Appel de methode
+--F -> cro F MARGS crf   ;
+---- pour appel methode de classe
+--F -> cro identc MARGS crf  ;
+---- arguments appel de methode
+--MARGS ->   ;
+--MARGS ->  MARG MARGS   ;
+-- -- selecteur + arg
+--MARG -> ident dpts  E;
+-- -- selecteur sans arg
+--MARG -> ident  ;
+---- --fin de MOC extension
+
+end
