@@ -1,0 +1,755 @@
+-----------------------------------------------------
+-- Grammaires de MC et MOC                         --
+-- La grammaire de MOC est obtenue en decommentant --
+-- les parties indiquees.                          --
+-----------------------------------------------------
+--options
+option auto = true;
+option version = 0.0.1;
+option k=2;
+--attributes 
+inh type : DTYPE for TYPE;
+-- la table de symboles
+inh tds : TDS for ENTITES, FONCTION, PARFS, PARF, PARFSX, TYPE, REFS, 
+                   STYPE, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+syn stds : TDS for INST;
+-- la table de symboles des fonctions
+inh tds_fonction : TDS for ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+syn stds_fonction : TDS for FONCTION;
+-- la liste de parametres
+inh hparams : PARAMETRES for PARFS, PARF, PARFSX, ARGS, ARGSX;
+syn params : PARAMETRES for PARFS, PARF, PARFSX, ARGS, ARGSX;
+-- la liste des parametres à mettre dans la tds du bloc associé à la fonction
+inh htdspar : TDS for PARFS, PARF, PARFSX;
+syn tdspar : TDS for PARFS, PARF, PARFSX;
+-- l'adresse des variables
+inh hadr : INTEGER for ENTITES, FONCTION, PARFS, PARF, PARFSX, BLOC, INSTS, INST, SIX;
+syn adr : INTEGER for PARF, INST;
+-- le fichier source
+inh source : MOCSourceFile for PROGRAMME;
+-- la machine cible pour la generation de code
+inh machine : IMachine for 
+         ENTITES, FONCTION, INST, BLOC, INSTS, SIX,
+         PARFS, PARF, PARFSX, ARGS,ARGSX, 
+         E, AFFX, A, AX, R, RX, T, TX, F
+--         -- decommenter la ligne suivante pour MOC
+--       ,IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS
+--         -- fin extension MOC
+         ;
+-- ces attributs permettent de recuperer les instructions du code ASM inline       
+syn code_asm : STRING for ASM;
+-- la TDS courante
+inh tds_asm : TDS for ASM;
+
+-- code genere
+syn code : STRING for ENTITIES, FONCTION, BLOC, INSTS, INST, SIX, E, A, AFFX;--F, ARGS, ARGSX, AFFX; --, OPREL, OPADD, OPMUL;
+inh hdep : INTEGER for BLOC;--, INSTS, INST;
+--syn dep : INTEGER for INST, INSTS;
+
+-- indique si AFFX est une affectation ( -> affect ...)
+syn estAffectation : BOOLEAN for AFFX;
+syn est_affectable : BOOLEAN for A, F ;
+syn op : STRING for OPUN, OPMUL, OPADD, OPREL ;
+inh code_gauche : STRING for AFFX;
+
+--terminaux
+space separateur is  "[\r\n\t ]+";     
+space comm is  "\/\/[^\n]*\n";
+sugar paro is  "\(";
+sugar parf is  "\)";
+sugar aco is  "\{";     
+sugar acf is  "\}"; 
+sugar virg is  ",";
+sugar pv is  "\;";
+sugar affect is  "=";
+sugar si is  "if";
+sugar sinon is  "else";
+sugar void is  "void";
+sugar asm is  "asm";
+sugar int is  "int";
+sugar char is  "char";
+sugar retour is  "return";
+sugar null is  "NULL";
+sugar nil is  "nil";
+sugar inf is  "\<";
+sugar infeg is  "\<=";
+sugar sup is  "\>";
+sugar supeg is  "\>=";
+sugar eg is  "==";
+sugar neg is  "\!=";
+sugar plus is  "\+";
+sugar moins is  "\-";
+sugar ou is  "\|\|";
+sugar mult is  "\*";
+sugar div is  "\/";
+sugar mod is  "\%" ; 
+sugar et is  "\&\&";
+sugar non is  "\!";
+
+-- --decommenter pour MOC
+--sugar dpts is  "\:";
+--sugar cro is  "\["; 
+--sugar crf is  "\]";
+--sugar id is  "id";
+--sugar classe is  "@class";
+--sugar fin is  "@end";
+--sugar self is "self" ;
+--sugar bool is  "BOOL";
+--sugar super is "super" ;
+--sugar yes is "YES" ;
+--sugar no is "NO" ;
+-- --fin extension MOC
+
+term entier is  "[0-9]+";
+term caractere is  "\'[^\']\'";
+term chaine is  "\"[^\"]*\"";
+term ident is  "[a-z][_0-9A-Za-z]*";
+-- --decommenter pour MOC
+--term identc is  "[A-Z][_0-9A-Za-z]*";   -- nom de classe
+--term chaineo is  "@\"[^\"]*\"";         -- chaine MOC
+-- --fin extension MOC
+
+-- pour les instructions en assembleur 'inline'
+compil ASM;
+
+--production rules
+PROGRAMME -> #init ENTITES #gen;
+global
+   machine : IMachine;
+-- transmission de la machine cible (choisie par l'option -m au lancement) 
+#init {
+local
+do
+   machine := PROGRAMME^source.getMachine();
+   if machine = null then
+     error(NO_MACH, PROGRAMME^source.getMachName());
+   else
+     ENTITES^machine := machine;
+   end
+end
+}
+
+-- ecrit le code dans un fichier
+#gen {
+local
+do
+   machine.writeCode(PROGRAMME^source.getFileName(),"; ENTITIES^code + \n"); 
+end
+}
+ENTITES -> ;
+ENTITES ->   asm #tds ASM ENTITES #gen;
+#tds {
+do
+  -- Remplacer 'null' par la table courante pour que
+  -- le code  ASM puisse acceder aux variables de MC ou MOC
+  ASM^tds_asm := null; 
+end
+}
+#gen {
+do
+  -- ASM^code_asm contient le code ASM inline;
+end
+}
+
+ENTITES ->  FONCTION ENTITES ;
+--fonctions
+FONCTION ->  TYPE ident  paro PARFS parf BLOC #gen;
+#gen {
+do
+   BLOC^hadr := 0; --LB+taille des parametres
+   FONCTION^code := FONCTION^machine.genFonction(ident^txt, BLOC^code);
+end
+}
+-- parametres de fonctions
+PARFS ->  ;
+PARFS ->  PARF PARFSX ;
+PARFSX ->  ;
+PARFSX ->  virg PARF PARFSX ;
+PARF ->  TYPE ident  ;
+-- les types (de base et pointeurs)
+TYPE -> STYPE  REFS ;
+REFS -> ;
+REFS -> mult REFS ;
+-- types de base
+STYPE-> void  ;
+STYPE-> int ;
+STYPE-> char ;
+
+-- corps de methode et bloc d'instructions
+BLOC ->  aco INSTS acf #gen ;
+#gen {
+do
+   -- write "; tds:\n" + t;
+   write "; taille des locales = " + (INSTS^dep - BLOC^hdep)+ "\n";
+   -- Le code du bloc est celui de ses instructions
+   -- plus le code pour liberer la place occupee
+   -- par les variables locales (POP (0) taille)
+   BLOC^code := INSTS^code + BLOC^machine.genFree(0); -- INSTS^dep - BLOC^hdep*) ;
+end
+}
+-- instructions
+INSTS ->  #gen ;
+#gen {
+do
+    -- no code
+    INSTS^code := "";
+end
+}
+INSTS ->  INST INSTS #gen ;
+#gen {
+do
+    -- append codes
+    INSTS^code := INST^code + INSTS1^code;
+end
+}
+-- declaration de variable locale avec ou sans init
+INST ->  TYPE ident #code_gauche AFFX pv #gen ;
+#code_gauche {
+do
+    AFFX^code_gauche := 0; -- adresse de ident
+end
+}
+#gen {
+local
+    leCode : STRING ;
+do
+    -- to do
+    if (AFFX^estAffectation) then
+        -- tds : ident est initialise
+    else 
+        -- tds : ident non initialise
+    end
+    INST^code := INST^machine.genDeclaration() + AFFX^code;
+end
+}
+-- instruction expression (affectation et appel de procedure)
+INST -> E pv #gen ;
+#gen {
+do
+    -- to do : E^code + consommer valeur ("POP") : cas affectation
+    INST^code := ";to do : instruction expression (affectation et appel de procedure)";
+end
+}
+-- bloc d'instructions
+INST ->  BLOC #gen;
+#gen {
+do
+    INST^code := BLOC^code;
+end
+}
+-- conditionnelle
+INST ->   si paro E parf BLOC SIX #gen ;
+#gen {
+do
+    -- to do
+    INST^code := ";to do : -- conditionnelle"; -- INST^machine.genIf(E^code, BLOC^code, SIX^code);
+end
+}
+SIX ->    sinon BLOC #gen;
+#gen {
+do
+    -- to do
+    SIX^code := ";to do : -- conditionnelle else"; -- BLOC^code 
+end
+}
+SIX -> #gen ;
+#gen {
+do
+    -- to do
+    SIX^code := ""; 
+end
+}
+-- retour de fonction
+INST ->  retour E pv #gen;
+#gen {
+do
+  -- transmettre la valeur de E
+  INST^code := E^code;
+end
+}
+-- inline asm
+INST ->  asm #tds ASM #gen ;
+#tds {
+do
+  -- A remplacer par la table courante pour que
+  -- l'assembleur puisse acceder aux variables
+  ASM^tds_asm := null;
+end
+}
+
+#gen {
+do
+  -- ASM^code_asm contient le code assembleur inline
+  -- dans lequel les noms de variables ont ete remplaces
+  -- par leurs adresses.
+  INST^code := INST^machine.genCodeInLine(ASM^code_asm);
+end
+}
+
+-- les expressions
+-----------------------------------------------------------------------
+-- E = expression (y compris l'affectation)
+-- A = expression figurant dans une affectation
+-- R = expression figurant dans une expresion relationnelle
+-- T = expression figurant dans une expression additive (TERME)
+-- F = expression figurant dans une expression multiplicative (FACTEUR)
+-----------------------------------------------------------------------
+E ->   A #code_gauche AFFX #gen ;
+#code_gauche {
+do
+    AFFX^code_gauche := A^code;
+end
+}
+
+#gen {
+do
+    if A^est_affectable then
+        E^code := AFFX^code;
+    else
+        error(NonAffectable);
+    end
+end
+}
+
+-- affectation : laisse en somment de pile la valeur affectee
+AFFX -> affect  A  #gen;
+#gen {
+do
+    -- to do : mettre en sommet de pile calculer 
+    AFFX^estAffectation := true;
+    AFFX^code := AFFX^machine.genAffectation(AFFX^code_gauche, A^code);
+end
+}
+AFFX -> #gen ;
+#gen {
+do
+    -- to do
+    AFFX^estAffectation := false;
+    AFFX^code := "";
+end
+}
+
+-- relation
+A ->   R AX #gen;
+#gen {
+do
+    -- to do
+end
+}
+
+AX -> OPREL R #gen;
+#gen {
+do
+    -- to do
+end
+}
+
+AX ->  #gen;
+#gen {
+do
+    -- to do
+end
+}
+-- operateurs relationnels
+OPREL -> inf  #gen;
+#gen {
+do
+  OPREL^op := "inf";
+end
+}
+OPREL -> sup  #gen;
+#gen {
+do
+  OPREL^op := "sup";
+end
+}
+OPREL -> infeg  #gen;
+#gen {
+do
+  OPREL^op := "infegal";
+end
+}
+OPREL -> supeg  #gen;
+#gen {
+do
+  OPREL^op := "supegal";
+end
+}
+OPREL -> eg  #gen;
+#gen {
+do
+  OPREL^op := "egal";
+end
+}
+OPREL -> neg  #gen;
+#gen {
+do
+  OPREL^op := "different";
+end
+}
+
+R ->  T  RX ;
+-- additions ...
+RX ->   OPADD  T RX  ;
+RX -> ;
+-- operateurs additifs
+OPADD -> plus #gen;
+#gen {
+do
+  -- pre: s'applique a 2 entiers
+  OPADD^op := "plus";
+end
+}
+OPADD -> moins #gen;
+#gen {
+do
+  -- pre: s'applique a 2 entiers
+  OPADD^op := "moins";
+end
+}
+OPADD -> ou #gen;
+#gen {
+do
+  -- pre: s'applique a 2 booleens
+  OPADD^op := "ou";
+end
+}
+
+-- multiplication, ...
+T ->  F #hcode TX #code;
+#hcode {
+do
+  op := "mult";
+end
+}
+TX ->   OPMUL  F TX  ;
+TX ->  #remonter;
+#remonter {
+do
+  TX^code := TX^hcode;
+end
+}
+
+-- operateurs multiplicatifs
+OPMUL -> mult #gen;
+#gen {
+do
+  -- pre: s'applique a 2 entiers
+  OPMUL^op := "mult";
+end
+}
+OPMUL -> div #gen;
+#gen {
+do
+  -- pre: s'applique a 2 entiers
+  OPMUL^op := "mult";
+end
+}
+OPMUL -> mod #gen;
+#gen {
+do
+  -- pre: s'applique a 2 entiers
+  OPMUL^op := "mod";
+end
+}
+OPMUL -> et #gen;
+#gen {
+do
+  -- pre: s'applique a 2 booleens
+  OPMUL^op := "et";
+end
+}
+
+
+-- expressions de base
+-- Constante entiere
+F -> entier  #gen;
+#gen {
+do
+  --F^type := new DTYPE("int", F^machine.getTaille("int"));
+  F^code := F^machine.genEntier(entier^txt);
+end
+}
+-- Constante chaine
+F -> chaine  #gen;
+#gen {
+do
+  --F^type := pointeur sur char;
+  F^code := F^machine.genComment("chaine de caracteres "+chaine^txt+ "to do"); -- pointeur sur un tableau de caracteres ?
+end
+}
+-- Constante caractere
+F -> caractere #gen;
+#gen {
+do
+  --F^type := new DTYPE("char", F^machine.getTaille("char"));
+  F^code := F^machine.genCaractere(caractere^txt);
+end
+}
+
+-- expression unaire
+F ->  OPUN  F #gen;
+#gen {
+local
+--  t : STRING
+  op : STRING;
+do
+  op := OPUN^op;
+--t = F.getType().getNom();
+  if op.equals("plus") then
+    F^code := F1^code; -- if t = "int" 
+  elseif op.equals("moins") then
+    F^code := F^machine.genIMoins(F1^code);
+  elseif op.equals("non") then
+    F^code := F^machine.genBNegation(F1^code);
+  else
+    error(DebugMessageOPUN, op);
+  end
+end
+}
+-- operateurs unaires
+OPUN -> plus  #gen;
+#gen {
+do
+  -- pre: s'applique a un entier
+  OPUN^op := "plus";
+end
+}
+OPUN -> moins  #gen;
+#gen {
+do
+  -- pre: s'applique a un entier
+  OPUN^op := "moins";
+end
+}
+OPUN -> non  #gen;
+#gen {
+do
+  -- pre: s'applique a un booleen
+  OPUN^op := "non";
+end
+}
+
+-- pointeur NULL
+F -> null  #gen;
+#gen {
+do
+  F^code := F^machine.genComment("pointeur null : to do");
+end
+}
+
+-- expression parenthesee
+F ->  paro E parf #gen;
+#gen {
+do
+  F^code := E^code;
+end
+}
+-- cast ?
+F -> #estAff  paro TYPE parf  F  #gen;
+#estAff {
+do 
+  F^est_affectable := false;
+end
+}
+#gen {
+do
+  F^code := F^machine.genComment("cast : to do") + F1^code; 
+end
+}
+
+-- appel de sous-programme
+F -> #estAff ident paro #params ARGS parf #gen;
+#estAff {
+do 
+  F^est_affectable := false;
+end
+}
+#params {
+do
+  ARGS^hparams := new PARAMETRES();
+end
+}
+
+#gen {
+local
+  i : INFOFONCTION;
+  p : PARAMETRES; 
+do
+  i := F^tds_fonction.chercherLocalement(ident^txt);
+  if (i = null) then
+    -- write fonction inexistante
+  else
+    p := i.getParametres();
+    if (! p.compareTo(ARGS^params)) then
+      -- write parametres d'appel erronés
+    else
+      F^code := ARGS^code + F^machine.genCall(ident^txt);
+    end
+  end
+end
+}
+-- access variable
+F -> ident #estAff #gen;
+#estAff {
+do 
+  F^est_affectable := true;
+end
+}
+--global 
+--  iv : INFOVAR ;
+--  t : DTYPE;
+#gen{
+--local
+--  i:INFO;
+do
+--  i := F^tds.chercherGlobalement(ident^txt);
+--  if i = null then
+--    error(UndefinedVariable, ident^txt);
+--  end
+--  match i 
+--  with INFOVAR then
+--    iv := i;
+--    F^adr := iv.getDep();
+--    t := iv.getType();
+--    FACTEUR^type := t;
+    F^code := F^machine.genComment("acces a " + ident^txt+" : to do");
+--  else
+--    error(FunctionUsedAsVariable, ident^txt);
+--  end
+end
+}
+---- acces zone pointee
+F ->  mult F #estAff #gen ;
+#estAff {
+do 
+  F^est_affectable := F1^est_affectable;
+end
+}
+#gen {
+do
+    F^code := F^machine.genComment("acces a une zone pointee : to do");
+end
+}
+
+-- arguments appel de sous-programme
+ARGS -> #params #gen;
+#params {
+do
+  ARGS^params := ARGS^hparams;
+end
+}
+
+#gen {
+do
+  ARGS^code := "";
+end
+}
+
+ARGS -> E #params1 ARGSX #params2 #gen;
+#params1 {
+do
+  ARGSX^hparams := ARGS^hparams.inserer(E^type);
+end
+}
+
+#params2 {
+do
+  ARGS^params := ARGSX^params;
+end
+}
+
+#gen {
+do
+  ARGS^code := E^code + ARGSX^code;
+end
+}
+
+ARGSX ->  #params #gen;
+#params {
+do
+  ARGSX^params := ARGSX^hparams;
+end
+}
+
+#gen {
+do
+  ARGSX^code := "";
+end
+}
+
+ARGSX -> virg  E #params1 ARGSX #params2 #gen;
+#params1 {
+do
+  ARGSX1^hparams := ARGSX^hparams.inserer(E^type);
+end
+}
+
+#params2 {
+do
+  ARGSX^params := ARGSX1^params;
+end
+}
+
+#gen {
+do
+  ARGSX^code := E^code + ARGSX1^code; 
+end
+}
+
+----====decommenter pour ============ MOC extension =================
+--ENTITES ->  IMPLEMENTATION ENTITES ;
+---- definition d'une classe
+--IMPLEMENTATION ->  classe identc SUPER aco ATTRIBUTS acf METHODES fin ;
+---- surclasse
+--SUPER -> ;
+--SUPER -> dpts identc  ;
+----attributs
+--ATTRIBUTS -> ;
+--ATTRIBUTS -> TYPE ident pv ATTRIBUTS;
+-- -- methodes
+--METHODES -> ;
+--METHODES ->  METHODE  METHODES ;
+--METHODE ->  QUAL PTYPE   MPARFS BLOC ;
+-- --qualificateur attribut ou methode :  + = de classe, - = d'instance
+--QUAL -> plus;
+--QUAL -> moins;
+-- --type classe 
+--STYPE-> identc ;
+-- -- type BOOL
+--STYPE-> bool ;
+-- -- type "any"
+--TYPE -> id  ;
+---- type argument (ou retour) de methode entre parentheses
+--PTYPE-> paro TYPE parf ;
+---- parametres de methodes
+--MPARFS -> ;
+--MPARFS ->  MPARF MPARFS ;
+-- -- selecteur sans parametre
+--MPARF ->  ident  ;
+-- -- selecteur  + type parametre + nom parametre
+--MPARF ->   ident dpts  PTYPE ident;
+---- object nil
+--F -> nil   ;
+----Constante 'YES'
+--F -> yes   ;
+---- Constante 'NO'
+--F -> no   ;
+-- -- chaine MOC (commence par @)
+--F -> chaineo ;
+--  --self = this de Java
+--F -> self  ;
+--F -> super  ;
+-- -- Appel de methode
+--F -> cro F MARGS crf   ;
+---- pour appel methode de classe
+--F -> cro identc MARGS crf  ;
+---- arguments appel de methode
+--MARGS ->   ;
+--MARGS ->  MARG MARGS   ;
+-- -- selecteur + arg
+--MARG -> ident dpts  E;
+-- -- selecteur sans arg
+--MARG -> ident  ;
+---- --fin de MOC extension
+end

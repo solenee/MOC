@@ -129,4 +129,22 @@ public interface IMachine {
 	 */
 	public String genCall(String etiquette);
 	
+	/**
+	 * Generate the code for an affectation  
+	 * @param etiquette label of the fonction
+	 * @throws MOCException
+	 */
+	public String genAffectation(String etiquette);
+	
+	/**
+	 * Associate the code of a function to a label  
+	 * @param ident name of the fonction 
+	 * @param tailleparams 
+	 * @param tailleretour
+	 * @param code code of the fonction
+	 * @throws MOCException
+	 */
+	public String genFonction(String etiquette, int tailleparams,
+			int tailleretour, String code);
+	
 }

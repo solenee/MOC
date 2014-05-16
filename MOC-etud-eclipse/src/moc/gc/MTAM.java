@@ -106,4 +106,15 @@ public class MTAM extends AbstractMachine {
 		return genComment("Appel de" + etiquette) + "CALL[SB] " + etiquette + "\n";
 	}
 
+	@Override
+	public String genAffectation(String etiquette) {
+		throw new RuntimeException("Undefined method");
+	}
+
+	@Override
+	public String genFonction(String etiquette, int taillepars, int tailleretour, String code) {
+		return "_" + etiquette + ":\n" 
+				+ code + "\tRETURN (" + taillepars + ") "+ tailleretour + "\n";
+	}
+
 }

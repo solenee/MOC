@@ -4,40 +4,40 @@ import moc.gc.Emplacement;
 import moc.type.DTYPE;
 
 /**
- * Cette classe décrit une variable locale : adresse et type
- * 
- * @author marcel
- * 
- */
+* Cette classe décrit une variable locale : adresse et type
+*
+* @author marcel
+*
+*/
 public class INFOVAR implements INFO {
-	/**
-	 * Le type de la variable
-	 */
+/**
+* Le type de la variable
+*/
 	protected DTYPE type;
 
 	public DTYPE getType() {
 		return type;
 	}
 
-	/**
-	 * Represnete un emplacement memoire : depend de la machine
-	 * 
-	 */
+/**
+* Represente un emplacement memoire : depend de la machine
+*
+*/
 	protected Emplacement empl;
 
 	public Emplacement getEmpl() {
 		return empl;
-	}
+	}	
 
 	public int getTaille() {
 		return this.getType().getTaille();
 	}
 
-	/**
-	 * Une variable a un type et un emplacement pour sa valeur
-	 * @param t
-	 * @param e
-	 */
+/**
+* Une variable a un type et un emplacement pour sa valeur
+* @param t
+* @param e
+*/
 	public INFOVAR(DTYPE t, Emplacement e) {
 		type = t;
 		empl = e;
@@ -49,3 +49,5 @@ public class INFOVAR implements INFO {
 	}
 
 }
+
+
