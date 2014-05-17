@@ -117,6 +117,13 @@ public interface IMachine {
 	 * @throws MOCException
 	 */
 	public String genOpBinaire(String codegauche, String codeOp, String codedroite);
+	
+	/**
+	 * Code of the integer binary operator : *
+	 * @throws MOCException
+	 */
+	public String genIMultiplication();
+	
 	/**
 	 * Code of the integer binary operator : /
 	 * @throws MOCException

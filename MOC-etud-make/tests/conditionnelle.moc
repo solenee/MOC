@@ -4,12 +4,12 @@ HALT
 }
 
 void testIf() {
-  if(1) {
-  }
+  //if(1) {
+  //}
 }
 
-void testCalculs() {
-  return 1 + 2 * 3;
+int testCalculs() {
+  return 1 * 2;
 }
 int ifInt() { 
   if(1) {
@@ -27,5 +27,5 @@ int main() {
 	//return 0;
   //}
   int x;
-  return 1; //intBool()//(1);
+  return 20; //intBool()//(1);
 }

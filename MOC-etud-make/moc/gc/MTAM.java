@@ -15,7 +15,7 @@ public class MTAM extends AbstractMachine {
 	
 	@Override
 	public String genFree(int size) {
-		return "\tPOP(0)" + size + "\n";
+		return "\tPOP(0) " + size + "\n";
 	}
 	
 	@Override
@@ -100,12 +100,12 @@ public class MTAM extends AbstractMachine {
 
 	@Override
 	public String genCall(String etiquette) {
-		return genComment("Appel de" + etiquette) + "CALL[SB] " + etiquette + "\n";
+		return genComment("Appel de" + etiquette) + "\tCALL(SB) _" + etiquette + "\n";
 	}
 
 	@Override
 	public String genAffectation(String etiquette) {
-		throw new RuntimeException("Undefined method");
+		return genComment(etiquette);
 	}
 
 	@Override
@@ -131,9 +131,14 @@ public class MTAM extends AbstractMachine {
 	@Override
 	public String genOpBinaire(String codegauche, String codeOp,
 			String codedroite) {
-		return codegauche + codedroite + "SUBR "+codeOp+"\n";
+		return codegauche + codedroite + "\tSUBR "+codeOp+"\n";
 	}
 
+	@Override
+	public String genIMultiplication() {
+		return "IMul";
+	}
+	
 	@Override
 	public String genIDivision() {
 		return "IDiv";
