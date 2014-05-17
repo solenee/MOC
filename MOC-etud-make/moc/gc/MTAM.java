@@ -20,53 +20,50 @@ public class MTAM extends AbstractMachine {
 	
 	@Override
 	public String genComment(String c) {
-		return "; " + c + "\n";
+		return "\t; " + c + "\n";
 	}
 
 	@Override
 	public String genCodeInLine(String c) {
-		return genComment("code in inline : start\n") + c + genComment("code in inline : end\n");
+		return genComment("code in inline : start") + c + genComment("code in inline : end");
 	}
 	
 	// counter to generate unique labels
-	private static int cpt = 0;
+	private static int cpt = -1;
 
 	/** Generate a unique label
 	 * 
 	 * @return the label
 	 */
-	public String genEtiq() {
-		return "label" + cpt++;
-	}
-	
 	@Override
 	public String genLabel() {
-		throw new RuntimeException("Undefined method");
+		cpt++;
+		return "label" + cpt+" :";
 	}
-
+	
 	@Override
 	public String genIf(String codeCondition, String codeThen, String codeElse) {
 		String code;
 		String labelEndIf = genLabel();
 		// check the condition
-		code = genComment("\t; if") + codeCondition + "\n" + "\tJUMPIF(0) ";
-		if (codeElse == "") {
+		code = genComment("if") + codeCondition + "\tJUMPIF(0) ";
+		/*if (codeElse == "") {
 			code += labelEndIf + "\n"
-					+ genComment("\t; then") + codeThen + "\n";
-		} else {
+					+ genComment("then") + codeThen + "\n";
+		} else {*/
 			String labelElse = genLabel();
 			code += labelElse + "\n"
-					+ genComment("\t; then") +   codeThen + "\n" + "\tJUMP " + labelEndIf + "\n" 
-					+ genComment("\t; else") + labelElse + "\n" + codeElse + "\n";
-		}
-		code += labelEndIf + "\n" + "\t; end if\n";
+					+ genComment("then") +   codeThen + "\n" + "\tJUMP " + labelEndIf + "\n" 
+					+ genComment("else") + labelElse + "\n" + codeElse + "\n";
+		//}
+		code += labelEndIf + "\n" + genComment("end if");
 		return code;
 	}
 
 	@Override
 	public String genDeclaration(String ident, int taille) {
-		return genComment("declaration sans initialisation de "+ident+ "de taille "+taille)
-				+ "PUSH "+taille; 
+		return genComment("declaration sans initialisation de "+ident+ " de taille "+taille)
+				+ "\tPUSH "+taille+"\n"; 
 	}
 
 	@Override
@@ -78,7 +75,7 @@ public class MTAM extends AbstractMachine {
 	@Override
 	public String genOpUnaire(String codeOp, String codeFacteur) {
 		return codeFacteur +
-				"SUBR "+codeOp+"\n";
+				"\tSUBR "+codeOp+"\n";
 	}
 
 	@Override
@@ -93,12 +90,12 @@ public class MTAM extends AbstractMachine {
 
 	@Override
 	public String genEntier(String c) {
-		throw new RuntimeException("Undefined method");
+		return "\tLOADL "+c+genComment("entier");
 	}
 
 	@Override
 	public String genCaractere(String c) {
-		throw new RuntimeException("Undefined method");
+		return "\tLOADL "+c+genComment("caractere");
 	}
 
 	@Override
@@ -112,9 +109,44 @@ public class MTAM extends AbstractMachine {
 	}
 
 	@Override
-	public String genFonction(String etiquette, int taillepars, int tailleretour, String code) {
+	public String genFonction(String etiquette, String code) {
 		return "_" + etiquette + ":\n" 
-				+ code + "\tRETURN (" + taillepars + ") "+ tailleretour + "\n";
+				+ code + "\n";
+	}
+
+	@Override
+	public String genRetour(int tailleparams, int tailleretour,
+			String codeValeur) {
+		return genComment("retour")
+				+ codeValeur + 
+				"\tRETURN (" + tailleparams + ") "+ tailleretour + "\n"
+				+ genComment("fin retour");
+	}
+
+	@Override
+	public String genString(String c) {
+		return "\tLOADL "+c+genComment("chaine de caractere");
+	}
+
+	@Override
+	public String genOpBinaire(String codegauche, String codeOp,
+			String codedroite) {
+		return codegauche + codedroite + "SUBR "+codeOp+"\n";
+	}
+
+	@Override
+	public String genIDivision() {
+		return "IDiv";
+	}
+
+	@Override
+	public String genIModulo() {
+		return "IMod";
+	}
+
+	@Override
+	public String genIEt() {
+		return "IAdd";
 	}
 
 }

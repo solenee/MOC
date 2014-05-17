@@ -69,7 +69,7 @@ public interface IMachine {
 	/**
 	 * Generate a variable declaration without initialization
 	 * 
-	 * @param ident identifier of the declared variable
+	 * @param ident identifier of the variable to declare
 	 * @param taille size of the variable
 	 * @throws MOCException
 	 */
@@ -109,6 +109,32 @@ public interface IMachine {
 	public String genBNegation(String codeFacteur);
 	
 	/**
+	 * Generate a binary operation
+	 * 
+	 * @param codeOp code of the binary operator
+	 * @param codegauche left parameter
+	 * @param codedroite right parameter
+	 * @throws MOCException
+	 */
+	public String genOpBinaire(String codegauche, String codeOp, String codedroite);
+	/**
+	 * Code of the integer binary operator : /
+	 * @throws MOCException
+	 */
+	public String genIDivision();
+	
+	/**
+	 * Code of the integer binary operator : mod 
+	 * @throws MOCException
+	 */
+	public String genIModulo();
+	
+	/**
+	 * Code of the boolean binary operator to be apply to integer parameter (0: false, *:true) : et 
+	 * @throws MOCException
+	 */
+	public String genIEt();
+	/**
 	 * Generate an integer constant
 	 * @param c 
 	 * @throws MOCException
@@ -122,6 +148,12 @@ public interface IMachine {
 	 */
 	public String genCaractere(String c);
 
+	/**
+	 * Generate a string  
+	 * @param c
+	 * @throws MOCException
+	 */
+	public String genString(String c);
 	/**
 	 * Generate the code for calling a fonction  
 	 * @param etiquette label of the fonction
@@ -138,13 +170,19 @@ public interface IMachine {
 	
 	/**
 	 * Associate the code of a function to a label  
-	 * @param ident name of the fonction 
-	 * @param tailleparams 
-	 * @param tailleretour
-	 * @param code code of the fonction
+	 * @param ident name of the function 
+	 * @param code code of the body of the function
 	 * @throws MOCException
 	 */
-	public String genFonction(String etiquette, int tailleparams,
-			int tailleretour, String code);
+	public String genFonction(String etiquette, String code);
+	
+	/**
+	 * Code for the "return" instruction of a function  
+	 * @param tailleparams 
+	 * @param tailleretour
+	 * @param codeVaeurs code of the value to return
+	 * @throws MOCException
+	 */
+	public String genRetour(int tailleparams, int tailleretour, String codeValeur);
 	
 }

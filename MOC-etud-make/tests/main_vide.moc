@@ -4,4 +4,6 @@ HALT
 }
 
 int main() {
+  return 0;
 }
+
