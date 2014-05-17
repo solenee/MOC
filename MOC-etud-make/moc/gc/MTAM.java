@@ -61,8 +61,8 @@ public class MTAM extends AbstractMachine {
 	}
 
 	@Override
-	public String genDeclaration(String ident, int taille) {
-		return genComment("declaration sans initialisation de "+ident+ " de taille "+taille)
+	public String genDeclaration(String ident, int taille, int dep) {
+		return genComment("declaration sans initialisation de "+ident+ " de taille "+taille+" en dep[LB]" )
 				+ "\tPUSH "+taille+"\n"; 
 	}
 
@@ -152,6 +152,11 @@ public class MTAM extends AbstractMachine {
 	@Override
 	public String genIEt() {
 		return "IAdd";
+	}
+
+	@Override
+	public String genLire(String ident, int taille, Emplacement adresse) {
+		return genComment("acces a " + ident) + "\tLOAD ("+taille+") "+adresse.getDep()+"("+adresse.getReg()+")";
 	}
 
 }

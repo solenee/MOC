@@ -553,6 +553,7 @@ end
 INST ->  TYPE ident #tds #adresse #code_gauche AFFX pv  #verifCompatibilite #isReturn #gen ;
 global
   i : INFO;
+  adresse : INTEGER;
 #tds {
 do
   i := INST^tds.chercherLocalement(ident^txt);
@@ -568,12 +569,13 @@ end
 }
 #adresse {
 do
-  INST^adr := INST^hadr + TYPE^type.getTaille();
+  adresse := INST^hadr + TYPE^type.getTaille();
+  INST^adr := adresse;
 end
 }
 #code_gauche {
 do
-   AFFX^code_gauche := INST^machine.genDeclaration(ident^txt, TYPE^type.getTaille());
+   AFFX^code_gauche := INST^machine.genDeclaration(ident^txt, TYPE^type.getTaille(), adresse);
 end
 }
 #verifCompatibilite {
@@ -1265,8 +1267,43 @@ do
 end
 }
 
--- access variable
--- TO DO : F ->  ident #verifVar #getType #estAffectable ;
+-- acces variable
+F ->  ident #gen #getType #estAffectable ;
+global 
+   i : INFOVAR;
+   type : DTYPE;
+#gen {
+local 
+  t : TDS;
+  iTemp : INFO;
+  
+do 
+  t := F^tds;
+  iTemp := t.chercherGlobalement(ident^txt);
+  if (iTemp = null) then
+     error(B_16 , "la variable n existe pas :"+ident^txt); 
+  else
+     match iTemp with INFOVAR then
+        i := iTemp;
+        type := i.getType();
+        F^code := F^machine.genLire(ident^txt, type.getTaille(), i.getEmpl());
+    else
+        error(B_17 , " c est pas une variable ca");
+    end
+
+  end
+end 
+}
+#getType {
+do
+   F^type := type;
+end 
+}
+#estAffectable{
+do 
+   F^affectable := true;
+end 
+}
 
 ---- acces zone pointee
 -- TO DO : F -> mult F #getType #estAffectable ;
@@ -1300,7 +1337,7 @@ end
 }
 #gen {
 do
-  ARGS^code := ARGS^machine.genComment("parametre de sous-programme")+E^code + ARGS^machine.genComment("charger le parametre ?") + ARGSX^code;
+  ARGS^code := ARGS^machine.genComment("empilement des parametres") + ARGSX^code + ARGS^machine.genComment("parametre de sous-programme")+ E^code + ARGS^machine.genComment("charger le parametre ?");
 end
 }
 
@@ -1333,7 +1370,8 @@ end
 }
 #gen { 
 do
-  ARGSX^code := ARGSX^machine.genComment("parametre de sous-programme")+E^code + ARGSX^machine.genComment("charger le parametre ?") + ARGSX1^code; 
+  ARGSX^code := ARGSX1^code + ARGSX^machine.genComment("parametre de sous-programme")+E^code + ARGSX^machine.genComment("charger le parametre ?");
+  -- ARGSX^code := ARGSX^machine.genComment("parametre de sous-programme")+E^code + ARGSX^machine.genComment("charger le parametre ?") + ARGSX1^code; 
 end
 }
 

@@ -71,9 +71,10 @@ public interface IMachine {
 	 * 
 	 * @param ident identifier of the variable to declare
 	 * @param taille size of the variable
+	 * @param dep adress from the current register
 	 * @throws MOCException
 	 */
-	public String genDeclaration(String ident, int taille);
+	public String genDeclaration(String ident, int taille, int dep);
 	
 	/**
 	 * Generate a variable declaration with an initialization
@@ -191,5 +192,15 @@ public interface IMachine {
 	 * @throws MOCException
 	 */
 	public String genRetour(int tailleparams, int tailleretour, String codeValeur);
+	
+	/**
+	 * Read the value of a variable  
+	 * @param ident name of the variable 
+	 * @param taille size of the variable
+	 * @param code code of the body of the function
+	 * @throws MOCException
+	 */
+	public String genLire(String ident, int taille, Emplacement adresse);
+	
 	
 }
