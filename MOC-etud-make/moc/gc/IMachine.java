@@ -214,6 +214,21 @@ public interface IMachine {
 	public String genLire(String ident, int taille, Emplacement adresse);
 	
 	/**
+	 * Read the value of a variable  
+	 * @param taille size of the variable
+	 * @param adresse position of the variable in the memory
+	 * @throws MOCException
+	 */
+	public String genReadMem(Emplacement adresse, int taille);
+	
+	/**
+	 * Read a value of in the address pre-specified 
+	 * @param taille size of the value to read
+	 * @throws MOCException
+	 */
+	public String genReadIndirectMem(int taille);
+	
+	/**
 	 * Write a value of in  a variable  
 	 * @param ident name of the variable 
 	 * @param taille size of the variable
@@ -223,12 +238,18 @@ public interface IMachine {
 	public String genEcrire(String ident, int taille, Emplacement adresse);
 	
 	/**
+	 * Write a value of in the address pre-specified 
+	 * @param codeValeur value to write
+	 * @param taille size of the value
+	 * @throws MOCException
+	 */
+	public String genWriteIndirectMem(String codeValeur, int taille);
+	/**
 	 * Push the address  of a variable  
-	 * @param ident name of the variable 
 	 * @param adresse position of the variable in the memory
 	 * @throws MOCException
 	 */
-	public String genPushAdresse(String ident, Emplacement adresse);
+	public String genPushAdresse(Emplacement adresse);
 	
 	/**
 	 * Pop the address  

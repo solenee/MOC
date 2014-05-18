@@ -38,7 +38,7 @@ public class MTAM extends AbstractMachine {
 	@Override
 	public String genLabel() {
 		cpt++;
-		return "label" + cpt+" :";
+		return "label" + cpt;
 	}
 	
 	@Override
@@ -54,9 +54,9 @@ public class MTAM extends AbstractMachine {
 			String labelElse = genLabel();
 			code += labelElse + "\n"
 					+ genComment("then") +   codeThen + "\n" + "\tJUMP " + labelEndIf + "\n" 
-					+ genComment("else") + labelElse + "\n" + codeElse + "\n";
+					+ genComment("else") + labelElse+" :" + "\n" + codeElse + "\n";
 		//}
-		code += labelEndIf + "\n" + genComment("end if");
+		code += labelEndIf+" :" + "\n" + genComment("end if");
 		return code;
 	}
 
@@ -103,9 +103,10 @@ public class MTAM extends AbstractMachine {
 		return genComment("Appel de " + etiquette) + "\tCALL(SB) _" + etiquette + "\n";
 	}
 
+	//Obsolete
 	@Override
 	public String genAffectation(String codeAdresse, String codeValeur, int taille) {
-		return codeAdresse+ genComment("affectation :=")+codeValeur+"\tSTOREI("+taille+")" ;
+		return codeAdresse + genComment("affectation :=")+codeValeur+"\tSTOREI("+taille+")" ;
 	}
 	
 	@Override
@@ -159,21 +160,39 @@ public class MTAM extends AbstractMachine {
 		return "IAdd";
 	}
 
+	//Obsolete
 	@Override
 	public String genLire(String ident, int taille, Emplacement adresse) {
 		return genComment("acces a " + ident) + "\tLOAD ("+taille+") "+adresse.getDep()+"["+adresse.getReg().getName()+"]\n";
 	}
-
+	
 	@Override
-	public String genEcrire(String ident, int taille, Emplacement adresse) {
-		// TODO Auto-generated method stub
-		return null;
+	public String genReadMem(Emplacement adresse, int taille) {
+		return "\tLOAD ("+taille+") "+adresse.getDep()+"["+adresse.getReg().getName()+"]\n";
+	}
+	
+	@Override
+	public String genWriteIndirectMem(String codeValeur, int taille) {
+		return genComment("valeur affectee") + codeValeur
+				+genComment("affectation")+"\tSTOREI ("+taille+")\n";
 	}
 
 	@Override
-	public String genPushAdresse(String ident, Emplacement adresse) {
-		return genComment("adresse de "+ident) +
-				"\tLOADA "+adresse.getDep()+"("+adresse.getReg().getName()+")";
+	public String genReadIndirectMem(int taille) {
+		return genComment("lecture indirecte")+
+				"\tLOADI ("+taille+")\n";
+	}
+
+	// Obsolete
+	@Override
+	public String genEcrire(String ident, int taille, Emplacement adresse) {
+		throw new RuntimeException("Undefined Method");
+	}
+
+	@Override
+	public String genPushAdresse(Emplacement adresse) {
+		return genComment("lecture du contenu de l'adresse de "+adresse)
+				+"\tLOADA "+adresse.getDep()+"("+adresse.getReg().getName()+")\n";
 	}
 
 	@Override

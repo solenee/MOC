@@ -20,16 +20,15 @@ inh tString : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLO
 inh regLB : Register for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
 --attributes 
 syn type  : DTYPE for TYPE, REFS, STYPE, F, E, A, T, R, AFFX;
-inh htype : DTYPE for REFS;
+inh htype : DTYPE for REFS, AFFX;
 -- affectation 
 syn affectable : BOOLEAN for F, A, R, T, E;
 syn vide       : BOOLEAN for TX, RX, AX, AFFX;
 syn estAffectation : BOOLEAN for AFFX;
---syn est_adresse : BOOLEAN for A; --, R, T, F;
-inh hest_adresse : BOOLEAN for AFFX;
---syn adresse : Emplacement for A;
-inh hadresse : Emplacement for AFFX;
-
+syn est_adresse : BOOLEAN for F, T, TX, A, E, RX, R, AX;--, T, F;
+inh hest_adresse : BOOLEAN for AFFX, TX, RX, AX;
+syn adresse : Emplacement for F, TX, T, A, E, RX, R, AX;
+inh hadresse : Emplacement for AFFX, TX, RX, AX;
 -- initialisation  
    
 -- la table de symboles
@@ -53,7 +52,7 @@ inh htailleparams : INTEGER for BLOC, INSTS, INST, SIX;
 -- le fichier source
 inh source : MOCSourceFile for PROGRAMME;
 -- la machine cible pour la generation de code
-inh machine : IMachine for 
+inh machine : IMachine for  
          ENTITES, FONCTION, INST, BLOC, INSTS, SIX,
          PARFS, PARF, PARFSX, ARGS,ARGSX, 
          E, AFFX, A, AX, R, RX, T, TX, F, OPMUL
@@ -581,16 +580,16 @@ end
 }
 #code_gauche {
 do
-   AFFX^code_gauche := INST^machine.genDeclaration(ident^txt, TYPE^type.getTaille(), empl); --+INST^machine.genAdresse(ident^txt, i.getEmpl());
-   --AFFX^hest_adresse := true; -- le code gauche transmis se termine par l'adresse a affecte eventuellement
+   AFFX^code_gauche := INST^machine.genDeclaration(ident^txt, TYPE^type.getTaille(), empl);
    AFFX^hadresse :=  empl;
    AFFX^hest_adresse := false;
+   AFFX^htype := TYPE^type;
 end
 }
 #verifCompatibilite {
 local 
    compValue : BOOLEAN;
-do
+do 
 	if AFFX^type != null then
 		compValue := TYPE^type.compareTo(AFFX^type);
 		if ~compValue then 
@@ -605,8 +604,10 @@ do
 end 
 }
 #gen {
+local
+    leCode : STRING;
 do
-    INST^code := AFFX^code;
+    INST^code := AFFX^code + INST^machine.genComment("declaration => pop") + INST^machine.genFree(TYPE^type.getTaille()) + INST^machine.genComment("fin de declaration de "+ident^txt);
 end
 }
 
@@ -811,12 +812,21 @@ end
 -----------------------------------------------------------------------
 -- ici je demande est ce que j ai besoin de verifier la compatibilite des types 
 -- Si AFFX^type est nul alors pas besoin de verifier 
-E ->   A #code_gauche AFFX #verifCompatible #getType #estAffectable #gen ;
+E ->   A  #getType #code_gauche AFFX #verifCompatible #estAffectable #gen ;
+global
+    typeE : DTYPE;
+#getType {
+do
+    typeE := A^type;
+    E^type := typeE;
+end
+}
 #code_gauche {
 do
-    AFFX^hest_adresse := false; --A^est_adresse;
-    AFFX^hadresse := null;
+    AFFX^hest_adresse := A^est_adresse;
+    AFFX^hadresse := A^adresse;
     AFFX^code_gauche := A^code;
+    AFFX^htype := typeE; 
 end
 }
 #verifCompatible {
@@ -833,18 +843,14 @@ do
 end  
 }
 -- j affecte a E le type du cote gauche de l affectation 
-#getType {
-do
-	E^type := A^type;
-end
-}
 #estAffectable{
 do
-   if AFFX^vide then
-       E^affectable := A^affectable;
-   else 
-       E^affectable := false; 
-   end  
+   E^affectable := false; -- car l'expr sera brut en sommet de pile : non affectable (pas d'@)
+   --if AFFX^vide then
+   --    E^affectable := A^affectable;
+   --else 
+   --    E^affectable := false; 
+   --end  
 end 
 }
 #gen {
@@ -854,7 +860,11 @@ do
         error(NonAffectable , "Le cote gauche n est pas affectable");
     end
   end
-  E^code := AFFX^code;
+  -- prendre en compte l'eventuelle affectaion puis
+  -- NON (responsabilite delegue a AFFX) :  mettre en sommet de pile la nouvelle valeur de A (code + transmettre adresse, est_adresse ...) 
+  E^code := AFFX^code; -- + AFFX^code_adresse_expr + E^machine.genReadIndirectMem(typeE); -- indirect car AFFX ne connait pas le vrai type de E donc pas sa taille : si maintenant
+  E^est_adresse := A^est_adresse;
+  E^adresse := A^adresse;
 end 
 }
 
@@ -874,14 +884,51 @@ do
 end 
 }
 #gen {
+local
+    leCode : STRING; -- code de l'affectation
+    adr_gauche : STRING;
+    empl_gauche : Emplacement;
+    empl_droit : Emplacement;
+    code_valeur_gauche : STRING; -- code pour laisser en sommet de pile la nouvelle valeur de la varible affectee
+    codedroit : STRING;
 do
-    -- mettre en sommet de pile la valeur de A 
+   -- pour visualiser les codes errones
+   leCode :=  AFFX^machine.genComment("adresse d'affectation inexistante 4");
+   codedroit :=  AFFX^machine.genComment("adresse terme droit d'affectation inexistante 3");
    AFFX^estAffectation := true;
-   if AFFX^hadresse/= null then
-     AFFX^code := AFFX^code_gauche + AFFX^machine.genAffectation(A^code, AFFX^hadresse, t.getTaille());
+-- lire la valeur de droite    
+   empl_droit := A^adresse;
+   if empl_droit /= null then
+        -- empl_droit est l'emplacement du terme de droite
+        codedroit := A^code + AFFX^machine.genReadMem(empl_droit, t.getTaille());
    else
-     error(Interne_1, "adresse d'affectation inexistante");
+        if A^est_adresse then
+            -- lire indirect l'adresse
+            codedroit := A^code + AFFX^machine.genReadIndirectMem(t.getTaille());
+        else
+            -- le terme de droite est une constante
+            codedroit := A^code ; --error(Interne_adresse, "adresse terme droit d'affectation inexistante 2");
+        end      
    end
+-- recuperer l'adresse du terme de gauche
+-- affecter
+-- laisser en sommet de pile la nouvelle valeur de la variable affectee
+   code_valeur_gauche := AFFX^machine.genComment("code de la nouvelle de la variable affectee");
+   empl_gauche := AFFX^hadresse;
+   if empl_gauche /= null then
+     -- empl_gauche est l'adresse du terme gauche
+     code_valeur_gauche := code_valeur_gauche + AFFX^machine.genReadMem(empl_gauche, AFFX^htype.getTaille());
+     leCode := AFFX^code_gauche + AFFX^machine.genAffectation(codedroit, AFFX^hadresse, t.getTaille());
+   else
+     if AFFX^hest_adresse then
+        code_valeur_gauche := code_valeur_gauche + AFFX^code_gauche + AFFX^machine.genReadIndirectMem(AFFX^htype.getTaille());
+        -- ecrire indirect a l'adresse 
+        leCode := AFFX^code_gauche + AFFX^machine.genWriteIndirectMem(codedroit, t.getTaille());   
+     else
+        error(Interne_adresse, "adresse d'affectation inexistante 1");
+     end
+   end
+   AFFX^code := leCode + code_valeur_gauche;
 end
 }
 
@@ -899,22 +946,44 @@ end
 #gen {
 local
     leCode : STRING;
+    empl_gauche : Emplacement;
+    code_valeur_gauche : STRING;
 do
+    -- pas d'affectation : 
     AFFX^estAffectation := false;
-    leCode := AFFX^code_gauche;
-    if AFFX^hest_adresse then
-        -- il y a une adresse inutile en sommet de pile
-        leCode := leCode + AFFX^machine.genPopAdresse();
+    
+    -- recuperer l'adresse du terme de gauche
+    -- laisser en sommet de pile la valeur du terme de gauche
+    leCode := AFFX^machine.genComment("pas d'affectation : code de l'expression");
+    
+    empl_gauche := AFFX^hadresse;
+    if empl_gauche /= null then
+     -- empl_gauche est l'adresse du terme gauche
+     leCode := leCode +  AFFX^code_gauche + AFFX^machine.genReadMem(empl_gauche, AFFX^htype.getTaille());
+    else
+        if AFFX^hest_adresse then
+            -- il y a l'adresse de l'expression en sommet de pile
+            leCode := leCode + AFFX^code_gauche + AFFX^machine.genReadIndirectMem(AFFX^htype.getTaille());   
+        else
+            -- le code correspond a une constante : transmettre
+            leCode := leCode + AFFX^code_gauche;
+        end
     end
     AFFX^code := leCode;
 end
 }
 
 -- relation
-A ->   R #hcode AX  #verifType #getType #estAffectable #gen;
+A ->   R #hcode #hadresse AX  #verifType #getType #estAffectable #adresse #gen;
 #hcode {
 do
   AX^hcode := R^code;
+end
+}
+#hadresse {
+do
+  AX^hest_adresse := R^est_adresse;
+  AX^hadresse := R^adresse;
 end
 }
 #verifType {
@@ -945,6 +1014,12 @@ do
 	end 
 end 
 }
+#adresse {
+do
+  A^est_adresse := AX^est_adresse;
+  A^adresse := AX^adresse;
+end
+}
 #gen {
 do
   A^code := AX^code;
@@ -953,11 +1028,17 @@ end
 
 -- TO DO : AX -> OPREL R #verifType #extension ;
 
-AX -> #extension #gen;
+AX -> #extension #adresse #gen;
 #extension{
 do 
    AX^vide := true; 
 end 
+}
+#adresse {
+do
+  AX^est_adresse := AX^hest_adresse;
+  AX^adresse := AX^hadresse;
+end
 }
 #gen {
 do
@@ -973,7 +1054,18 @@ end
 -- TO DO : OPREL -> eg ;
 -- TO DO : OPREL -> neg ;
 
-R ->  T #hcode RX #verifType #getType #estAffectable #gen;
+R ->  T #hcode #hadresse RX #verifType #getType #estAffectable #adresse #gen;
+#hcode {
+do
+   RX^hcode := T^code;
+end
+}
+#hadresse {
+do
+  RX^hest_adresse := T^est_adresse;
+  RX^hadresse := T^adresse;
+end
+}
 #verifType {
 do
   if ~RX^vide then 
@@ -1002,9 +1094,10 @@ do
 	end 
 end 
 }
-#hcode {
+#adresse {
 do
-   RX^hcode := T^code;
+  R^est_adresse := RX^est_adresse;
+  R^adresse := RX^adresse;
 end
 }
 #gen {
@@ -1016,10 +1109,16 @@ end
 -- additions ...
 -- TO DO : RX ->   OPADD  T #verifType RX #extension ;
 
-RX -> #extension #gen;
+RX -> #extension #adresse #gen;
 #extension {
 do
    RX^vide := true; 
+end
+}
+#adresse {
+do
+  RX^est_adresse := RX^hest_adresse;
+  RX^adresse := RX^hadresse;
 end
 }
 #gen {
@@ -1034,10 +1133,16 @@ end
 -- TO DO : OPADD -> ou ;
 
 -- multiplication, ...
-T ->  F #hcode TX   #verifType #getType #estAffectable #gen ;
+T ->  F #hcode #hadresse TX   #verifType #getType #estAffectable #adresse #gen ;
 #hcode {
 do
    TX^hcode := F^code;
+end
+}
+#hadresse {
+do
+  TX^hest_adresse := F^est_adresse;
+  TX^hadresse := F^adresse;
 end
 }
 #verifType {
@@ -1063,9 +1168,16 @@ do
 	if TX^vide then 
 		T^affectable := F^affectable;
 	else 
+        -- on a une valeur (en l'occurence un entier) en sommet de pile 
 		T^affectable := false;
 	end 
 end 
+}
+#adresse {
+do
+  T^est_adresse := TX^est_adresse;
+  T^adresse := TX^adresse;
+end
 }
 #gen {
 do 
@@ -1073,7 +1185,7 @@ do
 end
 }
 
-TX ->  OPMUL  F #verifType #hcode TX #extension #gen;
+TX ->  OPMUL  F #verifType #hcode #hadresse TX #extension #adresse #gen;
 #verifType {
 do
     if ~F^type.isOperable() then 
@@ -1082,8 +1194,38 @@ do
 end 
 }
 #hcode {
+local
+   adr_gauche : Emplacement;
+   adr_droite : Emplacement;
+   codegauche : STRING; -- valeur du terme de gauche
+   codedroit : STRING; -- valeur du terme de droite
 do
-   TX1^hcode := TX^machine.genOpBinaire(TX^hcode, OPMUL^code, F^code);
+   adr_gauche := TX^hadresse;
+   if adr_gauche = null then
+        -- hcode contient la valeur du terme gauche
+        codegauche := TX^hcode;
+   else
+        -- hcode ne contient pas encore la valeur du terme gauche
+        -- adr_gauche est l'adresse ou se trouve la valeur
+        codegauche := TX^hcode + TX^machine.genReadMem(adr_gauche, F^type.getTaille());  
+   end
+   adr_droite := F^adresse;
+   if adr_droite = null then
+        -- F^code contient la valeur du terme droit
+        codedroit := F^code;
+   else
+        -- F^code ne contient pas encore la valeur du terme droit
+        -- adr_droite est l'adresse ou se trouve la valeur
+        codedroit := F^code + TX^machine.genReadMem(adr_droite, F^type.getTaille());  
+   end
+   TX1^hcode := TX^machine.genOpBinaire(codegauche, OPMUL^code, codedroit); 
+end
+}
+#hadresse {
+do
+  -- on a une valeur en sommet de pile
+  TX1^hest_adresse := false;
+  TX1^hadresse := null;
 end
 }
 #extension {
@@ -1091,17 +1233,29 @@ do
   TX^vide := false;
 end 
 }
+#adresse {
+do
+  TX^est_adresse := TX1^est_adresse;
+  TX^adresse := TX1^adresse;
+end
+}
 #gen {
 do
    TX^code := TX1^code;
 end
 }
 
-TX -> #extension #gen ;
+TX -> #extension #adresse #gen ;
 #extension {
 do
   TX^vide := true;
 end 
+}
+#adresse {
+do
+  TX^est_adresse := TX^hest_adresse;
+  TX^adresse := TX^hadresse;
+end
 }
 #gen {
 do
@@ -1152,26 +1306,30 @@ end
 #gen {
 do
   F^code := F^machine.genEntier(entier^txt);
+  F^est_adresse := false;
+  F^adresse := null;
 end
 }
 
--- Constante chaine
-F -> chaine  #getType #estAffectable #gen ;
-#getType {
-do 
-   F^type := F^tString;--new POINTEUR(F^tChar);
-end 
-}
-#estAffectable{
-do 
-   F^affectable := false;
-end 
-}
-#gen {
-do
-  F^code := F^machine.genString(chaine^txt);
-end
-}
+-- Constante chaine : non traite
+--F -> chaine  #getType #estAffectable #gen ;
+--#getType {
+--do 
+--   F^type := F^tString;--new POINTEUR(F^tChar);
+--end 
+--}
+--#estAffectable{
+--do 
+--   F^affectable := false;
+--end 
+--}
+--#gen {
+--do
+--  F^code := F^machine.genString(chaine^txt);
+--F^est_adresse := ?
+--F^adresse := ?
+--end
+--}
 
 
 -- Constante caractere
@@ -1189,6 +1347,8 @@ end
 #gen {
 do
   F^code := F^machine.genCaractere(caractere^txt);
+  F^est_adresse := false;
+  F^adresse := null;
 end
 }
 
@@ -1202,9 +1362,9 @@ end
 
 -- pointeur NULL
 -- TO DO : F -> null  #getType #estAffectable ;
-
+ 
 -- expression parenthesee
-F ->  paro E parf #getType #estAffectable #gen;
+F ->  paro E parf #getType #estAffectable #adresse #gen;
 #getType {
 do 
    F^type := E^type;
@@ -1215,9 +1375,17 @@ do
    F^affectable := E^affectable;
 end 
 }
+#adresse {
+do
+  F^est_adresse := E^est_adresse;
+  F^adresse := E^adresse;
+end
+}
 #gen {
 do
   F^code := E^code;
+  F^est_adresse := E^est_adresse;
+  F^adresse := E^adresse;
 end
 }
 
@@ -1244,7 +1412,9 @@ end
 }
 #gen {
 do
-  F^code := F^machine.genComment("cast en "+TYPE^type.getNom()+"de -- ") + F1^code + F^machine.genComment("-- : valeur castee"); 
+  F^code := F^machine.genComment("cast en "+TYPE^type.getNom()+"de -- ") + F1^code + F^machine.genComment("-- : valeur castee");
+  F^est_adresse := F1^est_adresse;
+  F^adresse := F1^adresse; 
 end
 }
 
@@ -1277,6 +1447,8 @@ do
       error(B_15 , " parametres d'appel erronés");
     else
       F^code := F^machine.genComment("empilement des parametres")+ARGS^code + F^machine.genCall(ident^txt);
+      F^est_adresse := false;
+      F^adresse := null;
     end
   end
 end
@@ -1311,7 +1483,9 @@ do
      match iTemp with INFOVAR then
         i := iTemp;
         type := i.getType();
-        F^code := F^machine.genLire(ident^txt, type.getTaille(), i.getEmpl());
+        F^code := F^machine.genComment("acces a "+ident^txt);--genLire(ident^txt, type.getTaille(), i.getEmpl());
+        F^adresse := i.getEmpl();
+        F^est_adresse := false;
     else
         error(B_17 , " c est pas une variable ca");
     end
@@ -1331,7 +1505,45 @@ end
 }
 
 ---- acces zone pointee
--- TO DO : F -> mult F #getType #estAffectable ;
+F -> mult F #getType #estAffectable #adresse;
+#getType{
+do 
+    match F1^type with POINTEUR then
+        F^type := F1^type.getType();
+    else
+        error(B_18 , " c est pas un pointeur");
+    end 
+end
+}
+#estAffectable{
+do 
+   F^affectable := true;
+end 
+}
+#adresse {
+local
+  adr_du_pointeur : Emplacement;
+  leCode : STRING;
+do
+    -- pour visualiser les codes errones
+    leCode :=  F^machine.genComment("adresse d'affectation inexistante 6");
+    adr_du_pointeur := F1^adresse;
+    if ~F1^est_adresse  then
+        if adr_du_pointeur /= null then
+            -- adresse du pointeur connue
+            leCode := F1^code + F^machine.genPushAdresse(adr_du_pointeur);
+        else
+            error(Interne_adresse, "adresse d'affectation inexistante 5");
+        end
+    else
+        leCode := F1^code + F^machine.genReadIndirectMem(F1^type.getTaille());
+    end
+    F^code := leCode;
+    F^est_adresse := true; -- le code laisse en sommet de pile est une adresse
+    F^adresse := null; -- adresse inconnue 
+end
+}
+
 -- arguments appel de sous-programme
 ARGS -> #params #gen;
 #params {
