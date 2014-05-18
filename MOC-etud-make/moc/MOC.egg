@@ -25,8 +25,12 @@ inh htype : DTYPE for REFS;
 syn affectable : BOOLEAN for F, A, R, T, E;
 syn vide       : BOOLEAN for TX, RX, AX, AFFX;
 syn estAffectation : BOOLEAN for AFFX;
+--syn est_adresse : BOOLEAN for A; --, R, T, F;
+inh hest_adresse : BOOLEAN for AFFX;
+--syn adresse : Emplacement for A;
+inh hadresse : Emplacement for AFFX;
 
--- initialisation 
+-- initialisation  
    
 -- la table de symboles
 inh tds  : TDS for ENTITES, FONCTION, PARFS, PARF, PARFSX, TYPE, REFS, 
@@ -554,6 +558,7 @@ INST ->  TYPE ident #tds #adresse #code_gauche AFFX pv  #verifCompatibilite #isR
 global
   i : INFO;
   adresse : INTEGER;
+  empl : Emplacement;
 #tds {
 do
   i := INST^tds.chercherLocalement(ident^txt);
@@ -561,9 +566,10 @@ do
         error(B_03, "nom de variable deja utilise ");   -- write fonction existante
     -- write nom de variable deja utilise
   else
-    i := new INFOVAR(TYPE^type, new Emplacement(INST^hadr, INST^regLB));
+    empl := new Emplacement(INST^hadr, INST^regLB);
+    i := new INFOVAR(TYPE^type, empl);
     INST^tds.inserer(ident^txt, i);
-  end
+  end 
   INST^stds := INST^tds;
 end
 }
@@ -575,7 +581,10 @@ end
 }
 #code_gauche {
 do
-   AFFX^code_gauche := INST^machine.genDeclaration(ident^txt, TYPE^type.getTaille(), adresse);
+   AFFX^code_gauche := INST^machine.genDeclaration(ident^txt, TYPE^type.getTaille(), empl); --+INST^machine.genAdresse(ident^txt, i.getEmpl());
+   --AFFX^hest_adresse := true; -- le code gauche transmis se termine par l'adresse a affecte eventuellement
+   AFFX^hadresse :=  empl;
+   AFFX^hest_adresse := false;
 end
 }
 #verifCompatibilite {
@@ -750,7 +759,7 @@ end
 #isReturn {
 do
    INST^isRet := true;
-end 
+end  
 }
 #gen {
 do
@@ -805,6 +814,8 @@ end
 E ->   A #code_gauche AFFX #verifCompatible #getType #estAffectable #gen ;
 #code_gauche {
 do
+    AFFX^hest_adresse := false; --A^est_adresse;
+    AFFX^hadresse := null;
     AFFX^code_gauche := A^code;
 end
 }
@@ -849,9 +860,12 @@ end
 
 -- affectation  : laisse en somment de pile la valeur affectee
 AFFX -> affect A #getType #estVide #gen ;
+global
+    t : DTYPE;
 #getType {
 do 
-   AFFX^type := A^type;
+   t := A^type;
+   AFFX^type := t;
 end 
 }
 #estVide{
@@ -863,7 +877,11 @@ end
 do
     -- mettre en sommet de pile la valeur de A 
    AFFX^estAffectation := true;
-   AFFX^code := AFFX^machine.genAffectation(";affectation\n+;codegauche:\n"+AFFX^code_gauche +";codedroite:\n"+ A^code+";fin affectation\n");
+   if AFFX^hadresse/= null then
+     AFFX^code := AFFX^code_gauche + AFFX^machine.genAffectation(A^code, AFFX^hadresse, t.getTaille());
+   else
+     error(Interne_1, "adresse d'affectation inexistante");
+   end
 end
 }
 
@@ -879,9 +897,16 @@ do
 end 
 }
 #gen {
+local
+    leCode : STRING;
 do
     AFFX^estAffectation := false;
-    AFFX^code := AFFX^code_gauche;
+    leCode := AFFX^code_gauche;
+    if AFFX^hest_adresse then
+        -- il y a une adresse inutile en sommet de pile
+        leCode := leCode + AFFX^machine.genPopAdresse();
+    end
+    AFFX^code := leCode;
 end
 }
 
@@ -924,7 +949,7 @@ end
 do
   A^code := AX^code;
 end
-}
+} 
 
 -- TO DO : AX -> OPREL R #verifType #extension ;
 

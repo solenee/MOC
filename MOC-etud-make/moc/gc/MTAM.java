@@ -61,8 +61,8 @@ public class MTAM extends AbstractMachine {
 	}
 
 	@Override
-	public String genDeclaration(String ident, int taille, int dep) {
-		return genComment("declaration sans initialisation de "+ident+ " de taille "+taille+" en dep[LB]" )
+	public String genDeclaration(String ident, int taille, Emplacement empl) {
+		return genComment("declaration sans initialisation de "+ident+ " de taille "+taille+" en "+empl)
 				+ "\tPUSH "+taille+"\n"; 
 	}
 
@@ -100,12 +100,17 @@ public class MTAM extends AbstractMachine {
 
 	@Override
 	public String genCall(String etiquette) {
-		return genComment("Appel de" + etiquette) + "\tCALL(SB) _" + etiquette + "\n";
+		return genComment("Appel de " + etiquette) + "\tCALL(SB) _" + etiquette + "\n";
 	}
 
 	@Override
-	public String genAffectation(String etiquette) {
-		return genComment(etiquette);
+	public String genAffectation(String codeAdresse, String codeValeur, int taille) {
+		return codeAdresse+ genComment("affectation :=")+codeValeur+"\tSTOREI("+taille+")" ;
+	}
+	
+	@Override
+	public String genAffectation(String codeValeur, Emplacement empl, int taille) {
+		return codeValeur + "\tSTORE("+taille+") "+empl.getDep()+"["+empl.getReg().getName()+"]\n";
 	}
 
 	@Override
@@ -156,7 +161,24 @@ public class MTAM extends AbstractMachine {
 
 	@Override
 	public String genLire(String ident, int taille, Emplacement adresse) {
-		return genComment("acces a " + ident) + "\tLOAD ("+taille+") "+adresse.getDep()+"("+adresse.getReg()+")";
+		return genComment("acces a " + ident) + "\tLOAD ("+taille+") "+adresse.getDep()+"["+adresse.getReg().getName()+"]\n";
 	}
 
+	@Override
+	public String genEcrire(String ident, int taille, Emplacement adresse) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String genPushAdresse(String ident, Emplacement adresse) {
+		return genComment("adresse de "+ident) +
+				"\tLOADA "+adresse.getDep()+"("+adresse.getReg().getName()+")";
+	}
+
+	@Override
+	public String genPopAdresse() {
+		return genComment("adresse en sommet de pile inutile : depiler!") +
+				genFree(1);
+	}
 }

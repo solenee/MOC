@@ -71,10 +71,10 @@ public interface IMachine {
 	 * 
 	 * @param ident identifier of the variable to declare
 	 * @param taille size of the variable
-	 * @param dep adress from the current register
+	 * @param empl address allocated
 	 * @throws MOCException
 	 */
-	public String genDeclaration(String ident, int taille, int dep);
+	public String genDeclaration(String ident, int taille, Emplacement empl);
 	
 	/**
 	 * Generate a variable declaration with an initialization
@@ -170,11 +170,22 @@ public interface IMachine {
 	public String genCall(String etiquette);
 	
 	/**
-	 * Generate the code for an affectation  
-	 * @param etiquette label of the fonction
-	 * @throws MOCException
+	 * Generate the code for an affectation : =  
+	 * @param codeAdresse address to modify
+	 * @param codeValeur value
+	 * @param taille size of the value
+	 *  @throws MOCException
 	 */
-	public String genAffectation(String etiquette);
+	public String genAffectation(String codeAdresse, String codeValeur, int taille);
+	
+	/**
+	 * Generate the code for an affectation : =  
+	 * @param empl address to modify
+	 * @param codeValeur value
+	 * @param taille size of the value
+	 *  @throws MOCException
+	 */
+	public String genAffectation(String codeValeur, Emplacement empl, int taille);
 	
 	/**
 	 * Associate the code of a function to a label  
@@ -197,10 +208,32 @@ public interface IMachine {
 	 * Read the value of a variable  
 	 * @param ident name of the variable 
 	 * @param taille size of the variable
-	 * @param code code of the body of the function
+	 * @param adresse position of the variable in the memory
 	 * @throws MOCException
 	 */
 	public String genLire(String ident, int taille, Emplacement adresse);
 	
+	/**
+	 * Write a value of in  a variable  
+	 * @param ident name of the variable 
+	 * @param taille size of the variable
+	 * @param adresse position of the variable in the memory
+	 * @throws MOCException
+	 */
+	public String genEcrire(String ident, int taille, Emplacement adresse);
 	
+	/**
+	 * Push the address  of a variable  
+	 * @param ident name of the variable 
+	 * @param adresse position of the variable in the memory
+	 * @throws MOCException
+	 */
+	public String genPushAdresse(String ident, Emplacement adresse);
+	
+	/**
+	 * Pop the address  
+	 * @throws MOCException
+	 */
+	public String genPopAdresse();
+
 }
