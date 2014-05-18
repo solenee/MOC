@@ -97,17 +97,16 @@ public interface IMachine {
 	
 	/**
 	 * Generate an integer unary operation : -
-	 * @param codeFacteur code generating the value of the facteur
 	 * @throws MOCException
 	 */
-	public String genIMoins(String codeFacteur);
+	public String genINegation();
 	
 	/**
 	 * Generate a boolean unary operation : not 
 	 * @param codeFacteur code generating the value of the facteur
 	 * @throws MOCException
 	 */
-	public String genBNegation(String codeFacteur);
+	public String genBNegation();
 	
 	/**
 	 * Generate a binary operation
@@ -142,6 +141,61 @@ public interface IMachine {
 	 * @throws MOCException
 	 */
 	public String genIEt();
+	
+	/**
+	 * Code of the integer binary operator : + 
+	 * @throws MOCException
+	 */
+	public String genIPlus();
+	
+	/**
+	 * Code of the integer binary operator : -
+	 * @throws MOCException
+	 */
+	public String genIMoins();
+	
+	/**
+	 * Code of the boolean binary operator to be apply to integer parameter (0: false, *:true) : ou 
+	 * @throws MOCException
+	 */
+	public String genBOu();
+	
+	/**
+	 * Code of the integer binary operator : <
+	 * @throws MOCException
+	 */
+	public String genIInferieur();
+	
+	/**
+	 * Code of the integer binary operator : >
+	 * @throws MOCException
+	 */
+	public String genISuperieur();
+	
+	/**
+	 * Code of the integer binary operator : <=
+	 * @throws MOCException
+	 */
+	public String genIInfEgal();
+	
+	/**
+	 * Code of the integer binary operator : >=
+	 * @throws MOCException
+	 */
+	public String genISupEgal();
+	
+	/**
+	 * Code of the integer binary operator : ==
+	 * @throws MOCException
+	 */
+	public String genIEgal();
+	
+	/**
+	 * Code of the integer binary operator : /=
+	 * @throws MOCException
+	 */
+	public String genIDifferent();
+	
 	/**
 	 * Generate an integer constant
 	 * @param c 

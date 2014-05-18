@@ -11,19 +11,27 @@ int fRetour(int a) {
    }
 }
 
-void fDecl() {
-  int x;
-  int y = 2;
-  char c = 'e';
-  int z = y;
+int f203() {
+   return 203;
 }
+
+void fDecl() {
+  int a = 1;
+  char b = 'e';
+  int c = 23;
+  int d = a;
+  int x = f203();
+}
+
 
 
 int main() {
   int a = 1;
   fDecl();
-  int b;
   int d4 = fRetour(4);
   int d19 = fRetour(0);
-  return (2*5*3)/5;
+  int b;
+  a = f203()/203;
+  b = a *4;
+  return 215;
 }

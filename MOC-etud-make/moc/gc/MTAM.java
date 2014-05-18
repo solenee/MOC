@@ -8,7 +8,7 @@ package moc.gc;
  */
 public class MTAM extends AbstractMachine {
 
-	@Override
+	@Override 
 	public String getSuffixe() {
 		return "tam";
 	}
@@ -74,20 +74,22 @@ public class MTAM extends AbstractMachine {
 
 	@Override
 	public String genOpUnaire(String codeOp, String codeFacteur) {
-		return codeFacteur +
-				"\tSUBR "+codeOp+"\n";
+		return codeFacteur + 
+				codeOp;
 	}
 
 	@Override
-	public String genIMoins(String codeFacteur) {
-		return genOpUnaire("INeg", codeFacteur);
+	public String genINegation() {
+		return "\tSUBR INeg\n";
 	}
 
 	@Override
-	public String genBNegation(String codeFacteur) {
-		return genOpUnaire("BNeg", codeFacteur);
-	}
-
+	public String genBNegation() {
+		return genComment("; negation sur des entiers : 0 : false; *:true => comparer a 0")+
+				"LOADL 0\n"
+				+ "\tSUBR IEq";
+		}
+	
 	@Override
 	public String genEntier(String c) {
 		return "\tLOADL "+c+genComment("entier");
@@ -125,7 +127,7 @@ public class MTAM extends AbstractMachine {
 			String codeValeur) {
 		return genComment("retour")
 				+ codeValeur + 
-				"\tRETURN (" + tailleparams + ") "+ tailleretour + "\n"
+				"\tRETURN (" + tailleretour + ") "+ tailleparams + "\n"
 				+ genComment("fin retour");
 	}
 
@@ -137,7 +139,22 @@ public class MTAM extends AbstractMachine {
 	@Override
 	public String genOpBinaire(String codegauche, String codeOp,
 			String codedroite) {
-		return codegauche + codedroite + "\tSUBR "+codeOp+"\n";
+		return genComment("operation binaire ") + codegauche + codedroite + "\tSUBR "+codeOp+"\n";
+	}
+
+	@Override
+	public String genIPlus() {
+		return "IAdd";
+	}
+	
+	@Override
+	public String genIMoins() {
+		return "ISub";
+	}
+	
+	@Override
+	public String genBOu() {
+		return "IAdd";
 	}
 
 	@Override
@@ -157,9 +174,37 @@ public class MTAM extends AbstractMachine {
 
 	@Override
 	public String genIEt() {
-		return "IAdd";
+		return "IMul";
 	}
 
+	@Override
+	public String genIInferieur() {
+		return "ILss";
+	}
+
+	@Override
+	public String genISuperieur() {
+		return "IGtr";
+	}
+	@Override
+	public String genIInfEgal() {
+		return "ILeq";
+	}
+	@Override
+	public String genISupEgal() {
+		return "IGeq";
+	}
+	
+	@Override
+	public String genIEgal() {
+		return "IEq";
+	}
+	
+	@Override
+	public String genIDifferent() {
+		return "INEq";
+	}
+	
 	//Obsolete
 	@Override
 	public String genLire(String ident, int taille, Emplacement adresse) {
@@ -192,7 +237,7 @@ public class MTAM extends AbstractMachine {
 	@Override
 	public String genPushAdresse(Emplacement adresse) {
 		return genComment("lecture du contenu de l'adresse de "+adresse)
-				+"\tLOADA "+adresse.getDep()+"("+adresse.getReg().getName()+")\n";
+				+"\tLOADA "+adresse.getDep()+"["+adresse.getReg().getName()+"]\n";
 	}
 
 	@Override

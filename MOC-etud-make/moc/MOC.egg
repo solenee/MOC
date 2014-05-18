@@ -6,7 +6,7 @@
 --options
 option auto = true;
 option version = 0.0.1;
-option k=2;
+option k=2; 
 
 -- verification du retour 
 inh typeRet : DTYPE for BLOC, INSTS, INST, SIX;
@@ -18,7 +18,7 @@ inh tPointeurNull : DTYPE for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTI
 inh tVoid  : DTYPE for PARFS, PARFSX, STYPE, ENTITES, TYPE, PARF, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
 inh tString : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
 inh regLB : Register for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
---attributes 
+--attributes  
 syn type  : DTYPE for TYPE, REFS, STYPE, F, E, A, T, R, AFFX;
 inh htype : DTYPE for REFS, AFFX;
 -- affectation 
@@ -55,7 +55,7 @@ inh source : MOCSourceFile for PROGRAMME;
 inh machine : IMachine for  
          ENTITES, FONCTION, INST, BLOC, INSTS, SIX,
          PARFS, PARF, PARFSX, ARGS,ARGSX, 
-         E, AFFX, A, AX, R, RX, T, TX, F, OPMUL
+         E, AFFX, A, AX, R, RX, T, TX, F, OPMUL, OPUN, OPADD, OPREL
 --         -- decommenter la ligne suivante pour MOC
 --       ,IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS
 --         -- fin extension MOC
@@ -65,7 +65,7 @@ syn code_asm : STRING for ASM;
 -- la TDS courante
 inh tds_asm : TDS for ASM;
 -- code genere
-syn code : STRING for ENTITES, FONCTION, BLOC, INSTS, INST, SIX, E, A, AFFX, AX, R, RX, T, TX, F, OPMUL, ARGS, ARGSX;
+syn code : STRING for ENTITES, FONCTION, BLOC, INSTS, INST, SIX, E, A, AFFX, AX, R, RX, T, TX, F, OPMUL, ARGS, ARGSX, OPUN, OPADD, OPREL;
 -- operation
 inh hcode : STRING for AX, RX, TX;
 inh code_gauche: STRING for AFFX; -- code du terme a gauche de l'operateur
@@ -495,7 +495,7 @@ do
    -- Le code du bloc est celui de ses instructions
    -- plus le code pour liberer la place occupee
    -- par les variables locales (POP (0) taille)
-   BLOC^code := INSTS^code + BLOC^machine.genFree(tailleBloc) ;
+   BLOC^code := INSTS^code + BLOC^machine.genComment("fin d'un bloc : pop")+ BLOC^machine.genFree(tailleBloc) ;
 end
 }
 
@@ -616,7 +616,7 @@ INST -> E pv #adresse #stds #isReturn #gen ;
 #gen {
 do
     -- consommer la valeur si elle existe
-    INST^code := E^code + INST^machine.genFree(E^type.getTaille());
+    INST^code := E^code + INST^machine.genComment("valeur inutile")+INST^machine.genFree(E^type.getTaille());
 end
 }
 
@@ -699,7 +699,7 @@ end
 }
 #gen {
 do
-    write "code de la condition : "+ E^code;
+    --write "code de la condition : "+ E^code;
     INST^code := INST^machine.genIf(E^code, BLOC^code, SIX^code);
 end
 }
@@ -765,7 +765,7 @@ end
 #gen {
 do
   -- sortir de la fonction courante en retournant la valeur de E
-  INST^code := INST^machine.genRetour(INST^htailleparams, E^type.getTaille(), E^code);
+  INST^code := INST^machine.genRetour(INST^htailleparams, E^type.getTaille(), E^code); -- + E^code;
 end
 }
 
@@ -790,7 +790,7 @@ end
 }
 #isReturn {
 do
-   INST^isRet := false;
+   INST^isRet := true; -- ATTENTION: on n'a pas les moyens de verifier
 end 
 }
 #gen {
@@ -888,7 +888,7 @@ local
     leCode : STRING; -- code de l'affectation
     adr_gauche : STRING;
     empl_gauche : Emplacement;
-    empl_droit : Emplacement;
+    empl_droit : Emplacement; 
     code_valeur_gauche : STRING; -- code pour laisser en sommet de pile la nouvelle valeur de la varible affectee
     codedroit : STRING;
 do
@@ -906,8 +906,8 @@ do
             -- lire indirect l'adresse
             codedroit := A^code + AFFX^machine.genReadIndirectMem(t.getTaille());
         else
-            -- le terme de droite est une constante
-            codedroit := A^code ; --error(Interne_adresse, "adresse terme droit d'affectation inexistante 2");
+            -- le terme de droite est une constante ou a un appel de procedure
+            codedroit := A^code ;
         end      
    end
 -- recuperer l'adresse du terme de gauche
@@ -965,7 +965,7 @@ do
             -- il y a l'adresse de l'expression en sommet de pile
             leCode := leCode + AFFX^code_gauche + AFFX^machine.genReadIndirectMem(AFFX^htype.getTaille());   
         else
-            -- le code correspond a une constante : transmettre
+            -- le code correspond a une constante ou a un appel de procedure : transmettre
             leCode := leCode + AFFX^code_gauche;
         end
     end
@@ -1026,7 +1026,53 @@ do
 end
 } 
 
--- TO DO : AX -> OPREL R #verifType #extension ;
+AX -> OPREL R #verifType #extension #adresse #gen;
+#verifType {
+do
+    if ~R^type.isOperable() then 
+        error(B_20, "Les operations ne peuvent etre faites que sur les entiers");
+    end
+end 
+}
+#extension {
+do
+   AX^vide := false; 
+end 
+}
+#adresse {
+do
+  AX^est_adresse := false;
+  AX^adresse := null;
+end
+}
+#gen {
+local
+   adr_gauche : Emplacement;
+   adr_droite : Emplacement;
+   codegauche : STRING; -- valeur du terme de gauche
+   codedroit : STRING; -- valeur du terme de droite
+do
+   adr_gauche := AX^hadresse;
+   if adr_gauche = null then
+        -- hcode contient la valeur du terme gauche
+        codegauche := AX^hcode;
+   else
+        -- hcode ne contient pas encore la valeur du terme gauche
+        -- adr_gauche est l'adresse ou se trouve la valeur
+        codegauche := AX^hcode + AX^machine.genReadMem(adr_gauche, R^type.getTaille());  
+   end
+   adr_droite := R^adresse;
+   if adr_droite = null then
+        -- R^code contient la valeur du terme droit
+        codedroit := R^code;
+   else
+        -- R^code ne contient pas encore la valeur du terme droit
+        -- adr_droite est l'adresse ou se trouve la valeur
+        codedroit := R^code + AX^machine.genReadMem(adr_droite, R^type.getTaille());  
+   end
+   AX^code := AX^machine.genOpBinaire(codegauche, OPREL^code, codedroit); 
+end
+}
 
 AX -> #extension #adresse #gen;
 #extension{
@@ -1047,12 +1093,42 @@ end
 }
 
 -- operateurs relationnels
--- TO DO : OPREL -> inf ;
--- TO DO : OPREL -> sup ;
--- TO DO : OPREL -> infeg ;
--- TO DO : OPREL -> supeg ;
--- TO DO : OPREL -> eg ;
--- TO DO : OPREL -> neg ;
+OPREL -> inf #gen;
+#gen {
+do
+   OPREL^code := OPREL^machine.genIInferieur();
+end
+}
+OPREL -> sup #gen;
+#gen {
+do
+   OPREL^code := OPREL^machine.genISuperieur();
+end
+}
+OPREL -> infeg #gen;
+#gen {
+do
+   OPREL^code := OPREL^machine.genIInfEgal();
+end
+}
+OPREL -> supeg #gen;
+#gen {
+do
+   OPREL^code := OPREL^machine.genISupEgal();
+end
+}
+OPREL -> eg #gen;
+#gen {
+do
+   OPREL^code := OPREL^machine.genIEgal();
+end
+}
+OPREL -> neg #gen;
+#gen {
+do
+   OPREL^code := OPREL^machine.genIDifferent();
+end
+}
 
 R ->  T #hcode #hadresse RX #verifType #getType #estAffectable #adresse #gen;
 #hcode {
@@ -1107,7 +1183,65 @@ end
 }
 
 -- additions ...
--- TO DO : RX ->   OPADD  T #verifType RX #extension ;
+RX ->   OPADD  T #verifType #hcode #hadresse RX #extension #adresse #gen;
+#hcode {
+local
+   adr_gauche : Emplacement;
+   adr_droite : Emplacement;
+   codegauche : STRING; -- valeur du terme de gauche
+   codedroit : STRING; -- valeur du terme de droite
+do
+   adr_gauche := RX^hadresse;
+   if adr_gauche = null then
+        -- hcode contient la valeur du terme gauche
+        codegauche := RX^hcode;
+   else
+        -- hcode ne contient pas encore la valeur du terme gauche
+        -- adr_gauche est l'adresse ou se trouve la valeur
+        codegauche := RX^hcode + RX^machine.genReadMem(adr_gauche, T^type.getTaille());  
+   end
+   adr_droite := T^adresse;
+   if adr_droite = null then
+        -- T^code contient la valeur du terme droit
+        codedroit := T^code;
+   else
+        -- T^code ne contient pas encore la valeur du terme droit
+        -- adr_droite est l'adresse ou se trouve la valeur
+        codedroit := T^code + RX^machine.genReadMem(adr_droite, T^type.getTaille());  
+   end
+   RX1^hcode := RX^machine.genOpBinaire(codegauche, OPADD^code, codedroit); 
+end
+}
+#hadresse {
+do
+  -- on a une valeur en sommet de pile
+  RX1^hest_adresse := false;
+  RX1^hadresse := null;
+end
+}
+#adresse {
+do
+  RX^est_adresse := RX1^est_adresse;
+  RX^adresse := RX1^adresse;
+end
+}
+#gen {
+do
+  RX^code := RX1^code;
+end
+}
+#verifType {
+do
+    if ~T^type.isOperable() then 
+        error(B_20, "Les operations ne peuvent etre faites que sur les entiers");
+    end
+end 
+}
+#extension {
+do 
+   RX^vide := false; 
+end 
+}
 
 RX -> #extension #adresse #gen;
 #extension {
@@ -1128,9 +1262,24 @@ end
 }
 
 -- operateurs additifs
--- TO DO : OPADD -> plus ;
--- TO DO  : OPADD -> moins ;
--- TO DO : OPADD -> ou ;
+OPADD -> plus #gen;
+#gen {
+do
+   OPADD^code := OPADD^machine.genIPlus();
+end
+}
+OPADD -> moins #gen;
+#gen {
+do
+   OPADD^code := OPADD^machine.genIMoins();
+end
+}
+OPADD -> ou #gen;
+#gen {
+do
+   OPADD^code := OPADD^machine.genBOu();
+end
+}
 
 -- multiplication, ...
 T ->  F #hcode #hadresse TX   #verifType #getType #estAffectable #adresse #gen ;
@@ -1353,15 +1502,95 @@ end
 }
 
 -- expression unaire
--- TO DO : F ->  OPUN  F  #verifType #getType #estAffectable ;
+F ->  OPUN  F  #verifType #getType #estAffectable #adresse #gen;
+#verifType {
+do
+    if ~F1^type.isOperable() then 
+        error(B_20, "Les operations ne peuvent etre faites que sur les entiers");
+    end
+end 
+}
+#getType{
+do
+   F^type := F1^type;
+end 
+}
+#estAffectable{
+do 
+   F^affectable := false;
+end 
+}
+#adresse {
+do
+  F^est_adresse := F1^est_adresse;
+  F^adresse := null;
+end
+}
+#gen {
+local
+    adr_droite : Emplacement;
+    codedroit : STRING;
+do
+   adr_droite := F1^adresse;
+   if adr_droite = null then
+        -- F1^code contient la valeur du terme droit
+        codedroit := F1^code;
+   else
+        -- F^code ne contient pas encore la valeur du terme droit
+        -- adr_droite est l'adresse ou se trouve la valeur
+        codedroit := F1^code + F^machine.genReadMem(adr_droite, F1^type.getTaille());  
+   end 
+  if OPUN^code = "" then
+    F^code := codedroit;
+  else
+    F^code := F^machine.genOpUnaire(OPUN^code, codedroit);
+  end
+end
+}
 
 -- operateurs unaires
--- TO DO : OPUN -> plus ;
--- TO DO : OPUN -> moins ;
--- TO DO : OPUN -> non;
+OPUN -> plus  #gen;
+#gen {
+do
+   OPUN^code := ""; -- ignorer
+end
+}
+OPUN -> moins  #gen;
+#gen {
+do
+   OPUN^code := OPUN^machine.genINegation();
+end
+}
+OPUN -> non #gen;
+#gen {
+do
+   OPUN^code := OPUN^machine.genBNegation();
+end
+}
 
 -- pointeur NULL
--- TO DO : F -> null  #getType #estAffectable ;
+F -> null  #getType #estAffectable #adresse #gen ;
+#getType {
+do 
+   F^type := F^tPointeurNull;
+end
+}
+#estAffectable{
+do 
+   F^affectable := false;
+end 
+} 
+#adresse {
+do
+  F^est_adresse := false;
+  F^adresse := null;
+end
+}
+#gen {
+do
+  F^code := F^machine.genComment("pointeur null");
+end
+}
  
 -- expression parenthesee
 F ->  paro E parf #getType #estAffectable #adresse #gen;
@@ -1384,8 +1613,6 @@ end
 #gen {
 do
   F^code := E^code;
-  F^est_adresse := E^est_adresse;
-  F^adresse := E^adresse;
 end
 }
 
