@@ -12,7 +12,8 @@ int testCalculs() {
   return 1 * 2;
 }
 int ifInt() { 
-  if(1) {
+  int i;
+  if(i=1) {
 	return 3;
   } else {
 	return 0;
@@ -22,7 +23,8 @@ int ifInt() {
 
 
 int main() {
-  //char c = infSupEgal(1, 2);
+  int i3;
+  i3 = ifInt();
   //if (c = '=') {
 	//return 0;
   //}

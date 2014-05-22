@@ -28,9 +28,9 @@ void fDecl() {
 int main() {
   int a = 1;
   fDecl();
+  int b;
   int d4 = fRetour(4);
   int d19 = fRetour(0);
-  int b;
   a = f203()/203;
   b = a *4;
   return 215;
