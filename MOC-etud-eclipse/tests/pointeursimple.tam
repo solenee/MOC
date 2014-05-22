@@ -12,41 +12,25 @@
 
 	; code in inline : end
 _main:
-	; declaration sans initialisation de a de taille 1 en [3/Register [name=LB, num=0]]
+	; declaration de a de taille 1 en [3/Register [name=LB, num=0]]
 	PUSH 1
 	LOADL 1	; entier
 	STORE(1) 3[LB]
-	; code de la nouvelle de la variable affectee
-	LOAD (1) 3[LB]
-	; declaration => pop
-	POP(0) 1
 	; fin de declaration de a
-	; declaration sans initialisation de b de taille 1 en [4/Register [name=LB, num=0]]
+	; declaration de b de taille 1 en [4/Register [name=LB, num=0]]
 	PUSH 1
 	LOADL 2	; entier
 	STORE(1) 4[LB]
-	; code de la nouvelle de la variable affectee
-	LOAD (1) 4[LB]
-	; declaration => pop
-	POP(0) 1
 	; fin de declaration de b
-	; declaration sans initialisation de c de taille 1 en [5/Register [name=LB, num=0]]
+	; declaration de c de taille 1 en [5/Register [name=LB, num=0]]
 	PUSH 1
 	LOADL 3	; entier
 	STORE(1) 5[LB]
-	; code de la nouvelle de la variable affectee
-	LOAD (1) 5[LB]
-	; declaration => pop
-	POP(0) 1
 	; fin de declaration de c
-	; declaration sans initialisation de d de taille 1 en [6/Register [name=LB, num=0]]
+	; declaration de d de taille 1 en [6/Register [name=LB, num=0]]
 	PUSH 1
 	LOADL 4	; entier
 	STORE(1) 6[LB]
-	; code de la nouvelle de la variable affectee
-	LOAD (1) 6[LB]
-	; declaration => pop
-	POP(0) 1
 	; fin de declaration de d
 	; acces a b
 	; lecture du contenu de l'adresse de [4/Register [name=LB, num=0]]
@@ -59,14 +43,6 @@ _main:
 	LOADI (1)
 	; affectation
 	STOREI (1)
-	; code de la nouvelle de la variable affectee
-	; acces a b
-	; lecture du contenu de l'adresse de [4/Register [name=LB, num=0]]
-	LOADA 4[LB]
-	; lecture indirecte
-	LOADI (1)
-	; valeur inutile
-	POP(0) 1
 	; acces a a
 	; acces a d
 	; lecture du contenu de l'adresse de [6/Register [name=LB, num=0]]
@@ -76,10 +52,6 @@ _main:
 	; lecture indirecte
 	LOADI (1)
 	STORE(1) 3[LB]
-	; code de la nouvelle de la variable affectee
-	LOAD (1) 3[LB]
-	; valeur inutile
-	POP(0) 1
 	; retour
 	; pas d'affectation : code de l'expression
 	; acces a a

@@ -117,58 +117,58 @@ x_5.att_machine=this.att_machine;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_sinon : // 663
+      case LEX_MOC.token_sinon : // 793
         regle23 () ;
       break ;
-      case LEX_MOC.token_void : // 664
+      case LEX_MOC.token_void : // 794
         regle24 () ;
       break ;
-      case LEX_MOC.token_int : // 666
+      case LEX_MOC.token_int : // 796
         regle24 () ;
       break ;
-      case LEX_MOC.token_char : // 667
+      case LEX_MOC.token_char : // 797
         regle24 () ;
       break ;
-      case LEX_MOC.token_entier : // 685
+      case LEX_MOC.token_entier : // 815
         regle24 () ;
       break ;
-      case LEX_MOC.token_caractere : // 686
+      case LEX_MOC.token_caractere : // 816
         regle24 () ;
       break ;
-      case LEX_MOC.token_plus : // 677
+      case LEX_MOC.token_plus : // 807
         regle24 () ;
       break ;
-      case LEX_MOC.token_moins : // 678
+      case LEX_MOC.token_moins : // 808
         regle24 () ;
       break ;
-      case LEX_MOC.token_non : // 684
+      case LEX_MOC.token_non : // 814
         regle24 () ;
       break ;
-      case LEX_MOC.token_null : // 669
+      case LEX_MOC.token_null : // 799
         regle24 () ;
       break ;
-      case LEX_MOC.token_paro : // 655
+      case LEX_MOC.token_paro : // 785
         regle24 () ;
       break ;
-      case LEX_MOC.token_ident : // 688
+      case LEX_MOC.token_ident : // 818
         regle24 () ;
       break ;
-      case LEX_MOC.token_mult : // 680
+      case LEX_MOC.token_mult : // 810
         regle24 () ;
       break ;
-      case LEX_MOC.token_aco : // 657
+      case LEX_MOC.token_aco : // 787
         regle24 () ;
       break ;
-      case LEX_MOC.token_si : // 662
+      case LEX_MOC.token_si : // 792
         regle24 () ;
       break ;
-      case LEX_MOC.token_retour : // 668
+      case LEX_MOC.token_retour : // 798
         regle24 () ;
       break ;
-      case LEX_MOC.token_asm : // 665
+      case LEX_MOC.token_asm : // 795
         regle24 () ;
       break ;
-      case LEX_MOC.token_acf : // 658
+      case LEX_MOC.token_acf : // 788
         regle24 () ;
       break ;
       default :

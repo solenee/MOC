@@ -103,16 +103,16 @@ x_6.att_regLB= new Register("LB", 0);
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_asm : // 665
+      case LEX_MOC.token_asm : // 795
         regle0 () ;
       break ;
-      case LEX_MOC.token_void : // 664
+      case LEX_MOC.token_void : // 794
         regle0 () ;
       break ;
-      case LEX_MOC.token_int : // 666
+      case LEX_MOC.token_int : // 796
         regle0 () ;
       break ;
-      case LEX_MOC.token_char : // 667
+      case LEX_MOC.token_char : // 797
         regle0 () ;
       break ;
       case LEX_MOC.EOF :

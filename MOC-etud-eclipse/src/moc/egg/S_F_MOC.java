@@ -112,17 +112,18 @@ if  (att_eval)      action_gen_58();
 
     //declaration
     T_MOC x_2 = new T_MOC(scanner ) ;
-    S_E_MOC x_3 = new S_E_MOC(scanner,att_eval) ;
-    T_MOC x_4 = new T_MOC(scanner ) ;
+    S_E_MOC x_4 = new S_E_MOC(scanner,att_eval) ;
+    T_MOC x_5 = new T_MOC(scanner ) ;
     //appel
-if  (att_eval)      action_auto_inh_59(x_3);
+if  (att_eval)      action_auto_inh_59(x_4);
     x_2.analyser(LEX_MOC.token_paro);
-    x_3.analyser() ;
-    x_4.analyser(LEX_MOC.token_parf);
-if  (att_eval)      action_getType_59(x_3);
-if  (att_eval)      action_estAffectable_59(x_3);
-if  (att_eval)      action_adresse_59(x_3);
-if  (att_eval)      action_gen_59(x_3);
+if  (att_eval)      action_lire_resultat_59(x_4);
+    x_4.analyser() ;
+    x_5.analyser(LEX_MOC.token_parf);
+if  (att_eval)      action_getType_59(x_4);
+if  (att_eval)      action_estAffectable_59(x_4);
+if  (att_eval)      action_adresse_59(x_4);
+if  (att_eval)      action_gen_59(x_4);
   }
   private void regle54() throws Exception {
 
@@ -221,11 +222,11 @@ att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMess
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#gen","F -> ident #gen #getType #estAffectable ;"});
 }
   }
-private void action_gen_59(S_E_MOC x_3) throws Exception {
+private void action_gen_59(S_E_MOC x_4) throws Exception {
 try {
 // instructions
-this.att_code=x_3.att_code;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#gen","F -> paro E parf #getType #estAffectable #adresse #gen ;"});
+this.att_code=x_4.att_code;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#gen","F -> paro #lire_resultat E parf #getType #estAffectable #adresse #gen ;"});
 }
   }
 private void action_gen_61(T_MOC x_2, S_ARGS_MOC x_5) throws Exception {
@@ -267,6 +268,13 @@ try {
 // instructions
 this.att_code=this.att_machine.genComment("pointeur null");
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#gen","F -> null #getType #estAffectable #adresse #gen ;"});
+}
+  }
+private void action_lire_resultat_59(S_E_MOC x_4) throws Exception {
+try {
+// instructions
+x_4.att_lire_resultat=false;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#lire_resultat","F -> paro #lire_resultat E parf #getType #estAffectable #adresse #gen ;"});
 }
   }
 private void action_auto_inh_61(T_MOC x_2, S_ARGS_MOC x_5) throws Exception {
@@ -479,11 +487,11 @@ this.att_adresse=null;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#adresse","F -> OPUN F1 #verifType #getType #estAffectable #adresse #gen ;"});
 }
   }
-private void action_getType_59(S_E_MOC x_3) throws Exception {
+private void action_getType_59(S_E_MOC x_4) throws Exception {
 try {
 // instructions
-this.att_type=x_3.att_type;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#getType","F -> paro E parf #getType #estAffectable #adresse #gen ;"});
+this.att_type=x_4.att_type;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#getType","F -> paro #lire_resultat E parf #getType #estAffectable #adresse #gen ;"});
 }
   }
 private void action_getType_58() throws Exception {
@@ -507,12 +515,12 @@ this.att_type=this.att_tChar;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#getType","F -> caractere #getType #estAffectable #gen ;"});
 }
   }
-private void action_adresse_59(S_E_MOC x_3) throws Exception {
+private void action_adresse_59(S_E_MOC x_4) throws Exception {
 try {
 // instructions
-this.att_est_adresse=x_3.att_est_adresse;
-this.att_adresse=x_3.att_adresse;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#adresse","F -> paro E parf #getType #estAffectable #adresse #gen ;"});
+this.att_est_adresse=x_4.att_est_adresse;
+this.att_adresse=x_4.att_adresse;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#adresse","F -> paro #lire_resultat E parf #getType #estAffectable #adresse #gen ;"});
 }
   }
 private void action_getType_54(S_OPUN_MOC x_2, S_F_MOC x_3) throws Exception {
@@ -544,19 +552,19 @@ this.att_affectable=false;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#estAffectable","F -> OPUN F1 #verifType #getType #estAffectable #adresse #gen ;"});
 }
   }
-private void action_auto_inh_59(S_E_MOC x_3) throws Exception {
+private void action_auto_inh_59(S_E_MOC x_4) throws Exception {
 try {
 // instructions
-x_3.att_tInt=this.att_tInt;
-x_3.att_tChar=this.att_tChar;
-x_3.att_tPointeurNull=this.att_tPointeurNull;
-x_3.att_tVoid=this.att_tVoid;
-x_3.att_tString=this.att_tString;
-x_3.att_regLB=this.att_regLB;
-x_3.att_tds=this.att_tds;
-x_3.att_tds_fonction=this.att_tds_fonction;
-x_3.att_machine=this.att_machine;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","F -> paro E parf #getType #estAffectable #adresse #gen ;"});
+x_4.att_tInt=this.att_tInt;
+x_4.att_tChar=this.att_tChar;
+x_4.att_tPointeurNull=this.att_tPointeurNull;
+x_4.att_tVoid=this.att_tVoid;
+x_4.att_tString=this.att_tString;
+x_4.att_regLB=this.att_regLB;
+x_4.att_tds=this.att_tds;
+x_4.att_tds_fonction=this.att_tds_fonction;
+x_4.att_machine=this.att_machine;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","F -> paro #lire_resultat E parf #getType #estAffectable #adresse #gen ;"});
 }
   }
 private void action_estAffectable_53(T_MOC x_2) throws Exception {
@@ -566,11 +574,11 @@ this.att_affectable=false;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#estAffectable","F -> caractere #getType #estAffectable #gen ;"});
 }
   }
-private void action_estAffectable_59(S_E_MOC x_3) throws Exception {
+private void action_estAffectable_59(S_E_MOC x_4) throws Exception {
 try {
 // instructions
-this.att_affectable=x_3.att_affectable;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#estAffectable","F -> paro E parf #getType #estAffectable #adresse #gen ;"});
+this.att_affectable=x_4.att_affectable;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#estAffectable","F -> paro #lire_resultat E parf #getType #estAffectable #adresse #gen ;"});
 }
   }
 private void action_estAffectable_58() throws Exception {
@@ -583,61 +591,61 @@ this.att_affectable=false;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_entier : // 685
+      case LEX_MOC.token_entier : // 815
         regle52 () ;
       break ;
-      case LEX_MOC.token_caractere : // 686
+      case LEX_MOC.token_caractere : // 816
         regle53 () ;
       break ;
-      case LEX_MOC.token_plus : // 677
+      case LEX_MOC.token_plus : // 807
         regle54 () ;
       break ;
-      case LEX_MOC.token_moins : // 678
+      case LEX_MOC.token_moins : // 808
         regle54 () ;
       break ;
-      case LEX_MOC.token_non : // 684
+      case LEX_MOC.token_non : // 814
         regle54 () ;
       break ;
-      case LEX_MOC.token_null : // 669
+      case LEX_MOC.token_null : // 799
         regle58 () ;
       break ;
-      case LEX_MOC.token_paro : // 655
+      case LEX_MOC.token_paro : // 785
         scanner.lit ( 2 ) ;
         switch ( scanner.fenetre[1].code ) {
-          case LEX_MOC.token_entier : // 685
+          case LEX_MOC.token_entier : // 815
             regle59 () ;
           break ;
-          case LEX_MOC.token_caractere : // 686
+          case LEX_MOC.token_caractere : // 816
             regle59 () ;
           break ;
-          case LEX_MOC.token_plus : // 677
+          case LEX_MOC.token_plus : // 807
             regle59 () ;
           break ;
-          case LEX_MOC.token_moins : // 678
+          case LEX_MOC.token_moins : // 808
             regle59 () ;
           break ;
-          case LEX_MOC.token_non : // 684
+          case LEX_MOC.token_non : // 814
             regle59 () ;
           break ;
-          case LEX_MOC.token_null : // 669
+          case LEX_MOC.token_null : // 799
             regle59 () ;
           break ;
-          case LEX_MOC.token_paro : // 655
+          case LEX_MOC.token_paro : // 785
             regle59 () ;
           break ;
-          case LEX_MOC.token_ident : // 688
+          case LEX_MOC.token_ident : // 818
             regle59 () ;
           break ;
-          case LEX_MOC.token_mult : // 680
+          case LEX_MOC.token_mult : // 810
             regle59 () ;
           break ;
-          case LEX_MOC.token_void : // 664
+          case LEX_MOC.token_void : // 794
             regle60 () ;
           break ;
-          case LEX_MOC.token_int : // 666
+          case LEX_MOC.token_int : // 796
             regle60 () ;
           break ;
-          case LEX_MOC.token_char : // 667
+          case LEX_MOC.token_char : // 797
             regle60 () ;
           break ;
           default :
@@ -645,61 +653,61 @@ this.att_affectable=false;
 scanner.accepter_sucre(LEX_MOC.token_paro);
         }
       break ;
-      case LEX_MOC.token_ident : // 688
+      case LEX_MOC.token_ident : // 818
         scanner.lit ( 2 ) ;
         switch ( scanner.fenetre[1].code ) {
-          case LEX_MOC.token_paro : // 655
+          case LEX_MOC.token_paro : // 785
             regle61 () ;
           break ;
-          case LEX_MOC.token_mult : // 680
+          case LEX_MOC.token_mult : // 810
             regle62 () ;
           break ;
-          case LEX_MOC.token_div : // 681
+          case LEX_MOC.token_div : // 811
             regle62 () ;
           break ;
-          case LEX_MOC.token_mod : // 682
+          case LEX_MOC.token_mod : // 812
             regle62 () ;
           break ;
-          case LEX_MOC.token_et : // 683
+          case LEX_MOC.token_et : // 813
             regle62 () ;
           break ;
-          case LEX_MOC.token_plus : // 677
+          case LEX_MOC.token_plus : // 807
             regle62 () ;
           break ;
-          case LEX_MOC.token_moins : // 678
+          case LEX_MOC.token_moins : // 808
             regle62 () ;
           break ;
-          case LEX_MOC.token_ou : // 679
+          case LEX_MOC.token_ou : // 809
             regle62 () ;
           break ;
-          case LEX_MOC.token_inf : // 671
+          case LEX_MOC.token_inf : // 801
             regle62 () ;
           break ;
-          case LEX_MOC.token_sup : // 673
+          case LEX_MOC.token_sup : // 803
             regle62 () ;
           break ;
-          case LEX_MOC.token_infeg : // 672
+          case LEX_MOC.token_infeg : // 802
             regle62 () ;
           break ;
-          case LEX_MOC.token_supeg : // 674
+          case LEX_MOC.token_supeg : // 804
             regle62 () ;
           break ;
-          case LEX_MOC.token_eg : // 675
+          case LEX_MOC.token_eg : // 805
             regle62 () ;
           break ;
-          case LEX_MOC.token_neg : // 676
+          case LEX_MOC.token_neg : // 806
             regle62 () ;
           break ;
-          case LEX_MOC.token_affect : // 661
+          case LEX_MOC.token_affect : // 791
             regle62 () ;
           break ;
-          case LEX_MOC.token_virg : // 659
+          case LEX_MOC.token_virg : // 789
             regle62 () ;
           break ;
-          case LEX_MOC.token_parf : // 656
+          case LEX_MOC.token_parf : // 786
             regle62 () ;
           break ;
-          case LEX_MOC.token_pv : // 660
+          case LEX_MOC.token_pv : // 790
             regle62 () ;
           break ;
           default :
@@ -707,7 +715,7 @@ scanner.accepter_sucre(LEX_MOC.token_paro);
 scanner.accepter_sucre(LEX_MOC.token_ident);
         }
       break ;
-      case LEX_MOC.token_mult : // 680
+      case LEX_MOC.token_mult : // 810
         regle63 () ;
       break ;
       default :

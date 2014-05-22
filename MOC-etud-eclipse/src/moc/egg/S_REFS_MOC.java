@@ -73,13 +73,13 @@ this.att_type=this.att_htype;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_ident : // 688
+      case LEX_MOC.token_ident : // 818
         regle11 () ;
       break ;
-      case LEX_MOC.token_parf : // 656
+      case LEX_MOC.token_parf : // 786
         regle11 () ;
       break ;
-      case LEX_MOC.token_mult : // 680
+      case LEX_MOC.token_mult : // 810
         regle12 () ;
       break ;
       default :
