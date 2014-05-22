@@ -3,12 +3,8 @@
 //--------------------------------------------------
 package moc.tds;
 
-/**
- * Element d'une TDS
- * 
- * @author marcel
- * 
- */
 public interface INFO {
+
+
 
 }

@@ -15,8 +15,25 @@ public class MOCMessages extends NLS {
   return RESOURCE_BUNDLE;
   }		
 
-  public static  String MOC_expected_eof;
+  public static  String Interne_adresse;
+  public static  String B_22;
+  public static  String B_21;
+  public static  String B_20;
   public static  String MOC_unexpected_token;
-  public static  String NO_MACH;
   public static  String MOC_expected_token;
+  public static  String B_04;
+  public static  String B_03;
+  public static  String B_02;
+  public static  String B_01;
+  public static  String B_6;
+  public static  String NO_MAIN;
+  public static  String NO_MACH;
+  public static  String MOC_expected_eof;
+  public static  String B_18;
+  public static  String B_17;
+  public static  String B_16;
+  public static  String B_15;
+  public static  String B_14;
+  public static  String NonAffectable;
+  public static  String B_13;
   }

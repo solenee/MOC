@@ -24,7 +24,33 @@ public class DTYPE {
 	}
 
 	public boolean compareTo(DTYPE autre) {
-		return nom.equals(autre.nom);
+		if (nom.equals("int")){
+			if (autre.nom.equals("char") || autre.taille != this.taille){
+				return false;
+			}
+			else {
+				return true; 
+			}
+		}
+		else {
+			return this.nom.equals(autre.nom);
+		}
+	}
+
+        public boolean isOperable(){
+		if (nom.equals("int"))
+			return true; 
+		return false;
+	}
+ 
+	public boolean isVoid(){
+		if (nom.equals("void"))
+			return true;
+		return false;
+	}
+
+	public boolean castableTo(DTYPE autre){
+		return this.taille == autre.taille;
 	}
 
 	public String toString() {

@@ -19,67 +19,135 @@ LEX_MOC scanner;
     this.att_scanner = scanner;
     }
 int [] sync= new int[0];
+  Register att_regLB;
   boolean att_eval;
+  String att_code;
+  PARAMETRES att_hparams;
+  PARAMETRES att_params;
   IMachine att_machine;
+  TDS att_tds_fonction;
+  DTYPE att_tInt;
+  DTYPE att_tString;
+  DTYPE att_tVoid;
+  DTYPE att_tChar;
   LEX_MOC att_scanner;
-  private void regle66() throws Exception {
+  DTYPE att_tPointeurNull;
+  TDS att_tds;
+  private void regle64() throws Exception {
 
     //declaration
-    S_E_MOC x_2 = new S_E_MOC(scanner,att_eval) ;
-    S_ARGSX_MOC x_3 = new S_ARGSX_MOC(scanner,att_eval) ;
     //appel
-if  (att_eval)      action_auto_inh_66(x_2, x_3);
-    x_2.analyser() ;
-    x_3.analyser() ;
+if  (att_eval)      action_params_64();
+if  (att_eval)      action_gen_64();
   }
   private void regle65() throws Exception {
 
     //declaration
+    S_E_MOC x_2 = new S_E_MOC(scanner,att_eval) ;
+    S_ARGSX_MOC x_4 = new S_ARGSX_MOC(scanner,att_eval) ;
     //appel
+if  (att_eval)      action_auto_inh_65(x_2, x_4);
+    x_2.analyser() ;
+if  (att_eval)      action_params1_65(x_2, x_4);
+    x_4.analyser() ;
+if  (att_eval)      action_params2_65(x_2, x_4);
+if  (att_eval)      action_gen_65(x_2, x_4);
   }
-private void action_auto_inh_66(S_E_MOC x_2, S_ARGSX_MOC x_3) throws Exception {
+private void action_auto_inh_65(S_E_MOC x_2, S_ARGSX_MOC x_4) throws Exception {
 try {
 // instructions
+x_2.att_tInt=this.att_tInt;
+x_4.att_tInt=this.att_tInt;
+x_2.att_tChar=this.att_tChar;
+x_4.att_tChar=this.att_tChar;
+x_2.att_tPointeurNull=this.att_tPointeurNull;
+x_4.att_tPointeurNull=this.att_tPointeurNull;
+x_2.att_tVoid=this.att_tVoid;
+x_4.att_tVoid=this.att_tVoid;
+x_2.att_tString=this.att_tString;
+x_4.att_tString=this.att_tString;
+x_2.att_regLB=this.att_regLB;
+x_4.att_regLB=this.att_regLB;
+x_2.att_tds=this.att_tds;
+x_4.att_tds=this.att_tds;
+x_2.att_tds_fonction=this.att_tds_fonction;
+x_4.att_tds_fonction=this.att_tds_fonction;
 x_2.att_machine=this.att_machine;
-x_3.att_machine=this.att_machine;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","ARGS -> E ARGSX ;"});
+x_4.att_machine=this.att_machine;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","ARGS -> E #params1 ARGSX #params2 #gen ;"});
+}
+  }
+private void action_params1_65(S_E_MOC x_2, S_ARGSX_MOC x_4) throws Exception {
+try {
+// locales
+PARAMETRES loc_par;
+// instructions
+loc_par=this.att_hparams;
+loc_par.inserer(x_2.att_type);
+x_4.att_hparams=loc_par;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#params1","ARGS -> E #params1 ARGSX #params2 #gen ;"});
+}
+  }
+private void action_params_64() throws Exception {
+try {
+// instructions
+this.att_params=this.att_hparams;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#params","ARGS -> #params #gen ;"});
+}
+  }
+private void action_params2_65(S_E_MOC x_2, S_ARGSX_MOC x_4) throws Exception {
+try {
+// instructions
+this.att_params=x_4.att_params;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#params2","ARGS -> E #params1 ARGSX #params2 #gen ;"});
+}
+  }
+private void action_gen_65(S_E_MOC x_2, S_ARGSX_MOC x_4) throws Exception {
+try {
+// instructions
+this.att_code=this.att_machine.genComment("empilement des parametres")+x_4.att_code+this.att_machine.genComment("parametre de sous-programme")+x_2.att_code+this.att_machine.genComment("charger le parametre ?");
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#gen","ARGS -> E #params1 ARGSX #params2 #gen ;"});
+}
+  }
+private void action_gen_64() throws Exception {
+try {
+// instructions
+this.att_code="";
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#gen","ARGS -> #params #gen ;"});
 }
   }
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 26
+      case LEX_MOC.token_parf : // 33
+        regle64 () ;
+      break ;
+      case LEX_MOC.token_entier : // 62
         regle65 () ;
       break ;
-      case LEX_MOC.token_entier : // 55
-        regle66 () ;
+      case LEX_MOC.token_caractere : // 63
+        regle65 () ;
       break ;
-      case LEX_MOC.token_chaine : // 57
-        regle66 () ;
+      case LEX_MOC.token_plus : // 54
+        regle65 () ;
       break ;
-      case LEX_MOC.token_caractere : // 56
-        regle66 () ;
+      case LEX_MOC.token_moins : // 55
+        regle65 () ;
       break ;
-      case LEX_MOC.token_plus : // 47
-        regle66 () ;
+      case LEX_MOC.token_non : // 61
+        regle65 () ;
       break ;
-      case LEX_MOC.token_moins : // 48
-        regle66 () ;
+      case LEX_MOC.token_null : // 46
+        regle65 () ;
       break ;
-      case LEX_MOC.token_non : // 54
-        regle66 () ;
+      case LEX_MOC.token_paro : // 32
+        regle65 () ;
       break ;
-      case LEX_MOC.token_null : // 39
-        regle66 () ;
+      case LEX_MOC.token_ident : // 65
+        regle65 () ;
       break ;
-      case LEX_MOC.token_paro : // 25
-        regle66 () ;
-      break ;
-      case LEX_MOC.token_ident : // 58
-        regle66 () ;
-      break ;
-      case LEX_MOC.token_mult : // 50
-        regle66 () ;
+      case LEX_MOC.token_mult : // 57
+        regle65 () ;
       break ;
       default :
                scanner._interrompre(IProblem.Syntax, scanner.getBeginLine(), IMOCMessages.id_MOC_unexpected_token,MOCMessages.MOC_unexpected_token,new String[]{scanner.fenetre[0].getNom()});
