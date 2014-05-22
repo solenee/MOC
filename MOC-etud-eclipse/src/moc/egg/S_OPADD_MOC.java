@@ -71,13 +71,13 @@ this.att_code=this.att_machine.genBOu();
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_plus : // 54
+      case LEX_MOC.token_plus : // 677
         regle42 () ;
       break ;
-      case LEX_MOC.token_moins : // 55
+      case LEX_MOC.token_moins : // 678
         regle43 () ;
       break ;
-      case LEX_MOC.token_ou : // 56
+      case LEX_MOC.token_ou : // 679
         regle44 () ;
       break ;
       default :

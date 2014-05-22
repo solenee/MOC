@@ -129,16 +129,16 @@ x_5.att_htdspar=x_2.att_tdspar;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 33
+      case LEX_MOC.token_parf : // 656
         regle5 () ;
       break ;
-      case LEX_MOC.token_void : // 41
+      case LEX_MOC.token_void : // 664
         regle6 () ;
       break ;
-      case LEX_MOC.token_int : // 43
+      case LEX_MOC.token_int : // 666
         regle6 () ;
       break ;
-      case LEX_MOC.token_char : // 44
+      case LEX_MOC.token_char : // 667
         regle6 () ;
       break ;
       default :

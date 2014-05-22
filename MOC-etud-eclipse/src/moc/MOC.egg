@@ -1582,7 +1582,7 @@ end
 } 
 #adresse {
 do
-  F^est_adresse := false;
+  F^est_adresse := false; -- pas sur ?
   F^adresse := null;
 end
 }
@@ -1758,7 +1758,7 @@ do
     if ~F1^est_adresse  then
         if adr_du_pointeur /= null then
             -- adresse du pointeur connue
-            leCode := F1^code + F^machine.genPushAdresse(adr_du_pointeur);
+            leCode := F1^code + F^machine.genPushAdresse(adr_du_pointeur); -- ? pas sur
         else
             error(Interne_adresse, "adresse d'affectation inexistante 5");
         end

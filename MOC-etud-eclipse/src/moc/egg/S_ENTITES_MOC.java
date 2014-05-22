@@ -174,16 +174,16 @@ x_4.att_machine=this.att_machine;
       case LEX_MOC.EOF :
         regle1 () ;
       break ;
-      case LEX_MOC.token_asm : // 42
+      case LEX_MOC.token_asm : // 665
         regle2 () ;
       break ;
-      case LEX_MOC.token_void : // 41
+      case LEX_MOC.token_void : // 664
         regle3 () ;
       break ;
-      case LEX_MOC.token_int : // 43
+      case LEX_MOC.token_int : // 666
         regle3 () ;
       break ;
-      case LEX_MOC.token_char : // 44
+      case LEX_MOC.token_char : // 667
         regle3 () ;
       break ;
       default :

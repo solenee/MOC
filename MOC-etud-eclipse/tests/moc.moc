@@ -31,7 +31,7 @@ void log(char *message, int valeur){
 // la classe mere de toutes les classes
 @class NSObject{
 }
--(void)alloc {}
++(void)init {}
 @end
 
 // un point

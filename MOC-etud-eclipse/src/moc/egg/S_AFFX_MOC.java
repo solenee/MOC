@@ -177,16 +177,16 @@ this.att_code=loc_leCode;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_affect : // 38
+      case LEX_MOC.token_affect : // 661
         regle28 () ;
       break ;
-      case LEX_MOC.token_pv : // 37
+      case LEX_MOC.token_pv : // 660
         regle29 () ;
       break ;
-      case LEX_MOC.token_virg : // 36
+      case LEX_MOC.token_virg : // 659
         regle29 () ;
       break ;
-      case LEX_MOC.token_parf : // 33
+      case LEX_MOC.token_parf : // 656
         regle29 () ;
       break ;
       default :
