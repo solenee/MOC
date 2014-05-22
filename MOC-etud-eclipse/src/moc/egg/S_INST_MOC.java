@@ -540,52 +540,52 @@ this.att_isRet=true;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_void : // 794
+      case LEX_MOC.token_void : // 171
         regle19 () ;
       break ;
-      case LEX_MOC.token_int : // 796
+      case LEX_MOC.token_int : // 173
         regle19 () ;
       break ;
-      case LEX_MOC.token_char : // 797
+      case LEX_MOC.token_char : // 174
         regle19 () ;
       break ;
-      case LEX_MOC.token_entier : // 815
+      case LEX_MOC.token_entier : // 192
         regle20 () ;
       break ;
-      case LEX_MOC.token_caractere : // 816
+      case LEX_MOC.token_caractere : // 193
         regle20 () ;
       break ;
-      case LEX_MOC.token_plus : // 807
+      case LEX_MOC.token_plus : // 184
         regle20 () ;
       break ;
-      case LEX_MOC.token_moins : // 808
+      case LEX_MOC.token_moins : // 185
         regle20 () ;
       break ;
-      case LEX_MOC.token_non : // 814
+      case LEX_MOC.token_non : // 191
         regle20 () ;
       break ;
-      case LEX_MOC.token_null : // 799
+      case LEX_MOC.token_null : // 176
         regle20 () ;
       break ;
-      case LEX_MOC.token_paro : // 785
+      case LEX_MOC.token_paro : // 162
         regle20 () ;
       break ;
-      case LEX_MOC.token_ident : // 818
+      case LEX_MOC.token_ident : // 195
         regle20 () ;
       break ;
-      case LEX_MOC.token_mult : // 810
+      case LEX_MOC.token_mult : // 187
         regle20 () ;
       break ;
-      case LEX_MOC.token_aco : // 787
+      case LEX_MOC.token_aco : // 164
         regle21 () ;
       break ;
-      case LEX_MOC.token_si : // 792
+      case LEX_MOC.token_si : // 169
         regle22 () ;
       break ;
-      case LEX_MOC.token_retour : // 798
+      case LEX_MOC.token_retour : // 175
         regle25 () ;
       break ;
-      case LEX_MOC.token_asm : // 795
+      case LEX_MOC.token_asm : // 172
         regle26 () ;
       break ;
       default :

@@ -152,34 +152,34 @@ x_3.att_machine=this.att_machine;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_inf : // 801
+      case LEX_MOC.token_inf : // 178
         regle31 () ;
       break ;
-      case LEX_MOC.token_sup : // 803
+      case LEX_MOC.token_sup : // 180
         regle31 () ;
       break ;
-      case LEX_MOC.token_infeg : // 802
+      case LEX_MOC.token_infeg : // 179
         regle31 () ;
       break ;
-      case LEX_MOC.token_supeg : // 804
+      case LEX_MOC.token_supeg : // 181
         regle31 () ;
       break ;
-      case LEX_MOC.token_eg : // 805
+      case LEX_MOC.token_eg : // 182
         regle31 () ;
       break ;
-      case LEX_MOC.token_neg : // 806
+      case LEX_MOC.token_neg : // 183
         regle31 () ;
       break ;
-      case LEX_MOC.token_affect : // 791
+      case LEX_MOC.token_affect : // 168
         regle32 () ;
       break ;
-      case LEX_MOC.token_virg : // 789
+      case LEX_MOC.token_virg : // 166
         regle32 () ;
       break ;
-      case LEX_MOC.token_parf : // 786
+      case LEX_MOC.token_parf : // 163
         regle32 () ;
       break ;
-      case LEX_MOC.token_pv : // 790
+      case LEX_MOC.token_pv : // 167
         regle32 () ;
       break ;
       default :

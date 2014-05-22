@@ -129,10 +129,10 @@ this.att_params=this.att_hparams;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 786
+      case LEX_MOC.token_parf : // 163
         regle66 () ;
       break ;
-      case LEX_MOC.token_virg : // 789
+      case LEX_MOC.token_virg : // 166
         regle67 () ;
       break ;
       default :
