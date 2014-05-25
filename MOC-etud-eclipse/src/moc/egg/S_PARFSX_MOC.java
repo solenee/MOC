@@ -31,10 +31,10 @@ int [] sync= new int[0];
   int att_last_adr;
   TDS att_htdspar;
   DTYPE att_tChar;
-  TDS att_tdspar;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
   TDS att_tds;
+  TDS att_tdspar;
   private void regle8() throws Exception {
 
     //declaration
@@ -131,10 +131,10 @@ x_6.att_htdspar=x_3.att_tdspar;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 163
+      case LEX_MOC.token_parf : // 33
         regle7 () ;
       break ;
-      case LEX_MOC.token_virg : // 166
+      case LEX_MOC.token_virg : // 36
         regle8 () ;
       break ;
       default :

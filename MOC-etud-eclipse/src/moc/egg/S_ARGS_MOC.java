@@ -24,8 +24,8 @@ int [] sync= new int[0];
   String att_code;
   PARAMETRES att_hparams;
   PARAMETRES att_params;
-  IMachine att_machine;
   TDS att_tds_fonction;
+  IMachine att_machine;
   DTYPE att_tInt;
   DTYPE att_tString;
   DTYPE att_tVoid;
@@ -127,34 +127,34 @@ this.att_code="";
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 163
+      case LEX_MOC.token_parf : // 33
         regle64 () ;
       break ;
-      case LEX_MOC.token_entier : // 192
+      case LEX_MOC.token_entier : // 62
         regle65 () ;
       break ;
-      case LEX_MOC.token_caractere : // 193
+      case LEX_MOC.token_caractere : // 63
         regle65 () ;
       break ;
-      case LEX_MOC.token_plus : // 184
+      case LEX_MOC.token_plus : // 54
         regle65 () ;
       break ;
-      case LEX_MOC.token_moins : // 185
+      case LEX_MOC.token_moins : // 55
         regle65 () ;
       break ;
-      case LEX_MOC.token_non : // 191
+      case LEX_MOC.token_non : // 61
         regle65 () ;
       break ;
-      case LEX_MOC.token_null : // 176
+      case LEX_MOC.token_null : // 46
         regle65 () ;
       break ;
-      case LEX_MOC.token_paro : // 162
+      case LEX_MOC.token_paro : // 32
         regle65 () ;
       break ;
-      case LEX_MOC.token_ident : // 195
+      case LEX_MOC.token_ident : // 65
         regle65 () ;
       break ;
-      case LEX_MOC.token_mult : // 187
+      case LEX_MOC.token_mult : // 57
         regle65 () ;
       break ;
       default :

@@ -24,8 +24,8 @@ int [] sync= new int[0];
   String att_code;
   PARAMETRES att_hparams;
   PARAMETRES att_params;
-  IMachine att_machine;
   TDS att_tds_fonction;
+  IMachine att_machine;
   DTYPE att_tInt;
   DTYPE att_tString;
   DTYPE att_tVoid;
@@ -129,10 +129,10 @@ this.att_params=this.att_hparams;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 163
+      case LEX_MOC.token_parf : // 33
         regle66 () ;
       break ;
-      case LEX_MOC.token_virg : // 166
+      case LEX_MOC.token_virg : // 36
         regle67 () ;
       break ;
       default :

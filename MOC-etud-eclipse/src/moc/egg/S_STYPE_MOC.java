@@ -77,13 +77,13 @@ this.att_type=this.att_tInt;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_void : // 171
+      case LEX_MOC.token_void : // 41
         regle13 () ;
       break ;
-      case LEX_MOC.token_int : // 173
+      case LEX_MOC.token_int : // 43
         regle14 () ;
       break ;
-      case LEX_MOC.token_char : // 174
+      case LEX_MOC.token_char : // 44
         regle15 () ;
       break ;
       default :

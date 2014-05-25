@@ -23,8 +23,8 @@ int [] sync= new int[0];
   boolean att_eval;
   TDS att_stds_fonction;
   String att_code;
-  IMachine att_machine;
   TDS att_tds_fonction;
+  IMachine att_machine;
   DTYPE att_tInt;
   DTYPE att_tString;
   DTYPE att_tVoid;
@@ -174,16 +174,16 @@ x_4.att_machine=this.att_machine;
       case LEX_MOC.EOF :
         regle1 () ;
       break ;
-      case LEX_MOC.token_asm : // 172
+      case LEX_MOC.token_asm : // 42
         regle2 () ;
       break ;
-      case LEX_MOC.token_void : // 171
+      case LEX_MOC.token_void : // 41
         regle3 () ;
       break ;
-      case LEX_MOC.token_int : // 173
+      case LEX_MOC.token_int : // 43
         regle3 () ;
       break ;
-      case LEX_MOC.token_char : // 174
+      case LEX_MOC.token_char : // 44
         regle3 () ;
       break ;
       default :

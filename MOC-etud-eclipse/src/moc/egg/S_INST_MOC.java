@@ -540,52 +540,52 @@ this.att_isRet=true;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_void : // 171
+      case LEX_MOC.token_void : // 41
         regle19 () ;
       break ;
-      case LEX_MOC.token_int : // 173
+      case LEX_MOC.token_int : // 43
         regle19 () ;
       break ;
-      case LEX_MOC.token_char : // 174
+      case LEX_MOC.token_char : // 44
         regle19 () ;
       break ;
-      case LEX_MOC.token_entier : // 192
+      case LEX_MOC.token_entier : // 62
         regle20 () ;
       break ;
-      case LEX_MOC.token_caractere : // 193
+      case LEX_MOC.token_caractere : // 63
         regle20 () ;
       break ;
-      case LEX_MOC.token_plus : // 184
+      case LEX_MOC.token_plus : // 54
         regle20 () ;
       break ;
-      case LEX_MOC.token_moins : // 185
+      case LEX_MOC.token_moins : // 55
         regle20 () ;
       break ;
-      case LEX_MOC.token_non : // 191
+      case LEX_MOC.token_non : // 61
         regle20 () ;
       break ;
-      case LEX_MOC.token_null : // 176
+      case LEX_MOC.token_null : // 46
         regle20 () ;
       break ;
-      case LEX_MOC.token_paro : // 162
+      case LEX_MOC.token_paro : // 32
         regle20 () ;
       break ;
-      case LEX_MOC.token_ident : // 195
+      case LEX_MOC.token_ident : // 65
         regle20 () ;
       break ;
-      case LEX_MOC.token_mult : // 187
+      case LEX_MOC.token_mult : // 57
         regle20 () ;
       break ;
-      case LEX_MOC.token_aco : // 164
+      case LEX_MOC.token_aco : // 34
         regle21 () ;
       break ;
-      case LEX_MOC.token_si : // 169
+      case LEX_MOC.token_si : // 39
         regle22 () ;
       break ;
-      case LEX_MOC.token_retour : // 175
+      case LEX_MOC.token_retour : // 45
         regle25 () ;
       break ;
-      case LEX_MOC.token_asm : // 172
+      case LEX_MOC.token_asm : // 42
         regle26 () ;
       break ;
       default :

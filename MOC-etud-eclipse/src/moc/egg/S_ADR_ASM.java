@@ -95,10 +95,10 @@ att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IASMMess
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_ASM.token_paro : // 206
+      case LEX_ASM.token_paro : // 76
         regle3 () ;
       break ;
-      case LEX_ASM.token_var : // 231
+      case LEX_ASM.token_var : // 101
         regle4 () ;
       break ;
       default :

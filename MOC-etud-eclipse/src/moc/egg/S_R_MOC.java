@@ -32,9 +32,9 @@ int [] sync= new int[0];
   DTYPE att_tString;
   DTYPE att_tVoid;
   DTYPE att_tChar;
-  TDS att_tds;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
+  TDS att_tds;
   private void regle39() throws Exception {
 
     //declaration

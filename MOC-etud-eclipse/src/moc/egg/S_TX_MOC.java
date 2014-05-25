@@ -180,55 +180,55 @@ this.att_code=this.att_hcode;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_mult : // 187
+      case LEX_MOC.token_mult : // 57
         regle46 () ;
       break ;
-      case LEX_MOC.token_div : // 188
+      case LEX_MOC.token_div : // 58
         regle46 () ;
       break ;
-      case LEX_MOC.token_mod : // 189
+      case LEX_MOC.token_mod : // 59
         regle46 () ;
       break ;
-      case LEX_MOC.token_et : // 190
+      case LEX_MOC.token_et : // 60
         regle46 () ;
       break ;
-      case LEX_MOC.token_plus : // 184
+      case LEX_MOC.token_plus : // 54
         regle47 () ;
       break ;
-      case LEX_MOC.token_moins : // 185
+      case LEX_MOC.token_moins : // 55
         regle47 () ;
       break ;
-      case LEX_MOC.token_ou : // 186
+      case LEX_MOC.token_ou : // 56
         regle47 () ;
       break ;
-      case LEX_MOC.token_inf : // 178
+      case LEX_MOC.token_inf : // 48
         regle47 () ;
       break ;
-      case LEX_MOC.token_sup : // 180
+      case LEX_MOC.token_sup : // 50
         regle47 () ;
       break ;
-      case LEX_MOC.token_infeg : // 179
+      case LEX_MOC.token_infeg : // 49
         regle47 () ;
       break ;
-      case LEX_MOC.token_supeg : // 181
+      case LEX_MOC.token_supeg : // 51
         regle47 () ;
       break ;
-      case LEX_MOC.token_eg : // 182
+      case LEX_MOC.token_eg : // 52
         regle47 () ;
       break ;
-      case LEX_MOC.token_neg : // 183
+      case LEX_MOC.token_neg : // 53
         regle47 () ;
       break ;
-      case LEX_MOC.token_affect : // 168
+      case LEX_MOC.token_affect : // 38
         regle47 () ;
       break ;
-      case LEX_MOC.token_virg : // 166
+      case LEX_MOC.token_virg : // 36
         regle47 () ;
       break ;
-      case LEX_MOC.token_parf : // 163
+      case LEX_MOC.token_parf : // 33
         regle47 () ;
       break ;
-      case LEX_MOC.token_pv : // 167
+      case LEX_MOC.token_pv : // 37
         regle47 () ;
       break ;
       default :
