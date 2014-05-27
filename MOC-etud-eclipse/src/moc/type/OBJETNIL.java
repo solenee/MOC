@@ -6,6 +6,7 @@ public class OBJETNIL  extends POINTEUR {
 	     super(null);
     }
      
+    // nil.conformsTo(B) <=> A = nil est ok ie A=null ou A est un objet
     public boolean compareTo(DTYPE autre) {
     	if (autre instanceof POINTEURNULL)
     		return true;

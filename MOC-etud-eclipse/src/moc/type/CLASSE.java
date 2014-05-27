@@ -10,9 +10,9 @@ public class CLASSE extends DTYPE {
 	private LCHAMPS attributs;
 	private CLASSE classeMere;
 	
-	public CLASSE(String n, LCHAMPS champs, CLASSE mere) {
+	public CLASSE(String nom, LCHAMPS champs, CLASSE mere) {
 		super("classe", champs.getTaille());
-		nomClasse = n;
+		nomClasse = nom;
 		attributs = champs;
 		classeMere = mere;
 		// verifier la presence du pointeur tv
@@ -22,6 +22,10 @@ public class CLASSE extends DTYPE {
 			if ( (tv == null) || ! (tv.getType() instanceof POINTEUR) )
 				throw new RuntimeException("Mauvaise declaration de classe : le pointeur tv est absent des champs");
 		}
+	}
+	
+	public String toString(){
+		return super.toString() + " "+nomClasse+" herite de "+classeMere+" "+attributs.toString();
 	}
 	
 	/** Obtenir la liste des classes parentes. */
@@ -49,7 +53,7 @@ public class CLASSE extends DTYPE {
 	}
 
 	@Override
-	// A.conformsTo(B) <=> A = B est ok ie A==B ou A ancetre de B
+	// A.conformsTo(B) <=> A = B est ok ie A==B ou A ancetre de B ou B=nil
 	public boolean compareTo(DTYPE autre) {
 		if (autre instanceof CLASSE) {
 			if (((CLASSE) autre).getNomClasse().equals(getNomClasse()))
