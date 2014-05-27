@@ -1,0 +1,71 @@
+package moc.type;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CLASSE extends DTYPE {
+
+	private String nomClasse;
+	// private POINTEUR tv; obligatoirement present dans les champs : POINTEUR sur DTYPE
+	private LCHAMPS attributs;
+	private CLASSE classeMere;
+	
+	public CLASSE(String n, LCHAMPS champs, CLASSE mere) {
+		super("classe", champs.getTaille());
+		nomClasse = n;
+		attributs = champs;
+		classeMere = mere;
+		// verifier la presence du pointeur tv
+		if (attributs != null) // ligne a enlever apres 1er test
+		{
+			CHAMP tv = attributs.chercher("tv");
+			if ( (tv == null) || ! (tv.getType() instanceof POINTEUR) )
+				throw new RuntimeException("Mauvaise declaration de classe : le pointeur tv est absent des champs");
+		}
+	}
+	
+	/** Obtenir la liste des classes parentes. */
+	public List<CLASSE> getAncetres() {
+		List<CLASSE> l;
+		if (nomClasse.equals("NSObject")) {
+			l = null;
+		} else {
+			l = classeMere.getAncetres();
+			if (l == null) {
+				// classeMere = NSObject
+				l = new ArrayList<CLASSE>();
+			}
+			l.add(classeMere);
+		}
+		return l;
+	}
+	
+	public String getNomClasse() {
+		return nomClasse;
+	}
+	
+	public static boolean estObjet(DTYPE a) {
+		return (a instanceof POINTEUR) && ( ((POINTEUR)a).getType() instanceof CLASSE ) ;
+	}
+
+	@Override
+	// A.conformsTo(B) <=> A = B est ok ie A==B ou A ancetre de B
+	public boolean compareTo(DTYPE autre) {
+		if (autre instanceof CLASSE) {
+			if (((CLASSE) autre).getNomClasse().equals(getNomClasse()))
+				return true;
+			else {
+				List<CLASSE> l = ((CLASSE) autre).getAncetres();
+				return l.contains(this);
+			}
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean castableTo(DTYPE autre) {
+		return compareTo(autre);
+	}
+
+}

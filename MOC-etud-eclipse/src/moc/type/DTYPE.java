@@ -37,7 +37,7 @@ public class DTYPE {
 		}
 	}
 
-        public boolean isOperable(){
+    public boolean isOperable(){
 		if (nom.equals("int"))
 			return true; 
 		return false;

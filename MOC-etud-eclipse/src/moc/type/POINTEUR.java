@@ -11,6 +11,7 @@ public class POINTEUR extends DTYPE {
 	public DTYPE getType() {
 		return type;
 	}
+	
 	public boolean compareTo(DTYPE autre) {
 		if (autre instanceof POINTEUR)
 			return type.compareTo(((POINTEUR) autre).type);
