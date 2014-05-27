@@ -4,42 +4,42 @@ import moc.type.DTYPE;
 
 public class INFOMETHODE extends INFOFONCTION {
 
-	protected boolean classmethod; // true si de classe, false si d'instance
+	protected boolean isclassmethod; // true si de classe, false si d'instance
 	protected Integer numero;
-	protected String etiquette;
+	protected String classe;
 	
-	public INFOMETHODE(DTYPE r, boolean classmethod, Integer numero) {
+	public INFOMETHODE(DTYPE r, boolean isclassmethod, Integer numero) {
 		super(r);
-		this.classmethod = classmethod;
+		this.isclassmethod = isclassmethod;
 		this.numero = numero;
 	}
 	
-	public INFOMETHODE(DTYPE r, boolean classmethod, Integer numero, String etiquette) {
+	public INFOMETHODE(DTYPE r, boolean isclassmethod, Integer numero, String classe) {
 		super(r);
-		this.classmethod = classmethod;
+		this.isclassmethod = isclassmethod;
 		this.numero = numero;
-		this.etiquette = etiquette;
+		this.classe = classe;
 	}
 
-	public INFOMETHODE(DTYPE r, PARAMETRES params, boolean classmethod, Integer numero) {
+	public INFOMETHODE(DTYPE r, PARAMETRES params, boolean isclassmethod, Integer numero) {
 		super(r, params);
-		this.classmethod = classmethod;
+		this.isclassmethod = isclassmethod;
 		this.numero = numero;
 	}
 	
-	public INFOMETHODE(DTYPE r, PARAMETRES params, boolean classmethod, Integer numero, String etiquette) {
+	public INFOMETHODE(DTYPE r, PARAMETRES params, boolean isclassmethod, Integer numero, String classe) {
 		super(r, params);
-		this.classmethod = classmethod;
+		this.isclassmethod = isclassmethod;
 		this.numero = numero;
-		this.etiquette = etiquette;
+		this.classe = classe;
 	}
 
 	public boolean isClassmethod() {
-		return classmethod;
+		return isclassmethod;
 	}
 
-	public void setClassmethod(boolean classmethod) {
-		this.classmethod = classmethod;
+	public void setIsclassmethod(boolean isclassmethod) {
+		this.isclassmethod = isclassmethod;
 	}
 
 	public Integer getNumero() {
