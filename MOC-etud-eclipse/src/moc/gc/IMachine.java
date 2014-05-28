@@ -10,6 +10,26 @@ import moc.compiler.MOCException;
  */
 public interface IMachine {
 	/**
+	 * Code pour allouer l'espace memoire sur lequel tous les pointeurs null pointeront 
+	 * 
+	 * @return 
+	 */
+	String genEspaceNull();
+	
+	/**
+	 * Code de l'appel de la methode principale main 
+	 * 
+	 * @return 
+	 */
+	String genCallMain();
+	
+	/**
+	 * Code pour arreter l'execution du programme 
+	 * 
+	 * @return 
+	 */
+	String genFinProgramme();
+	/**
 	 * Suffixe du fichier cible (.tam par exemple)
 	 * 
 	 * @return

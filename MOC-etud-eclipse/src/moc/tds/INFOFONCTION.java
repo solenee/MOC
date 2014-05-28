@@ -6,7 +6,7 @@ import moc.type.*;
  * 
  * @author Solene, Zohour, Leger
  * 
- */
+ */ 
 public class INFOFONCTION implements INFO {
 	/**
 	 * Le type de la variable

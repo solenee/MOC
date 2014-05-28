@@ -8,24 +8,18 @@ option auto = true;
 option version = 0.0.1;
 option k=2; 
 
--- verification du retour  
+-- verification du retour 
 inh typeRet : DTYPE for BLOC, INSTS, INST, SIX;
 syn isRet   : BOOLEAN for BLOC, INSTS, INST, SIX;
 -- decl type 
-inh tInt  : DTYPE for PARFS, PARFSX, PARF, TYPE, STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
-inh tChar : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
-inh tPointeurNull : DTYPE for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
-inh tVoid  : DTYPE for PARFS, PARFSX, STYPE, ENTITES, TYPE, PARF, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
-inh tString : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
-inh regLB : Register for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
--- == moc
-inh tNSObject :  DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, SUPER, PTYPE;
-inh tAny :  DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE; 
-inh tBool :  DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE; 
-inh objetNil :  DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE; 
--- =/= moc
+inh tInt  : DTYPE for PARFS, PARFSX, PARF, TYPE, STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh tChar : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh tPointeurNull : DTYPE for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh tVoid  : DTYPE for PARFS, PARFSX, STYPE, ENTITES, TYPE, PARF, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh tString : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh regLB : Register for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
 --attributes  
-syn type  : DTYPE for TYPE, REFS, STYPE, F, E, A, T, R, AFFX, PTYPE;
+syn type  : DTYPE for TYPE, REFS, STYPE, F, E, A, T, R, AFFX;
 inh htype : DTYPE for REFS, AFFX;
 -- affectation 
 syn affectable : BOOLEAN for F, A, R, T, E;
@@ -63,9 +57,9 @@ inh machine : IMachine for
          ENTITES, FONCTION, INST, BLOC, INSTS, SIX,
          PARFS, PARF, PARFSX, ARGS,ARGSX, 
          E, AFFX, A, AX, R, RX, T, TX, F, OPMUL, OPUN, OPADD, OPREL
-         -- decommenter la ligne suivante pour MOC
-       ,IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS
-         -- fin extension MOC
+--         -- decommenter la ligne suivante pour MOC
+--       ,IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS
+--         -- fin extension MOC
          ;
 -- ces attributs permettent de recuperer les instructions du code ASM inline       
 syn code_asm : STRING for ASM;
@@ -76,15 +70,14 @@ syn code : STRING for ENTITES, FONCTION, BLOC, INSTS, INST, SIX, E, A, AFFX, AX,
 -- operation
 inh hcode : STRING for AX, RX, TX;
 inh code_gauche: STRING for AFFX; -- code du terme a gauche de l'operateur
--- definition des classes
----- les attributs
-inh hattributs : LCHAMPS for ATTRIBUTS, ATTRIBUT;
-syn attributs : LCHAMPS for ATTRIBUTS, ATTRIBUT;
--- type associe a la classe mere
-syn classe : CLASSE for SUPER;
--- classe associe a une methode
-inh hclasse : STRING for METHODE, METHODES;
- 
+-- **
+inh emplNull : Emplacement for ENTITES, FONCTION, INST, BLOC, INSTS, SIX, PARFS, PARF, PARFSX, ARGS,ARGSX, E, AFFX, A, AX, R, RX, T, TX, F, OPMUL, OPUN, OPADD, OPREL
+--         -- decommenter la ligne suivante pour MOC
+--       ,IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS
+--         -- fin extension MOC
+         ; 
+
+
 --terminaux
 space separateur is  "[\r\n\t ]+";     
 space comm is  "\/\/[^\n]*\n";
@@ -125,21 +118,22 @@ term caractere is  "\'[^\']\'";
 term chaine is  "\"[^\"]*\"";
 term ident is  "[a-z][_0-9A-Za-z]*";
 -- --decommenter pour MOC
-term identc is  "[A-Z][_0-9A-Za-z]*";   -- nom de classe
-term chaineo is  "@\"[^\"]*\"";         -- chaine MOC
---fin extension MOC
+--term identc is  "[A-Z][_0-9A-Za-z]*";   -- nom de classe
+--term chaineo is  "@\"[^\"]*\"";         -- chaine MOC
+-- --fin extension MOC
 
 -- pour les instructions en assembleur 'inline'
 compil ASM;
 
 --production rules
-PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen;
+PROGRAMME -> #initType #init #initCode #tds #adresse ENTITES #main #gen;
 global
    machine : IMachine;
+   -- **
+   leCode : STRING;
+   -- **
 -- transmission de la machine cible  (choisie par l'option -m au lancement) 
 #initType { 
-local
-    nsobject : CLASSE;
 do 
   ENTITES^tInt := new DTYPE("int", 1);
   ENTITES^tChar   := new DTYPE("char", 1);
@@ -147,15 +141,8 @@ do
   ENTITES^tPointeurNull := new POINTEURNULL();
   ENTITES^tVoid := new DTYPE("void", 0);
   ENTITES^regLB := new Register("LB", 0);
-  nsobject := new CLASSE("NSObject", null, null); -- definir init(), recuperer tv et le mettre en unique champ de la classe
-  ENTITES^tNSObject := nsobject;
-  ENTITES^tAny := new POINTEUR(nsobject); -- ajouter ce type dans la TDS sous le nom de "id"
-  -- ENTITES^tNil := new OBJETNIL(); -- ajouter ce type dans la TDS sous le nom de "id"
-  ENTITES^objetNil := new POINTEUR(null); -- allouer un espace special dans la memoire a objetNil
-  ENTITES^tBool := new DTYPE("bool", 1); 
 end 
 }
-
 #init {
 do
    machine := PROGRAMME^source.getMachine();
@@ -166,6 +153,15 @@ do
    end
 end
 }
+-- **
+#initCode {
+do
+  ENTITES^emplNull := new Emplacement(0, new Register("SB", 0));
+  leCode := machine.genComment("code de lancement du programme") + machine.genEspaceNull() 
+    + machine.genCallMain() + machine.genFinProgramme() ;
+end
+}
+-- **
 --tds associées à entites
 #tds {
 local
@@ -193,11 +189,14 @@ end
 }
 -- ecrit le code dans un fichier
 #gen {
-local
 do
-    machine.writeCode(PROGRAMME^source.getFileName(), ENTITES^code); 
+-- **
+    leCode := leCode + machine.genComment("code source du programme") + ENTITES^code;
+    machine.writeCode(PROGRAMME^source.getFileName(), leCode);
+-- ** 
 end
 }
+
 ENTITES -> #tds_fonction #gen ;
 #gen {
 do
@@ -208,7 +207,7 @@ end
 do
   ENTITES^stds_fonction := ENTITES^tds_fonction;
 end
-}  
+}
 
 ENTITES ->   asm #tds ASM ENTITES #tds_fonction #gen;
 #tds {
@@ -945,11 +944,14 @@ do
    empl_droit := A^adresse;
    if empl_droit /= null then
         -- empl_droit est l'emplacement du terme de droite
+        -- if (empl_droit = AFFX^emplNull) then
+        -- ** codedroit := AFFX^machine.genComment("acces a un pointeur null") + AFFX^machine.genFinProgramme(); ?
         codedroit := A^code + AFFX^machine.genReadMem(empl_droit, t.getTaille());
    else
         if A^est_adresse then
             -- lire indirect l'adresse
             codedroit := A^code + AFFX^machine.genReadIndirectMem(t.getTaille());
+            -- ** tester si l'adresse en somment de pile est emplNull avec un code genere
         else
             -- le terme de droite est une constante ou a un appel de procedure
             codedroit := A^code ;
@@ -1052,7 +1054,7 @@ end
 #getType{
 do
 	if AX^vide then 
-		A^type := R^type;
+		A^type := R^type; 
 	else 
 		A^type := A^tInt;
 	end 
@@ -1623,12 +1625,19 @@ end
 }
 
 -- pointeur NULL
-F -> null  #getType #estAffectable #adresse #gen ;
+F -> null  #getType #empl #estAffectable #adresse #gen ;
 #getType {
 do 
    F^type := F^tPointeurNull;
 end
 }
+--**
+#empl {
+do
+  F^adresse := F^emplNull;
+end
+}
+--**
 #estAffectable{
 do 
    F^affectable := false;
@@ -1637,7 +1646,7 @@ end
 #adresse {
 do
   F^est_adresse := false;
-  F^adresse := null;
+  -- ** F^adresse := null;
 end
 }
 #gen {
@@ -1910,246 +1919,59 @@ end
 
 
 ----====decommenter pour ============ MOC extension =================
-ENTITES ->  IMPLEMENTATION ENTITES #gen ;
-#gen {
-do 
-  ENTITES^code := ENTITES^machine.genComment("Definition des classes");
-end
-}
-
--- definition d'une classe
-IMPLEMENTATION ->  classe identc SUPER aco #hattributs ATTRIBUTS #type acf #hclasse METHODES fin ;
-global
-    type : CLASSE;
-    tv : CHAMP;
-    attributs : LCHAMPS;
-#hattributs {
-do
-  -- inserer d'abord le cham qui contiendra l'Emplacement du code des methodes du type reel des instances
-  attributs :=  new LCHAMPS();
-  tv := new CHAMP("tv", new POINTEUR(null), 1);
-  attributs.inserer(tv);
-  ATTRIBUTS^hattributs := attributs;
-end
-}
-#type {
-do
-  type := new CLASSE(identc^txt, ATTRIBUTS^attributs, SUPER^classe);
-end
-}
-#hclasse {
-do
-  METHODES^hclasse := identc^txt; 
-end
-}
-
--- surclasse
-SUPER -> #classeMere;
-#classeMere {
-do
-  SUPER^classe := SUPER^tNSObject;
-end
-}
-
-SUPER -> dpts identc  #classeMere;
-#classeMere {
-local
-  --in : INFO;
-  --i : INFOCLASSE;
-do
-  --in := SUPER^tdsClasses.chercherLocalement(identc^txt);
-  --if (in = null) then
-    --error(B_14 , "la classe mere "+identc^txt+" n'existe pas ");
-  --else
-    --match in with INFOTYPE then
-        --i := in;
-        SUPER^classe := null; --i.getClasse();
-    --else
-        --error(B_17 , "la classe mere "+identc^txt+" n'existe pas");
-    --end
-  end
-}
-
---attributs
-ATTRIBUTS -> #attributs;
-#attributs {
-do
-  ATTRIBUTS^attributs := ATTRIBUTS^hattributs;
-end
-}
-
-ATTRIBUTS -> TYPE ident pv #hattributs ATTRIBUTS #attributs;
-#hattributs {
-local 
-    att : CHAMP;
-    attributs : LCHAMPS; 
-do
-  attributs := ATTRIBUTS^hattributs;
-  att := new CHAMP(ident^txt, TYPE^type, TYPE^type.getDep());
-  attributs.inserer(att);
-  ATTRIBUTS1^hattributs := attributs;
-end
-}
-#attributs {
-do
-  ATTRIBUTS^attributs := ATTRIBUTS1^attributs;
-end
-}
-
--- methodes
-METHODES -> ;
-METHODES ->  METHODE  METHODES ;
-METHODE ->  QUAL PTYPE   MPARFS BLOC ;
---qualificateur attribut ou methode :  + = de classe, - = d'instance
-QUAL -> plus;
-QUAL -> moins;
---type classe 
-STYPE-> identc #type;
-#type {
-local
-  in : INFO;
-  i : INFOCLASSE;
-do
-  --in := STYPE^tdsClasses.chercherGlobalement(identc^txt);
-  --if (in = null) then
-    --error(B_14 , "Classe "+identc^txt+" inconnue");
-  --else
-    --match in with INFOCLASSE then
-        -- i := in;
-        STYPE^type := null; --i.getType();
-    --else
-        --error(B_17 , identc^txt+" n'est pas une classe");
-    --end
-  --end
-end 
-}
--- type BOOL
-STYPE-> bool #type;
-#type {
-do
-  STYPE^type := STYPE^tBool;
-end
-}
--- type "any"
-TYPE -> id  #type;
-#type {
-do
-  TYPE^type := TYPE^tAny;
-end
-}
--- type argument (ou retour) de methode entre parentheses
-PTYPE-> paro TYPE parf #type;
-#type {
-do
-  PTYPE^type := TYPE^type;
-end
-}
--- parametres de methodes
-MPARFS -> ;
-MPARFS ->  MPARF MPARFS ; 
--- selecteur sans parametre
-MPARF ->  ident  ;
--- selecteur  + type parametre + nom parametre
-MPARF ->   ident dpts  PTYPE ident;
--- object nil
-F -> nil #type;
-#type {
-do
-  F^type := F^tNil;
-end
-}
---Constante 'YES'
-F -> yes #type;
-#type {
-do
-  F^type := F^tBool;
-end
-}
--- Constante 'NO'
-F -> no #type;
-#type {
-do
-  F^type := F^tBool;
-end
-}
--- chaine MOC (commence par @)
-F -> chaineo #type;
-#type {
-do
-  F^type := null;
-end
-}
---self = this de Java
-F -> self  #type;
-#type {
-local
-  in : INFO;
-  i : INFOVAR;
-do
-  --in := STYPE^tdsClasses.chercherGlobalement("self");
-  --if (in = null) then
-    --error(IllegalSelf,  "utilisation illegale de self : hors d'une methode");
-  --else
-    --match in with INFOVAR then
-        -- i := in;
-        F^type := null; --i.getType();
-    --else
-        --error(ErreurInterneTDS_self,  "self devrait etre dans la TDS de la methode en tant que variable!");
-    --end
-  --end
-end 
-}
-
-F -> super #type;
-#type {
-local
-  in : INFO;
-  i : INFOVAR;
-  t : POINTEUR;
-  type : DTYPE;
-  c : CLASSE;
-do
-  --in := STYPE^tdsClasses.chercherGlobalement("self");
-  --if (in = null) then
-    --error(IllegalSelf,  "utilisation illegale de self : hors d'une methode");
-  --else
-    --match in with INFOVAR then
-        -- i := in;
-        -- type := i.getType();
-        --match type with POINTEUR then
-        --  t := type;
-        --  type := t.getType();
-        --  match type with CLASSE then
-        --      c := type;
-        --      c := c.getClasseMere()
-        --      if (c != null) then
-                  F^type := null; -- c.getClasseMere();
-        --      else
-        --          error(NoSuper,  c.getNomClasse()+" n'a pas de classe mere");
-        --      end if;
-        --  else
-        --      error(IllegalSuper, "utilisation illegale de super : hors d'une methode");
-        --  end;
-        --else
-        --  error(IllegalSuper, "utilisation illegale de super : hors d'une methode");
-         --i.getType();
-    --else
-        --error(ErreurInterneTDS_self,  "self devrait etre dans la TDS de la methode en tant que variable!");
-    --end
-  --end if;
-end 
-}
--- Appel de methode
-F -> cro F MARGS crf   ;
--- pour appel methode de classe
-F -> cro identc MARGS crf  ;
--- arguments appel de methode
-MARGS ->   ;
-MARGS ->  MARG MARGS   ;
--- selecteur + arg
-MARG -> ident dpts  E;
--- selecteur sans arg
-MARG -> ident  ;
---fin de MOC extension
+--ENTITES ->  IMPLEMENTATION ENTITES ;
+---- definition d'une classe
+--IMPLEMENTATION ->  classe identc SUPER aco ATTRIBUTS acf METHODES fin ;
+---- surclasse
+--SUPER -> ;
+--SUPER -> dpts identc  ;
+----attributs
+--ATTRIBUTS -> ;
+--ATTRIBUTS -> TYPE ident pv ATTRIBUTS;
+-- -- methodes
+--METHODES -> ;
+--METHODES ->  METHODE  METHODES ;
+--METHODE ->  QUAL PTYPE   MPARFS BLOC ;
+-- --qualificateur attribut ou methode :  + = de classe, - = d'instance
+--QUAL -> plus;
+--QUAL -> moins;
+-- --type classe 
+--STYPE-> identc ;
+-- -- type BOOL
+--STYPE-> bool ;
+-- -- type "any"
+--TYPE -> id  ;
+---- type argument (ou retour) de methode entre parentheses
+--PTYPE-> paro TYPE parf ;
+---- parametres de methodes
+--MPARFS -> ;
+--MPARFS ->  MPARF MPARFS ;
+-- -- selecteur sans parametre
+--MPARF ->  ident  ;
+-- -- selecteur  + type parametre + nom parametre
+--MPARF ->   ident dpts  PTYPE ident;
+---- object nil
+--F -> nil   ;
+----Constante 'YES'
+--F -> yes   ;
+---- Constante 'NO'
+--F -> no   ;
+-- -- chaine MOC (commence par @)
+--F -> chaineo ;
+--  --self = this de Java
+--F -> self  ;
+--F -> super  ;
+-- -- Appel de methode
+--F -> cro F MARGS crf   ;
+---- pour appel methode de classe
+--F -> cro identc MARGS crf  ;
+---- arguments appel de methode
+--MARGS ->   ;
+--MARGS ->  MARG MARGS   ;
+-- -- selecteur + arg
+--MARG -> ident dpts  E;
+-- -- selecteur sans arg
+--MARG -> ident  ;
+---- --fin de MOC extension
 
 end

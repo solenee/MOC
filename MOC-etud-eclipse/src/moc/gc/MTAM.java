@@ -7,6 +7,8 @@ package moc.gc;
  *
  */
 public class MTAM extends AbstractMachine {
+	
+	//private static final Emplacement emplNull = new Emplacement(0, new Register("SB", 0));
 
 	@Override 
 	public String getSuffixe() {
@@ -244,5 +246,20 @@ public class MTAM extends AbstractMachine {
 	public String genPopAdresse() {
 		return genComment("adresse en sommet de pile inutile : depiler!") +
 				genFree(1);
+	}
+
+	@Override
+	public String genEspaceNull() {
+		return "\tPUSH 1";
+	}
+
+	@Override
+	public String genCallMain() {
+		return "\tCALL (LB) _main";
+	}
+
+	@Override
+	public String genFinProgramme() {
+		return "\tHALT";
 	}
 }

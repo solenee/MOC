@@ -48,6 +48,10 @@ public class CLASSE extends DTYPE {
 		return nomClasse;
 	}
 	
+	public CLASSE getClasseMere() {
+		return classeMere;
+	}
+	
 	public static boolean estObjet(DTYPE a) {
 		return (a instanceof POINTEUR) && ( ((POINTEUR)a).getType() instanceof CLASSE ) ;
 	}
