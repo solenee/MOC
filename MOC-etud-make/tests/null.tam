@@ -1,0 +1,73 @@
+; Generated code for tests/null.moc.
+; Do not modify by hand
+	; code de lancement du programme
+	pointeurNull : LOADA 0[SB]
+	CALL (LB) _main
+	npe : HALT
+	; code source du programme
+
+
+
+_malloc:
+	; code in inline : start
+; inline code_asm
+
+
+	LOAD (1) -1[LB]
+	; acces au parametre taille
+
+	SUBR Malloc
+	; allocation
+
+	RETURN (1) 1
+
+
+	; code in inline : end
+	; fin d'un bloc : pop
+	POP(0) 0
+
+_main:
+	; declaration de c de taille 1 en [3/Register [name=LB, num=0]]
+	PUSH 1
+	LOADL 'a'	; caractere
+	STORE(1) 3[LB]
+	; fin de declaration de c
+	; pas d'affectation : code de l'expression
+	; declaration de p1 de taille 1 en [4/Register [name=LB, num=0]]
+	PUSH 1
+	; fin de declaration de p1
+	; acces a p1
+	; pointeur null
+	; lecture du contenu de l'adresse de [0/Register [name=SB, num=0]]
+	LOADA 0[SB]
+	; lecture indirecte
+	LOADI (1)
+	STORE(1) 4[LB]
+	; acces a p1
+	; lecture du contenu de l'adresse de [4/Register [name=LB, num=0]]
+
+	;;; CONTENU DU POINTEUR EVENTUELLEMENT NULL
+	LOADA 4[LB]
+	;;; DEBUT VERIFICATION
+	;if
+	LOADA 4[LB] ;; duplique
+	LOADI (1)
+	LOAD (1) 0[SB]
+	SUBR INEq
+	JUMPIF(0) npe ; true : 1; false = 0
+	;then
+	POP (0) 0 ;enlever le resultat de la comparaison
+	;;; FIN VERIFICATION
+
+	; valeur affectee
+	LOADL 2	; entier
+	; affectation
+	STOREI (1)
+	; retour
+	; pas d'affectation : code de l'expression
+	LOADL 0	; entier
+	RETURN (1) 0
+	; fin retour
+	; fin d'un bloc : pop
+	POP(0) 2
+
