@@ -2046,16 +2046,25 @@ local
 do
     MPARFS^hparams := new PARAMETRES();
     MPARFS^htdspar := new TDS(METHODE^tds);
-    ic := METHODE^tds_classe.chercherLocalement(METHODE^classe);
-    c := ic.getType();
-    i := new INFOVAR(c, new Emplacement((-1), MPARFS^regLB ));
-    MPARFS^htdspar.inserer("self", i);
+    if (!QUAL^qual) then
+	    ic := METHODE^tds_classe.chercherLocalement(METHODE^classe);
+	    c := ic.getType();
+	    i := new INFOVAR(new POINTEUR(c), new Emplacement((-1), MPARFS^regLB ));
+	    MPARFS^htdspar.inserer("self", i);
+    end
 end
 }
 
 #adresse {
+local
+    n : Integer;
 do
-    MPARFS^hadr := -2;                 -- initialisation des adresses parametre
+    if (!QUAL^qual) then
+        n := -2;                 -- initialisation des adresses parametre
+    else
+        n := -1;
+    end
+    MPARFS^hadr := n;
     BLOC^hadr := 3;               -- initialisation des adresse de bloc
 end
 }
@@ -2195,16 +2204,170 @@ F -> chaineo ;
 F -> self  ;
 F -> super  ;
 -- -- Appel de methode
-F -> cro F MARGS crf   ;
+F -> cro F #params MARGS crf  #bonappel ;
+
+#params {
+do
+    MARGS^hparams := new PARAMETRES();
+end
+}
+
+#bonappel {
+local
+    t : DTYPE;
+    p : POINTEUR;
+    c : CLASSE;
+    i : INFO;
+    tds : TDS;
+    ic : INFOCLASSE;
+    im : INFOMETHODE;
+    params : PARAMETRES;
+do
+--match in with INFOFONCTION then
+--i := in;
+--else
+--error(B_17 , " c est pas une fonction");
+--end
+    t := F^type;
+    match t with POINTEUR then -- on vérifie que l'instance est bien un pointeur
+        p := t;
+        t := p.getType();
+    else
+        error(pas_pointeur, "ceci n'est pas un pointeur");
+    end
+    match t with CLASSE then  -- on vérifie que l'instance est bien un pointeur sur un struct
+        c := p;
+    else
+        error(pas_instance, "ceci n'est pas une instance de classe");
+    end
+    i := F^tds_classe.chercherLocalement(c.getNomClasse()); -- on recupere l'infoclasse
+    if (i = null) then
+        error(classe_inexistante, c.getNomClasse());
+    else
+        match i with INFOCLASSE then
+            ic := i;
+            tds := ic.getMethodes();
+            i := tds.chercherGlobalement(MARGS^nom); -- in recupere l'infomethode
+            if (i = null) then
+                error(methode_inexistante, c.getNomClasse(), MARGS^nom);
+            else
+                match i with INFOMETHODE then
+                    im := i;
+                    params := im.getParametres();
+                    if (im.isClassMethod()) then
+                        error(pas_methode_instance, c.getNomClasse(), MARGS^nom);
+                    end
+                    if (!params.compareTo(MARGS^params)) then -- on vérifie les parametres
+                        error(mauvais_parametres, c.getNomClasse(), MARGS^nom);
+                    end
+                else
+                    error(pas_methode, "ceci n'est pas une methode");
+                end
+            end
+        else
+            error(pas_classe, "ceci n'est pas une classe");
+        end
+    end
+end
+}
+
 -- pour appel methode de classe
-F -> cro identc MARGS crf  ;
+F -> cro identc #params MARGS crf  #bonappel;
+
+#params {
+do
+    MARGS^hparams := new PARAMETRES();
+end
+}
+
+#bonappel {
+local
+    t : DTYPE;
+    p : POINTEUR;
+    c : CLASSE;
+    i : INFO;
+    tds : TDS;
+    ic : INFOCLASSE;
+    im : INFOMETHODE;
+    params : PARAMETRES;
+do
+    i := F^tds_classe.chercherLocalement(identc^txt); -- on recupere l'infoclasse
+    if (i = null) then
+        error(classe_inexistante, identc^txt);
+    else
+        match i with INFOCLASSE then
+            ic := i;
+            tds := ic.getMethodes();
+            i := tds.chercherGlobalement(MARGS^nom); -- in recupere l'infomethode
+            if (i = null) then
+                error(methode_inexistante, identc^txt, MARGS^nom);
+            else
+                match i with INFOMETHODE then
+                    im := i;
+                    params := im.getParametres();
+                    if (!im.isClassMethod()) then
+                        error(pas_methode_classe, identc^txt, MARGS^nom);
+                    end
+                    if (!params.compareTo(MARGS^params)) then -- on vérifie les parametres
+                        error(mauvais_parametres, identc^txt, MARGS^nom);
+                    end
+                else
+                    error(pas_methode, "ceci n'est pas une methode");
+                end
+            end
+        else
+            error(pas_classe, "ceci n'est pas une classe");
+        end
+    end
+end
+}
+
 -- arguments appel de methode
-MARGS ->   ;
-MARGS ->  MARG MARGS   ;
+MARGS ->  #parametres ;
+
+#parametres {
+do
+    MARGS^params := MARGS^hparams;
+    MARGS^nom := "";
+end
+}
+
+MARGS ->  MARG #parametres1 MARGS #parametres2  ;
+
+#parametres1 {
+do
+    MARGS^hparams := MARG^params;
+end
+}
+
+#parametres2 {
+do
+    MARGS^params := MARGS1^params;
+    MARGS^nom := MARG^nom + MARGS1^nom;
+end
+}
+
 -- selecteur + arg
-MARG -> ident dpts  E;
+MARG -> ident dpts  E #parametres;
+
+#parametres {
+do
+    MARG^hparams.inserer(E^type);
+    MARG^params := MARG^hparams;
+    MARG^nom := ident^txt + ":";
+end
+}
+
 -- selecteur sans arg
-MARG -> ident  ;
+MARG -> ident #parametres ;
+
+#parametres {
+do
+    MARG^params := MARG^hparams;
+    MARG^nom := ident^txt;
+end
+}
+
 --fin de MOC extension
 
 end

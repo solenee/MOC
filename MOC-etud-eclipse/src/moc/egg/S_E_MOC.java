@@ -33,9 +33,9 @@ int [] sync= new int[0];
   DTYPE att_tVoid;
   DTYPE att_tChar;
   TDS att_tds;
+  boolean att_lire_resultat;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
-  boolean att_lire_resultat;
   DTYPE glob_27_typeE;
   private void regle27() throws Exception {
 

@@ -31,10 +31,10 @@ int [] sync= new int[0];
   int att_last_adr;
   TDS att_htdspar;
   DTYPE att_tChar;
+  TDS att_tdspar;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
   TDS att_tds;
-  TDS att_tdspar;
   private void regle6() throws Exception {
 
     //declaration
