@@ -20,16 +20,20 @@ LEX_MOC scanner;
     }
 int [] sync= new int[0];
   Register att_regLB;
+  DTYPE att_tNil;
+  TDS att_tds_classe;
   boolean att_eval;
+  DTYPE att_tAny;
   String att_code;
-  PARAMETRES att_hparams;
   PARAMETRES att_params;
+  PARAMETRES att_hparams;
   IMachine att_machine;
   TDS att_tds_fonction;
   DTYPE att_tInt;
   DTYPE att_tString;
   DTYPE att_tVoid;
   DTYPE att_tChar;
+  DTYPE att_tBool;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
   TDS att_tds;
@@ -78,10 +82,18 @@ x_4.att_tString=this.att_tString;
 x_6.att_tString=this.att_tString;
 x_4.att_regLB=this.att_regLB;
 x_6.att_regLB=this.att_regLB;
+x_4.att_tAny=this.att_tAny;
+x_6.att_tAny=this.att_tAny;
+x_4.att_tBool=this.att_tBool;
+x_6.att_tBool=this.att_tBool;
+x_4.att_tNil=this.att_tNil;
+x_6.att_tNil=this.att_tNil;
 x_4.att_tds=this.att_tds;
 x_6.att_tds=this.att_tds;
 x_4.att_tds_fonction=this.att_tds_fonction;
 x_6.att_tds_fonction=this.att_tds_fonction;
+x_4.att_tds_classe=this.att_tds_classe;
+x_6.att_tds_classe=this.att_tds_classe;
 x_4.att_machine=this.att_machine;
 x_6.att_machine=this.att_machine;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","ARGSX -> virg #lire_resultat E #params1 ARGSX1 #params2 #gen ;"});
@@ -129,10 +141,10 @@ this.att_params=this.att_hparams;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 33
+      case LEX_MOC.token_parf : // 4939
         regle66 () ;
       break ;
-      case LEX_MOC.token_virg : // 36
+      case LEX_MOC.token_virg : // 4942
         regle67 () ;
       break ;
       default :

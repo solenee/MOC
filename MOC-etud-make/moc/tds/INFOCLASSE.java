@@ -24,12 +24,20 @@ public class INFOCLASSE implements INFO {
 	
 	public INFOCLASSE(DTYPE type, INFOCLASSE parent) {
 		this.type = type;
-		this.methodes = new TDS(parent.getMethodes());
+		if (parent != null) {
+			this.methodes = new TDS(parent.getMethodes());
+		} else {
+			this.methodes = new TDS();
+		}
 	}
 	
 	public INFOCLASSE(DTYPE type, INFOCLASSE parent, Emplacement tv) {
 		this.type = type;
-		this.methodes = new TDS(parent.getMethodes());
+		if (parent != null) {
+			this.methodes = new TDS(parent.getMethodes());
+		} else {
+			this.methodes = new TDS();
+		}
 		this.tv = tv;
 	}
 	
@@ -55,6 +63,7 @@ public class INFOCLASSE implements INFO {
 		this.tv = tv;
 	}
 	
+	@Override
 	public DTYPE getType() {
 		return type;
 	}
@@ -106,4 +115,11 @@ public class INFOCLASSE implements INFO {
 		}
 		this.methodes.put(nom, method_aux);
 	}
+
+	@Override
+	public String toString() {
+		return "INFOCLASSE [type=" + type + ", \n----methodes=" + methodes+"\n---fin methodes\n" + "]";
+	}
+	
+	
 }

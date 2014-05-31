@@ -34,11 +34,11 @@ public class INFOMETHODE extends INFOFONCTION {
 		this.classe = classe;
 	}
 
-	public boolean isClassmethod() {
+	public boolean isClassMethod() {
 		return isclassmethod;
 	}
 
-	public void setIsclassmethod(boolean isclassmethod) {
+	public void setIsClassMethod(boolean isclassmethod) {
 		this.isclassmethod = isclassmethod;
 	}
 
@@ -50,12 +50,19 @@ public class INFOMETHODE extends INFOFONCTION {
 		this.numero = numero;
 	}
 
-	public String getEtiquette() {
-		return etiquette;
+	public String getClasse() {
+		return classe;
 	}
 
-	public void setEtiquette(String etiquette) {
-		this.etiquette = etiquette;
+	public void setClasse(String classe) {
+		this.classe = classe;
 	}
 
+	@Override
+	public String toString() {
+		return "INFOMETHODE [isclassmethod=" + isclassmethod + ", numero="
+				+ numero + ", classe=" + classe + "]";
+	}
+
+	
 }

@@ -270,45 +270,77 @@ public class JLEX_MOC implements  LEX_ANALYZER  {
 		/* 36 */ YY_NO_ANCHOR,
 		/* 37 */ YY_NO_ANCHOR,
 		/* 38 */ YY_NO_ANCHOR,
-		/* 39 */ YY_NOT_ACCEPT,
+		/* 39 */ YY_NO_ANCHOR,
 		/* 40 */ YY_NO_ANCHOR,
 		/* 41 */ YY_NO_ANCHOR,
-		/* 42 */ YY_NOT_ACCEPT,
+		/* 42 */ YY_NO_ANCHOR,
 		/* 43 */ YY_NO_ANCHOR,
 		/* 44 */ YY_NO_ANCHOR,
-		/* 45 */ YY_NOT_ACCEPT,
+		/* 45 */ YY_NO_ANCHOR,
 		/* 46 */ YY_NO_ANCHOR,
 		/* 47 */ YY_NO_ANCHOR,
-		/* 48 */ YY_NOT_ACCEPT,
+		/* 48 */ YY_NO_ANCHOR,
 		/* 49 */ YY_NO_ANCHOR,
 		/* 50 */ YY_NO_ANCHOR,
-		/* 51 */ YY_NOT_ACCEPT,
-		/* 52 */ YY_NO_ANCHOR,
+		/* 51 */ YY_NO_ANCHOR,
+		/* 52 */ YY_NOT_ACCEPT,
 		/* 53 */ YY_NO_ANCHOR,
 		/* 54 */ YY_NO_ANCHOR,
 		/* 55 */ YY_NO_ANCHOR,
-		/* 56 */ YY_NO_ANCHOR,
+		/* 56 */ YY_NOT_ACCEPT,
 		/* 57 */ YY_NO_ANCHOR,
 		/* 58 */ YY_NO_ANCHOR,
 		/* 59 */ YY_NO_ANCHOR,
-		/* 60 */ YY_NO_ANCHOR,
+		/* 60 */ YY_NOT_ACCEPT,
 		/* 61 */ YY_NO_ANCHOR,
 		/* 62 */ YY_NO_ANCHOR,
 		/* 63 */ YY_NO_ANCHOR,
-		/* 64 */ YY_NO_ANCHOR,
+		/* 64 */ YY_NOT_ACCEPT,
 		/* 65 */ YY_NO_ANCHOR,
 		/* 66 */ YY_NO_ANCHOR,
 		/* 67 */ YY_NO_ANCHOR,
-		/* 68 */ YY_NO_ANCHOR
+		/* 68 */ YY_NOT_ACCEPT,
+		/* 69 */ YY_NO_ANCHOR,
+		/* 70 */ YY_NO_ANCHOR,
+		/* 71 */ YY_NOT_ACCEPT,
+		/* 72 */ YY_NO_ANCHOR,
+		/* 73 */ YY_NOT_ACCEPT,
+		/* 74 */ YY_NO_ANCHOR,
+		/* 75 */ YY_NOT_ACCEPT,
+		/* 76 */ YY_NO_ANCHOR,
+		/* 77 */ YY_NOT_ACCEPT,
+		/* 78 */ YY_NO_ANCHOR,
+		/* 79 */ YY_NOT_ACCEPT,
+		/* 80 */ YY_NO_ANCHOR,
+		/* 81 */ YY_NO_ANCHOR,
+		/* 82 */ YY_NO_ANCHOR,
+		/* 83 */ YY_NO_ANCHOR,
+		/* 84 */ YY_NO_ANCHOR,
+		/* 85 */ YY_NO_ANCHOR,
+		/* 86 */ YY_NO_ANCHOR,
+		/* 87 */ YY_NO_ANCHOR,
+		/* 88 */ YY_NO_ANCHOR,
+		/* 89 */ YY_NO_ANCHOR,
+		/* 90 */ YY_NO_ANCHOR,
+		/* 91 */ YY_NO_ANCHOR,
+		/* 92 */ YY_NO_ANCHOR,
+		/* 93 */ YY_NO_ANCHOR,
+		/* 94 */ YY_NO_ANCHOR,
+		/* 95 */ YY_NO_ANCHOR,
+		/* 96 */ YY_NO_ANCHOR,
+		/* 97 */ YY_NO_ANCHOR,
+		/* 98 */ YY_NO_ANCHOR,
+		/* 99 */ YY_NO_ANCHOR,
+		/* 100 */ YY_NO_ANCHOR
 	};
 	private int yy_cmap[] = unpackFromString(1,258,
-"3:9,4,1,3:2,4,3:18,4,33,42,3:2,38,39,41,5,6,37,34,9,35,3,2,40:10,3,10,31,11" +",32,3:2,44:11,30,44,28,44:6,29,44:5,3:4,44,3,20,43,24,19,14,13,43,25,12,43:" +"2,15,21,22,18,43:2,26,16,23,27,17,43:4,7,36,8,3:130,0:2")[0];
+"3:9,4,1,3:2,4,3:18,4,33,52,3:2,38,39,51,5,6,37,34,9,35,3,2,50:10,40,10,31,1" +"1,32,3,43,55,44,55:2,48,55:6,30,55,28,45,55:3,49,55,29,55:3,47,55,41,3,42,3" +",54,3,20,53,24,19,14,13,53,25,12,53:2,15,21,22,18,46,53,26,16,23,27,17,53:4" +",7,36,8,3:130,0:2")[0];
 
-	private int yy_rmap[] = unpackFromString(1,69,
-"0,1,2,3,1:7,4,5,6,7,8,1:4,9,1,10,1:7,10:3,1,10:3,1,10,11,12,10,13,14,15,16," +"17,18,19,20,21,22,19,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38")[0];
+	private int yy_rmap[] = unpackFromString(1,101,
+"0,1,2,3,1:7,4,5,6,7,8,9,1:7,10,1,11:2,12,1:7,11:3,1,12,1,11:4,12,1,12,11:2," +"1,13,14,11,12,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,28,30,31,32,33,3" +"4,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58")[0];
 
-	private int yy_nxt[][] = unpackFromString(39,45,
-"1,2,3,4,2,5,6,7,8,9,10,11,12,41,63,41:2,64,41:2,57,41,58,41,65,41,68,41,40," +"4:2,13,14,15,16,17,43,18,19,46,20,49,52,41,4,-1:46,2,-1:2,2,-1:42,39,-1:53," +"21,-1:45,41,22,41:8,44,41:8,-1:9,41,-1:2,41:2,-1:11,23,-1:44,24,-1:44,25,-1" +":73,20,-1:16,41:19,-1:9,41,-1:2,41:2,-1,29,39:43,-1:29,42,-1:45,51,-1:50,26" +",-1:20,41:11,30,41:7,-1:9,41,-1:2,41:2,-1:41,33,-1:42,27,-1:17,41:9,31,41:9" +",-1:9,41,-1:2,41:2,-1,48:41,28,48:2,-1,45:40,-1,45:3,-1:12,41:3,32,41:15,-1" +":9,41,-1:2,41:2,-1:30,37,-1:26,41:2,34,41:16,-1:9,41,-1:2,41:2,-1:12,41:7,3" +"5,41:11,-1:9,41,-1:2,41:2,-1:12,41:14,36,41:4,-1:9,41,-1:2,41:2,-1:12,41:10" +",38,41:8,-1:9,41,-1:2,41:2,-1:12,41:4,47,41:14,-1:9,41,-1:2,41:2,-1:12,50,4" +"1:18,-1:9,41,-1:2,41:2,-1:12,41:4,53,41:14,-1:9,41,-1:2,41:2,-1:12,54,41:18" +",-1:9,41,-1:2,41:2,-1:12,41:8,55,41:10,-1:9,41,-1:2,41:2,-1:12,41:14,56,41:" +"4,-1:9,41,-1:2,41:2,-1:12,41:3,59,41:15,-1:9,41,-1:2,41:2,-1:12,41:6,60,41:" +"12,-1:9,41,-1:2,41:2,-1:12,41:13,61,41:5,-1:9,41,-1:2,41:2,-1:12,41:15,62,4" +"1:3,-1:9,41,-1:2,41:2,-1:12,41:11,66,41:7,-1:9,41,-1:2,41:2,-1:12,41:2,67,4" +"1:16,-1:9,41,-1:2,41:2");
+	private int yy_nxt[][] = unpackFromString(59,56,
+"1,2,3,4,2,5,6,7,8,9,10,11,12,54,92,54,94,95,54:2,81,54,83,54,96,54,100,54,1" +"3,55:2,14,15,16,17,18,53,19,20,57,21,22,23,61,93,55,54,82,55:2,24,65,69,54," +"4,55,-1:57,2,-1:2,2,-1:53,52,-1:64,25,-1:56,54,26,54:5,27,54:2,58,54:8,-1:1" +"3,54:7,-1:2,54:3,-1:12,55:17,84,55,-1:13,55,28,55:5,-1:2,55:3,-1:11,29,-1:5" +"5,30,-1:55,31,-1:94,24,-1:17,54:19,-1:13,54:7,-1:2,54:3,-1:12,55:19,-1:13,5" +"5:7,-1:2,55:3,-1,35,52:54,-1:36,32,-1:41,73,-1:72,33,-1:28,54:11,36,54:7,-1" +":13,54:7,-1:2,54:3,-1:12,55:19,-1:13,55:5,40,55,-1:2,55:3,-1:15,75,-1:54,56" +",-1:9,60,-1:27,64,-1:15,54:9,37,54:9,-1:13,54:7,-1:2,54:3,-1:12,55:18,46,-1" +":13,55:7,-1:2,55:3,-1,64:51,39,64:3,-1,68:50,-1,68:4,-1:12,54:3,38,54:15,-1" +":13,54:7,-1:2,54:3,-1:12,55:18,48,-1:13,55:7,-1:2,55:3,-1:51,41,-1:5,71:51," +"34,71:3,-1:12,54:2,42,54:16,-1:13,54:7,-1:2,54:3,-1:12,54,43,54:17,-1:13,54" +":7,-1:2,54:3,-1:19,47,-1:48,54:7,44,54:11,-1:13,54:7,-1:2,54:3,-1:20,77,-1:" +"47,54:14,45,54:4,-1:13,54:7,-1:2,54:3,-1:16,79,-1:51,54:14,49,54:4,-1:13,54" +":7,-1:2,54:3,-1:16,51,-1:51,54:10,50,54:8,-1:13,54:7,-1:2,54:3,-1:12,54:4,6" +"2,54:14,-1:13,54:7,-1:2,54:3,-1:12,55:19,-1:13,55:4,59,55:2,-1:2,55:3,-1:12" +",66,54:18,-1:13,54:7,-1:2,54:3,-1:12,55:18,63,-1:13,55:7,-1:2,55:3,-1:12,54" +":4,70,54:14,-1:13,54:7,-1:2,54:3,-1:12,55:19,-1:13,55,67,55:5,-1:2,55:3,-1:" +"12,54:3,72,54:15,-1:13,54:7,-1:2,54:3,-1:12,74,54:18,-1:13,54:7,-1:2,54:3,-" +"1:12,54:8,76,54:10,-1:13,54:7,-1:2,54:3,-1:12,54:2,78,54:16,-1:13,54:7,-1:2" +",54:3,-1:12,54:14,80,54:4,-1:13,54:7,-1:2,54:3,-1:12,54:3,85,54:15,-1:13,54" +":7,-1:2,54:3,-1:12,55:19,-1:13,55,86,55:5,-1:2,55:3,-1:12,54:2,87,54:12,97," +"54:3,-1:13,54:7,-1:2,54:3,-1:12,54:6,88,54:12,-1:13,54:7,-1:2,54:3,-1:12,54" +":13,89,54:5,-1:13,54:7,-1:2,54:3,-1:12,54:19,-1:13,54:2,90,54:4,-1:2,54:3,-" +"1:12,54:15,91,54:3,-1:13,54:7,-1:2,54:3,-1:12,54:11,98,54:7,-1:13,54:7,-1:2" +",54:3,-1:12,54:2,99,54:16,-1:13,54:7,-1:2,54:3");
 
 	public Yytoken yylex ()
 		throws java.io.IOException {
@@ -454,7 +486,7 @@ case -13:
 					
 case 13:
 					
-	{return new Yytoken(LEX_MOC.token_inf, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_identc, yytext(), yyline, yychar, yychar+1);}
 					
 case -14:
 					
@@ -462,7 +494,7 @@ case -14:
 					
 case 14:
 					
-	{return new Yytoken(LEX_MOC.token_sup, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_inf, yytext(), yyline, yychar, yychar+1);}
 					
 case -15:
 					
@@ -470,7 +502,7 @@ case -15:
 					
 case 15:
 					
-	{return new Yytoken(LEX_MOC.token_non, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_sup, yytext(), yyline, yychar, yychar+1);}
 					
 case -16:
 					
@@ -478,7 +510,7 @@ case -16:
 					
 case 16:
 					
-	{return new Yytoken(LEX_MOC.token_plus, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_non, yytext(), yyline, yychar, yychar+1);}
 					
 case -17:
 					
@@ -486,7 +518,7 @@ case -17:
 					
 case 17:
 					
-	{return new Yytoken(LEX_MOC.token_moins, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_plus, yytext(), yyline, yychar, yychar+1);}
 					
 case -18:
 					
@@ -494,7 +526,7 @@ case -18:
 					
 case 18:
 					
-	{return new Yytoken(LEX_MOC.token_mult, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_moins, yytext(), yyline, yychar, yychar+1);}
 					
 case -19:
 					
@@ -502,7 +534,7 @@ case -19:
 					
 case 19:
 					
-	{return new Yytoken(LEX_MOC.token_mod, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_mult, yytext(), yyline, yychar, yychar+1);}
 					
 case -20:
 					
@@ -510,7 +542,7 @@ case -20:
 					
 case 20:
 					
-	{return new Yytoken(LEX_MOC.token_entier, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_mod, yytext(), yyline, yychar, yychar+1);}
 					
 case -21:
 					
@@ -518,7 +550,7 @@ case -21:
 					
 case 21:
 					
-	{return new Yytoken(LEX_MOC.token_eg, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_dpts, yytext(), yyline, yychar, yychar+1);}
 					
 case -22:
 					
@@ -526,7 +558,7 @@ case -22:
 					
 case 22:
 					
-	{return new Yytoken(LEX_MOC.token_si, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_cro, yytext(), yyline, yychar, yychar+1);}
 					
 case -23:
 					
@@ -534,7 +566,7 @@ case -23:
 					
 case 23:
 					
-	{return new Yytoken(LEX_MOC.token_infeg, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_crf, yytext(), yyline, yychar, yychar+1);}
 					
 case -24:
 					
@@ -542,7 +574,7 @@ case -24:
 					
 case 24:
 					
-	{return new Yytoken(LEX_MOC.token_supeg, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_entier, yytext(), yyline, yychar, yychar+1);}
 					
 case -25:
 					
@@ -550,7 +582,7 @@ case -25:
 					
 case 25:
 					
-	{return new Yytoken(LEX_MOC.token_neg, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_eg, yytext(), yyline, yychar, yychar+1);}
 					
 case -26:
 					
@@ -558,7 +590,7 @@ case -26:
 					
 case 26:
 					
-	{return new Yytoken(LEX_MOC.token_ou, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_si, yytext(), yyline, yychar, yychar+1);}
 					
 case -27:
 					
@@ -566,7 +598,7 @@ case -27:
 					
 case 27:
 					
-	{return new Yytoken(LEX_MOC.token_et, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_id, yytext(), yyline, yychar, yychar+1);}
 					
 case -28:
 					
@@ -574,7 +606,7 @@ case -28:
 					
 case 28:
 					
-	{return new Yytoken(LEX_MOC.token_chaine, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_no, yytext(), yyline, yychar, yychar+1);}
 					
 case -29:
 					
@@ -582,7 +614,7 @@ case -29:
 					
 case 29:
 					
-	{return new Yytoken(LEX_MOC.token_comm, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_infeg, yytext(), yyline, yychar, yychar+1);}
 					
 case -30:
 					
@@ -590,7 +622,7 @@ case -30:
 					
 case 30:
 					
-	{return new Yytoken(LEX_MOC.token_int, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_supeg, yytext(), yyline, yychar, yychar+1);}
 					
 case -31:
 					
@@ -598,7 +630,7 @@ case -31:
 					
 case 31:
 					
-	{return new Yytoken(LEX_MOC.token_asm, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_neg, yytext(), yyline, yychar, yychar+1);}
 					
 case -32:
 					
@@ -606,7 +638,7 @@ case -32:
 					
 case 32:
 					
-	{return new Yytoken(LEX_MOC.token_nil, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_ou, yytext(), yyline, yychar, yychar+1);}
 					
 case -33:
 					
@@ -614,7 +646,7 @@ case -33:
 					
 case 33:
 					
-	{return new Yytoken(LEX_MOC.token_caractere, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_et, yytext(), yyline, yychar, yychar+1);}
 					
 case -34:
 					
@@ -622,7 +654,7 @@ case -34:
 					
 case 34:
 					
-	{return new Yytoken(LEX_MOC.token_sinon, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_chaine, yytext(), yyline, yychar, yychar+1);}
 					
 case -35:
 					
@@ -630,7 +662,7 @@ case -35:
 					
 case 35:
 					
-	{return new Yytoken(LEX_MOC.token_void, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_comm, yytext(), yyline, yychar, yychar+1);}
 					
 case -36:
 					
@@ -638,7 +670,7 @@ case -36:
 					
 case 36:
 					
-	{return new Yytoken(LEX_MOC.token_char, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_int, yytext(), yyline, yychar, yychar+1);}
 					
 case -37:
 					
@@ -646,7 +678,7 @@ case -37:
 					
 case 37:
 					
-	{return new Yytoken(LEX_MOC.token_null, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_asm, yytext(), yyline, yychar, yychar+1);}
 					
 case -38:
 					
@@ -654,89 +686,121 @@ case -38:
 					
 case 38:
 					
-	{return new Yytoken(LEX_MOC.token_retour, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_nil, yytext(), yyline, yychar, yychar+1);}
 					
 case -39:
 					
 	break;
 					
-case 40:
+case 39:
 					
-	{return new Yytoken(LEX_MOC.token_autre, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_chaineo, yytext(), yyline, yychar, yychar+1);}
 					
 case -40:
 					
 	break;
 					
-case 41:
+case 40:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_yes, yytext(), yyline, yychar, yychar+1);}
 					
 case -41:
 					
 	break;
 					
-case 43:
+case 41:
 					
-	{return new Yytoken(LEX_MOC.token_autre, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_caractere, yytext(), yyline, yychar, yychar+1);}
 					
 case -42:
 					
 	break;
 					
-case 44:
+case 42:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_sinon, yytext(), yyline, yychar, yychar+1);}
 					
 case -43:
 					
 	break;
 					
-case 46:
+case 43:
 					
-	{return new Yytoken(LEX_MOC.token_autre, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_self, yytext(), yyline, yychar, yychar+1);}
 					
 case -44:
 					
 	break;
 					
-case 47:
+case 44:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_void, yytext(), yyline, yychar, yychar+1);}
 					
 case -45:
 					
 	break;
 					
-case 49:
+case 45:
 					
-	{return new Yytoken(LEX_MOC.token_autre, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_char, yytext(), yyline, yychar, yychar+1);}
 					
 case -46:
 					
 	break;
 					
-case 50:
+case 46:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_null, yytext(), yyline, yychar, yychar+1);}
 					
 case -47:
 					
 	break;
 					
-case 52:
+case 47:
 					
-	{return new Yytoken(LEX_MOC.token_autre, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_fin, yytext(), yyline, yychar, yychar+1);}
 					
 case -48:
 					
 	break;
 					
-case 53:
+case 48:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_bool, yytext(), yyline, yychar, yychar+1);}
 					
 case -49:
+					
+	break;
+					
+case 49:
+					
+	{return new Yytoken(LEX_MOC.token_super, yytext(), yyline, yychar, yychar+1);}
+					
+case -50:
+					
+	break;
+					
+case 50:
+					
+	{return new Yytoken(LEX_MOC.token_retour, yytext(), yyline, yychar, yychar+1);}
+					
+case -51:
+					
+	break;
+					
+case 51:
+					
+	{return new Yytoken(LEX_MOC.token_classe, yytext(), yyline, yychar, yychar+1);}
+					
+case -52:
+					
+	break;
+					
+case 53:
+					
+	{return new Yytoken(LEX_MOC.token_autre, yytext(), yyline, yychar, yychar+1);}
+					
+case -53:
 					
 	break;
 					
@@ -744,31 +808,23 @@ case 54:
 					
 	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
 					
-case -50:
+case -54:
 					
 	break;
 					
 case 55:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_identc, yytext(), yyline, yychar, yychar+1);}
 					
-case -51:
-					
-	break;
-					
-case 56:
-					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
-					
-case -52:
+case -55:
 					
 	break;
 					
 case 57:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_autre, yytext(), yyline, yychar, yychar+1);}
 					
-case -53:
+case -56:
 					
 	break;
 					
@@ -776,31 +832,23 @@ case 58:
 					
 	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
 					
-case -54:
+case -57:
 					
 	break;
 					
 case 59:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_identc, yytext(), yyline, yychar, yychar+1);}
 					
-case -55:
-					
-	break;
-					
-case 60:
-					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
-					
-case -56:
+case -58:
 					
 	break;
 					
 case 61:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_autre, yytext(), yyline, yychar, yychar+1);}
 					
-case -57:
+case -59:
 					
 	break;
 					
@@ -808,31 +856,23 @@ case 62:
 					
 	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
 					
-case -58:
+case -60:
 					
 	break;
 					
 case 63:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_identc, yytext(), yyline, yychar, yychar+1);}
 					
-case -59:
-					
-	break;
-					
-case 64:
-					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
-					
-case -60:
+case -61:
 					
 	break;
 					
 case 65:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_autre, yytext(), yyline, yychar, yychar+1);}
 					
-case -61:
+case -62:
 					
 	break;
 					
@@ -840,23 +880,231 @@ case 66:
 					
 	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
 					
-case -62:
+case -63:
 					
 	break;
 					
 case 67:
 					
-	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+	{return new Yytoken(LEX_MOC.token_identc, yytext(), yyline, yychar, yychar+1);}
 					
-case -63:
+case -64:
 					
 	break;
 					
-case 68:
+case 69:
+					
+	{return new Yytoken(LEX_MOC.token_autre, yytext(), yyline, yychar, yychar+1);}
+					
+case -65:
+					
+	break;
+					
+case 70:
 					
 	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
 					
-case -64:
+case -66:
+					
+	break;
+					
+case 72:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -67:
+					
+	break;
+					
+case 74:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -68:
+					
+	break;
+					
+case 76:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -69:
+					
+	break;
+					
+case 78:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -70:
+					
+	break;
+					
+case 80:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -71:
+					
+	break;
+					
+case 81:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -72:
+					
+	break;
+					
+case 82:
+					
+	{return new Yytoken(LEX_MOC.token_identc, yytext(), yyline, yychar, yychar+1);}
+					
+case -73:
+					
+	break;
+					
+case 83:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -74:
+					
+	break;
+					
+case 84:
+					
+	{return new Yytoken(LEX_MOC.token_identc, yytext(), yyline, yychar, yychar+1);}
+					
+case -75:
+					
+	break;
+					
+case 85:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -76:
+					
+	break;
+					
+case 86:
+					
+	{return new Yytoken(LEX_MOC.token_identc, yytext(), yyline, yychar, yychar+1);}
+					
+case -77:
+					
+	break;
+					
+case 87:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -78:
+					
+	break;
+					
+case 88:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -79:
+					
+	break;
+					
+case 89:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -80:
+					
+	break;
+					
+case 90:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -81:
+					
+	break;
+					
+case 91:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -82:
+					
+	break;
+					
+case 92:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -83:
+					
+	break;
+					
+case 93:
+					
+	{return new Yytoken(LEX_MOC.token_identc, yytext(), yyline, yychar, yychar+1);}
+					
+case -84:
+					
+	break;
+					
+case 94:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -85:
+					
+	break;
+					
+case 95:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -86:
+					
+	break;
+					
+case 96:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -87:
+					
+	break;
+					
+case 97:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -88:
+					
+	break;
+					
+case 98:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -89:
+					
+	break;
+					
+case 99:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -90:
+					
+	break;
+					
+case 100:
+					
+	{return new Yytoken(LEX_MOC.token_ident, yytext(), yyline, yychar, yychar+1);}
+					
+case -91:
 					
 	break;
 					default:

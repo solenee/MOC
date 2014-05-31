@@ -12,14 +12,21 @@ option k=2;
 inh typeRet : DTYPE for BLOC, INSTS, INST, SIX;
 syn isRet   : BOOLEAN for BLOC, INSTS, INST, SIX;
 -- decl type 
-inh tInt  : DTYPE for PARFS, PARFSX, PARF, TYPE, STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
-inh tChar : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
-inh tPointeurNull : DTYPE for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
-inh tVoid  : DTYPE for PARFS, PARFSX, STYPE, ENTITES, TYPE, PARF, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
-inh tString : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
-inh regLB : Register for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh tInt  : DTYPE for PARFS, PARFSX, PARF, TYPE, STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
+inh tChar : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
+inh tPointeurNull : DTYPE for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
+inh tVoid  : DTYPE for PARFS, PARFSX, STYPE, ENTITES, TYPE, PARF, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
+inh tString : DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
+inh regLB : Register for PARFS, PARFSX, TYPE, PARF,  STYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
+-- == moc
+inh tAny :  DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
+syn stAny :  DTYPE for IMPLEMENTATION; 
+inh tBool :  DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE; 
+inh tNil :  DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE;
+--inh objetNil :  DTYPE for PARFS, PARFSX, STYPE, PARF, TYPE, ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS, PTYPE; 
+-- =/= moc
 --attributes  
-syn type  : DTYPE for TYPE, REFS, STYPE, F, E, A, T, R, AFFX;
+syn type  : DTYPE for TYPE, REFS, STYPE, F, E, A, T, R, AFFX, PTYPE;
 inh htype : DTYPE for REFS, AFFX;
 -- affectation 
 syn affectable : BOOLEAN for F, A, R, T, E;
@@ -29,24 +36,47 @@ syn est_adresse : BOOLEAN for F, T, TX, A, E, RX, R, AX;--, T, F;
 inh hest_adresse : BOOLEAN for AFFX, TX, RX, AX;
 syn adresse : Emplacement for F, TX, T, A, E, RX, R, AX;
 inh hadresse : Emplacement for AFFX, TX, RX, AX;
+inh lire_resultat : BOOLEAN for E, AFFX; -- indique si AFFX doit generer le code pour lire le terme de gauche
 -- initialisation  
    
 -- la table de symboles
-inh tds  : TDS for ENTITES, FONCTION, PARFS, PARF, PARFSX, TYPE, REFS, 
-                   STYPE, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh tds  : TDS for ENTITES, IMPLEMENTATION, FONCTION, SUPER, ATTRIBUTS, METHODES, METHODE, 
+                          QUAL, MPARFS, MPARF, PARFS, PARF, PARFSX, TYPE, REFS, 
+                          STYPE, PTYPE, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, 
+                          MARG, MARGS, ARGS, ARGSX;
 syn stds : TDS for INST;
 -- la table de symboles des fonctions
-inh tds_fonction  : TDS for ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX;
+inh tds_fonction  : TDS for ENTITES, FONCTION, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, ARGS, ARGSX, METHODES, METHODE, IMPLEMENTATION, MARG, MARGS;
 syn stds_fonction : TDS for FONCTION, ENTITES;
+----la table de symbole des classes
+inh tds_classe : TDS for ENTITES, IMPLEMENTATION, FONCTION, SUPER, ATTRIBUTS, METHODES, METHODE, 
+                          QUAL, MPARFS, MPARF, PARFS, PARF, PARFSX, TYPE, REFS, 
+                          STYPE, PTYPE, BLOC, INSTS, INST, SIX, AFFX, E, A, AX, R, RX, T, TX, F, 
+                          MARG, MARGS, ARGS, ARGSX;
+syn stds_classe : TDS for IMPLEMENTATION, METHODES, METHODE;
+----le nom de la methode
+syn nom : String for MPARFS, MPARF, MARG, MARGS;
+----qualificatif methode
+syn qual : Boolean for QUAL;
+----nom de la classe
+inh classe : String for METHODES, METHODE;
+syn classe_mere : CLASSE for SUPER;
+syn iclasse_mere : INFOCLASSE for SUPER;
+inh hclasse_fille : String for SUPER;
+----champs --= MODIF : ça existe deja : c'est (h)attributs
+-- inh hlchamps : LCHAMPS for ATTRIBUTS;
+-- syn lchamps : LCHAMPS for ATTRIBUTS;
+----deplacement
+inh hdep : int for ATTRIBUTS;
 -- la liste de parametres
-inh hparams : PARAMETRES for PARFS, PARF, PARFSX, ARGS, ARGSX;
-syn params  : PARAMETRES for PARFS, PARF, PARFSX, ARGS, ARGSX;
+inh hparams : PARAMETRES for MPARFS, MPARF, PARFS, PARF, PARFSX, ARGS, ARGSX, MARGS, MARG;
+syn params  : PARAMETRES for MPARFS, MPARF, PARFS, PARF, PARFSX, ARGS, ARGSX,MARGS, MARG;
 -- la liste des parametres à mettre dans la tds du bloc associé à la fonction
-inh htdspar : TDS for PARFS, PARF, PARFSX;
-syn tdspar  : TDS for PARFS, PARF, PARFSX;
+inh htdspar : TDS for MPARFS, MPARF, PARFS, PARF, PARFSX;
+syn tdspar  : TDS for MPARFS, MPARF, PARFS, PARF, PARFSX;
 -- l'adresse des variables
-inh hadr : INTEGER for ENTITES, FONCTION, PARFS, PARF, PARFSX, BLOC, INSTS, INST, SIX;
-syn adr  : INTEGER for PARF, INST, INSTS;
+inh hadr : INTEGER for ENTITES, FONCTION, MPARFS, MPARF,PARFS, PARF, PARFSX, BLOC, INSTS, INST, SIX;
+syn adr  : INTEGER for MPARF, PARF, INST, INSTS;
 syn last_adr : INTEGER for PARFS, PARFSX; -- vaut l'adresse du dernier parametre
 inh htailleparams : INTEGER for BLOC, INSTS, INST, SIX;
 -- le fichier source
@@ -56,9 +86,9 @@ inh machine : IMachine for
          ENTITES, FONCTION, INST, BLOC, INSTS, SIX,
          PARFS, PARF, PARFSX, ARGS,ARGSX, 
          E, AFFX, A, AX, R, RX, T, TX, F, OPMUL, OPUN, OPADD, OPREL
---         -- decommenter la ligne suivante pour MOC
---       ,IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS
---         -- fin extension MOC
+         -- decommenter la ligne suivante pour MOC
+       ,IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS
+        -- fin extension MOC
          ;
 -- ces attributs permettent de recuperer les instructions du code ASM inline       
 syn code_asm : STRING for ASM;
@@ -69,6 +99,12 @@ syn code : STRING for ENTITES, FONCTION, BLOC, INSTS, INST, SIX, E, A, AFFX, AX,
 -- operation
 inh hcode : STRING for AX, RX, TX;
 inh code_gauche: STRING for AFFX; -- code du terme a gauche de l'operateur
+-- definition des classes
+---- les attributs
+inh hattributs : LCHAMPS for ATTRIBUTS;
+syn attributs : LCHAMPS for ATTRIBUTS, SUPER;
+-- type associe a la classe mere
+-- syn tclasse_mere : CLASSE for SUPER;
 
 --terminaux
 space separateur is  "[\r\n\t ]+";     
@@ -104,21 +140,34 @@ sugar mod is  "\%" ;
 sugar et is  "\&\&";
 sugar non is  "\!";
 
+-- MOC e x t e n s i o n
+sugar dpts is "\:";
+sugar cro is "\[";
+sugar crf is "\]";
+sugar id is "id";
+sugar classe is "@class";
+sugar fin is "@end";
+sugar self is "self";
+sugar bool is "BOOL";
+sugar super is "super";
+sugar yes is "YES";
+sugar no is "NO";
+
 
 term entier is  "[0-9]+";
 term caractere is  "\'[^\']\'";
 term chaine is  "\"[^\"]*\"";
 term ident is  "[a-z][_0-9A-Za-z]*";
--- --decommenter pour MOC
---term identc is  "[A-Z][_0-9A-Za-z]*";   -- nom de classe
---term chaineo is  "@\"[^\"]*\"";         -- chaine MOC
--- --fin extension MOC
+--decommenter pour MOC
+term identc is  "[A-Z][_0-9A-Za-z]*";   -- nom de classe
+term chaineo is  "@\"[^\"]*\"";         -- chaine MOC
+--fin extension MOC
 
 -- pour les instructions en assembleur 'inline'
 compil ASM;
 
 --production rules
-PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen;
+PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen; --======== MODIF
 global
    machine : IMachine;
 -- transmission de la machine cible  (choisie par l'option -m au lancement) 
@@ -130,6 +179,10 @@ do
   ENTITES^tPointeurNull := new POINTEURNULL();
   ENTITES^tVoid := new DTYPE("void", 0);
   ENTITES^regLB := new Register("LB", 0);
+  ENTITES^tAny := nil; --new POINTEUR(nsobject); -- ajouter ce type dans la TDS sous le nom de "id"
+  ENTITES^tNil := new OBJETNIL();
+  --ENTITES^objetNil := new POINTEUR(null); -- allouer un espace special dans la memoire a objetNil
+  ENTITES^tBool := new DTYPE("bool", 1);
 end 
 }
 
@@ -149,6 +202,7 @@ local
 do
     ENTITES^tds := nil;
     ENTITES^tds_fonction := new TDS();
+    ENTITES^tds_classe := new TDS();
 end
 }   
 --adresse de l'entité d'origine
@@ -175,7 +229,7 @@ do
     machine.writeCode(PROGRAMME^source.getFileName(), ENTITES^code); 
 end
 }
-ENTITES -> #tds_fonction #gen ;
+ENTITES -> #tds_fonction #aff #gen ;
 #gen {
 do
   ENTITES^code := "";
@@ -186,6 +240,16 @@ do
   ENTITES^stds_fonction := ENTITES^tds_fonction;
 end
 }  
+#aff {
+do
+  write "\n";
+  write "\n";
+  write "Ensembles des classes du programme : ";
+  write "chargement...";
+  write "\n";
+  write ENTITES^tds_classe;
+end
+}
 
 ENTITES ->   asm #tds ASM ENTITES #tds_fonction #gen;
 #tds {
@@ -553,7 +617,7 @@ end
 }
 
 -- declaration de variable locale avec ou sans init
-INST ->  TYPE ident #tds #adresse #code_gauche AFFX pv  #verifCompatibilite #isReturn #gen ;
+INST ->  TYPE ident #tds #adresse #lire_resultat #code_gauche AFFX pv  #verifCompatibilite #isReturn #gen ;
 global
   i : INFO;
   adresse : INTEGER;
@@ -570,6 +634,11 @@ do
     INST^tds.inserer(ident^txt, i);
   end 
   INST^stds := INST^tds;
+end
+}
+#lire_resultat {
+do
+  AFFX^lire_resultat := false;
 end
 }
 #adresse {
@@ -607,22 +676,28 @@ end
 local
     leCode : STRING;
 do
-    INST^code := AFFX^code + INST^machine.genComment("declaration => pop") + INST^machine.genFree(TYPE^type.getTaille()) + INST^machine.genComment("fin de declaration de "+ident^txt);
+    INST^code := AFFX^code  + INST^machine.genComment("fin de declaration de "+ident^txt);
+    -- := AFFX^code + INST^machine.genComment("declaration => pop") + INST^machine.genFree(TYPE^type.getTaille()) + INST^machine.genComment("fin de declaration de "+ident^txt);
 end
 }
 
 -- instruction expression (affectation et appel de procedure)
-INST -> E pv #adresse #stds #isReturn #gen ;
+INST -> #lire_resultat E pv #adresse #stds #isReturn #gen ;
 #gen {
 do
     -- consommer la valeur si elle existe
-    INST^code := E^code + INST^machine.genComment("valeur inutile")+INST^machine.genFree(E^type.getTaille());
+    INST^code :=  E^code;
+    -- E^code + INST^machine.genComment("valeur inutile")+INST^machine.genFree(E^type.getTaille());
 end
 }
-
 #adresse {
 do
   INST^adr := INST^hadr;
+end
+}
+#lire_resultat {
+do
+  E^lire_resultat := false;
 end
 }
 #stds {
@@ -670,7 +745,12 @@ end
 }
 
 -- conditionnelle
-INST ->   si paro E parf #tds #passeTypeRet BLOC SIX #adresse #stds #isReturn #gen;
+INST ->   si paro #lire_resultat E parf #tds #passeTypeRet BLOC SIX #adresse #stds #isReturn #gen;
+#lire_resultat{
+do
+  E^lire_resultat := true;
+end
+}
 #passeTypeRet{
 do
    BLOC^typeRet := INST^typeRet;
@@ -739,9 +819,14 @@ end
 }
 
 -- retour de fonction
-INST ->  retour  E pv #adresse #tds #verifReturn #isReturn #gen ;
-#adresse {
+INST ->  retour #lire_resultat E pv #adresse #tds #verifReturn #isReturn #gen ;
+#lire_resultat{
 do
+  E^lire_resultat := true;
+end
+}
+#adresse {
+do 
   INST^adr := INST^hadr;
 end
 }
@@ -870,6 +955,7 @@ end
 
 -- affectation  : laisse en somment de pile la valeur affectee
 AFFX -> affect A #getType #estVide #gen ;
+-- si lire_resultat alors genere le code pour lire le resultat apres affectation sion null
 global
     t : DTYPE;
 #getType {
@@ -912,7 +998,7 @@ do
    end
 -- recuperer l'adresse du terme de gauche
 -- affecter
--- laisser en sommet de pile la nouvelle valeur de la variable affectee
+-- laisser en sommet de pile la nouvelle valeur de la variable affectee ssi lire_resultat
    code_valeur_gauche := AFFX^machine.genComment("code de la nouvelle de la variable affectee");
    empl_gauche := AFFX^hadresse;
    if empl_gauche /= null then
@@ -928,14 +1014,19 @@ do
         error(Interne_adresse, "adresse d'affectation inexistante 1");
      end
    end
-   AFFX^code := leCode + code_valeur_gauche;
+   if AFFX^lire_resultat then
+      AFFX^code := leCode + code_valeur_gauche;
+   else
+      AFFX^code := leCode;
+   end
 end
 }
 
 AFFX ->  #getType #estVide #gen ;
+-- si lire_resultat alors genere le code pour lire le resultat sinon null
 #getType {
 do 
-	AFFX^type := null;
+   AFFX^type := null;
 end 
 }
 #estVide{
@@ -954,22 +1045,26 @@ do
     
     -- recuperer l'adresse du terme de gauche
     -- laisser en sommet de pile la valeur du terme de gauche
-    leCode := AFFX^machine.genComment("pas d'affectation : code de l'expression");
+    leCode := AFFX^machine.genComment("pas d'affectation : code de l'expression") + AFFX^code_gauche;
     
     empl_gauche := AFFX^hadresse;
     if empl_gauche /= null then
      -- empl_gauche est l'adresse du terme gauche
-     leCode := leCode +  AFFX^code_gauche + AFFX^machine.genReadMem(empl_gauche, AFFX^htype.getTaille());
+     code_valeur_gauche := AFFX^machine.genReadMem(empl_gauche, AFFX^htype.getTaille());
     else
         if AFFX^hest_adresse then
             -- il y a l'adresse de l'expression en sommet de pile
-            leCode := leCode + AFFX^code_gauche + AFFX^machine.genReadIndirectMem(AFFX^htype.getTaille());   
+            code_valeur_gauche := AFFX^machine.genReadIndirectMem(AFFX^htype.getTaille());   
         else
             -- le code correspond a une constante ou a un appel de procedure : transmettre
-            leCode := leCode + AFFX^code_gauche;
+            code_valeur_gauche := "";
         end
     end
-    AFFX^code := leCode;
+    if AFFX^lire_resultat then
+      AFFX^code := leCode + code_valeur_gauche;
+    else
+      AFFX^code := leCode;
+    end
 end
 }
 
@@ -1593,7 +1688,12 @@ end
 }
  
 -- expression parenthesee
-F ->  paro E parf #getType #estAffectable #adresse #gen;
+F ->  paro #lire_resultat E parf #getType #estAffectable #adresse #gen;
+#lire_resultat { -- ??? pas sur
+do
+   E^lire_resultat := false;
+end
+}
 #getType {
 do 
    F^type := E^type;
@@ -1783,8 +1883,13 @@ do
   ARGS^code := "";
 end
 }
-
-ARGS -> E #params1 ARGSX #params2 #gen;
+ 
+ARGS -> #lire_resultat E #params1 ARGSX #params2 #gen;
+#lire_resultat { 
+do
+   E^lire_resultat := true;
+end
+}
 #params1 {
 local
    par : PARAMETRES;
@@ -1817,9 +1922,14 @@ do
 end
 }
 
-ARGSX -> virg E #params1 ARGSX #params2 #gen;
+ARGSX -> virg #lire_resultat E #params1 ARGSX #params2 #gen;
+#lire_resultat{
+do
+  E^lire_resultat := true;
+end
+}
 #params1 {
-local 
+local
     par : PARAMETRES; 
 do
   par := ARGSX^hparams;
@@ -1840,60 +1950,825 @@ end
 }
 
 
-----====decommenter pour ============ MOC extension =================
---ENTITES ->  IMPLEMENTATION ENTITES ;
----- definition d'une classe
---IMPLEMENTATION ->  classe identc SUPER aco ATTRIBUTS acf METHODES fin ;
----- surclasse
---SUPER -> ;
---SUPER -> dpts identc  ;
-----attributs
---ATTRIBUTS -> ;
---ATTRIBUTS -> TYPE ident pv ATTRIBUTS;
--- -- methodes
---METHODES -> ;
---METHODES ->  METHODE  METHODES ;
---METHODE ->  QUAL PTYPE   MPARFS BLOC ;
--- --qualificateur attribut ou methode :  + = de classe, - = d'instance
---QUAL -> plus;
---QUAL -> moins;
--- --type classe 
---STYPE-> identc ;
--- -- type BOOL
---STYPE-> bool ;
--- -- type "any"
---TYPE -> id  ;
----- type argument (ou retour) de methode entre parentheses
---PTYPE-> paro TYPE parf ;
----- parametres de methodes
---MPARFS -> ;
---MPARFS ->  MPARF MPARFS ;
--- -- selecteur sans parametre
---MPARF ->  ident  ;
--- -- selecteur  + type parametre + nom parametre
---MPARF ->   ident dpts  PTYPE ident;
----- object nil
---F -> nil   ;
-----Constante 'YES'
---F -> yes   ;
----- Constante 'NO'
---F -> no   ;
--- -- chaine MOC (commence par @)
---F -> chaineo ;
---  --self = this de Java
---F -> self  ;
---F -> super  ;
--- -- Appel de methode
---F -> cro F MARGS crf   ;
----- pour appel methode de classe
---F -> cro identc MARGS crf  ;
----- arguments appel de methode
---MARGS ->   ;
---MARGS ->  MARG MARGS   ;
--- -- selecteur + arg
---MARG -> ident dpts  E;
--- -- selecteur sans arg
---MARG -> ident  ;
----- --fin de MOC extension
+--====decommenter pour ============ MOC extension =================
+ENTITES -> #htds_classe IMPLEMENTATION #tds_classe #htAny ENTITES #tds_fonction #aff #aSupprimer ;
+#aSupprimer  {
+do 
+  ENTITES^code := ENTITES^machine.genComment("Definition des classes");
+end
+}
+#tds_fonction {
+do
+  ENTITES^stds_fonction := ENTITES1^stds_fonction;
+end
+}
+#htds_classe {
+do
+  IMPLEMENTATION^tds_classe := ENTITES^tds_classe;
+end
+}
+#tds_classe {
+do
+  if ( IMPLEMENTATION^stds_classe = null) then
+    error(Warning, "IMPLEMENTATION^stds_classe dans ENTITES-> ... est null" );
+  end
+  ENTITES1^tds_classe := IMPLEMENTATION^stds_classe;
+end
+}
+#aff {
+do
+   write "Classes recues : ENTITES^tds_classe = \n"+ENTITES^tds_classe+"\n";
+   --write "Classes transmises a IMPLEMENTATION^tds_classe :\n"+IMPLEMENTATION^tds_classe+"\n";
+   write "Classes transmises par IMPLEMENTATION^stds_classe :\n"+IMPLEMENTATION^stds_classe+"\n";
+   --write "ENTITES1^tds_classe : \n"+ENTITES1^tds_classe+"\n";
+   --write "ENTITES1^stds_classe : \n"+ENTITES1^stds_classe+"\n";
+end
+}
+#htAny {
+do
+  ENTITES1^tAny := IMPLEMENTATION^stAny;
+end
+}
+
+--definition d'une classe
+IMPLEMENTATION ->  classe identc #hclasse_fille SUPER aco #hattributs ATTRIBUTS acf #tds_classe #stAny METHODES #stds_classe fin #aff;
+global
+    classe : CLASSE;
+#aff {
+do
+  write "\n";
+  write "\n";
+  write "Table des classes visibles par : " + identc^txt +" : ";
+  write "chargement...";
+  write "\n";
+  write IMPLEMENTATION^tds_classe;
+  write "fin chargement\n";
+end
+}
+#hclasse_fille {
+do
+  SUPER^hclasse_fille := identc^txt;
+end
+}
+#hattributs {
+local
+    lc : LCHAMPS;
+    c : CHAMP;
+    tc : DTYPE;
+do
+  lc := SUPER^attributs;
+  -- le champ tv existe deja par heritage de la classe mere
+  ATTRIBUTS^hattributs := SUPER^attributs;
+  c := lc.get(lc.size());
+  tc := c.getType();
+  ATTRIBUTS^hdep := c.getDep() + tc.getTaille();
+  -- NO : prendre en compte l'heritage ATTRIBUTS^hattributs := new LCHAMPS();
+end
+}
+#tds_classe {
+local
+    nom_classe : String;
+    i : INFO;
+    iclasse : INFOCLASSE;
+    --nom_classe_mere : String;
+    iclasse_mere : INFOCLASSE;
+    classe_mere : CLASSE;
+    att : LCHAMPS;
+    tdsC : TDS;
+do
+    write "\n";
+        write "1 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;";
+    write "\n";
+    tdsC := null;
+    nom_classe := identc^txt;
+    if (IMPLEMENTATION^tds_classe = null) then
+      error(Warning, IMPLEMENTATION^tds_classe+" est null");
+    end
+    i := IMPLEMENTATION^tds_classe.chercherLocalement(nom_classe);
+    if (i /= null) then
+          error(Class_exist, nom_classe);
+    else
+          att := ATTRIBUTS^attributs;
+          classe := new CLASSE(nom_classe, att, SUPER^classe_mere);
+          write "\n";
+          write classe + "\n";
+        write "4 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;";
+    write "\n";
+          iclasse := new INFOCLASSE(classe, SUPER^iclasse_mere);
+          write "\n";
+        write "5 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;";
+    write "\n";
+          tdsC := IMPLEMENTATION^tds_classe;
+          write "\n";
+        write "6 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;";
+    write "\n";
+          tdsC.inserer(nom_classe, iclasse);
+          write "\n";
+        write "7 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;";
+    write "\n";
+          if ( tdsC = null) then
+            error(Warning, "tdsC dans IMPLEMENTATIONS -> ... ; est null" );
+          end
+          write "\n";
+        write "8 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;";
+    write "\n";
+          METHODES^tds_classe := tdsC;
+          write "\n";
+        write "9 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;";
+    write "\n";
+          METHODES^classe := nom_classe;
+          write "\n";
+        write "10 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;";
+    write "\n";
+    end 
+    write "\n";
+        write "tdsC : " + tdsC + "\n";
+        write "11 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;";
+    write "\n";
+end
+}
+#stAny {
+do
+  if (identc^txt.equals("NSObject")) then
+    IMPLEMENTATION^stAny := new POINTEUR(classe);
+  else
+    IMPLEMENTATION^stAny := IMPLEMENTATION^tAny;
+  end
+end
+}
+#stds_classe {
+do
+    if ( METHODES^stds_classe = null) then
+    error(Warning, "METHODES^stds_classe dans IMPLEMENTATIONS-> ... est null" );
+    end
+    IMPLEMENTATION^stds_classe := METHODES^stds_classe;
+end
+}
+
+-- surclasse
+SUPER -> #attributs_herites #classe;
+#attributs_herites {
+local
+    -- nsobject : CLASSE;
+    tv : CHAMP;
+    attributs : LCHAMPS;
+do
+  if (~SUPER^hclasse_fille.equals("NSObject")) then
+    error(MultipleOrphanClasses, SUPER^hclasse_fille + "doit au moins heriter de NSObject");
+  else 
+    -- creation de NSObject
+    -- inserer d'abord le champ qui contiendra l'Emplacement du code des methodes du type reel des instances 
+    -- recuperer tv et le mettre en unique champ de la classe
+    attributs := new LCHAMPS();
+    tv := new CHAMP("tv", new POINTEUR(null), 1);
+    attributs.inserer(tv);
+    SUPER^attributs := attributs;
+   end 
+end
+}
+#classe {
+do
+    SUPER^classe_mere := null; 
+    SUPER^iclasse_mere := null;
+end
+}
+
+
+SUPER -> dpts identc #classe_attributs_herites;
+#classe_attributs_herites {
+local
+    i : INFO;
+    iclasse : INFOCLASSE;
+    t : DTYPE;
+    classe : CLASSE;
+    
+do
+  if (SUPER^hclasse_fille.equals("NSObject")) then
+    error(OneRootClass, SUPER^hclasse_fille + "n'a pas de classe parente : c'est la racine");
+  else  
+    i := SUPER^tds_classe.chercherLocalement(identc^txt);
+    if (i = null) then
+            error(UnknownClass, identc^txt);
+    else
+        match i with INFOCLASSE then
+            iclasse := i;
+            t := iclasse.getType();
+            match t with CLASSE then
+                classe := t;
+                SUPER^classe_mere := classe; 
+                SUPER^iclasse_mere := iclasse;
+                -- recuperer les attributs herites
+                SUPER^attributs := classe.getAttributs();
+            else
+                error(InterneInfoclasse, "INFOCLASSE.getType()doit retourner une CLASSE");
+            end
+        else
+            error(InterneTDSClasse, "tds_classe ne doit contenir que des INFOCLASSE");
+        end
+    end
+  end
+end
+}
+
+--attributs
+ATTRIBUTS -> #attributs ;
+#attributs {
+do
+    ATTRIBUTS^attributs := ATTRIBUTS^hattributs; 
+end
+}
+
+ATTRIBUTS -> TYPE ident pv #attributs1 ATTRIBUTS #attributs2;
+#attributs1 {
+local
+    lc : LCHAMPS;
+    c : CHAMP;
+do
+    lc := ATTRIBUTS^hattributs;
+    c := lc.chercher(ident^txt);
+    if (c /= null) then
+        error(Att_exist, ident^txt);
+    else
+        c := new CHAMP(ident^txt, TYPE^type, ATTRIBUTS^hdep);
+        lc.inserer(c);
+        ATTRIBUTS1^hattributs := lc;
+    end
+    ATTRIBUTS1^hdep := ATTRIBUTS^hdep + TYPE^type.getTaille();
+end
+}
+#attributs2 {
+do
+    ATTRIBUTS^attributs := ATTRIBUTS1^attributs; 
+end
+}
+
+-- methodes
+METHODES -> #stds_classe;
+#stds_classe {
+do
+    METHODES^stds_classe := METHODES^tds_classe;
+end
+}
+
+METHODES ->  #init METHODE #tds_classe  METHODES #stds_classe;
+
+#init {
+do
+    METHODE^tds_classe := METHODES^tds_classe;
+end
+}
+#tds_classe {
+do
+    METHODES1^tds_classe := METHODE^stds_classe;
+end
+}
+#stds_classe {
+do
+    METHODES^stds_classe := METHODES1^stds_classe;
+end
+} 
+
+METHODE ->  QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer #typeRet BLOC ;
+#aSupprimer {
+do
+  BLOC^htailleparams := 0;
+end
+}
+#typeRet  {
+do
+  BLOC^typeRet := PTYPE^type;
+end
+}
+#params {
+local
+    i : INFO;
+    
+do
+    MPARFS^hparams := new PARAMETRES();
+    MPARFS^htdspar := new TDS(METHODE^tds);
+    if (!QUAL^qual) then
+	    i := METHODE^tds_classe.chercherLocalement(METHODE^classe);
+        i := new INFOVAR(new POINTEUR(i.getType()), new Emplacement((-1), METHODE^regLB ));
+        MPARFS^htdspar.inserer("self", i);
+    end
+end
+}
+#adresse {
+local
+    n : Integer;
+do
+    if (!QUAL^qual) then
+        n := -2;                 -- initialisation des adresses parametre
+    else
+        n := -1;
+    end
+    MPARFS^hadr := n;
+    BLOC^hadr := 3;               -- initialisation des adresse de bloc
+end
+}
+#tds {
+do
+    BLOC^tds := MPARFS^tdspar;
+end
+}
+#tds_classe {
+local
+    i : INFO;
+    ic : INFOCLASSE;
+    im : INFOMETHODE;
+    tdsC : TDS;
+do
+    tdsC := METHODE^tds_classe;
+    -- inserer la nouvellemethode dans l'infoclasse correspondante
+    im := new INFOMETHODE(PTYPE^type, MPARFS^params, QUAL^qual, 0, METHODE^classe);
+    i := tdsC.chercherLocalement(METHODE^classe);
+    if ( tdsC = null) then
+            error(Warning, "tdsC1 dans METHODES -> QUAL ... ; est null" );
+    end
+    match i with INFOCLASSE then 
+        ic := i;
+        ic.inserer(MPARFS^nom, im);
+        -- maj de tdsC
+        tdsC.inserer(METHODE^classe, ic);
+        if ( tdsC = null) then
+            error(Warning, "tdsC2 dans METHODES -> QUAL ... ; est null" );
+        else
+            write "\n";
+            write "tdsC";
+            write "\n";
+            write "\n";
+            write tdsC;
+            write "\n";
+            write "\n";
+            write "fin";
+            write "\n";
+        end
+        BLOC^tds_classe := tdsC;
+        METHODE^stds_classe := tdsC;
+    else 
+        error(InterneTDSClasse, "tds_classe ne doit contenir que des INFOCLASSE");
+    end 
+end
+}
+
+--qualificateur attribut ou methode :  + = de classe, - = d'instance
+QUAL -> plus #qual;
+#qual {
+do
+    QUAL^qual := true;
+end
+}
+
+QUAL -> moins #qual;
+#qual {
+do
+    QUAL^qual := false;
+end
+}
+
+--type classe 
+STYPE-> identc #type;
+#type {
+local
+  in : INFO;
+  i : INFOCLASSE;
+do
+  in := STYPE^tds_classe.chercherLocalement(identc^txt);
+  if (in = null) then
+    error(UnknownClass , "Classe "+identc^txt+" inconnue");
+  else
+    match in with INFOCLASSE then
+        i := in;
+        STYPE^type := i.getType();
+    else
+        error(InterneInfoClasse, identc^txt+" n'a pas d'infoclasse");
+    end
+  end
+end 
+}
+
+-- type BOOL
+STYPE-> bool  #type;
+#type {
+do
+  STYPE^type := STYPE^tBool;
+end
+}
+
+-- type "any"
+TYPE -> id  #type;
+#type {
+do
+  if (TYPE^tAny = null) then
+    error(UnusableAny, "declarer la classe NSObject pour avoir acces au type any");
+  else
+    TYPE^type := TYPE^tAny;
+  end
+end
+}
+
+-- type argument (ou retour) de methode entre parentheses
+PTYPE -> paro TYPE parf #type;
+#type {
+do
+  PTYPE^type := TYPE^type;
+end
+}
+
+-- parametres de methodes
+MPARFS -> #parametres;
+#parametres {
+do
+    MPARFS^params := MPARFS^hparams;
+    MPARFS^tdspar := MPARFS^htdspar;
+    MPARFS^nom := "";
+end
+}
+
+MPARFS ->  MPARF #parametres1 MPARFS #parametres2;
+#parametres1 {
+do
+    MPARFS1^hparams := MPARF^params;
+    MPARFS1^htdspar := MPARF^tdspar;
+    MPARFS1^hadr := MPARF^adr;
+end
+}
+#parametres2 {
+do
+    MPARFS^params := MPARFS1^params;
+    MPARFS^tdspar := MPARFS1^tdspar;
+    MPARFS^nom := MPARF^nom + MPARFS1^nom;
+end
+}
+
+-- selecteur sans parametre
+MPARF ->  ident  #parametres #adresse;
+#parametres {
+do
+    MPARF^params := MPARF^hparams;
+    MPARF^tdspar := MPARF^htdspar;
+    MPARF^nom := ident^txt;
+end
+}
+#adresse {
+do
+    MPARF^adr := MPARF^hadr;
+end
+}
+
+-- selecteur  + type parametre + nom parametre
+MPARF ->   ident dpts  PTYPE ident #parametres #adresse;
+#parametres {
+local
+    p : PARAMETRES;
+    i : INFOVAR;
+    t : TDS;
+do
+    i := new INFOVAR(PTYPE^type, new Emplacement(MPARF^hadr, MPARF^regLB ));
+    p := MPARF^hparams;
+    p.inserer(PTYPE^type);
+    MPARF^params := p;
+    t := MPARF^htdspar;
+    if (t.chercherLocalement(ident1^txt) = null) then
+        t.inserer(ident1^txt, i);
+    else
+        error(param_exists, ident1^txt);
+    end
+    MPARF^tdspar := t;
+    MPARF^nom := ident^txt + ":";
+end
+}
+#adresse {
+local
+  taille : INTEGER;
+do
+  taille := PTYPE^type.getTaille();
+  MPARF^adr := MPARF^hadr - taille;
+end
+}
+
+-- object nil
+F -> nil #type #aSupprimer;
+#aSupprimer {
+do
+  F^code := "";
+  F^est_adresse := false;
+  F^adresse := null;
+end
+}
+#type {
+do
+  F^type := F^tNil;
+  F^affectable := false;
+end
+}
+
+--Constante 'YES'
+F -> yes  #type #aSupprimer;
+#aSupprimer {
+do
+  F^code := "";
+  F^est_adresse := false;
+  F^adresse := null;
+end
+}
+#type {
+do
+  F^type := F^tBool;
+  F^affectable := false;
+end
+}
+
+-- Constante 'NO'
+F -> no  #type #aSupprimer;
+#aSupprimer {
+do
+  F^code := "";
+  F^est_adresse := false;
+  F^adresse := null;
+end
+}
+#type {
+do
+  F^type := F^tBool;
+  F^affectable := false;
+end
+}
+
+-- chaine MOC (commence par @)
+F -> chaineo #type #aSupprimer;
+#aSupprimer {
+do
+  F^code := F^machine.genComment(chaineo^txt);
+  F^est_adresse := false;
+  F^adresse := null;
+end
+}
+#type {
+do
+  F^type := null; -- pas de type
+  F^affectable := false;
+end
+}
+
+--self = this de Java
+F -> self #type #aSupprimer;
+#aSupprimer {
+do
+  F^code := "";
+  F^est_adresse := false;
+  F^adresse := null;
+end
+}
+#type {
+local
+  in : INFO;
+  i : INFOVAR;
+do
+  F^affectable := false;
+  in := F^tds.chercherGlobalement("self");
+  if (in = null) then
+    error(IllegalSelf,  "utilisation illegale de self : hors d'une methode");
+  else
+    match in with INFOVAR then
+        i := in;
+        F^type := i.getType();
+    else
+        error(ErreurInterneTDS_self,  "self devrait etre dans la TDS de la methode en tant que variable!");
+    end
+  end
+end 
+}
+
+F -> super #type #aSupprimer;
+#aSupprimer {
+do
+  F^code := "";
+  F^est_adresse := false;
+  F^adresse := null;
+end
+}
+#type { -- type pointeur sur la classe mere
+local
+  in : INFO;
+  i : INFOVAR;
+  t2 : DTYPE;
+  type_self : POINTEUR;
+  t : DTYPE;
+  classe_self : CLASSE;
+do
+  F^affectable := false;
+  in := F^tds.chercherGlobalement("self");
+  if (in = null) then
+    error(IllegalSuper,  "utilisation illegale de super : hors d'une methode (d'instance ?)");
+  else
+    match in with INFOVAR then
+        i := in;
+        t := i.getType();
+        match t with POINTEUR then
+            type_self := t;
+            t2 := type_self.getType();
+            match t2 with CLASSE then
+                classe_self := t2;
+                F^type := new POINTEUR(classe_self.getClasseMere());
+            end
+        else
+             error(ErreurInterneTDS_self,  "self devrait etre de type POINTEUR");
+        end
+    else
+        error(ErreurInterneTDS_self,  "self devrait etre dans la TDS de la methode en tant que variable!");
+    end
+  end
+end 
+}
+
+-- Appel de methode
+F -> cro F #params MARGS crf #bonappel_type #aSupprimer;
+#aSupprimer {
+do
+  F^code := "";
+  F^est_adresse := false;
+  F^adresse := null;
+end
+}
+#params {
+do
+    MARGS^hparams := new PARAMETRES();
+end
+}
+#bonappel_type {
+local
+    t : DTYPE;
+    t2 : DTYPE;
+    p : POINTEUR;
+    c : CLASSE;
+    i : INFO;
+    i2 : INFO;
+    tds : TDS;
+    ic : INFOCLASSE;
+    im : INFOMETHODE;
+    params : PARAMETRES;
+do
+--match in with INFOFONCTION then
+--i := in;
+--else
+--error(B_17 , " c est pas une fonction");
+--end
+    im := null; -- initialisation forcee :( 
+    t := F1^type;
+    match t with POINTEUR then -- on vérifie que l'instance est bien un pointeur
+        p := t;
+        t2 := p.getType();
+	    match t2 with CLASSE then  -- on vérifie que l'instance est bien un pointeur sur un struct
+	        c := t2;
+            i := F^tds_classe.chercherLocalement(c.getNomClasse()); -- on recupere l'infoclasse
+	        if (i = null) then
+	            error(classe_inexistante, c.getNomClasse());
+	        else
+	            match i with INFOCLASSE then
+	                ic := i;
+	                tds := ic.getMethodes();
+	                i2 := tds.chercherGlobalement(MARGS^nom); -- in recupere l'infomethode
+	                if (i2 = null) then
+	                    error(methode_inexistante, c.getNomClasse(), MARGS^nom);
+	                else
+	                    match i2 with INFOMETHODE then
+	                        im := i2;
+	                        --== type de retour
+	                        F^type := im.getRetour();
+	                        F^affectable := false;
+	                        --=/= type de retour
+	                        params := im.getParametres();
+	                        if (im.isClassMethod()) then
+	                            error(pas_methode_instance, c.getNomClasse(), MARGS^nom);
+	                        end
+	                        if (!params.compareTo(MARGS^params)) then -- on vérifie les parametres
+	                            error(mauvais_parametres, c.getNomClasse(), MARGS^nom);
+	                        end
+	                    else
+	                        error(pas_methode, "ceci n'est pas une methode");
+	                    end
+	                end
+	            else
+	                error(pas_classe, "ceci n'est pas une classe");
+                end
+            end
+	    else
+	        error(pas_instance, "ceci n'est pas une instance de classe");
+	    end
+    else
+        error(pas_pointeur, "ceci n'est pas un pointeur");
+    end
+end
+}
+
+-- pour appel methode de classe
+F -> cro identc #params MARGS crf #bonappel_type #aSupprimer;
+#aSupprimer {
+do
+  F^code := "";
+  F^est_adresse := false;
+  F^adresse := null;
+end
+}
+#params {
+do
+    MARGS^hparams := new PARAMETRES();
+end
+}
+#bonappel_type {
+local
+    t : DTYPE;
+    p : POINTEUR;
+    c : CLASSE;
+    i : INFO;
+    i2 : INFO;
+    tds : TDS;
+    ic : INFOCLASSE;
+    im : INFOMETHODE;
+    params : PARAMETRES;
+do
+    i := F^tds_classe.chercherLocalement(identc^txt); -- on recupere l'infoclasse
+    if (i = null) then
+        error(classe_inexistante, identc^txt);
+    else
+        match i with INFOCLASSE then
+            ic := i; 
+            tds := ic.getMethodes();
+            i2 := tds.chercherGlobalement(MARGS^nom); -- in recupere l'infomethode
+            if (i2 = null) then
+                error(methode_inexistante, identc^txt, MARGS^nom);
+            else
+                match i2 with INFOMETHODE then
+                    im := i2;
+                    --== type de retour
+                    F^type := im.getRetour();
+                    F^affectable := false;
+                    --=/= type de retour
+                    params := im.getParametres();
+                    if (!im.isClassMethod()) then
+                        error(pas_methode_classe, identc^txt, MARGS^nom);
+                    end
+                    if (!params.compareTo(MARGS^params)) then -- on vérifie les parametres
+                        error(mauvais_parametres, identc^txt, MARGS^nom);
+                    end
+                else
+                    error(pas_methode, "ceci n'est pas une methode");
+                end
+            end
+        else
+            error(pas_classe, "ceci n'est pas une classe");
+        end
+    end
+end
+}
+
+-- arguments appel de methode
+MARGS ->  #parametres ;
+#parametres {
+do
+    MARGS^params := MARGS^hparams;
+    MARGS^nom := "";
+end
+}
+
+MARGS ->  MARG #parametres1 MARGS #parametres2  ;
+#parametres1 {
+do
+    MARGS1^hparams := MARG^params;
+end
+}
+#parametres2 {
+do
+    MARGS^params := MARGS1^params;
+    MARGS^nom := MARG^nom + MARGS1^nom;
+end
+}
+
+-- selecteur + arg
+MARG -> ident dpts #lire_resultat E #parametres;
+#lire_resultat {
+do
+   E^lire_resultat := true;
+end
+}
+#parametres {
+do
+    MARG^hparams.inserer(E^type);
+    MARG^params := MARG^hparams;
+    MARG^nom := ident^txt + ":";
+end
+}
+
+-- selecteur sans arg
+MARG -> ident #parametres ;
+#parametres {
+do
+    MARG^params := MARG^hparams;
+    MARG^nom := ident^txt;
+end
+}
+
+--fin de MOC extension
 
 end

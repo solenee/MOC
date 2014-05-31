@@ -21,19 +21,23 @@ LEX_MOC scanner;
 int [] sync= new int[0];
   String att_code_gauche;
   Register att_regLB;
+  DTYPE att_tNil;
+  TDS att_tds_classe;
   boolean att_vide;
   boolean att_eval;
+  DTYPE att_tAny;
   String att_code;
   IMachine att_machine;
   TDS att_tds_fonction;
   DTYPE att_type;
   DTYPE att_tInt;
   boolean att_hest_adresse;
-  DTYPE att_tString;
   boolean att_estAffectation;
+  DTYPE att_tString;
   DTYPE att_tVoid;
   Emplacement att_hadresse;
   DTYPE att_tChar;
+  DTYPE att_tBool;
   DTYPE att_htype;
   TDS att_tds;
   boolean att_lire_resultat;
@@ -77,8 +81,12 @@ x_3.att_tPointeurNull=this.att_tPointeurNull;
 x_3.att_tVoid=this.att_tVoid;
 x_3.att_tString=this.att_tString;
 x_3.att_regLB=this.att_regLB;
+x_3.att_tAny=this.att_tAny;
+x_3.att_tBool=this.att_tBool;
+x_3.att_tNil=this.att_tNil;
 x_3.att_tds=this.att_tds;
 x_3.att_tds_fonction=this.att_tds_fonction;
+x_3.att_tds_classe=this.att_tds_classe;
 x_3.att_machine=this.att_machine;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","AFFX -> affect A #getType #estVide #gen ;"});
 }
@@ -188,16 +196,22 @@ this.att_code=loc_leCode;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_affect : // 38
+      case LEX_MOC.token_affect : // 4944
         regle28 () ;
       break ;
-      case LEX_MOC.token_pv : // 37
+      case LEX_MOC.token_pv : // 4943
         regle29 () ;
       break ;
-      case LEX_MOC.token_virg : // 36
+      case LEX_MOC.token_virg : // 4942
         regle29 () ;
       break ;
-      case LEX_MOC.token_parf : // 33
+      case LEX_MOC.token_parf : // 4939
+        regle29 () ;
+      break ;
+      case LEX_MOC.token_ident : // 4982
+        regle29 () ;
+      break ;
+      case LEX_MOC.token_crf : // 4970
         regle29 () ;
       break ;
       default :

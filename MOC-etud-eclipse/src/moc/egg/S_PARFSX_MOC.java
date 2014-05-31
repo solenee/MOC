@@ -20,9 +20,12 @@ LEX_MOC scanner;
     }
 int [] sync= new int[0];
   Register att_regLB;
+  DTYPE att_tNil;
+  TDS att_tds_classe;
   boolean att_eval;
-  PARAMETRES att_hparams;
+  DTYPE att_tAny;
   PARAMETRES att_params;
+  PARAMETRES att_hparams;
   IMachine att_machine;
   DTYPE att_tInt;
   DTYPE att_tString;
@@ -31,6 +34,7 @@ int [] sync= new int[0];
   int att_last_adr;
   TDS att_htdspar;
   DTYPE att_tChar;
+  DTYPE att_tBool;
   TDS att_tdspar;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
@@ -110,8 +114,16 @@ x_3.att_tString=this.att_tString;
 x_6.att_tString=this.att_tString;
 x_3.att_regLB=this.att_regLB;
 x_6.att_regLB=this.att_regLB;
+x_3.att_tAny=this.att_tAny;
+x_6.att_tAny=this.att_tAny;
+x_3.att_tBool=this.att_tBool;
+x_6.att_tBool=this.att_tBool;
+x_3.att_tNil=this.att_tNil;
+x_6.att_tNil=this.att_tNil;
 x_3.att_tds=this.att_tds;
 x_6.att_tds=this.att_tds;
+x_3.att_tds_classe=this.att_tds_classe;
+x_6.att_tds_classe=this.att_tds_classe;
 x_3.att_hparams=this.att_hparams;
 x_3.att_htdspar=this.att_htdspar;
 x_3.att_hadr=this.att_hadr;
@@ -131,10 +143,10 @@ x_6.att_htdspar=x_3.att_tdspar;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 33
+      case LEX_MOC.token_parf : // 4939
         regle7 () ;
       break ;
-      case LEX_MOC.token_virg : // 36
+      case LEX_MOC.token_virg : // 4942
         regle8 () ;
       break ;
       default :

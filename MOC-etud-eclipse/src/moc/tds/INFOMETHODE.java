@@ -58,4 +58,11 @@ public class INFOMETHODE extends INFOFONCTION {
 		this.classe = classe;
 	}
 
+	@Override
+	public String toString() {
+		return "INFOMETHODE [isclassmethod=" + isclassmethod + ", numero="
+				+ numero + ", classe=" + classe + "]";
+	}
+
+	
 }

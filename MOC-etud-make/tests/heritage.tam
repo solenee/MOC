@@ -1,0 +1,51 @@
+; Generated code for tests/heritage.moc.
+; Do not modify by hand
+	; code in inline : start
+; inline code_asm
+
+
+	CALL (LB) _main
+	; appel au point d'entree du programme
+
+	HALT
+	; arret de la machine
+
+	; code in inline : end
+_malloc:
+	; code in inline : start
+; inline code_asm
+
+
+	LOAD (1) -1[LB]
+	; acces au parametre taille
+
+	SUBR Malloc
+	; allocation
+
+	RETURN (1) 1
+
+
+	; code in inline : end
+	; fin d'un bloc : pop
+	POP(0) 0
+
+_fdouble:
+	; declaration de a de taille 1 en [3/Register [name=LB, num=0]]
+	PUSH 1
+	LOADL 2	; entier
+	STORE(1) 3[LB]
+	; fin de declaration de a
+	; retour
+	; pas d'affectation : code de l'expression
+	; operation binaire 
+	; acces a a
+	LOAD (1) 3[LB]
+	; acces a x
+	LOAD (1) -1[LB]
+	SUBR IMul
+	RETURN (1) 1
+	; fin retour
+	; fin d'un bloc : pop
+	POP(0) 1
+
+	; Definition des classes

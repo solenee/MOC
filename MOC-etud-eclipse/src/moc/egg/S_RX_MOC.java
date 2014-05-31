@@ -20,20 +20,24 @@ LEX_MOC scanner;
     }
 int [] sync= new int[0];
   boolean att_est_adresse;
-  Register att_regLB;
   Emplacement att_adresse;
+  Register att_regLB;
+  DTYPE att_tNil;
+  TDS att_tds_classe;
   boolean att_vide;
   boolean att_eval;
+  DTYPE att_tAny;
   String att_hcode;
   String att_code;
   IMachine att_machine;
   TDS att_tds_fonction;
   DTYPE att_tInt;
-  DTYPE att_tString;
   boolean att_hest_adresse;
+  DTYPE att_tString;
   DTYPE att_tVoid;
   Emplacement att_hadresse;
   DTYPE att_tChar;
+  DTYPE att_tBool;
   TDS att_tds;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
@@ -167,10 +171,18 @@ x_3.att_tString=this.att_tString;
 x_7.att_tString=this.att_tString;
 x_3.att_regLB=this.att_regLB;
 x_7.att_regLB=this.att_regLB;
+x_3.att_tAny=this.att_tAny;
+x_7.att_tAny=this.att_tAny;
+x_3.att_tBool=this.att_tBool;
+x_7.att_tBool=this.att_tBool;
+x_3.att_tNil=this.att_tNil;
+x_7.att_tNil=this.att_tNil;
 x_3.att_tds=this.att_tds;
 x_7.att_tds=this.att_tds;
 x_3.att_tds_fonction=this.att_tds_fonction;
 x_7.att_tds_fonction=this.att_tds_fonction;
+x_3.att_tds_classe=this.att_tds_classe;
+x_7.att_tds_classe=this.att_tds_classe;
 x_2.att_machine=this.att_machine;
 x_3.att_machine=this.att_machine;
 x_7.att_machine=this.att_machine;
@@ -180,43 +192,49 @@ x_7.att_machine=this.att_machine;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_plus : // 54
+      case LEX_MOC.token_plus : // 4960
         regle40 () ;
       break ;
-      case LEX_MOC.token_moins : // 55
+      case LEX_MOC.token_moins : // 4961
         regle40 () ;
       break ;
-      case LEX_MOC.token_ou : // 56
+      case LEX_MOC.token_ou : // 4962
         regle40 () ;
       break ;
-      case LEX_MOC.token_inf : // 48
+      case LEX_MOC.token_inf : // 4954
         regle41 () ;
       break ;
-      case LEX_MOC.token_sup : // 50
+      case LEX_MOC.token_sup : // 4956
         regle41 () ;
       break ;
-      case LEX_MOC.token_infeg : // 49
+      case LEX_MOC.token_infeg : // 4955
         regle41 () ;
       break ;
-      case LEX_MOC.token_supeg : // 51
+      case LEX_MOC.token_supeg : // 4957
         regle41 () ;
       break ;
-      case LEX_MOC.token_eg : // 52
+      case LEX_MOC.token_eg : // 4958
         regle41 () ;
       break ;
-      case LEX_MOC.token_neg : // 53
+      case LEX_MOC.token_neg : // 4959
         regle41 () ;
       break ;
-      case LEX_MOC.token_affect : // 38
+      case LEX_MOC.token_affect : // 4944
         regle41 () ;
       break ;
-      case LEX_MOC.token_virg : // 36
+      case LEX_MOC.token_virg : // 4942
         regle41 () ;
       break ;
-      case LEX_MOC.token_parf : // 33
+      case LEX_MOC.token_pv : // 4943
         regle41 () ;
       break ;
-      case LEX_MOC.token_pv : // 37
+      case LEX_MOC.token_parf : // 4939
+        regle41 () ;
+      break ;
+      case LEX_MOC.token_ident : // 4982
+        regle41 () ;
+      break ;
+      case LEX_MOC.token_crf : // 4970
         regle41 () ;
       break ;
       default :

@@ -22,8 +22,11 @@ int [] sync= new int[0];
   int att_adr;
   Register att_regLB;
   TDS att_stds;
+  DTYPE att_tNil;
+  TDS att_tds_classe;
   boolean att_eval;
   DTYPE att_typeRet;
+  DTYPE att_tAny;
   String att_code;
   IMachine att_machine;
   TDS att_tds_fonction;
@@ -34,9 +37,10 @@ int [] sync= new int[0];
   int att_hadr;
   DTYPE att_tChar;
   boolean att_isRet;
+  DTYPE att_tBool;
+  TDS att_tds;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
-  TDS att_tds;
   int glob_19_adresse;
   INFO glob_19_i;
   Emplacement glob_19_empl;
@@ -196,8 +200,12 @@ x_3.att_tPointeurNull=this.att_tPointeurNull;
 x_3.att_tVoid=this.att_tVoid;
 x_3.att_tString=this.att_tString;
 x_3.att_regLB=this.att_regLB;
+x_3.att_tAny=this.att_tAny;
+x_3.att_tBool=this.att_tBool;
+x_3.att_tNil=this.att_tNil;
 x_3.att_tds=this.att_tds;
 x_3.att_tds_fonction=this.att_tds_fonction;
+x_3.att_tds_classe=this.att_tds_classe;
 x_3.att_machine=this.att_machine;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","INST -> #lire_resultat E pv #adresse #stds #isReturn #gen ;"});
 }
@@ -211,8 +219,12 @@ x_4.att_tPointeurNull=this.att_tPointeurNull;
 x_4.att_tVoid=this.att_tVoid;
 x_4.att_tString=this.att_tString;
 x_4.att_regLB=this.att_regLB;
+x_4.att_tAny=this.att_tAny;
+x_4.att_tBool=this.att_tBool;
+x_4.att_tNil=this.att_tNil;
 x_4.att_tds=this.att_tds;
 x_4.att_tds_fonction=this.att_tds_fonction;
+x_4.att_tds_classe=this.att_tds_classe;
 x_4.att_hadr=this.att_hadr;
 x_4.att_htailleparams=this.att_htailleparams;
 x_4.att_machine=this.att_machine;
@@ -260,8 +272,12 @@ x_4.att_tPointeurNull=this.att_tPointeurNull;
 x_4.att_tVoid=this.att_tVoid;
 x_4.att_tString=this.att_tString;
 x_4.att_regLB=this.att_regLB;
+x_4.att_tAny=this.att_tAny;
+x_4.att_tBool=this.att_tBool;
+x_4.att_tNil=this.att_tNil;
 x_4.att_tds=this.att_tds;
 x_4.att_tds_fonction=this.att_tds_fonction;
+x_4.att_tds_classe=this.att_tds_classe;
 x_4.att_machine=this.att_machine;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","INST -> retour #lire_resultat E pv #adresse #tds #verifReturn #isReturn #gen ;"});
 }
@@ -294,11 +310,23 @@ x_10.att_tString=this.att_tString;
 x_5.att_regLB=this.att_regLB;
 x_9.att_regLB=this.att_regLB;
 x_10.att_regLB=this.att_regLB;
+x_5.att_tAny=this.att_tAny;
+x_9.att_tAny=this.att_tAny;
+x_10.att_tAny=this.att_tAny;
+x_5.att_tBool=this.att_tBool;
+x_9.att_tBool=this.att_tBool;
+x_10.att_tBool=this.att_tBool;
+x_5.att_tNil=this.att_tNil;
+x_9.att_tNil=this.att_tNil;
+x_10.att_tNil=this.att_tNil;
 x_5.att_tds=this.att_tds;
 x_10.att_tds=this.att_tds;
 x_5.att_tds_fonction=this.att_tds_fonction;
 x_9.att_tds_fonction=this.att_tds_fonction;
 x_10.att_tds_fonction=this.att_tds_fonction;
+x_5.att_tds_classe=this.att_tds_classe;
+x_9.att_tds_classe=this.att_tds_classe;
+x_10.att_tds_classe=this.att_tds_classe;
 x_9.att_hadr=this.att_hadr;
 x_10.att_hadr=this.att_hadr;
 x_9.att_htailleparams=this.att_htailleparams;
@@ -339,9 +367,17 @@ x_2.att_tString=this.att_tString;
 x_8.att_tString=this.att_tString;
 x_2.att_regLB=this.att_regLB;
 x_8.att_regLB=this.att_regLB;
+x_2.att_tAny=this.att_tAny;
+x_8.att_tAny=this.att_tAny;
+x_2.att_tBool=this.att_tBool;
+x_8.att_tBool=this.att_tBool;
+x_2.att_tNil=this.att_tNil;
+x_8.att_tNil=this.att_tNil;
 x_2.att_tds=this.att_tds;
 x_8.att_tds=this.att_tds;
 x_8.att_tds_fonction=this.att_tds_fonction;
+x_2.att_tds_classe=this.att_tds_classe;
+x_8.att_tds_classe=this.att_tds_classe;
 x_8.att_machine=this.att_machine;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","INST -> TYPE ident #tds #adresse #lire_resultat #code_gauche AFFX pv #verifCompatibilite #isReturn #gen ;"});
 }
@@ -540,52 +576,82 @@ this.att_isRet=true;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_void : // 41
+      case LEX_MOC.token_void : // 4947
         regle19 () ;
       break ;
-      case LEX_MOC.token_int : // 43
+      case LEX_MOC.token_int : // 4949
         regle19 () ;
       break ;
-      case LEX_MOC.token_char : // 44
+      case LEX_MOC.token_char : // 4950
         regle19 () ;
       break ;
-      case LEX_MOC.token_entier : // 62
+      case LEX_MOC.token_identc : // 4983
+        regle19 () ;
+      break ;
+      case LEX_MOC.token_bool : // 4975
+        regle19 () ;
+      break ;
+      case LEX_MOC.token_id : // 4971
+        regle19 () ;
+      break ;
+      case LEX_MOC.token_entier : // 4979
         regle20 () ;
       break ;
-      case LEX_MOC.token_caractere : // 63
+      case LEX_MOC.token_caractere : // 4980
         regle20 () ;
       break ;
-      case LEX_MOC.token_plus : // 54
+      case LEX_MOC.token_plus : // 4960
         regle20 () ;
       break ;
-      case LEX_MOC.token_moins : // 55
+      case LEX_MOC.token_moins : // 4961
         regle20 () ;
       break ;
-      case LEX_MOC.token_non : // 61
+      case LEX_MOC.token_non : // 4967
         regle20 () ;
       break ;
-      case LEX_MOC.token_null : // 46
+      case LEX_MOC.token_null : // 4952
         regle20 () ;
       break ;
-      case LEX_MOC.token_paro : // 32
+      case LEX_MOC.token_paro : // 4938
         regle20 () ;
       break ;
-      case LEX_MOC.token_ident : // 65
+      case LEX_MOC.token_ident : // 4982
         regle20 () ;
       break ;
-      case LEX_MOC.token_mult : // 57
+      case LEX_MOC.token_mult : // 4963
         regle20 () ;
       break ;
-      case LEX_MOC.token_aco : // 34
+      case LEX_MOC.token_nil : // 4953
+        regle20 () ;
+      break ;
+      case LEX_MOC.token_yes : // 4977
+        regle20 () ;
+      break ;
+      case LEX_MOC.token_no : // 4978
+        regle20 () ;
+      break ;
+      case LEX_MOC.token_chaineo : // 4984
+        regle20 () ;
+      break ;
+      case LEX_MOC.token_self : // 4974
+        regle20 () ;
+      break ;
+      case LEX_MOC.token_super : // 4976
+        regle20 () ;
+      break ;
+      case LEX_MOC.token_cro : // 4969
+        regle20 () ;
+      break ;
+      case LEX_MOC.token_aco : // 4940
         regle21 () ;
       break ;
-      case LEX_MOC.token_si : // 39
+      case LEX_MOC.token_si : // 4945
         regle22 () ;
       break ;
-      case LEX_MOC.token_retour : // 45
+      case LEX_MOC.token_retour : // 4951
         regle25 () ;
       break ;
-      case LEX_MOC.token_asm : // 42
+      case LEX_MOC.token_asm : // 4948
         regle26 () ;
       break ;
       default :

@@ -20,16 +20,20 @@ LEX_MOC scanner;
     }
 int [] sync= new int[0];
   Register att_regLB;
+  DTYPE att_tNil;
+  TDS att_tds_classe;
   boolean att_eval;
+  DTYPE att_tAny;
   String att_code;
-  PARAMETRES att_hparams;
   PARAMETRES att_params;
+  PARAMETRES att_hparams;
   IMachine att_machine;
   TDS att_tds_fonction;
   DTYPE att_tInt;
   DTYPE att_tString;
   DTYPE att_tVoid;
   DTYPE att_tChar;
+  DTYPE att_tBool;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
   TDS att_tds;
@@ -69,10 +73,18 @@ x_3.att_tString=this.att_tString;
 x_5.att_tString=this.att_tString;
 x_3.att_regLB=this.att_regLB;
 x_5.att_regLB=this.att_regLB;
+x_3.att_tAny=this.att_tAny;
+x_5.att_tAny=this.att_tAny;
+x_3.att_tBool=this.att_tBool;
+x_5.att_tBool=this.att_tBool;
+x_3.att_tNil=this.att_tNil;
+x_5.att_tNil=this.att_tNil;
 x_3.att_tds=this.att_tds;
 x_5.att_tds=this.att_tds;
 x_3.att_tds_fonction=this.att_tds_fonction;
 x_5.att_tds_fonction=this.att_tds_fonction;
+x_3.att_tds_classe=this.att_tds_classe;
+x_5.att_tds_classe=this.att_tds_classe;
 x_3.att_machine=this.att_machine;
 x_5.att_machine=this.att_machine;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","ARGS -> #lire_resultat E #params1 ARGSX #params2 #gen ;"});
@@ -127,34 +139,55 @@ this.att_code="";
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 33
+      case LEX_MOC.token_parf : // 4939
         regle64 () ;
       break ;
-      case LEX_MOC.token_entier : // 62
+      case LEX_MOC.token_entier : // 4979
         regle65 () ;
       break ;
-      case LEX_MOC.token_caractere : // 63
+      case LEX_MOC.token_caractere : // 4980
         regle65 () ;
       break ;
-      case LEX_MOC.token_plus : // 54
+      case LEX_MOC.token_plus : // 4960
         regle65 () ;
       break ;
-      case LEX_MOC.token_moins : // 55
+      case LEX_MOC.token_moins : // 4961
         regle65 () ;
       break ;
-      case LEX_MOC.token_non : // 61
+      case LEX_MOC.token_non : // 4967
         regle65 () ;
       break ;
-      case LEX_MOC.token_null : // 46
+      case LEX_MOC.token_null : // 4952
         regle65 () ;
       break ;
-      case LEX_MOC.token_paro : // 32
+      case LEX_MOC.token_paro : // 4938
         regle65 () ;
       break ;
-      case LEX_MOC.token_ident : // 65
+      case LEX_MOC.token_ident : // 4982
         regle65 () ;
       break ;
-      case LEX_MOC.token_mult : // 57
+      case LEX_MOC.token_mult : // 4963
+        regle65 () ;
+      break ;
+      case LEX_MOC.token_nil : // 4953
+        regle65 () ;
+      break ;
+      case LEX_MOC.token_yes : // 4977
+        regle65 () ;
+      break ;
+      case LEX_MOC.token_no : // 4978
+        regle65 () ;
+      break ;
+      case LEX_MOC.token_chaineo : // 4984
+        regle65 () ;
+      break ;
+      case LEX_MOC.token_self : // 4974
+        regle65 () ;
+      break ;
+      case LEX_MOC.token_super : // 4976
+        regle65 () ;
+      break ;
+      case LEX_MOC.token_cro : // 4969
         regle65 () ;
       break ;
       default :

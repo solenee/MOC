@@ -3,8 +3,9 @@
 //--------------------------------------------------
 package moc.tds;
 
+import moc.type.DTYPE;
+
 public interface INFO {
-
-
-
+	
+	public DTYPE getType();
 }

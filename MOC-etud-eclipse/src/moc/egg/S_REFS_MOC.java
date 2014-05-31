@@ -19,6 +19,7 @@ LEX_MOC scanner;
     this.att_scanner = scanner;
     }
 int [] sync= new int[0];
+  TDS att_tds_classe;
   boolean att_eval;
   DTYPE att_htype;
   DTYPE att_type;
@@ -60,6 +61,7 @@ private void action_auto_inh_12(S_REFS_MOC x_4) throws Exception {
 try {
 // instructions
 x_4.att_tds=this.att_tds;
+x_4.att_tds_classe=this.att_tds_classe;
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","REFS -> mult #recapType REFS1 #creatType ;"});
 }
   }
@@ -73,13 +75,13 @@ this.att_type=this.att_htype;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_ident : // 65
+      case LEX_MOC.token_ident : // 4982
         regle11 () ;
       break ;
-      case LEX_MOC.token_parf : // 33
+      case LEX_MOC.token_parf : // 4939
         regle11 () ;
       break ;
-      case LEX_MOC.token_mult : // 57
+      case LEX_MOC.token_mult : // 4963
         regle12 () ;
       break ;
       default :

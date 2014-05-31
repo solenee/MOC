@@ -20,8 +20,11 @@ LEX_MOC scanner;
     }
 int [] sync= new int[0];
   Register att_regLB;
+  DTYPE att_tNil;
+  TDS att_tds_classe;
   boolean att_eval;
   DTYPE att_typeRet;
+  DTYPE att_tAny;
   String att_code;
   IMachine att_machine;
   TDS att_tds_fonction;
@@ -32,9 +35,10 @@ int [] sync= new int[0];
   int att_hadr;
   DTYPE att_tChar;
   boolean att_isRet;
+  DTYPE att_tBool;
+  TDS att_tds;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
-  TDS att_tds;
   TDS glob_16_t;
   private void regle16() throws Exception {
 
@@ -61,7 +65,11 @@ x_5.att_tPointeurNull=this.att_tPointeurNull;
 x_5.att_tVoid=this.att_tVoid;
 x_5.att_tString=this.att_tString;
 x_5.att_regLB=this.att_regLB;
+x_5.att_tAny=this.att_tAny;
+x_5.att_tBool=this.att_tBool;
+x_5.att_tNil=this.att_tNil;
 x_5.att_tds_fonction=this.att_tds_fonction;
+x_5.att_tds_classe=this.att_tds_classe;
 x_5.att_hadr=this.att_hadr;
 x_5.att_htailleparams=this.att_htailleparams;
 x_5.att_machine=this.att_machine;

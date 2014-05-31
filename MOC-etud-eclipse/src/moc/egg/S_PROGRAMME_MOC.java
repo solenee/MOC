@@ -64,6 +64,7 @@ try {
 // instructions
 x_6.att_tds=null;
 x_6.att_tds_fonction= new TDS();
+x_6.att_tds_classe= new TDS();
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#tds","PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen ;"});
 }
   }
@@ -97,22 +98,37 @@ x_6.att_tString= new DTYPE("string", 1);
 x_6.att_tPointeurNull= new POINTEURNULL();
 x_6.att_tVoid= new DTYPE("void", 0);
 x_6.att_regLB= new Register("LB", 0);
+x_6.att_tAny=null;
+x_6.att_tNil= new OBJETNIL();
+x_6.att_tBool= new DTYPE("bool", 1);
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#initType","PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen ;"});
 }
   }
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_asm : // 42
+      case LEX_MOC.token_asm : // 4948
         regle0 () ;
       break ;
-      case LEX_MOC.token_void : // 41
+      case LEX_MOC.token_void : // 4947
         regle0 () ;
       break ;
-      case LEX_MOC.token_int : // 43
+      case LEX_MOC.token_int : // 4949
         regle0 () ;
       break ;
-      case LEX_MOC.token_char : // 44
+      case LEX_MOC.token_char : // 4950
+        regle0 () ;
+      break ;
+      case LEX_MOC.token_identc : // 4983
+        regle0 () ;
+      break ;
+      case LEX_MOC.token_bool : // 4975
+        regle0 () ;
+      break ;
+      case LEX_MOC.token_id : // 4971
+        regle0 () ;
+      break ;
+      case LEX_MOC.token_classe : // 4972
         regle0 () ;
       break ;
       case LEX_MOC.EOF :

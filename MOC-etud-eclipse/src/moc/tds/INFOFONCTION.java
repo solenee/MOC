@@ -18,6 +18,10 @@ public class INFOFONCTION implements INFO {
 		return retour;
 	}
 	
+	public DTYPE getType() {
+		return getRetour();
+	}
+	
 	public PARAMETRES getParametres (){
 		return parametres;
 	}

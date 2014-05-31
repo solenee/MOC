@@ -62,7 +62,7 @@ public class MTAM extends AbstractMachine {
 
 	@Override
 	public String genDeclaration(String ident, int taille, Emplacement empl) {
-		return genComment("declaration sans initialisation de "+ident+ " de taille "+taille+" en "+empl)
+		return genComment("declaration de "+ident+ " de taille "+taille+" en "+empl)
 				+ "\tPUSH "+taille+"\n"; 
 	}
 

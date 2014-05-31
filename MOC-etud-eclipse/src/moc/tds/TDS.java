@@ -36,13 +36,16 @@ public class TDS extends HashMap<String, INFO> {
 	}
 
 	public String toString() {
+		String aff = "---------------debut------\n";
 		StringBuffer sb = new StringBuffer();
 		Set<Map.Entry<String, INFO>> s = entrySet();
 		for (Map.Entry<String, INFO> e : s){
 			sb.append("; " + e.getKey() + " : " + e.getValue() + '\n');
 		
 		}
-		return sb.toString();
+		aff += sb.toString();
+		aff += "----------------fin------------ \n\n";
+		return aff;
 	}
 
 	public TDS getParente() {

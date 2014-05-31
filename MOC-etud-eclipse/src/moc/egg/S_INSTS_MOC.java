@@ -21,8 +21,11 @@ LEX_MOC scanner;
 int [] sync= new int[0];
   int att_adr;
   Register att_regLB;
+  DTYPE att_tNil;
+  TDS att_tds_classe;
   boolean att_eval;
   DTYPE att_typeRet;
+  DTYPE att_tAny;
   String att_code;
   IMachine att_machine;
   TDS att_tds_fonction;
@@ -33,9 +36,10 @@ int [] sync= new int[0];
   int att_hadr;
   DTYPE att_tChar;
   boolean att_isRet;
+  DTYPE att_tBool;
+  TDS att_tds;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
-  TDS att_tds;
   private void regle17() throws Exception {
 
     //declaration
@@ -89,9 +93,17 @@ x_3.att_tString=this.att_tString;
 x_6.att_tString=this.att_tString;
 x_3.att_regLB=this.att_regLB;
 x_6.att_regLB=this.att_regLB;
+x_3.att_tAny=this.att_tAny;
+x_6.att_tAny=this.att_tAny;
+x_3.att_tBool=this.att_tBool;
+x_6.att_tBool=this.att_tBool;
+x_3.att_tNil=this.att_tNil;
+x_6.att_tNil=this.att_tNil;
 x_3.att_tds=this.att_tds;
 x_3.att_tds_fonction=this.att_tds_fonction;
 x_6.att_tds_fonction=this.att_tds_fonction;
+x_3.att_tds_classe=this.att_tds_classe;
+x_6.att_tds_classe=this.att_tds_classe;
 x_3.att_hadr=this.att_hadr;
 x_3.att_htailleparams=this.att_htailleparams;
 x_6.att_htailleparams=this.att_htailleparams;
@@ -153,55 +165,85 @@ x_6.att_typeRet=this.att_typeRet;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_acf : // 35
+      case LEX_MOC.token_acf : // 4941
         regle17 () ;
       break ;
-      case LEX_MOC.token_void : // 41
+      case LEX_MOC.token_void : // 4947
         regle18 () ;
       break ;
-      case LEX_MOC.token_int : // 43
+      case LEX_MOC.token_int : // 4949
         regle18 () ;
       break ;
-      case LEX_MOC.token_char : // 44
+      case LEX_MOC.token_char : // 4950
         regle18 () ;
       break ;
-      case LEX_MOC.token_entier : // 62
+      case LEX_MOC.token_identc : // 4983
         regle18 () ;
       break ;
-      case LEX_MOC.token_caractere : // 63
+      case LEX_MOC.token_bool : // 4975
         regle18 () ;
       break ;
-      case LEX_MOC.token_plus : // 54
+      case LEX_MOC.token_id : // 4971
         regle18 () ;
       break ;
-      case LEX_MOC.token_moins : // 55
+      case LEX_MOC.token_entier : // 4979
         regle18 () ;
       break ;
-      case LEX_MOC.token_non : // 61
+      case LEX_MOC.token_caractere : // 4980
         regle18 () ;
       break ;
-      case LEX_MOC.token_null : // 46
+      case LEX_MOC.token_plus : // 4960
         regle18 () ;
       break ;
-      case LEX_MOC.token_paro : // 32
+      case LEX_MOC.token_moins : // 4961
         regle18 () ;
       break ;
-      case LEX_MOC.token_ident : // 65
+      case LEX_MOC.token_non : // 4967
         regle18 () ;
       break ;
-      case LEX_MOC.token_mult : // 57
+      case LEX_MOC.token_null : // 4952
         regle18 () ;
       break ;
-      case LEX_MOC.token_aco : // 34
+      case LEX_MOC.token_paro : // 4938
         regle18 () ;
       break ;
-      case LEX_MOC.token_si : // 39
+      case LEX_MOC.token_ident : // 4982
         regle18 () ;
       break ;
-      case LEX_MOC.token_retour : // 45
+      case LEX_MOC.token_mult : // 4963
         regle18 () ;
       break ;
-      case LEX_MOC.token_asm : // 42
+      case LEX_MOC.token_nil : // 4953
+        regle18 () ;
+      break ;
+      case LEX_MOC.token_yes : // 4977
+        regle18 () ;
+      break ;
+      case LEX_MOC.token_no : // 4978
+        regle18 () ;
+      break ;
+      case LEX_MOC.token_chaineo : // 4984
+        regle18 () ;
+      break ;
+      case LEX_MOC.token_self : // 4974
+        regle18 () ;
+      break ;
+      case LEX_MOC.token_super : // 4976
+        regle18 () ;
+      break ;
+      case LEX_MOC.token_cro : // 4969
+        regle18 () ;
+      break ;
+      case LEX_MOC.token_aco : // 4940
+        regle18 () ;
+      break ;
+      case LEX_MOC.token_si : // 4945
+        regle18 () ;
+      break ;
+      case LEX_MOC.token_retour : // 4951
+        regle18 () ;
+      break ;
+      case LEX_MOC.token_asm : // 4948
         regle18 () ;
       break ;
       default :
