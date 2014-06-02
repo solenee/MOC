@@ -19,89 +19,194 @@ LEX_MOC scanner;
     this.att_scanner = scanner;
     }
 int [] sync= new int[0];
+  Register att_regLB;
+  DTYPE att_tNil;
+  TDS att_tds_classe;
   boolean att_eval;
+  DTYPE att_typeRet;
+  DTYPE att_tAny;
+  String att_code;
   IMachine att_machine;
+  TDS att_tds_fonction;
+  int att_htailleparams;
+  DTYPE att_tInt;
+  DTYPE att_tString;
+  DTYPE att_tVoid;
+  int att_hadr;
+  DTYPE att_tChar;
+  boolean att_isRet;
+  DTYPE att_tBool;
+  TDS att_tds;
   LEX_MOC att_scanner;
+  DTYPE att_tPointeurNull;
   private void regle23() throws Exception {
 
     //declaration
     T_MOC x_2 = new T_MOC(scanner ) ;
-    S_BLOC_MOC x_3 = new S_BLOC_MOC(scanner,att_eval) ;
+    S_BLOC_MOC x_5 = new S_BLOC_MOC(scanner,att_eval) ;
     //appel
-if  (att_eval)      action_auto_inh_23(x_3);
+if  (att_eval)      action_auto_inh_23(x_5);
     x_2.analyser(LEX_MOC.token_sinon);
-    x_3.analyser() ;
+if  (att_eval)      action_tds_23(x_5);
+if  (att_eval)      action_passeTypeRet_23(x_5);
+    x_5.analyser() ;
+if  (att_eval)      action_isReturn_23(x_5);
+if  (att_eval)      action_gen_23(x_5);
   }
   private void regle24() throws Exception {
 
     //declaration
     //appel
+if  (att_eval)      action_isReturn_24();
+if  (att_eval)      action_gen_24();
   }
-private void action_auto_inh_23(S_BLOC_MOC x_3) throws Exception {
+private void action_passeTypeRet_23(S_BLOC_MOC x_5) throws Exception {
 try {
 // instructions
-x_3.att_machine=this.att_machine;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","SIX -> sinon BLOC ;"});
+x_5.att_typeRet=this.att_typeRet;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#passeTypeRet","SIX -> sinon #tds #passeTypeRet BLOC #isReturn #gen ;"});
+}
+  }
+private void action_isReturn_23(S_BLOC_MOC x_5) throws Exception {
+try {
+// instructions
+this.att_isRet=x_5.att_isRet;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#isReturn","SIX -> sinon #tds #passeTypeRet BLOC #isReturn #gen ;"});
+}
+  }
+private void action_isReturn_24() throws Exception {
+try {
+// instructions
+this.att_isRet=false;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#isReturn","SIX -> #isReturn #gen ;"});
+}
+  }
+private void action_gen_24() throws Exception {
+try {
+// instructions
+this.att_code="";
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#gen","SIX -> #isReturn #gen ;"});
+}
+  }
+private void action_gen_23(S_BLOC_MOC x_5) throws Exception {
+try {
+// instructions
+this.att_code=x_5.att_code;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#gen","SIX -> sinon #tds #passeTypeRet BLOC #isReturn #gen ;"});
+}
+  }
+private void action_tds_23(S_BLOC_MOC x_5) throws Exception {
+try {
+// instructions
+x_5.att_tds= new TDS(this.att_tds);
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#tds","SIX -> sinon #tds #passeTypeRet BLOC #isReturn #gen ;"});
+}
+  }
+private void action_auto_inh_23(S_BLOC_MOC x_5) throws Exception {
+try {
+// instructions
+x_5.att_tInt=this.att_tInt;
+x_5.att_tChar=this.att_tChar;
+x_5.att_tPointeurNull=this.att_tPointeurNull;
+x_5.att_tVoid=this.att_tVoid;
+x_5.att_tString=this.att_tString;
+x_5.att_regLB=this.att_regLB;
+x_5.att_tAny=this.att_tAny;
+x_5.att_tBool=this.att_tBool;
+x_5.att_tNil=this.att_tNil;
+x_5.att_tds_fonction=this.att_tds_fonction;
+x_5.att_tds_classe=this.att_tds_classe;
+x_5.att_hadr=this.att_hadr;
+x_5.att_htailleparams=this.att_htailleparams;
+x_5.att_machine=this.att_machine;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","SIX -> sinon #tds #passeTypeRet BLOC #isReturn #gen ;"});
 }
   }
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_sinon : // 33
+      case LEX_MOC.token_sinon : // 4946
         regle23 () ;
       break ;
-      case LEX_MOC.token_void : // 34
+      case LEX_MOC.token_void : // 4947
         regle24 () ;
       break ;
-      case LEX_MOC.token_int : // 36
+      case LEX_MOC.token_int : // 4949
         regle24 () ;
       break ;
-      case LEX_MOC.token_char : // 37
+      case LEX_MOC.token_char : // 4950
         regle24 () ;
       break ;
-      case LEX_MOC.token_entier : // 55
+      case LEX_MOC.token_identc : // 4983
         regle24 () ;
       break ;
-      case LEX_MOC.token_chaine : // 57
+      case LEX_MOC.token_bool : // 4975
         regle24 () ;
       break ;
-      case LEX_MOC.token_caractere : // 56
+      case LEX_MOC.token_id : // 4971
         regle24 () ;
       break ;
-      case LEX_MOC.token_plus : // 47
+      case LEX_MOC.token_entier : // 4979
         regle24 () ;
       break ;
-      case LEX_MOC.token_moins : // 48
+      case LEX_MOC.token_caractere : // 4980
         regle24 () ;
       break ;
-      case LEX_MOC.token_non : // 54
+      case LEX_MOC.token_plus : // 4960
         regle24 () ;
       break ;
-      case LEX_MOC.token_null : // 39
+      case LEX_MOC.token_moins : // 4961
         regle24 () ;
       break ;
-      case LEX_MOC.token_paro : // 25
+      case LEX_MOC.token_non : // 4967
         regle24 () ;
       break ;
-      case LEX_MOC.token_ident : // 58
+      case LEX_MOC.token_null : // 4952
         regle24 () ;
       break ;
-      case LEX_MOC.token_mult : // 50
+      case LEX_MOC.token_paro : // 4938
         regle24 () ;
       break ;
-      case LEX_MOC.token_aco : // 27
+      case LEX_MOC.token_ident : // 4982
         regle24 () ;
       break ;
-      case LEX_MOC.token_si : // 32
+      case LEX_MOC.token_mult : // 4963
         regle24 () ;
       break ;
-      case LEX_MOC.token_retour : // 38
+      case LEX_MOC.token_nil : // 4953
         regle24 () ;
       break ;
-      case LEX_MOC.token_asm : // 35
+      case LEX_MOC.token_yes : // 4977
         regle24 () ;
       break ;
-      case LEX_MOC.token_acf : // 28
+      case LEX_MOC.token_no : // 4978
+        regle24 () ;
+      break ;
+      case LEX_MOC.token_chaineo : // 4984
+        regle24 () ;
+      break ;
+      case LEX_MOC.token_self : // 4974
+        regle24 () ;
+      break ;
+      case LEX_MOC.token_super : // 4976
+        regle24 () ;
+      break ;
+      case LEX_MOC.token_cro : // 4969
+        regle24 () ;
+      break ;
+      case LEX_MOC.token_aco : // 4940
+        regle24 () ;
+      break ;
+      case LEX_MOC.token_si : // 4945
+        regle24 () ;
+      break ;
+      case LEX_MOC.token_retour : // 4951
+        regle24 () ;
+      break ;
+      case LEX_MOC.token_asm : // 4948
+        regle24 () ;
+      break ;
+      case LEX_MOC.token_acf : // 4941
         regle24 () ;
       break ;
       default :

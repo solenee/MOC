@@ -1,6 +1,7 @@
 package moc.tds;
 
 import moc.type.*;
+
 import java.util.ArrayList;
 
 public class PARAMETRES extends ArrayList<DTYPE> {

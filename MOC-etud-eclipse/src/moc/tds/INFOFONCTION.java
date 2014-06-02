@@ -1,12 +1,8 @@
 package moc.tds;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import moc.type.DTYPE;
-
+import moc.type.*;
 /**
- * Cette classe décrit une variable locale : adresse et type
+ * Cette classe dÃ©crit une variable locale : adresse et type
  * 
  * @author Solene, Zohour, Leger
  * 
@@ -20,6 +16,14 @@ public class INFOFONCTION implements INFO {
 
 	public DTYPE getRetour() {
 		return retour;
+	}
+	
+	public DTYPE getType() {
+		return getRetour();
+	}
+	
+	public PARAMETRES getParametres (){
+		return parametres;
 	}
 	
 	/**
@@ -38,7 +42,7 @@ public class INFOFONCTION implements INFO {
 	}
 	
 	public void addParametre (DTYPE p){
-		parametres.add(p);
+		parametres.inserer(p);
 	}
 	
 	public boolean goodParametre (DTYPE d, int dep){
@@ -51,7 +55,7 @@ public class INFOFONCTION implements INFO {
 	}
 	@Override
 	public String toString() {
-		return "INFOFONCTION [retour=" + retour.getNom();// + ", empl=" + empl + "]";
+		return "INFOFONCTION [retour=" + retour.getNom() + ", parametre =" + parametres.toString() + "]";
 	}
 
 }

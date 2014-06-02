@@ -26,23 +26,50 @@ int [] sync= new int[0];
   private void regle0() throws Exception {
 
     //declaration
-    S_ENTITES_MOC x_3 = new S_ENTITES_MOC(scanner,att_eval) ;
+    S_ENTITES_MOC x_6 = new S_ENTITES_MOC(scanner,att_eval) ;
     //appel
-if  (att_eval)      action_init_0(x_3);
-    x_3.analyser() ;
-if  (att_eval)      action_gen_0(x_3);
+if  (att_eval)      action_initType_0(x_6);
+if  (att_eval)      action_init_0(x_6);
+if  (att_eval)      action_tds_0(x_6);
+if  (att_eval)      action_adresse_0(x_6);
+    x_6.analyser() ;
+if  (att_eval)      action_main_0(x_6);
+if  (att_eval)      action_gen_0(x_6);
   }
-private void action_gen_0(S_ENTITES_MOC x_3) throws Exception {
+private void action_gen_0(S_ENTITES_MOC x_6) throws Exception {
 try {
 // locales
 // instructions
-glob_0_machine.writeCode(this.att_source.getFileName(), "; no code\n");
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#gen","PROGRAMME -> #init ENTITES #gen ;"});
+glob_0_machine.writeCode(this.att_source.getFileName(), x_6.att_code);
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#gen","PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen ;"});
 }
   }
-private void action_init_0(S_ENTITES_MOC x_3) throws Exception {
+private void action_main_0(S_ENTITES_MOC x_6) throws Exception {
 try {
 // locales
+INFO loc_i;
+// instructions
+loc_i=x_6.att_stds_fonction.chercherLocalement("main");
+if ((loc_i==null)){
+att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMessages.id_NO_MAIN, MOCMessages.NO_MAIN,new Object[]{""+""});
+
+}
+
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#main","PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen ;"});
+}
+  }
+private void action_tds_0(S_ENTITES_MOC x_6) throws Exception {
+try {
+// locales
+// instructions
+x_6.att_tds=null;
+x_6.att_tds_fonction= new TDS();
+x_6.att_tds_classe= new TDS();
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#tds","PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen ;"});
+}
+  }
+private void action_init_0(S_ENTITES_MOC x_6) throws Exception {
+try {
 // instructions
 glob_0_machine=this.att_source.getMachine();
 if (glob_0_machine==null){
@@ -50,24 +77,58 @@ att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMess
 
 }
 else {
-x_3.att_machine=glob_0_machine;
+x_6.att_machine=glob_0_machine;
 }
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#init","PROGRAMME -> #init ENTITES #gen ;"});
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#init","PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen ;"});
+}
+  }
+private void action_adresse_0(S_ENTITES_MOC x_6) throws Exception {
+try {
+// instructions
+x_6.att_hadr=0;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#adresse","PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen ;"});
+}
+  }
+private void action_initType_0(S_ENTITES_MOC x_6) throws Exception {
+try {
+// instructions
+x_6.att_tInt= new DTYPE("int", 1);
+x_6.att_tChar= new DTYPE("char", 1);
+x_6.att_tString= new DTYPE("string", 1);
+x_6.att_tPointeurNull= new POINTEURNULL();
+x_6.att_tVoid= new DTYPE("void", 0);
+x_6.att_regLB= new Register("LB", 0);
+x_6.att_tAny=null;
+x_6.att_tNil= new OBJETNIL();
+x_6.att_tBool= new DTYPE("bool", 1);
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#initType","PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen ;"});
 }
   }
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_asm : // 35
+      case LEX_MOC.token_asm : // 4948
         regle0 () ;
       break ;
-      case LEX_MOC.token_void : // 34
+      case LEX_MOC.token_void : // 4947
         regle0 () ;
       break ;
-      case LEX_MOC.token_int : // 36
+      case LEX_MOC.token_int : // 4949
         regle0 () ;
       break ;
-      case LEX_MOC.token_char : // 37
+      case LEX_MOC.token_char : // 4950
+        regle0 () ;
+      break ;
+      case LEX_MOC.token_identc : // 4983
+        regle0 () ;
+      break ;
+      case LEX_MOC.token_bool : // 4975
+        regle0 () ;
+      break ;
+      case LEX_MOC.token_id : // 4971
+        regle0 () ;
+      break ;
+      case LEX_MOC.token_classe : // 4972
         regle0 () ;
       break ;
       case LEX_MOC.EOF :

@@ -3,12 +3,9 @@
 //--------------------------------------------------
 package moc.tds;
 
-/**
- * Element d'une TDS
- * 
- * @author marcel
- * 
- */
-public interface INFO {
+import moc.type.DTYPE;
 
+public interface INFO {
+	
+	public DTYPE getType();
 }

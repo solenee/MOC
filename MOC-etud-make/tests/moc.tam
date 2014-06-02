@@ -1,0 +1,73 @@
+; Generated code for tests/moc.moc.
+; Do not modify by hand
+	; code in inline : start
+; inline code_asm
+
+
+	CALL (LB) _main
+	; appel au point d'entree du programme
+
+	HALT
+	; arret de la machine
+
+	; code in inline : end
+_malloc:
+	; code in inline : start
+; inline code_asm
+
+
+	LOAD (1) -1[LB]
+	; acces au parametre taille
+
+	SUBR Malloc
+	; allocation
+
+	RETURN (1) 1
+
+
+	; code in inline : end
+	; fin d'un bloc : pop
+	POP(0) 0
+
+_log:
+	; declaration de x de taille 1 en [3/Register [name=LB, num=0]]
+	PUSH 1
+	LOADL 12	; entier
+	STORE(1) 3[LB]
+	; fin de declaration de x
+	; code in inline : start
+; inline code_asm
+
+
+	LOAD (1) -1[LB]
+	; acces au premier parametre
+
+	SUBR Sout
+
+
+	LOAD (1) -2[LB]
+	; acces au deuxieme parametre
+
+	LOAD (1) 3[LB]
+	; acces a la variable x
+
+	SUBR IAdd
+
+
+	SUBR IOUT
+
+
+	SUBR LN
+
+
+	RETURN (2) 0
+
+
+	; code in inline : end
+	; fin d'un bloc : pop
+	POP(0) 1
+
+	; retour
+	RETURN (0) 2
+	; fin retour
+	; Definition des classes

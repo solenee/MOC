@@ -1,0 +1,309 @@
+; tds:
+---------------debut------
+----------------fin------------ 
+
+; taille des locales = 0
+
+
+Table des fonctions visibles par malloc
+---------------debut------
+; malloc : INFOFONCTION [retour=pointeur, parametre =int(1), ]
+----------------fin------------ 
+
+Taille des parametres de malloc : 1
+; tds:
+---------------debut------
+; a : INFOVAR [type=int(1), empl=[3/Register [name=LB, num=0]]]
+----------------fin------------ 
+
+; taille des locales = 1
+
+
+Table des fonctions visibles par fdouble
+---------------debut------
+; fdouble : INFOFONCTION [retour=int, parametre =int(1), ]
+; malloc : INFOFONCTION [retour=pointeur, parametre =int(1), ]
+----------------fin------------ 
+
+Taille des parametres de fdouble : 1
+
+1 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, 
+4 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+5 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+6 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+7 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+8 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+9 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+10 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+tdsC : ---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+
+11 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+tdsC
+
+---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; init : INFOMETHODE [isclassmethod=true, numero=1, classe=NSObject]
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+
+
+fin
+; tds:
+---------------debut------
+----------------fin------------ 
+
+; taille des locales = 0
+
+
+Table des classes visibles par : NSObject : chargement...
+---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; init : INFOMETHODE [isclassmethod=true, numero=1, classe=NSObject]
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+fin chargement
+
+1 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+classe(1) Point herite de classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1,  tv: pointeur(1) sur type = null dep = 1, 
+4 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+5 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+6 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+7 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+8 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+9 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+10 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+tdsC : ---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; init : INFOMETHODE [isclassmethod=true, numero=1, classe=NSObject]
+----------------fin------------ 
+
+
+---fin methodes
+]
+; Point : INFOCLASSE [type=classe(1) Point herite de classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1,  tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+
+11 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;
+
+tdsC
+
+---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; init : INFOMETHODE [isclassmethod=true, numero=1, classe=NSObject]
+----------------fin------------ 
+
+
+---fin methodes
+]
+; Point : INFOCLASSE [type=classe(1) Point herite de classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1,  tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; vide : INFOMETHODE [isclassmethod=true, numero=2, classe=Point]
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+
+
+fin
+; tds:
+---------------debut------
+----------------fin------------ 
+
+; taille des locales = 0
+
+
+Table des classes visibles par : Point : chargement...
+---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; init : INFOMETHODE [isclassmethod=true, numero=1, classe=NSObject]
+----------------fin------------ 
+
+
+---fin methodes
+]
+; Point : INFOCLASSE [type=classe(1) Point herite de classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1,  tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; vide : INFOMETHODE [isclassmethod=true, numero=2, classe=Point]
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+fin chargement
+; tds:
+---------------debut------
+; c : INFOVAR [type=int(1), empl=[3/Register [name=LB, num=0]]]
+; mere : INFOVAR [type=pointeur(1) sur type = classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , empl=[4/Register [name=LB, num=0]]]
+----------------fin------------ 
+
+; taille des locales = 2
+
+
+Table des fonctions visibles par main
+---------------debut------
+; fdouble : INFOFONCTION [retour=int, parametre =int(1), ]
+; malloc : INFOFONCTION [retour=pointeur, parametre =int(1), ]
+; main : INFOFONCTION [retour=int, parametre =]
+----------------fin------------ 
+
+Taille des parametres de main : 0
+
+
+Ensembles des classes du programme : chargement...
+---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; init : INFOMETHODE [isclassmethod=true, numero=1, classe=NSObject]
+----------------fin------------ 
+
+
+---fin methodes
+]
+; Point : INFOCLASSE [type=classe(1) Point herite de classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1,  tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; vide : INFOMETHODE [isclassmethod=true, numero=2, classe=Point]
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+Classes recues : ENTITES^tds_classe = 
+---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; init : INFOMETHODE [isclassmethod=true, numero=1, classe=NSObject]
+----------------fin------------ 
+
+
+---fin methodes
+]
+; Point : INFOCLASSE [type=classe(1) Point herite de classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1,  tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; vide : INFOMETHODE [isclassmethod=true, numero=2, classe=Point]
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+
+Classes transmises par IMPLEMENTATION^stds_classe :
+---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; init : INFOMETHODE [isclassmethod=true, numero=1, classe=NSObject]
+----------------fin------------ 
+
+
+---fin methodes
+]
+; Point : INFOCLASSE [type=classe(1) Point herite de classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1,  tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; vide : INFOMETHODE [isclassmethod=true, numero=2, classe=Point]
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+
+Classes recues : ENTITES^tds_classe = 
+---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; init : INFOMETHODE [isclassmethod=true, numero=1, classe=NSObject]
+----------------fin------------ 
+
+
+---fin methodes
+]
+; Point : INFOCLASSE [type=classe(1) Point herite de classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1,  tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; vide : INFOMETHODE [isclassmethod=true, numero=2, classe=Point]
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+
+Classes transmises par IMPLEMENTATION^stds_classe :
+---------------debut------
+; NSObject : INFOCLASSE [type=classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; init : INFOMETHODE [isclassmethod=true, numero=1, classe=NSObject]
+----------------fin------------ 
+
+
+---fin methodes
+]
+; Point : INFOCLASSE [type=classe(1) Point herite de classe(1) NSObject herite de null tv: pointeur(1) sur type = null dep = 1,  tv: pointeur(1) sur type = null dep = 1, , 
+----methodes=---------------debut------
+; vide : INFOMETHODE [isclassmethod=true, numero=2, classe=Point]
+----------------fin------------ 
+
+
+---fin methodes
+]
+----------------fin------------ 
+
+
