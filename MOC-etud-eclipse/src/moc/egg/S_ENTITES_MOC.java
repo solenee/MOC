@@ -297,28 +297,28 @@ x_3.att_tds_classe=this.att_tds_classe;
       case LEX_MOC.EOF :
         regle1 () ;
       break ;
-      case LEX_MOC.token_asm : // 231
+      case LEX_MOC.token_asm : // 142
         regle2 () ;
       break ;
-      case LEX_MOC.token_void : // 230
+      case LEX_MOC.token_void : // 141
         regle3 () ;
       break ;
-      case LEX_MOC.token_int : // 232
+      case LEX_MOC.token_int : // 143
         regle3 () ;
       break ;
-      case LEX_MOC.token_char : // 233
+      case LEX_MOC.token_char : // 144
         regle3 () ;
       break ;
-      case LEX_MOC.token_identc : // 266
+      case LEX_MOC.token_identc : // 177
         regle3 () ;
       break ;
-      case LEX_MOC.token_bool : // 258
+      case LEX_MOC.token_bool : // 169
         regle3 () ;
       break ;
-      case LEX_MOC.token_id : // 254
+      case LEX_MOC.token_id : // 165
         regle3 () ;
       break ;
-      case LEX_MOC.token_classe : // 255
+      case LEX_MOC.token_classe : // 166
         regle68 () ;
       break ;
       default :

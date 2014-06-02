@@ -86,16 +86,16 @@ this.att_code=this.att_machine.genIMultiplication();
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_mult : // 246
+      case LEX_MOC.token_mult : // 157
         regle48 () ;
       break ;
-      case LEX_MOC.token_div : // 247
+      case LEX_MOC.token_div : // 158
         regle49 () ;
       break ;
-      case LEX_MOC.token_mod : // 248
+      case LEX_MOC.token_mod : // 159
         regle50 () ;
       break ;
-      case LEX_MOC.token_et : // 249
+      case LEX_MOC.token_et : // 160
         regle51 () ;
       break ;
       default :

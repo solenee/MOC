@@ -192,49 +192,49 @@ x_7.att_machine=this.att_machine;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_plus : // 243
+      case LEX_MOC.token_plus : // 154
         regle40 () ;
       break ;
-      case LEX_MOC.token_moins : // 244
+      case LEX_MOC.token_moins : // 155
         regle40 () ;
       break ;
-      case LEX_MOC.token_ou : // 245
+      case LEX_MOC.token_ou : // 156
         regle40 () ;
       break ;
-      case LEX_MOC.token_inf : // 237
+      case LEX_MOC.token_inf : // 148
         regle41 () ;
       break ;
-      case LEX_MOC.token_sup : // 239
+      case LEX_MOC.token_sup : // 150
         regle41 () ;
       break ;
-      case LEX_MOC.token_infeg : // 238
+      case LEX_MOC.token_infeg : // 149
         regle41 () ;
       break ;
-      case LEX_MOC.token_supeg : // 240
+      case LEX_MOC.token_supeg : // 151
         regle41 () ;
       break ;
-      case LEX_MOC.token_eg : // 241
+      case LEX_MOC.token_eg : // 152
         regle41 () ;
       break ;
-      case LEX_MOC.token_neg : // 242
+      case LEX_MOC.token_neg : // 153
         regle41 () ;
       break ;
-      case LEX_MOC.token_affect : // 227
+      case LEX_MOC.token_affect : // 138
         regle41 () ;
       break ;
-      case LEX_MOC.token_virg : // 225
+      case LEX_MOC.token_virg : // 136
         regle41 () ;
       break ;
-      case LEX_MOC.token_pv : // 226
+      case LEX_MOC.token_pv : // 137
         regle41 () ;
       break ;
-      case LEX_MOC.token_parf : // 222
+      case LEX_MOC.token_parf : // 133
         regle41 () ;
       break ;
-      case LEX_MOC.token_ident : // 265
+      case LEX_MOC.token_ident : // 176
         regle41 () ;
       break ;
-      case LEX_MOC.token_crf : // 253
+      case LEX_MOC.token_crf : // 164
         regle41 () ;
       break ;
       default :

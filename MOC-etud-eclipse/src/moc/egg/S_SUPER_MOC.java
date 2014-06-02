@@ -118,10 +118,10 @@ this.att_iclasse_mere=null;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_aco : // 223
+      case LEX_MOC.token_aco : // 134
         regle70 () ;
       break ;
-      case LEX_MOC.token_dpts : // 251
+      case LEX_MOC.token_dpts : // 162
         regle71 () ;
       break ;
       default :

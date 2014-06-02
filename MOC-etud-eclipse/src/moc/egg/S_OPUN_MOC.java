@@ -71,13 +71,13 @@ this.att_code=this.att_machine.genINegation();
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_plus : // 243
+      case LEX_MOC.token_plus : // 154
         regle55 () ;
       break ;
-      case LEX_MOC.token_moins : // 244
+      case LEX_MOC.token_moins : // 155
         regle56 () ;
       break ;
-      case LEX_MOC.token_non : // 250
+      case LEX_MOC.token_non : // 161
         regle57 () ;
       break ;
       default :

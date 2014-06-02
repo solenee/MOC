@@ -139,55 +139,55 @@ this.att_code="";
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 222
+      case LEX_MOC.token_parf : // 133
         regle64 () ;
       break ;
-      case LEX_MOC.token_entier : // 262
+      case LEX_MOC.token_entier : // 173
         regle65 () ;
       break ;
-      case LEX_MOC.token_caractere : // 263
+      case LEX_MOC.token_caractere : // 174
         regle65 () ;
       break ;
-      case LEX_MOC.token_plus : // 243
+      case LEX_MOC.token_plus : // 154
         regle65 () ;
       break ;
-      case LEX_MOC.token_moins : // 244
+      case LEX_MOC.token_moins : // 155
         regle65 () ;
       break ;
-      case LEX_MOC.token_non : // 250
+      case LEX_MOC.token_non : // 161
         regle65 () ;
       break ;
-      case LEX_MOC.token_null : // 235
+      case LEX_MOC.token_null : // 146
         regle65 () ;
       break ;
-      case LEX_MOC.token_paro : // 221
+      case LEX_MOC.token_paro : // 132
         regle65 () ;
       break ;
-      case LEX_MOC.token_ident : // 265
+      case LEX_MOC.token_ident : // 176
         regle65 () ;
       break ;
-      case LEX_MOC.token_mult : // 246
+      case LEX_MOC.token_mult : // 157
         regle65 () ;
       break ;
-      case LEX_MOC.token_nil : // 236
+      case LEX_MOC.token_nil : // 147
         regle65 () ;
       break ;
-      case LEX_MOC.token_yes : // 260
+      case LEX_MOC.token_yes : // 171
         regle65 () ;
       break ;
-      case LEX_MOC.token_no : // 261
+      case LEX_MOC.token_no : // 172
         regle65 () ;
       break ;
-      case LEX_MOC.token_chaineo : // 267
+      case LEX_MOC.token_chaineo : // 178
         regle65 () ;
       break ;
-      case LEX_MOC.token_self : // 257
+      case LEX_MOC.token_self : // 168
         regle65 () ;
       break ;
-      case LEX_MOC.token_super : // 259
+      case LEX_MOC.token_super : // 170
         regle65 () ;
       break ;
-      case LEX_MOC.token_cro : // 252
+      case LEX_MOC.token_cro : // 163
         regle65 () ;
       break ;
       default :

@@ -118,13 +118,13 @@ this.att_stds_classe=this.att_tds_classe;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_fin : // 256
+      case LEX_MOC.token_fin : // 167
         regle74 () ;
       break ;
-      case LEX_MOC.token_plus : // 243
+      case LEX_MOC.token_plus : // 154
         regle75 () ;
       break ;
-      case LEX_MOC.token_moins : // 244
+      case LEX_MOC.token_moins : // 155
         regle75 () ;
       break ;
       default :

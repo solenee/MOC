@@ -129,19 +129,19 @@ att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMess
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_void : // 230
+      case LEX_MOC.token_void : // 141
         regle13 () ;
       break ;
-      case LEX_MOC.token_int : // 232
+      case LEX_MOC.token_int : // 143
         regle14 () ;
       break ;
-      case LEX_MOC.token_char : // 233
+      case LEX_MOC.token_char : // 144
         regle15 () ;
       break ;
-      case LEX_MOC.token_identc : // 266
+      case LEX_MOC.token_identc : // 177
         regle79 () ;
       break ;
-      case LEX_MOC.token_bool : // 258
+      case LEX_MOC.token_bool : // 169
         regle80 () ;
       break ;
       default :

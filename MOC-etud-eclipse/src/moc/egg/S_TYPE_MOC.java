@@ -102,22 +102,22 @@ x_4.att_tds_classe=this.att_tds_classe;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_void : // 230
+      case LEX_MOC.token_void : // 141
         regle10 () ;
       break ;
-      case LEX_MOC.token_int : // 232
+      case LEX_MOC.token_int : // 143
         regle10 () ;
       break ;
-      case LEX_MOC.token_char : // 233
+      case LEX_MOC.token_char : // 144
         regle10 () ;
       break ;
-      case LEX_MOC.token_identc : // 266
+      case LEX_MOC.token_identc : // 177
         regle10 () ;
       break ;
-      case LEX_MOC.token_bool : // 258
+      case LEX_MOC.token_bool : // 169
         regle10 () ;
       break ;
-      case LEX_MOC.token_id : // 254
+      case LEX_MOC.token_id : // 165
         regle81 () ;
       break ;
       default :

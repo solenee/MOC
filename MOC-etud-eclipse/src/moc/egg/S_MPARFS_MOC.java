@@ -120,10 +120,10 @@ this.att_nom="";
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_aco : // 223
+      case LEX_MOC.token_aco : // 134
         regle83 () ;
       break ;
-      case LEX_MOC.token_ident : // 265
+      case LEX_MOC.token_ident : // 176
         regle84 () ;
       break ;
       default :
