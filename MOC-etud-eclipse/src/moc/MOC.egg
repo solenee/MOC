@@ -289,7 +289,14 @@ end
 }
 
 --fonctions
-FONCTION ->  TYPE ident  paro #params #adresse PARFS parf #tds #passeTypeRet #passeTailleparams BLOC #tds_fonction #verifReturn #aff #gen ;
+--************************************************
+--************************************************
+--************************************************
+--deplacement tds_fonction juste avant BLOC
+FONCTION ->  TYPE ident  paro #params #adresse PARFS parf #tds #passeTypeRet #passeTailleparams #tds_fonction BLOC #verifReturn #aff #gen ;
+--************************************************
+--************************************************
+--************************************************
 global
     tailleparams : INTEGER;
     tRetour : DTYPE;
@@ -365,6 +372,14 @@ do
   else
     t.inserer(ident^txt, i);
   end
+  --************************************************
+  --************************************************
+  --************************************************
+  --bonne tds dans BLOC
+  BLOC^tds_fonction := t;
+  --************************************************
+  --************************************************
+  --************************************************
   FONCTION^stds_fonction := t;
 end
 }
@@ -2246,11 +2261,22 @@ local
 do
     MPARFS^hparams := new PARAMETRES();
     MPARFS^htdspar := new TDS(METHODE^tds);
+    --************************************************
+--************************************************
+--************************************************
+--pour avoir acces au self dans les methodes de classe
     if (!QUAL^qual) then
 	    i := METHODE^tds_classe.chercherLocalement(METHODE^classe);
         i := new INFOVAR(new POINTEUR(i.getType()), new Emplacement((-1), METHODE^regLB ));
         MPARFS^htdspar.inserer("self", i);
+    else
+        i := METHODE^tds_classe.chercherLocalement(METHODE^classe);
+        i := new INFOVAR(new POINTEUR(i.getType()), new Emplacement((0),new Register("SB", 0) ));
+        MPARFS^htdspar.inserer("self", i);
     end
+    --************************************************
+--************************************************
+--************************************************
 end
 }
 #adresse {

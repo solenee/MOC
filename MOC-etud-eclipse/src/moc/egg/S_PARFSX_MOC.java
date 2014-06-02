@@ -143,10 +143,10 @@ x_6.att_htdspar=x_3.att_tdspar;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 133
+      case LEX_MOC.token_parf : // 5741
         regle7 () ;
       break ;
-      case LEX_MOC.token_virg : // 136
+      case LEX_MOC.token_virg : // 5744
         regle8 () ;
       break ;
       default :

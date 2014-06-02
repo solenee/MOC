@@ -170,7 +170,11 @@ loc_i=this.att_tds_classe.chercherLocalement(this.att_classe);
 loc_i= new INFOVAR( new POINTEUR(loc_i.getType()),  new Emplacement((-(1)), this.att_regLB));
 x_6.att_htdspar.inserer("self", loc_i);
 }
-
+else {
+loc_i=this.att_tds_classe.chercherLocalement(this.att_classe);
+loc_i= new INFOVAR( new POINTEUR(loc_i.getType()),  new Emplacement((0),  new Register("SB", 0)));
+x_6.att_htdspar.inserer("self", loc_i);
+}
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#params","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer #typeRet BLOC ;"});
 }
   }

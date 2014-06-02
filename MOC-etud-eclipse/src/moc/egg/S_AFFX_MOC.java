@@ -196,22 +196,22 @@ this.att_code=loc_leCode;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_affect : // 138
+      case LEX_MOC.token_affect : // 5746
         regle28 () ;
       break ;
-      case LEX_MOC.token_pv : // 137
+      case LEX_MOC.token_pv : // 5745
         regle29 () ;
       break ;
-      case LEX_MOC.token_virg : // 136
+      case LEX_MOC.token_virg : // 5744
         regle29 () ;
       break ;
-      case LEX_MOC.token_parf : // 133
+      case LEX_MOC.token_parf : // 5741
         regle29 () ;
       break ;
-      case LEX_MOC.token_ident : // 176
+      case LEX_MOC.token_ident : // 5784
         regle29 () ;
       break ;
-      case LEX_MOC.token_crf : // 164
+      case LEX_MOC.token_crf : // 5772
         regle29 () ;
       break ;
       default :

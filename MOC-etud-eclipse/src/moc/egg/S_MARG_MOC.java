@@ -105,16 +105,16 @@ x_5.att_lire_resultat=true;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_ident : // 176
+      case LEX_MOC.token_ident : // 5784
         scanner.lit ( 2 ) ;
         switch ( scanner.fenetre[1].code ) {
-          case LEX_MOC.token_dpts : // 162
+          case LEX_MOC.token_dpts : // 5770
             regle97 () ;
           break ;
-          case LEX_MOC.token_ident : // 176
+          case LEX_MOC.token_ident : // 5784
             regle98 () ;
           break ;
-          case LEX_MOC.token_crf : // 164
+          case LEX_MOC.token_crf : // 5772
             regle98 () ;
           break ;
           default :

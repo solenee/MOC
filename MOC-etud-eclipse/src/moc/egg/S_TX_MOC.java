@@ -192,61 +192,61 @@ this.att_code=this.att_hcode;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_mult : // 157
+      case LEX_MOC.token_mult : // 5765
         regle46 () ;
       break ;
-      case LEX_MOC.token_div : // 158
+      case LEX_MOC.token_div : // 5766
         regle46 () ;
       break ;
-      case LEX_MOC.token_mod : // 159
+      case LEX_MOC.token_mod : // 5767
         regle46 () ;
       break ;
-      case LEX_MOC.token_et : // 160
+      case LEX_MOC.token_et : // 5768
         regle46 () ;
       break ;
-      case LEX_MOC.token_plus : // 154
+      case LEX_MOC.token_plus : // 5762
         regle47 () ;
       break ;
-      case LEX_MOC.token_moins : // 155
+      case LEX_MOC.token_moins : // 5763
         regle47 () ;
       break ;
-      case LEX_MOC.token_ou : // 156
+      case LEX_MOC.token_ou : // 5764
         regle47 () ;
       break ;
-      case LEX_MOC.token_inf : // 148
+      case LEX_MOC.token_inf : // 5756
         regle47 () ;
       break ;
-      case LEX_MOC.token_sup : // 150
+      case LEX_MOC.token_sup : // 5758
         regle47 () ;
       break ;
-      case LEX_MOC.token_infeg : // 149
+      case LEX_MOC.token_infeg : // 5757
         regle47 () ;
       break ;
-      case LEX_MOC.token_supeg : // 151
+      case LEX_MOC.token_supeg : // 5759
         regle47 () ;
       break ;
-      case LEX_MOC.token_eg : // 152
+      case LEX_MOC.token_eg : // 5760
         regle47 () ;
       break ;
-      case LEX_MOC.token_neg : // 153
+      case LEX_MOC.token_neg : // 5761
         regle47 () ;
       break ;
-      case LEX_MOC.token_affect : // 138
+      case LEX_MOC.token_affect : // 5746
         regle47 () ;
       break ;
-      case LEX_MOC.token_virg : // 136
+      case LEX_MOC.token_virg : // 5744
         regle47 () ;
       break ;
-      case LEX_MOC.token_pv : // 137
+      case LEX_MOC.token_pv : // 5745
         regle47 () ;
       break ;
-      case LEX_MOC.token_parf : // 133
+      case LEX_MOC.token_parf : // 5741
         regle47 () ;
       break ;
-      case LEX_MOC.token_ident : // 176
+      case LEX_MOC.token_ident : // 5784
         regle47 () ;
       break ;
-      case LEX_MOC.token_crf : // 164
+      case LEX_MOC.token_crf : // 5772
         regle47 () ;
       break ;
       default :
