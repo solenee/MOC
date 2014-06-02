@@ -42,62 +42,70 @@ int [] sync= new int[0];
     S_QUAL_MOC x_2 = new S_QUAL_MOC(scanner,att_eval) ;
     S_PTYPE_MOC x_3 = new S_PTYPE_MOC(scanner,att_eval) ;
     S_MPARFS_MOC x_6 = new S_MPARFS_MOC(scanner,att_eval) ;
-    S_BLOC_MOC x_10 = new S_BLOC_MOC(scanner,att_eval) ;
+    S_BLOC_MOC x_11 = new S_BLOC_MOC(scanner,att_eval) ;
     //appel
-if  (att_eval)      action_auto_inh_76(x_2, x_3, x_6, x_10);
+if  (att_eval)      action_auto_inh_76(x_2, x_3, x_6, x_11);
     x_2.analyser() ;
     x_3.analyser() ;
-if  (att_eval)      action_params_76(x_2, x_3, x_6, x_10);
-if  (att_eval)      action_adresse_76(x_2, x_3, x_6, x_10);
+if  (att_eval)      action_params_76(x_2, x_3, x_6, x_11);
+if  (att_eval)      action_adresse_76(x_2, x_3, x_6, x_11);
     x_6.analyser() ;
-if  (att_eval)      action_tds_76(x_2, x_3, x_6, x_10);
-if  (att_eval)      action_tds_classe_76(x_2, x_3, x_6, x_10);
-if  (att_eval)      action_aSupprimer_76(x_2, x_3, x_6, x_10);
-    x_10.analyser() ;
+if  (att_eval)      action_tds_76(x_2, x_3, x_6, x_11);
+if  (att_eval)      action_tds_classe_76(x_2, x_3, x_6, x_11);
+if  (att_eval)      action_aSupprimer_76(x_2, x_3, x_6, x_11);
+if  (att_eval)      action_typeRet_76(x_2, x_3, x_6, x_11);
+    x_11.analyser() ;
   }
-private void action_auto_inh_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_10) throws Exception {
+private void action_typeRet_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_11) throws Exception {
+try {
+// instructions
+x_11.att_typeRet=x_3.att_type;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#typeRet","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer #typeRet BLOC ;"});
+}
+  }
+private void action_auto_inh_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_11) throws Exception {
 try {
 // instructions
 x_3.att_tInt=this.att_tInt;
 x_6.att_tInt=this.att_tInt;
-x_10.att_tInt=this.att_tInt;
+x_11.att_tInt=this.att_tInt;
 x_3.att_tChar=this.att_tChar;
 x_6.att_tChar=this.att_tChar;
-x_10.att_tChar=this.att_tChar;
+x_11.att_tChar=this.att_tChar;
 x_3.att_tPointeurNull=this.att_tPointeurNull;
 x_6.att_tPointeurNull=this.att_tPointeurNull;
-x_10.att_tPointeurNull=this.att_tPointeurNull;
+x_11.att_tPointeurNull=this.att_tPointeurNull;
 x_3.att_tVoid=this.att_tVoid;
 x_6.att_tVoid=this.att_tVoid;
-x_10.att_tVoid=this.att_tVoid;
+x_11.att_tVoid=this.att_tVoid;
 x_3.att_tString=this.att_tString;
 x_6.att_tString=this.att_tString;
-x_10.att_tString=this.att_tString;
+x_11.att_tString=this.att_tString;
 x_3.att_regLB=this.att_regLB;
 x_6.att_regLB=this.att_regLB;
-x_10.att_regLB=this.att_regLB;
+x_11.att_regLB=this.att_regLB;
 x_3.att_tAny=this.att_tAny;
 x_6.att_tAny=this.att_tAny;
-x_10.att_tAny=this.att_tAny;
+x_11.att_tAny=this.att_tAny;
 x_3.att_tBool=this.att_tBool;
 x_6.att_tBool=this.att_tBool;
-x_10.att_tBool=this.att_tBool;
+x_11.att_tBool=this.att_tBool;
 x_3.att_tNil=this.att_tNil;
 x_6.att_tNil=this.att_tNil;
-x_10.att_tNil=this.att_tNil;
+x_11.att_tNil=this.att_tNil;
 x_2.att_tds=this.att_tds;
 x_3.att_tds=this.att_tds;
 x_6.att_tds=this.att_tds;
-x_10.att_tds_fonction=this.att_tds_fonction;
+x_11.att_tds_fonction=this.att_tds_fonction;
 x_2.att_tds_classe=this.att_tds_classe;
 x_3.att_tds_classe=this.att_tds_classe;
 x_6.att_tds_classe=this.att_tds_classe;
 x_6.att_machine=this.att_machine;
-x_10.att_machine=this.att_machine;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer BLOC ;"});
+x_11.att_machine=this.att_machine;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#auto_inh","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer #typeRet BLOC ;"});
 }
   }
-private void action_tds_classe_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_10) throws Exception {
+private void action_tds_classe_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_11) throws Exception {
 try {
 // locales
 INFO loc_i;
@@ -121,8 +129,18 @@ if ((loc_tdsC==null)){
 att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMessages.id_Warning, MOCMessages.Warning,new Object[]{""+"tdsC2 dans METHODES -> QUAL ... ; est null"});
 
 }
-
-x_10.att_tds_classe=loc_tdsC;
+else {
+System.out.print(""+"\n");
+System.out.print(""+"tdsC");
+System.out.print(""+"\n");
+System.out.print(""+"\n");
+System.out.print(""+loc_tdsC);
+System.out.print(""+"\n");
+System.out.print(""+"\n");
+System.out.print(""+"fin");
+System.out.print(""+"\n");
+}
+x_11.att_tds_classe=loc_tdsC;
 this.att_stds_classe=loc_tdsC;
 }
 else {
@@ -130,17 +148,17 @@ att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMess
 
 
 }
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#tds_classe","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer BLOC ;"});
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#tds_classe","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer #typeRet BLOC ;"});
 }
   }
-private void action_tds_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_10) throws Exception {
+private void action_tds_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_11) throws Exception {
 try {
 // instructions
-x_10.att_tds=x_6.att_tdspar;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#tds","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer BLOC ;"});
+x_11.att_tds=x_6.att_tdspar;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#tds","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer #typeRet BLOC ;"});
 }
   }
-private void action_params_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_10) throws Exception {
+private void action_params_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_11) throws Exception {
 try {
 // locales
 INFO loc_i;
@@ -153,18 +171,17 @@ loc_i= new INFOVAR( new POINTEUR(loc_i.getType()),  new Emplacement((-(1)), this
 x_6.att_htdspar.inserer("self", loc_i);
 }
 
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#params","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer BLOC ;"});
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#params","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer #typeRet BLOC ;"});
 }
   }
-private void action_aSupprimer_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_10) throws Exception {
+private void action_aSupprimer_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_11) throws Exception {
 try {
 // instructions
-x_10.att_typeRet=null;
-x_10.att_htailleparams=0;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#aSupprimer","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer BLOC ;"});
+x_11.att_htailleparams=0;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#aSupprimer","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer #typeRet BLOC ;"});
 }
   }
-private void action_adresse_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_10) throws Exception {
+private void action_adresse_76(S_QUAL_MOC x_2, S_PTYPE_MOC x_3, S_MPARFS_MOC x_6, S_BLOC_MOC x_11) throws Exception {
 try {
 // locales
 Integer loc_n;
@@ -176,8 +193,8 @@ else {
 loc_n=-(1);
 }
 x_6.att_hadr=loc_n;
-x_10.att_hadr=3;
-}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#adresse","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer BLOC ;"});
+x_11.att_hadr=3;
+}catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#adresse","METHODE -> QUAL PTYPE #params #adresse MPARFS #tds #tds_classe #aSupprimer #typeRet BLOC ;"});
 }
   }
   public void analyser () throws Exception {

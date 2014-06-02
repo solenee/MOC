@@ -141,25 +141,25 @@ x_5.att_htdspar=x_2.att_tdspar;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_parf : // 4939
+      case LEX_MOC.token_parf : // 222
         regle5 () ;
       break ;
-      case LEX_MOC.token_void : // 4947
+      case LEX_MOC.token_void : // 230
         regle6 () ;
       break ;
-      case LEX_MOC.token_int : // 4949
+      case LEX_MOC.token_int : // 232
         regle6 () ;
       break ;
-      case LEX_MOC.token_char : // 4950
+      case LEX_MOC.token_char : // 233
         regle6 () ;
       break ;
-      case LEX_MOC.token_identc : // 4983
+      case LEX_MOC.token_identc : // 266
         regle6 () ;
       break ;
-      case LEX_MOC.token_bool : // 4975
+      case LEX_MOC.token_bool : // 258
         regle6 () ;
       break ;
-      case LEX_MOC.token_id : // 4971
+      case LEX_MOC.token_id : // 254
         regle6 () ;
       break ;
       default :

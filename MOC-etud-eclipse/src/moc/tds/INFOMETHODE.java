@@ -60,7 +60,7 @@ public class INFOMETHODE extends INFOFONCTION {
 
 	@Override
 	public String toString() {
-		return "INFOMETHODE [isclassmethod=" + isclassmethod + ", numero="
+		return "INFOMETHODE [retour=" + retour.getNom() + ", parametre =" + parametres.toString() + "isclassmethod=" + isclassmethod + ", numero="
 				+ numero + ", classe=" + classe + "]";
 	}
 
