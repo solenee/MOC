@@ -11,7 +11,7 @@ public class CLASSE extends DTYPE {
 	private CLASSE classeMere;
 	
 	public CLASSE(String nom, LCHAMPS champs, CLASSE mere) {
-		super("classe", champs.getTaille());
+		super(nom, champs.getTaille());
 		nomClasse = nom;
 		attributs = champs;
 		classeMere = mere;
