@@ -33,9 +33,9 @@ int [] sync= new int[0];
   DTYPE att_stAny;
   DTYPE att_tChar;
   DTYPE att_tBool;
+  TDS att_tds;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
-  TDS att_tds;
   CLASSE glob_69_classe;
   private void regle69() throws Exception {
 
@@ -133,7 +133,7 @@ System.out.print(""+"Table des classes visibles par : "+x_3.att_txt+" : ");
 System.out.print(""+"chargement...");
 System.out.print(""+"\n");
 System.out.print(""+this.att_tds_classe);
-System.out.print(""+"\n");
+System.out.print(""+"fin chargement\n");
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#aff","IMPLEMENTATION -> classe identc #hclasse_fille SUPER aco #hattributs ATTRIBUTS acf #tds_classe #stAny METHODES #stds_classe fin #aff ;"});
 }
   }
@@ -160,6 +160,10 @@ CLASSE loc_classe_mere;
 LCHAMPS loc_att;
 TDS loc_tdsC;
 // instructions
+System.out.print(""+"\n");
+System.out.print(""+"1 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;");
+System.out.print(""+"\n");
+loc_tdsC=null;
 loc_nom_classe=x_3.att_txt;
 if ((this.att_tds_classe==null)){
 att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMessages.id_Warning, MOCMessages.Warning,new Object[]{""+this.att_tds_classe+" est null"});
@@ -167,28 +171,50 @@ att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMess
 }
 
 loc_i=this.att_tds_classe.chercherLocalement(loc_nom_classe);
-if (loc_i instanceof INFOCLASSE ){
-loc_iclasse=((INFOCLASSE)loc_i);
-loc_att=x_8.att_attributs;
-if ((loc_iclasse!=null)){
+if ((loc_i!=null)){
 att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMessages.id_Class_exist, MOCMessages.Class_exist,new Object[]{""+loc_nom_classe});
 
 }
 else {
+loc_att=x_8.att_attributs;
 glob_69_classe= new CLASSE(loc_nom_classe, loc_att, x_5.att_classe_mere);
+System.out.print(""+"\n");
+System.out.print(""+glob_69_classe+"\n");
+System.out.print(""+"4 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;");
+System.out.print(""+"\n");
 loc_iclasse= new INFOCLASSE(glob_69_classe, x_5.att_iclasse_mere);
+System.out.print(""+"\n");
+System.out.print(""+"5 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;");
+System.out.print(""+"\n");
 loc_tdsC=this.att_tds_classe;
+System.out.print(""+"\n");
+System.out.print(""+"6 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;");
+System.out.print(""+"\n");
 loc_tdsC.inserer(loc_nom_classe, loc_iclasse);
+System.out.print(""+"\n");
+System.out.print(""+"7 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;");
+System.out.print(""+"\n");
 if ((loc_tdsC==null)){
 att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMessages.id_Warning, MOCMessages.Warning,new Object[]{""+"tdsC dans IMPLEMENTATIONS -> ... ; est null"});
 
 }
 
+System.out.print(""+"\n");
+System.out.print(""+"8 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;");
+System.out.print(""+"\n");
 x_12.att_tds_classe=loc_tdsC;
+System.out.print(""+"\n");
+System.out.print(""+"9 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;");
+System.out.print(""+"\n");
 x_12.att_classe=loc_nom_classe;
+System.out.print(""+"\n");
+System.out.print(""+"10 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;");
+System.out.print(""+"\n");
 }
-}
-
+System.out.print(""+"\n");
+System.out.print(""+"tdsC : "+loc_tdsC+"\n");
+System.out.print(""+"11 je suis dans la regle #tds_classe IMPLEMENTATION -> ... ;");
+System.out.print(""+"\n");
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#tds_classe","IMPLEMENTATION -> classe identc #hclasse_fille SUPER aco #hattributs ATTRIBUTS acf #tds_classe #stAny METHODES #stds_classe fin #aff ;"});
 }
   }

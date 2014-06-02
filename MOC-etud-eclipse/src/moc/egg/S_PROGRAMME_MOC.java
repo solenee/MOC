@@ -107,28 +107,28 @@ x_6.att_tBool= new DTYPE("bool", 1);
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_asm : // 4948
+      case LEX_MOC.token_asm : // 231
         regle0 () ;
       break ;
-      case LEX_MOC.token_void : // 4947
+      case LEX_MOC.token_void : // 230
         regle0 () ;
       break ;
-      case LEX_MOC.token_int : // 4949
+      case LEX_MOC.token_int : // 232
         regle0 () ;
       break ;
-      case LEX_MOC.token_char : // 4950
+      case LEX_MOC.token_char : // 233
         regle0 () ;
       break ;
-      case LEX_MOC.token_identc : // 4983
+      case LEX_MOC.token_identc : // 266
         regle0 () ;
       break ;
-      case LEX_MOC.token_bool : // 4975
+      case LEX_MOC.token_bool : // 258
         regle0 () ;
       break ;
-      case LEX_MOC.token_id : // 4971
+      case LEX_MOC.token_id : // 254
         regle0 () ;
       break ;
-      case LEX_MOC.token_classe : // 4972
+      case LEX_MOC.token_classe : // 255
         regle0 () ;
       break ;
       case LEX_MOC.EOF :

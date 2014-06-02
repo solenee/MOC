@@ -37,8 +37,8 @@ int [] sync= new int[0];
   DTYPE att_tVoid;
   Emplacement att_hadresse;
   DTYPE att_tChar;
-  DTYPE att_tBool;
   DTYPE att_htype;
+  DTYPE att_tBool;
   TDS att_tds;
   boolean att_lire_resultat;
   LEX_MOC att_scanner;
@@ -196,22 +196,22 @@ this.att_code=loc_leCode;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_affect : // 4944
+      case LEX_MOC.token_affect : // 227
         regle28 () ;
       break ;
-      case LEX_MOC.token_pv : // 4943
+      case LEX_MOC.token_pv : // 226
         regle29 () ;
       break ;
-      case LEX_MOC.token_virg : // 4942
+      case LEX_MOC.token_virg : // 225
         regle29 () ;
       break ;
-      case LEX_MOC.token_parf : // 4939
+      case LEX_MOC.token_parf : // 222
         regle29 () ;
       break ;
-      case LEX_MOC.token_ident : // 4982
+      case LEX_MOC.token_ident : // 265
         regle29 () ;
       break ;
-      case LEX_MOC.token_crf : // 4970
+      case LEX_MOC.token_crf : // 253
         regle29 () ;
       break ;
       default :

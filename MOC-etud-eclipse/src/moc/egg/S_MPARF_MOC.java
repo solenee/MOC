@@ -135,16 +135,16 @@ x_4.att_tds_classe=this.att_tds_classe;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_ident : // 4982
+      case LEX_MOC.token_ident : // 265
         scanner.lit ( 2 ) ;
         switch ( scanner.fenetre[1].code ) {
-          case LEX_MOC.token_ident : // 4982
+          case LEX_MOC.token_ident : // 265
             regle85 () ;
           break ;
-          case LEX_MOC.token_aco : // 4940
+          case LEX_MOC.token_aco : // 223
             regle85 () ;
           break ;
-          case LEX_MOC.token_dpts : // 4968
+          case LEX_MOC.token_dpts : // 251
             regle86 () ;
           break ;
           default :

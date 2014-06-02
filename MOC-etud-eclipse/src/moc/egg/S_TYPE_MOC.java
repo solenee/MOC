@@ -30,9 +30,9 @@ int [] sync= new int[0];
   DTYPE att_tVoid;
   DTYPE att_tChar;
   DTYPE att_tBool;
+  TDS att_tds;
   LEX_MOC att_scanner;
   DTYPE att_tPointeurNull;
-  TDS att_tds;
   private void regle81() throws Exception {
 
     //declaration
@@ -102,22 +102,22 @@ x_4.att_tds_classe=this.att_tds_classe;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_void : // 4947
+      case LEX_MOC.token_void : // 230
         regle10 () ;
       break ;
-      case LEX_MOC.token_int : // 4949
+      case LEX_MOC.token_int : // 232
         regle10 () ;
       break ;
-      case LEX_MOC.token_char : // 4950
+      case LEX_MOC.token_char : // 233
         regle10 () ;
       break ;
-      case LEX_MOC.token_identc : // 4983
+      case LEX_MOC.token_identc : // 266
         regle10 () ;
       break ;
-      case LEX_MOC.token_bool : // 4975
+      case LEX_MOC.token_bool : // 258
         regle10 () ;
       break ;
-      case LEX_MOC.token_id : // 4971
+      case LEX_MOC.token_id : // 254
         regle81 () ;
       break ;
       default :
