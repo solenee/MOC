@@ -1,5 +1,10 @@
 package moc.gc;
 
+import java.util.*;
+import moc.tds.TDS;
+import moc.tds.INFO;
+import moc.tds.INFOMETHODE;
+
 
 /**
  * La machine TAM et ses fonctions de generation

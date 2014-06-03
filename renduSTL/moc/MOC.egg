@@ -2792,7 +2792,7 @@ do--
 		    		if (MARGS^nom.equals("init")) then
 				  match i with INFOCLASSE then
 					ic_type := i;					
-					F^type := new POINTEUR(ic_type.getClasse());
+					F^type := new POINTEUR(ic_type.getType());
 				  else
 					error(Warning, c.getNomClasse()+" n'a pas d'INFOCLASSE");
 				  end
