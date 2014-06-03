@@ -216,10 +216,19 @@ public class MTAM extends AbstractMachine {
 		return "\tLOAD ("+taille+") "+adresse.getDep()+"["+adresse.getReg().getName()+"]\n";
 	}
 	
+	//Obsolete!!!!
 	@Override
 	public String genWriteIndirectMem(String codeValeur, int taille) {
 		return genComment("valeur affectee") + codeValeur
 				+genComment("affectation")+"\tSTOREI ("+taille+")\n";
+	}
+
+	// bonne methode
+	@Override
+	public String genWriteIndirectMem(String codeAdresse, String codeValeur, int taille) {
+		return genComment("valeur affectee") + codeValeur + "\n"
+				+ genComment("code adresse a modifier") + codeAdresse +"\n"
+				+ genComment("affectation")+"\tSTOREI ("+taille+")\n";
 	}
 
 	@Override
