@@ -114,10 +114,10 @@ this.att_nom="";
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_crf : // 164
+      case LEX_MOC.token_crf : // 1181
         regle95 () ;
       break ;
-      case LEX_MOC.token_ident : // 176
+      case LEX_MOC.token_ident : // 1193
         regle96 () ;
       break ;
       default :

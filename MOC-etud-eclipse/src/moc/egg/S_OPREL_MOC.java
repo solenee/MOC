@@ -116,22 +116,22 @@ this.att_code=this.att_machine.genIDifferent();
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_inf : // 148
+      case LEX_MOC.token_inf : // 1165
         regle33 () ;
       break ;
-      case LEX_MOC.token_sup : // 150
+      case LEX_MOC.token_sup : // 1167
         regle34 () ;
       break ;
-      case LEX_MOC.token_infeg : // 149
+      case LEX_MOC.token_infeg : // 1166
         regle35 () ;
       break ;
-      case LEX_MOC.token_supeg : // 151
+      case LEX_MOC.token_supeg : // 1168
         regle36 () ;
       break ;
-      case LEX_MOC.token_eg : // 152
+      case LEX_MOC.token_eg : // 1169
         regle37 () ;
       break ;
-      case LEX_MOC.token_neg : // 153
+      case LEX_MOC.token_neg : // 1170
         regle38 () ;
       break ;
       default :
