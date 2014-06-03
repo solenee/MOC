@@ -24,18 +24,36 @@ int fdouble(int x) {
 +(id)init {}
 @end
 
-
-@class Point : NSObject {
+@class ObjGeo : NSObject {
+ char nom;
 }
-+(void)vide {}
+@end
+
+@class Point2D : ObjGeo {
+ int x;
+ int y;
+}
+@end
+
+@class Point3D : Point2 {
+ int z;
+}
 @end
 
 int main()
 {
  int c = fdouble(4);
- NSObject* mere0 = [NSObject init];
- NSObject* mere1 = [NSObject init];
- Point* point = [Point init];
- id var_id = mere;
- return 0;
+ NSObject* mere0;
+ ObjGeo* obj;
+ Point2D* p2;
+ Point3D* p3;
+ id var_id;
+
+ mere0 = [NSObject init];
+ mere1 = [NSObject init];
+ p2 = [Point2D init];
+ p3 = [Point 
+ var_id = mere0;
+ mere1 = point;
+ point = var_id;
 }
