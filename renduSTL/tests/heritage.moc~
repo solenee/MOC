@@ -1,0 +1,39 @@
+// assembleur inline en dehors d'une fonction
+asm {
+   CALL (LB) _main   ; appel au point d'entree du programme
+   HALT              ; arret de la machine
+   }
+
+// Assembleur inline dans une fonction. 
+ int * malloc(int taille){
+ asm {
+   LOAD %taille    ; acces au parametre taille
+   SUBR Malloc        ; allocation
+   RETURN (1) 1       
+   }
+ }
+
+int fdouble(int x) {
+  int a = 2;
+  return a*x;
+}
+
+// la classe mere de toutes les classes
+@class NSObject{
+}
++(void)init {}
+@end
+
+
+@class Point : NSObject {
+}
++(void)vide {}
+@end
+
+int main()
+{
+    int c = fdouble(4);
+    NSObject *mere = [NSObject init];
+    //id object = mere;
+    return 0;
+}
