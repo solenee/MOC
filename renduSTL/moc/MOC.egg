@@ -2838,7 +2838,7 @@ do
    F^code := tComment + MARGS^code
                 + F^machine.genLire("", F1^type.getTaille(), F1^adresse)            -- to modify the self of the fonction and give it the current instance 
                 --+ F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()); -- to call the function depending on his number (deplacement)
-                + F^machine.genCallMethod(MARGS^nom, F1^adresse ,im.getNumero()); -- to call the function depending on his number (deplacement)
+                + F^machine.genCallMethod(MARGS^nom, F1^adresse ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
    F^est_adresse := false;
    F^adresse := null;
 end
@@ -2908,17 +2908,19 @@ do
       c := ic.getType();
       match c with CLASSE then 
          instance := F^machine.genMallocInstance(c.getTaille());
+         write ("zozi "+ic.getTv());
 	 -- ajouter l'instance dans la tds de la methode init 
          F^code := MARGS^code
                 + instance -- code pour ajouter l'instance en parametre
-                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()); -- to call the function depending on his number (deplacement)
+                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
       			-- je dois load l etiquette 
 	end 
    else
       F^code := F^machine.genComment("je passe pas init"); 
       c := ic.getType();
+      write ("zizo "+ic.getTv());
       F^code := MARGS^code
-                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()); -- to call the function depending on his number (deplacement)
+                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
    end
    F^est_adresse := false;
    F^adresse := null;
