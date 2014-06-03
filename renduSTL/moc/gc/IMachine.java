@@ -303,7 +303,11 @@ public interface IMachine {
 	 * @param taille size of the value
 	 * @throws MOCException
 	 */
+	// OBSOLETE !!!
 	public String genWriteIndirectMem(String codeValeur, int taille);
+	// BONNE METHODE
+	public String genWriteIndirectMem(String codeAdresse, String codeValeur, int taille);
+
 	/**
 	 * Push the address  of a variable  
 	 * @param adresse position of the variable in the memory
@@ -323,5 +327,30 @@ public interface IMachine {
 
 	public String genRetourInstance(int tParam, Emplacement e, String etiq);
 
+	/**
+	 * Check if 'codeAccesPtr' is an access to null and generate NPE if necessary
+	 * @throws MOCException
+	 */
+	public String genVerificationPointeur(String codeAccesPtr, Emplacement adrPNull);
+
+	/**
+	 * Code pour allouer l'espace memoire sur lequel tous les pointeurs null pointeront 
+	 * 
+	 * @return 
+	 */
+	String genEspaceNull();
 	
+	/**
+	 * Code de l'appel de la methode principale main 
+	 * 
+	 * @return 
+	 */
+	String genCallMain();
+	
+	/**
+	 * Code pour arreter l'execution du programme 
+	 * 
+	 * @return 
+	 */
+	String genFinProgramme();	
 }
