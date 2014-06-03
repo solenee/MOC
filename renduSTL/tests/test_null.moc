@@ -1,0 +1,17 @@
+// Assembleur inline dans une fonction. 
+ int * malloc(int taille){
+ asm {
+   LOAD %taille    ; acces au parametre taille
+   SUBR Malloc        ; allocation
+   RETURN (1) 1       
+   }
+ }
+
+int main()
+{
+    char c = 'a';
+    int* p1;
+    p1 = NULL;
+    *p1 = 2;
+    return 0;
+}

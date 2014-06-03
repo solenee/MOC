@@ -21,7 +21,7 @@ int fdouble(int x) {
 // la classe mere de toutes les classes
 @class NSObject{
 }
-+(id)init {}
++(NSObject*)init {}
 @end
 
 
@@ -32,8 +32,18 @@ int fdouble(int x) {
 
 int main()
 {
-    int c = fdouble(4);
-    NSObject *mere = [NSObject init];
-    //id object = mere;
-    return 0;
+ int c = fdouble(4);
+ NSObject* mere0;
+ NSObject* mere1;
+ Point* point;
+ id var_id;
+
+ mere0 = [NSObject init];
+ mere1 = [NSObject init];
+ point = [Point init];
+ var_id = mere0;
+ mere1 = point;
+ point = var_id;
+ 
+ return 0;
 }
