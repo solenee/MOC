@@ -36,6 +36,8 @@ int fdouble(int x) {
 @end
 
 @class Point3D : Point2 {
+ int x;
+ int y;
  int z;
 }
 @end
@@ -52,9 +54,6 @@ int main()
  mere0 = [NSObject init];
  mere1 = [NSObject init];
  p2 = [Point2D init];
- p3 = [Point 
- var_id = mere0;
- mere1 = point;
- point = var_id;
- return 0;
+ p3 = [Point3D init]
+ return 1;
 }
