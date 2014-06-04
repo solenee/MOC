@@ -56,10 +56,9 @@ int z = [self colx];
 
 int main()
 {
-    Point2D *p = [Point2D init]
-    Point2DCol *pc = [Point2DCol init];
-    p = pc;
-    [p x:0 y:0]
-    int y = [p y]
+    Point2DCol *q = [Point2DCol init];
+    [q x:4 y:3 z:5]; 
+    [q x:7 y:8];
+    int y = 4;    
     return y;
 }
