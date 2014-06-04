@@ -259,12 +259,12 @@ end
 }  
 #aff {
 do
-  write "\n";
-  write "\n";
-  write "Ensembles des classes du programme : ";
-  write "chargement...";
-  write "\n";
-  write ENTITES^tds_classe;
+  --write "\n";
+  --write "\n";
+  --write "Ensembles des classes du programme : ";
+  --write "chargement...";
+  --write "\n";
+  --write ENTITES^tds_classe;
 end
 }
 
@@ -311,7 +311,7 @@ end
 }
 
 --fonctions
-FONCTION ->  TYPE ident  paro #params #adresse PARFS parf #tds #passeTypeRet #passeTailleparams BLOC #tds_fonction #verifReturn #aff #gen ;
+FONCTION ->  TYPE ident  paro #params #adresse PARFS parf #tds #passeTypeRet #passeTailleparams #tds_fonction BLOC #verifReturn #aff #gen ;
 global
     tailleparams : INTEGER;
     tRetour : DTYPE;
@@ -324,17 +324,17 @@ end
 }
 #aff {
 do
-  write "\n";
-  write "\n";
-  write "Table des fonctions visibles par " + ident^txt;
-  write "\n";
-  write FONCTION^tds_fonction.toString();
+  --write "\n";
+  --write "\n";
+  --write "Table des fonctions visibles par " + ident^txt;
+  --write "\n";
+  --write FONCTION^tds_fonction.toString();
   --write "\n";
 end
 }
 #gen {
 do
-  write "Taille des parametres de " + ident^txt + " : "+ tailleparams +"\n";
+  --write "Taille des parametres de " + ident^txt + " : "+ tailleparams +"\n";
   leCode := FONCTION^machine.genFonction(ident^txt, BLOC^code);
   tRetour := TYPE^type;
   if(tRetour.isVoid()) then
@@ -387,6 +387,7 @@ do
   else
     t.inserer(ident^txt, i);
   end
+  BLOC^tds_fonction := t;
   FONCTION^stds_fonction := t;
 end
 }
@@ -576,8 +577,8 @@ local
     tailleBloc : INTEGER;
 do
    tailleBloc := INSTS^adr - BLOC^hadr;
-   write "; tds:\n" + t;
-   write "; taille des locales = " + tailleBloc+ "\n";
+   --write "; tds:\n" + t;
+   --write "; taille des locales = " + tailleBloc+ "\n";
    -- Le code du bloc est celui de ses instructions
    -- plus le code pour liberer la place occupee
    -- par les variables locales (POP (0) taille)
@@ -608,7 +609,6 @@ do
       inst := INSTS^tds.chercherGlobalement("init");  
       if (inst /= null) then
          match inst with INFOVAR then 
-	    write(INSTS^machine.genRetourInstance(INSTS^htailleparams, inst.getEmpl(), INSTS^classe)+"\n");
             INSTS^code := INSTS^machine.genRetourInstance(INSTS^htailleparams, inst.getEmpl(), INSTS^classe); -- je lui passe juste le nombre d arguments : elle se debrouille pour ce reste
             INSTS^isRet := true;  -- *********
          end      
@@ -675,9 +675,9 @@ do
     -- write nom de variable deja utilise
   else
      
-    classeEnglobante := INST^tds.chercherLocalement("self");
+    classeEnglobante := INST^tds.chercherGlobalement("self");
     if (classeEnglobante = null ) then 	 
-         classeEnglobante := INST^tds.chercherLocalement("init");
+         classeEnglobante := INST^tds.chercherGlobalement("init");
     end 
     if (classeEnglobante /= null) then  -- methode de classe je dois verifier que c est un classe 
        match classeEnglobante with INFOVAR then 
@@ -918,6 +918,10 @@ end
 #gen {
 do
   -- sortir de la fonction courante en retournant la valeur de E
+  write "je passe par le retour \n";
+  if INST^machine.genRetour(INST^htailleparams, E^type.getTaille(), E^code) = null then
+     write "Aye                           AAAAAAye                       ddddddddddd";
+  end   
   INST^code := INST^machine.genRetour(INST^htailleparams, E^type.getTaille(), E^code); -- + E^code;
 end
 }
@@ -1869,24 +1873,33 @@ local
   c                : DTYPE;
   champAttribut    : CHAMP;
 do 
+  write "pour la variable : "+ident^txt+"\n";
   t := F^tds;
   iTemp := t.chercherGlobalement(ident^txt);
   if (iTemp = null) then
+      write "n 2 pour la variable : "+ident^txt+"\n";
     	-- je verifie si c est un attribut 
-      classeEnglobante := F^tds.chercherLocalement("self");
+      classeEnglobante := F^tds.chercherGlobalement("self");
+      write "n 3 pour la variable : "+ident^txt+"\n";
       if (classeEnglobante = null ) then 	 
-         classeEnglobante := F^tds.chercherLocalement("init");
+         classeEnglobante := F^tds.chercherGlobalement("init");
+      write "n 4 pour la variable : "+ident^txt+"\n";
       end 
       if (classeEnglobante /= null) then                        
+      write "n 5 pour la variable : "+ident^txt+"\n";
          match classeEnglobante with INFOVAR then
 	    p := classeEnglobante.getType();
+      write "n 6 pour la variable : "+ident^txt+"\n";
 	    match p with POINTEUR then 
+      write "n 7 pour la variable : "+ident^txt+"\n";
 	       c := p.getType();
 	       match c with CLASSE then 
 	          champAttribut := c.isAttribut(ident^txt); 
+      write "n 8 pour la variable : "+ident^txt+"\n";
                   if champAttribut = null then
      	             error(B_16 , "la variable n existe pas :"+ident^txt); 
                   else -- c est un attribut  
+      write "n 9 pour la variable : "+ident^txt+"\n";
 	             type := champAttribut.getType();
 	             -- recuperation de l adresse du champs 
                      F^code := F^machine.genComment("acces a l attribut  "+ident^txt)
@@ -2082,11 +2095,11 @@ global
     classe : CLASSE;
 #aff {
 do
-  write "\n";
-  write "\n";
-  write "Table des classes visibles par : " + identc^txt +" : ";
-  write "\n";
-  write IMPLEMENTATION^tds_classe;
+  --write "\n";
+  --write "\n";
+  --write "Table des classes visibles par : " + identc^txt +" : ";
+  --write "\n";
+  --write IMPLEMENTATION^tds_classe;
 end
 }
 #hclasse_fille {
@@ -2330,6 +2343,10 @@ do
     if (!QUAL^qual) then  ----************
         i := new INFOVAR(new POINTEUR(i.getType()), new Emplacement((-1), METHODE^regLB ));
         MPARFS^htdspar.inserer("self", i);
+    else
+        i := METHODE^tds_classe.chercherLocalement(METHODE^classe);
+        i := new INFOVAR(new POINTEUR(i.getType()), new Emplacement((0),new Register("SB", 0) ));
+        MPARFS^htdspar.inserer("self", i);
     end
     MPARFS^typeClasse := i.getType();
 end
@@ -2373,10 +2390,10 @@ do
         if ( tdsC = null) then
             error(Warning, "tdsC2 dans METHODES -> QUAL ... ; est null" );
         else
-            write "\n";
-            write tdsC;
-            write "fin";
-            write "\n";
+            --write "\n";
+            --write tdsC;
+            --write "fin";
+            --write "\n";
         end
         BLOC^tds_classe := tdsC;
         METHODE^stds_classe := tdsC;
@@ -2390,14 +2407,17 @@ local
     tRetour : DTYPE;
     leCode  : STRING;
 do
+  write "le code de "+MPARFS^nom+" :\n";
+  write BLOC^code+"\n*******\n";
   leCode := METHODE^machine.genFonction(METHODE^classe +"_" + MPARFS^nom , BLOC^code);
+  --write "le code :\n";
+  --write leCode;
   tRetour := PTYPE^type;
   if(tRetour.isVoid()) then
     -- depiler les arguments
     leCode :=  leCode + METHODE^machine.genRetour(tailleparams, 0, "");  
   end
-  write("je sors du if\n");
-  write ("\n ********** "+leCode +"\n");
+ -- write ("\n apres "+leCode +"\n");
   METHODE^code := leCode; 
 end
 }
@@ -2833,7 +2853,7 @@ do
    F^code := tComment + MARGS^code
                 + F^machine.genLire("", F1^type.getTaille(), F1^adresse)            -- to modify the self of the fonction and give it the current instance 
                 --+ F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()); -- to call the function depending on his number (deplacement)
-                + F^machine.genCallMethod(MARGS^nom, F1^adresse ,im.getNumero()); -- to call the function depending on his number (deplacement)
+                + F^machine.genCallMethod(MARGS^nom, F1^adresse ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
    F^est_adresse := false;
    F^adresse := null;
 end
@@ -2906,14 +2926,14 @@ do
 	 -- ajouter l'instance dans la tds de la methode init 
          F^code := MARGS^code
                 + instance -- code pour ajouter l'instance en parametre
-                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()); -- to call the function depending on his number (deplacement)
+                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
       			-- je dois load l etiquette 
 	end 
    else
       F^code := F^machine.genComment("je passe pas init"); 
       c := ic.getType();
       F^code := MARGS^code
-                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()); -- to call the function depending on his number (deplacement)
+                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
    end
    F^est_adresse := false;
    F^adresse := null;
