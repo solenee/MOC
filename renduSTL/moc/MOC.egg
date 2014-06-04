@@ -2923,6 +2923,7 @@ do
       c := ic.getType();
       match c with CLASSE then 
          instance := F^machine.genMallocInstance(c.getTaille());
+         write ("zozi "+ic.getTv());
 	 -- ajouter l'instance dans la tds de la methode init 
          F^code := MARGS^code
                 + instance -- code pour ajouter l'instance en parametre
@@ -2932,6 +2933,7 @@ do
    else
       F^code := F^machine.genComment("je passe pas init"); 
       c := ic.getType();
+      write ("zizo "+ic.getTv());
       F^code := MARGS^code
                 + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
    end

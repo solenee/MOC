@@ -371,7 +371,9 @@ public class MTAM extends AbstractMachine {
                 // je dois modifier l instance en lui ajoutant l'adresse contenue par l etiquette
                 temp = temp + genPushAdresse(e);           // je charge l adresse de l instance 
                 temp = temp + genReadIndirectMem(1);       // je recupere son contenu : ladresse de la variable pointee
-                sTemp = genComment("modification de la tv instance") + genWriteIndirectMem (temp, genPushAdresse("_"+etiq+"_methode"), 1);   // je modifie cette variable pointee par l adresse de l etiquette 
+
+                sTemp = genComment("modification de la tv instance") + genWriteIndirectMem (temp, genPushAdresse("_"+etiq+"_methode"), 1);   // je modifie cette variable pointee par 
+
 
                 // je dois recharger l adresse de l instance pour la retourner
 
