@@ -1,0 +1,343 @@
+; Generated code for tests/moc.moc.
+; Do not modify by hand
+	; code de lancement du programme
+	pointeurNull : LOADA 0[SB]
+	CALL (LB) _main
+	__npe :
+ 	HALT
+	; code source du programme
+
+
+
+	; code in inline : start
+; inline code_asm
+
+
+	CALL (LB) _main
+	; appel au point d'entree du programme
+
+	HALT
+	; arret de la machine
+
+	; code in inline : end
+_malloc:
+	; code in inline : start
+; inline code_asm
+
+
+	LOAD (1) -1[LB]
+	; acces au parametre taille
+
+	SUBR Malloc
+	; allocation
+
+	RETURN (1) 1
+
+
+	; code in inline : end
+	; fin d'un bloc : pop
+	POP(0) 0
+
+_log:
+	; declaration de x de taille 1 en [3/Register [name=LB, num=0]]
+	PUSH 1
+	LOADL 12	; entier
+	STORE(1) 3[LB]
+	; fin de declaration de x
+	; code in inline : start
+; inline code_asm
+
+
+	LOAD (1) -1[LB]
+	; acces au premier parametre
+
+	SUBR Sout
+
+
+	LOAD (1) -2[LB]
+	; acces au deuxieme parametre
+
+	LOAD (1) 3[LB]
+	; acces a la variable x
+
+	SUBR IAdd
+
+
+	SUBR IOUT
+
+
+	SUBR LN
+
+
+	RETURN (2) 0
+
+
+	; code in inline : end
+	; fin d'un bloc : pop
+	POP(0) 1
+
+	; retour
+	RETURN (0) 2
+	; fin retour
+_NSObject_init:
+	; generation du retour de l init
+	; lecture du contenu de l'adresse de [-1/Register [name=LB, num=0]]
+	LOADA -1[LB]
+	; lecture indirecte
+	LOADI (1)
+	; modification de la tv instance
+	; valeur affectee
+	; lecture du contenu de l'etiquette de _NSObject_methode
+	LOADA _NSObject_methode
+	; affectation
+	STOREI (1)
+	; retour
+	; lecture du contenu de l'adresse de [-1/Register [name=LB, num=0]]
+	LOADA -1[LB]
+	; lecture indirecte
+	LOADI (1)
+	RETURN (1) 1
+	; fin retour
+	; fin d'un bloc : pop
+	POP(0) 0
+
+_NSObject_methode:
+ 	 JUMP _NSObject_init
+
+_Point2D_x:
+	; retour
+	; pas d'affectation : code de l'expression
+	; acces a l attribut  x
+	; acces a 
+	LOAD (1) -1[LB]
+	;Calcul deplacement struct 0
+	LOADL 0
+	SUBR Iadd
+	; lecture indirecte
+	LOADI (1)
+	RETURN (1) 1
+	; fin retour
+	; fin d'un bloc : pop
+	POP(0) 0
+
+_Point2D_y:
+	; retour
+	; pas d'affectation : code de l'expression
+	; acces a l attribut  y
+	; acces a 
+	LOAD (1) -1[LB]
+	;Calcul deplacement struct 1
+	LOADL 1
+	SUBR Iadd
+	; lecture indirecte
+	LOADI (1)
+	RETURN (1) 1
+	; fin retour
+	; fin d'un bloc : pop
+	POP(0) 0
+
+_Point2D_x:y::
+	; valeur affectee
+	; acces a a
+	LOAD (1) -2[LB]
+
+	; code adresse a modifier
+	; acces a l attribut  x
+	; acces a 
+	LOAD (1) -1[LB]
+	;Calcul deplacement struct 0
+	LOADL 0
+	SUBR Iadd
+
+	; affectation
+	STOREI (1)
+	; valeur affectee
+	; acces a b
+	LOAD (1) -3[LB]
+
+	; code adresse a modifier
+	; acces a l attribut  y
+	; acces a 
+	LOAD (1) -1[LB]
+	;Calcul deplacement struct 1
+	LOADL 1
+	SUBR Iadd
+
+	; affectation
+	STOREI (1)
+	; fin d'un bloc : pop
+	POP(0) 0
+
+	; retour
+	RETURN (0) 3
+	; fin retour
+_Point2D_methode:
+ 	 JUMP _NSObject_init
+	 JUMP _Point2D_x:y:
+	 JUMP _Point2D_y
+	 JUMP _Point2D_x
+
+_Point2DCol_colx:
+	; retour
+	; pas d'affectation : code de l'expression
+	; acces a l attribut  col
+	; acces a 
+	LOAD (1) -1[LB]
+	;Calcul deplacement struct 0
+	LOADL 0
+	SUBR Iadd
+	; lecture indirecte
+	LOADI (1)
+	RETURN (1) 1
+	; fin retour
+	; fin d'un bloc : pop
+	POP(0) 0
+
+_Point2DCol_x:y:col::
+	; declaration de z de taille 1 en [3/Register [name=LB, num=0]]
+	PUSH 1
+	; je passe par laaaaa
+	; empilement des parametres
+	; acces a 
+	LOAD (1) -1[LB]
+	; Appel de methode colx
+	LOADL 0	; entier
+	; lecture du contenu de l'adresse de [-1/Register [name=LB, num=0]]
+	LOADA -1[LB]
+	; lecture indirecte
+	LOADI (1)
+	; lecture indirecte
+	LOADI (1)
+	;Calcul deplacement struct 4
+	LOADL 4
+	SUBR Iadd
+	CALLI
+	STORE(1) 3[LB]
+	; fin de declaration de z
+	; pas d'affectation : code de l'expression
+	; je passe par laaaaa
+	; empilement des parametres
+	; empilement des parametres
+	; pas d'affectation : code de l'expression
+	; acces a b
+	LOAD (1) -3[LB]
+	; pas d'affectation : code de l'expression
+	; acces a a
+	LOAD (1) -2[LB]
+	; acces a 
+	LOAD (1) -1[LB]
+	; Appel de methode x:y:
+	LOADL 0	; entier
+	; lecture du contenu de l'adresse de [-1/Register [name=LB, num=0]]
+	LOADA -1[LB]
+	; lecture indirecte
+	LOADI (1)
+	; lecture indirecte
+	LOADI (1)
+	;Calcul deplacement struct 3
+	LOADL 3
+	SUBR Iadd
+	CALLI
+	; valeur affectee
+	LOADL 99	; entier
+
+	; code adresse a modifier
+	; acces a l attribut  col
+	; acces a 
+	LOAD (1) -1[LB]
+	;Calcul deplacement struct 0
+	LOADL 0
+	SUBR Iadd
+
+	; affectation
+	STOREI (1)
+	; fin d'un bloc : pop
+	POP(0) 1
+
+	; retour
+	RETURN (0) 4
+	; fin retour
+_Point2DCol_methode:
+ 	 JUMP _Point2DCol_colx
+	 JUMP _NSObject_init
+	 JUMP _Point2DCol_x:y:col:
+	 JUMP _Point2D_x:y:
+	 JUMP _Point2D_y
+	 JUMP _Point2D_x
+
+_main:
+	; declaration de c de taille 1 en [3/Register [name=LB, num=0]]
+	PUSH 1
+	LOADL 'a'	; caractere
+	STORE(1) 3[LB]
+	; fin de declaration de c
+	; declaration de org de taille 1 en [4/Register [name=LB, num=0]]
+	PUSH 1
+	; empilement des parametres
+	LOADL 4
+	SUBR Malloc
+	; Appel de methode init
+	; etiq :_Point2DCol_methode
+	LOADL 0	; entier
+	; lecture du contenu de l'etiquette de _Point2DCol_methode
+	LOADA _Point2DCol_methode
+	;Calcul deplacement struct 0
+	LOADL 0
+	SUBR Iadd
+	CALLI
+	STORE(1) 4[LB]
+	; fin de declaration de org
+	; declaration de object de taille 1 en [5/Register [name=LB, num=0]]
+	PUSH 1
+	; acces a org
+	LOAD (1) 4[LB]
+	STORE(1) 5[LB]
+	; fin de declaration de object
+	; pas d'affectation : code de l'expression
+	; je passe par laaaaa
+	; empilement des parametres
+	; empilement des parametres
+	; empilement des parametres
+	; pas d'affectation : code de l'expression
+	LOADL 4	; entier
+	; pas d'affectation : code de l'expression
+	LOADL 0	; entier
+	; pas d'affectation : code de l'expression
+	LOADL 0	; entier
+	; acces a 
+	LOAD (1) 4[LB]
+	; Appel de methode x:y:col:
+	LOADL 0	; entier
+	; lecture du contenu de l'adresse de [4/Register [name=LB, num=0]]
+	LOADA 4[LB]
+	; lecture indirecte
+	LOADI (1)
+	; lecture indirecte
+	LOADI (1)
+	;Calcul deplacement struct 5
+	LOADL 5
+	SUBR Iadd
+	CALLI
+	; declaration de pp de taille 1 en [6/Register [name=LB, num=0]]
+	PUSH 1
+	; objet nil
+	; lecture du contenu de l'adresse de [0/Register [name=SB, num=0]]
+	LOADA 0[SB]
+	; lecture indirecte
+	LOADI (1)
+	STORE(1) 6[LB]
+	; fin de declaration de pp
+null	; declaration de y de taille 1 en [7/Register [name=LB, num=0]]
+	PUSH 1
+	LOADL 999	; entier
+	STORE(1) 7[LB]
+	; fin de declaration de y
+	; retour
+	; pas d'affectation : code de l'expression
+	; acces a y
+	LOAD (1) 7[LB]
+	RETURN (1) 0
+	; fin retour
+	; fin d'un bloc : pop
+	POP(0) 5
+
