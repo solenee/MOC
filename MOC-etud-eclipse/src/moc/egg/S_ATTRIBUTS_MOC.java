@@ -125,25 +125,25 @@ this.att_attributs=x_6.att_attributs;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_acf : // 135
+      case LEX_MOC.token_acf : // 1152
         regle72 () ;
       break ;
-      case LEX_MOC.token_void : // 141
+      case LEX_MOC.token_void : // 1158
         regle73 () ;
       break ;
-      case LEX_MOC.token_int : // 143
+      case LEX_MOC.token_int : // 1160
         regle73 () ;
       break ;
-      case LEX_MOC.token_char : // 144
+      case LEX_MOC.token_char : // 1161
         regle73 () ;
       break ;
-      case LEX_MOC.token_identc : // 177
+      case LEX_MOC.token_identc : // 1194
         regle73 () ;
       break ;
-      case LEX_MOC.token_bool : // 169
+      case LEX_MOC.token_bool : // 1186
         regle73 () ;
       break ;
-      case LEX_MOC.token_id : // 165
+      case LEX_MOC.token_id : // 1182
         regle73 () ;
       break ;
       default :

@@ -1,28 +1,32 @@
 package moc.gc;
 
+import java.util.*;
 import moc.tds.TDS;
 import moc.tds.INFO;
+import moc.tds.INFOMETHODE;
 
-import java.util.*;
+
 /**
  * La machine TAM et ses fonctions de generation
  * @author marcel
  *
  */
 public class MTAM extends AbstractMachine {
+
+        @Override
+        public String genTv (String nomClasse, TDS tdsMethode){
+                // generation de la liste des JIMP
+                String temp = "";
+                // dangerous zone 
+
+                for (Map.Entry< String,INFO > entry : tdsMethode.entrySet()) {
+                        INFOMETHODE im = (INFOMETHODE)entry.getValue();
+                        temp =temp + "\t JUMP "+ "_"+im.getClasse()+"_"+entry.getKey()+"\n";
+                }
+                return  "_"+nomClasse + "_methode:\n " +  temp + "\n";
+
+        }
 	
-	@Override 
-	public String genTv (String nomClasse, TDS tdsMethode){
-		// generation de la liste des JIMP
-		String temp = "";
-		// dangerous zone 
-
-		for (Map.Entry< String,INFO > entry : tdsMethode.entrySet()) {
-        		temp =temp + "\t JUMP "+ "_"+nomClasse+"_"+entry.getKey()+"\n";
-		}
-		return  "_"+nomClasse + "_methode:\n " +  temp + "\n";		
-
-	}
 
 	@Override 
 	public String getSuffixe() {
@@ -78,7 +82,7 @@ public class MTAM extends AbstractMachine {
 
 	@Override
 	public String genDeclaration(String ident, int taille, Emplacement empl) {
-		return genComment("declaration sans initialisation de "+ident+ " de taille "+taille+" en "+empl)
+		return genComment("declaration de "+ident+ " de taille "+taille+" en "+empl)
 				+ "\tPUSH "+taille+"\n"; 
 	}
 
@@ -112,12 +116,12 @@ public class MTAM extends AbstractMachine {
 	}
 
 	@Override
-	public String genBoolean (boolean b) {
-		if (b)
-			return "\tLOADL 1"+genComment("boolean true");
-		else 
-			return "\tLOADL 0"+genComment("boolean true");
-	}
+        public String genBoolean (boolean b) {
+                if (b)
+                        return "\tLOADL 1"+genComment("boolean true");
+                else
+                        return "\tLOADL 0"+genComment("boolean true");
+        }
 
 	@Override
 	public String genCaractere(String c) {
@@ -129,35 +133,39 @@ public class MTAM extends AbstractMachine {
 		return genComment("Appel de " + etiquette) + "\tCALL(SB) _" + etiquette + "\n";
 	}
 
-	@Override
-        public String genCallMethod(String fct, String etiq, int depl){
-		String temp ="";
-		String sTemp =""; 
-		/* La recuperation du LOADA */
-		temp = genEntier("0");
-		temp = temp + genPushAdresse(etiq);          // je recupere l adresse de l etiquette 
-		temp = temp + genAdrField(depl); 
-		//temp = temp + genReadIndirect();
-		return genComment("Appel de methode "+fct) 
-			+ temp
-			+ "\tCALLI\n";
-	}
 
 	@Override
+        public String genCallMethod(String fct, String etiq, int depl){
+                String temp ="";
+                String sTemp ="";
+                /* La recuperation du LOADA */
+                temp = genEntier("0");
+                temp = temp + genPushAdresse(etiq);          // je recupere l adresse de l etiquette 
+                temp = temp + genAdrField(depl);
+                //temp = temp + genReadIndirect();
+                return genComment("Appel de methode "+fct)
+			+ genComment("etiq :" + etiq)
+                        + temp
+                        + "\tCALLI\n";
+        }
+
+        @Override
         public String genCallMethod(String fct, Emplacement e, int depl){
-		String temp ="";
-		String sTemp =""; 
-		/* La recuperation du LOADA */
-		temp = genEntier("0");
-		temp = temp + genPushAdresse(e);          // je place l adresse du self c est a dire -1
-	        temp = temp + genReadIndirectMem(1); 	  // je lie le contenu de cette case : c est la valeur du pointeur 		
-	        temp = temp + genReadIndirectMem(1); 	  // je lie le contenu de la premiere case pointee qui nest que l adresse des methode 		
-		temp = temp + genAdrField(depl); 
-		//temp = temp + genReadIndirect();
-		return genComment("Appel de methode "+fct) 
-			+ temp
-			+ "\nCALLI";
-	}
+                String temp ="";
+                String sTemp ="";
+                /* La recuperation du LOADA */
+                temp = genEntier("0");
+                temp = temp + genPushAdresse(e);          // je place l adresse du self c est a dire -1
+                temp = temp + genReadIndirectMem(1);      // je lie le contenu de cette case : c est la valeur du pointeur              
+                temp = temp + genReadIndirectMem(1);      // je lie le contenu de la premiere case pointee qui nest que l adresse des methode           
+                temp = temp + genAdrField(depl);
+                //temp = temp + genReadIndirect();
+                return genComment("Appel de methode "+fct)
+                        + temp
+                        + "\tCALLI\n";
+        }
+
+
 
 	//Obsolete
 	@Override
@@ -270,10 +278,19 @@ public class MTAM extends AbstractMachine {
 		return "\tLOAD ("+taille+") "+adresse.getDep()+"["+adresse.getReg().getName()+"]\n";
 	}
 	
+	//Obsolete!!!!
 	@Override
 	public String genWriteIndirectMem(String codeValeur, int taille) {
 		return genComment("valeur affectee") + codeValeur
 				+genComment("affectation")+"\tSTOREI ("+taille+")\n";
+	}
+
+	// bonne methode
+	@Override
+	public String genWriteIndirectMem(String codeAdresse, String codeValeur, int taille) {
+		return genComment("valeur affectee") + codeValeur + "\n"
+				+ genComment("code adresse a modifier") + codeAdresse +"\n"
+				+ genComment("affectation")+"\tSTOREI ("+taille+")\n";
 	}
 
 	@Override
@@ -293,12 +310,12 @@ public class MTAM extends AbstractMachine {
 		return genComment("lecture du contenu de l'adresse de "+adresse)
 				+"\tLOADA "+adresse.getDep()+"["+adresse.getReg().getName()+"]\n";
 	}
-
-	@Override 
-	public String genPushAdresse(String etiq){
-		return genComment("lecture du contenu de l'etiquette de "+etiq)
-				+"\tLOADA "+etiq+"\n";
-	}
+	
+	@Override
+        public String genPushAdresse(String etiq){
+                return genComment("lecture du contenu de l'etiquette de "+etiq)
+                                +"\tLOADA "+etiq+"\n";
+        }
 
 	@Override
 	public String genPopAdresse() {
@@ -307,28 +324,60 @@ public class MTAM extends AbstractMachine {
 	}
 
 	@Override
-	public String genAdrField(int dep) {
+	public String genEspaceNull() {
+		return "\tpointeurNull : LOADA 0[SB]\n";
+	}
+
+	@Override
+	public String genCallMain() {
+		return "\tCALL (LB) _main\n";
+	}
+
+	@Override
+	public String genFinProgramme() {
+		return "\t__npe :\n \tHALT\n";
+	}
+	
+	@Override
+	public String genVerificationPointeur(String codeAccesPtr, Emplacement adrPNull) {
+		String codeCondition = genOpBinaire(codeAccesPtr, genIDifferent(), genPushAdresse(adrPNull));
+		String verif = genComment("if pointeur non null") + codeCondition 
+				+ "\tJUMPIF(0) __npe\n"
+				+ genComment("suite du programme");
+		return codeAccesPtr + "\n"
+				+ genComment("verifier pointeur null?") +
+				verif;
+	}
+
+
+	@Override
+        public String genAdrField(int dep) {
                 return "\t;Calcul deplacement struct " + dep + "\n" + "\tLOADL " + dep
                                 + "\n\tSUBR Iadd\n";
         }
 
-	@Override 
-	public String genMallocInstance(int t){
-		 return "\tLOADL " + t + "\n" 
-			+ "\tSUBR Malloc\n";
-	}
+        @Override
+        public String genMallocInstance(int t){
+                 return "\tLOADL " + t + "\n"
+                        + "\tSUBR Malloc\n";
+        }
 
-	@Override 
-	public String genRetourInstance(int tParam, Emplacement e, String etiq){
-		String temp = "";
-		String sTemp = "";
-		// je dois modifier l instance en lui ajoutant l'adresse contenue par l etiquette
-		temp = temp + genPushAdresse(e);           // je charge l adresse de l instance 
-		temp = temp + genReadIndirectMem(1);       // je recupere son contenu : ladresse de la variable pointee
-		sTemp = temp + genWriteIndirectMem (genPushAdresse(etiq+"_METHODE"), 1);   // je modifie cette variable pointee par l adresse de l etiquette 
+        @Override
+        public String genRetourInstance(int tParam, Emplacement e, String etiq){
+                String temp = "";
+                String sTemp = "";
 
-		// je dois recharger l adresse de l instance pour la retourner
 
-		return sTemp + genRetour(tParam, 1, temp);
-	}
+                // je dois modifier l instance en lui ajoutant l'adresse contenue par l etiquette
+                temp = temp + genPushAdresse(e);           // je charge l adresse de l instance 
+                temp = temp + genReadIndirectMem(1);       // je recupere son contenu : ladresse de la variable pointee
+
+                sTemp = genComment("modification de la tv instance") + genWriteIndirectMem (temp, genPushAdresse("_"+etiq+"_methode"), 1);   // je modifie cette variable pointee par 
+
+
+                // je dois recharger l adresse de l instance pour la retourner
+
+                return genComment("generation du retour de l init") + sTemp + genRetour(tParam, 1, temp);
+        }
+
 }

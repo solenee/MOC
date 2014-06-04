@@ -105,6 +105,11 @@ inh hattributs : LCHAMPS for ATTRIBUTS;
 syn attributs : LCHAMPS for ATTRIBUTS, SUPER;
 -- type associe a la classe mere
 -- syn tclasse_mere : CLASSE for SUPER;
+inh emplNull : Emplacement for ENTITES, FONCTION, INST, BLOC, INSTS, SIX, PARFS, PARF, PARFSX, ARGS,ARGSX, E, AFFX, A, AX, R, RX, T, TX, F, OPMUL, OPUN, OPADD, OPREL
+         -- decommenter la ligne suivante pour MOC
+       ,IMPLEMENTATION, METHODES, METHODE, ATTRIBUTS, MPARF, MPARFS,MARG, MARGS
+         -- fin extension MOC
+         ; 
 
 --terminaux
 space separateur is  "[\r\n\t ]+";     
@@ -167,9 +172,12 @@ term chaineo is  "@\"[^\"]*\"";         -- chaine MOC
 compil ASM;
 
 --production rules
-PROGRAMME -> #initType #init #tds #adresse ENTITES #main #gen; --======== MODIF
+PROGRAMME -> #initType #init #initCode #tds #adresse ENTITES #main #gen; --======== MODIF
 global
    machine : IMachine;
+   leCode : STRING;
+   tPNull : POINTEUR;
+   emplPNull : Emplacement;
 -- transmission de la machine cible  (choisie par l'option -m au lancement) 
 #initType { 
 do 
@@ -181,6 +189,8 @@ do
   ENTITES^regLB := new Register("LB", 0);
   ENTITES^tNil := new OBJETNIL();
   ENTITES^tBool := new DTYPE("bool", 1);
+  tPNull := new POINTEURNULL();
+  ENTITES^tPointeurNull := tPNull;
 end 
 }
 
@@ -192,6 +202,14 @@ do
    else
      ENTITES^machine := machine;
    end
+end
+}
+#initCode {
+do
+  emplPNull := new Emplacement(0, new Register("SB", 0));
+  ENTITES^emplNull := emplPNull;
+  leCode := machine.genComment("code de lancement du programme") + machine.genEspaceNull() 
+    + machine.genCallMain() + machine.genFinProgramme() ;
 end
 }
 --tds associées à entites
@@ -224,7 +242,8 @@ end
 #gen {
 local
 do
-    machine.writeCode(PROGRAMME^source.getFileName(), ENTITES^code); 
+   leCode := leCode + machine.genComment("code source du programme\n\n\n") + ENTITES^code;
+    machine.writeCode(PROGRAMME^source.getFileName(), leCode);
 end
 }
 ENTITES -> #tds_fonction #aff #gen ;
@@ -240,12 +259,12 @@ end
 }  
 #aff {
 do
-  write "\n";
-  write "\n";
-  write "Ensembles des classes du programme : ";
-  write "chargement...";
-  write "\n";
-  write ENTITES^tds_classe;
+  --write "\n";
+  --write "\n";
+  --write "Ensembles des classes du programme : ";
+  --write "chargement...";
+  --write "\n";
+  --write ENTITES^tds_classe;
 end
 }
 
@@ -292,7 +311,7 @@ end
 }
 
 --fonctions
-FONCTION ->  TYPE ident  paro #params #adresse PARFS parf #tds #passeTypeRet #passeTailleparams BLOC #tds_fonction #verifReturn #aff #gen ;
+FONCTION ->  TYPE ident  paro #params #adresse PARFS parf #tds #passeTypeRet #passeTailleparams #tds_fonction BLOC #verifReturn #aff #gen ;
 global
     tailleparams : INTEGER;
     tRetour : DTYPE;
@@ -305,17 +324,17 @@ end
 }
 #aff {
 do
-  write "\n";
-  write "\n";
-  write "Table des fonctions visibles par " + ident^txt;
-  write "\n";
-  write FONCTION^tds_fonction.toString();
+  --write "\n";
+  --write "\n";
+  --write "Table des fonctions visibles par " + ident^txt;
+  --write "\n";
+  --write FONCTION^tds_fonction.toString();
   --write "\n";
 end
 }
 #gen {
 do
-  write "Taille des parametres de " + ident^txt + " : "+ tailleparams +"\n";
+  --write "Taille des parametres de " + ident^txt + " : "+ tailleparams +"\n";
   leCode := FONCTION^machine.genFonction(ident^txt, BLOC^code);
   tRetour := TYPE^type;
   if(tRetour.isVoid()) then
@@ -368,6 +387,7 @@ do
   else
     t.inserer(ident^txt, i);
   end
+  BLOC^tds_fonction := t;
   FONCTION^stds_fonction := t;
 end
 }
@@ -557,8 +577,8 @@ local
     tailleBloc : INTEGER;
 do
    tailleBloc := INSTS^adr - BLOC^hadr;
-   write "; tds:\n" + t;
-   write "; taille des locales = " + tailleBloc+ "\n";
+   --write "; tds:\n" + t;
+   --write "; taille des locales = " + tailleBloc+ "\n";
    -- Le code du bloc est celui de ses instructions
    -- plus le code pour liberer la place occupee
    -- par les variables locales (POP (0) taille)
@@ -585,11 +605,12 @@ local
 do
    --INST^
    -- si c est la fonction init c est a dire d instancialtion d une classe : le retour est implicite du coup je le met ici 	 
-   if INSTS^classe /= null then 
-      inst := INSTS^tds.chercherLocalement("init");
+   if INSTS^classe /= null then
+      inst := INSTS^tds.chercherGlobalement("init");  
       if (inst /= null) then
          match inst with INFOVAR then 
             INSTS^code := INSTS^machine.genRetourInstance(INSTS^htailleparams, inst.getEmpl(), INSTS^classe); -- je lui passe juste le nombre d arguments : elle se debrouille pour ce reste
+            INSTS^isRet := true;  -- *********
          end      
       else     
       -- no code
@@ -654,9 +675,9 @@ do
     -- write nom de variable deja utilise
   else
      
-    classeEnglobante := INST^tds.chercherLocalement("self");
+    classeEnglobante := INST^tds.chercherGlobalement("self");
     if (classeEnglobante = null ) then 	 
-         classeEnglobante := INST^tds.chercherLocalement("init");
+         classeEnglobante := INST^tds.chercherGlobalement("init");
     end 
     if (classeEnglobante /= null) then  -- methode de classe je dois verifier que c est un classe 
        match classeEnglobante with INFOVAR then 
@@ -897,6 +918,10 @@ end
 #gen {
 do
   -- sortir de la fonction courante en retournant la valeur de E
+  write "je passe par le retour \n";
+  if INST^machine.genRetour(INST^htailleparams, E^type.getTaille(), E^code) = null then
+     write "Aye                           AAAAAAye                       ddddddddddd";
+  end   
   INST^code := INST^machine.genRetour(INST^htailleparams, E^type.getTaille(), E^code); -- + E^code;
 end
 }
@@ -1033,6 +1058,7 @@ do
    empl_droit := A^adresse;
    if empl_droit /= null then
         -- empl_droit est l'emplacement du terme de droite
+	-- if (empl_droit = AFFX^emplNull) then
         codedroit := A^code + AFFX^machine.genReadMem(empl_droit, t.getTaille());
    else
         if A^est_adresse then
@@ -1056,7 +1082,7 @@ do
      if AFFX^hest_adresse then
         code_valeur_gauche := code_valeur_gauche + AFFX^code_gauche + AFFX^machine.genReadIndirectMem(AFFX^htype.getTaille());
         -- ecrire indirect a l'adresse 
-        leCode := AFFX^code_gauche + AFFX^machine.genWriteIndirectMem(codedroit, t.getTaille());   
+        leCode := AFFX^machine.genWriteIndirectMem(AFFX^code_gauche, codedroit, t.getTaille());   
      else
         error(Interne_adresse, "adresse d'affectation inexistante 1");
      end
@@ -1711,7 +1737,7 @@ end
 }
 
 -- pointeur NULL
-F -> null  #getType #estAffectable #adresse #gen ;
+F -> null  #getType #estAffectable #gen ;
 #getType {
 do 
    F^type := F^tPointeurNull;
@@ -1722,15 +1748,11 @@ do
    F^affectable := false;
 end 
 } 
-#adresse {
-do
-  F^est_adresse := false;
-  F^adresse := null;
-end
-}
 #gen {
 do
-  F^code := F^machine.genComment("pointeur null");
+  F^code := F^machine.genComment("pointeur null") + F^machine.genPushAdresse(F^emplNull);
+  F^est_adresse := true;
+  F^adresse := null;
 end
 }
  
@@ -1851,24 +1873,33 @@ local
   c                : DTYPE;
   champAttribut    : CHAMP;
 do 
+  write "pour la variable : "+ident^txt+"\n";
   t := F^tds;
   iTemp := t.chercherGlobalement(ident^txt);
   if (iTemp = null) then
+      write "n 2 pour la variable : "+ident^txt+"\n";
     	-- je verifie si c est un attribut 
-      classeEnglobante := F^tds.chercherLocalement("self");
+      classeEnglobante := F^tds.chercherGlobalement("self");
+      write "n 3 pour la variable : "+ident^txt+"\n";
       if (classeEnglobante = null ) then 	 
-         classeEnglobante := F^tds.chercherLocalement("init");
+         classeEnglobante := F^tds.chercherGlobalement("init");
+      write "n 4 pour la variable : "+ident^txt+"\n";
       end 
       if (classeEnglobante /= null) then                        
+      write "n 5 pour la variable : "+ident^txt+"\n";
          match classeEnglobante with INFOVAR then
 	    p := classeEnglobante.getType();
+      write "n 6 pour la variable : "+ident^txt+"\n";
 	    match p with POINTEUR then 
+      write "n 7 pour la variable : "+ident^txt+"\n";
 	       c := p.getType();
 	       match c with CLASSE then 
 	          champAttribut := c.isAttribut(ident^txt); 
+      write "n 8 pour la variable : "+ident^txt+"\n";
                   if champAttribut = null then
      	             error(B_16 , "la variable n existe pas :"+ident^txt); 
                   else -- c est un attribut  
+      write "n 9 pour la variable : "+ident^txt+"\n";
 	             type := champAttribut.getType();
 	             -- recuperation de l adresse du champs 
                      F^code := F^machine.genComment("acces a l attribut  "+ident^txt)
@@ -1938,14 +1969,16 @@ do
     if ~F1^est_adresse  then
         if adr_du_pointeur /= null then
             -- adresse du pointeur connue
-            leCode := F1^code + F^machine.genPushAdresse(adr_du_pointeur);
+             leCode := F1^code + F^machine.genReadMem(adr_du_pointeur, F1^type.getTaille());
+            -- verifier que le code est # de 0[SB]
         else
             error(Interne_adresse, "adresse d'affectation inexistante 5");
         end
     else
         leCode := F1^code + F^machine.genReadIndirectMem(F1^type.getTaille());
     end
-    F^code := leCode;
+    -- verifier que le code est # de 0[SB]    
+    F^code := F^machine.genVerificationPointeur(leCode, F^emplNull) ;
     F^est_adresse := true; -- le code laisse en sommet de pile est une adresse
     F^adresse := null; -- adresse inconnue 
 end
@@ -2057,16 +2090,16 @@ end
 }
 
 --definition d'une classe
-IMPLEMENTATION ->  classe identc #hclasse_fille SUPER aco #hattributs ATTRIBUTS acf #tds_classe #stAny METHODES #stds_classe #genTV fin #aff;
+IMPLEMENTATION ->  classe identc #hclasse_fille SUPER aco #hattributs ATTRIBUTS acf #tds_classe METHODES #stds_classe #genTV fin #aff;
 global
     classe : CLASSE;
 #aff {
 do
-  write "\n";
-  write "\n";
-  write "Table des classes visibles par : " + identc^txt +" : ";
-  write "\n";
-  write IMPLEMENTATION^tds_classe;
+  --write "\n";
+  --write "\n";
+  --write "Table des classes visibles par : " + identc^txt +" : ";
+  --write "\n";
+  --write IMPLEMENTATION^tds_classe;
 end
 }
 #hclasse_fille {
@@ -2310,6 +2343,10 @@ do
     if (!QUAL^qual) then  ----************
         i := new INFOVAR(new POINTEUR(i.getType()), new Emplacement((-1), METHODE^regLB ));
         MPARFS^htdspar.inserer("self", i);
+    else
+        i := METHODE^tds_classe.chercherLocalement(METHODE^classe);
+        i := new INFOVAR(new POINTEUR(i.getType()), new Emplacement((0),new Register("SB", 0) ));
+        MPARFS^htdspar.inserer("self", i);
     end
     MPARFS^typeClasse := i.getType();
 end
@@ -2353,10 +2390,10 @@ do
         if ( tdsC = null) then
             error(Warning, "tdsC2 dans METHODES -> QUAL ... ; est null" );
         else
-            write "\n";
-            write tdsC;
-            write "fin";
-            write "\n";
+            --write "\n";
+            --write tdsC;
+            --write "fin";
+            --write "\n";
         end
         BLOC^tds_classe := tdsC;
         METHODE^stds_classe := tdsC;
@@ -2370,13 +2407,18 @@ local
     tRetour : DTYPE;
     leCode  : STRING;
 do
+  write "le code de "+MPARFS^nom+" :\n";
+  write BLOC^code+"\n*******\n";
   leCode := METHODE^machine.genFonction(METHODE^classe +"_" + MPARFS^nom , BLOC^code);
+  --write "le code :\n";
+  --write leCode;
   tRetour := PTYPE^type;
   if(tRetour.isVoid()) then
     -- depiler les arguments
-    leCode := leCode + METHODE^machine.genRetour(tailleparams, 0, "");
+    leCode :=  leCode + METHODE^machine.genRetour(tailleparams, 0, "");  
   end
-  METHODE^code := leCode;
+ -- write ("\n apres "+leCode +"\n");
+  METHODE^code := leCode; 
 end
 }
 
@@ -2482,6 +2524,7 @@ MPARF ->  ident  #parametres #adresse #verifMethodeInit ;
 #parametres {
 do
     MPARF^nom := ident^txt;
+    MPARF^params := MPARF^hparams;
 end
 }
 #adresse {
@@ -2505,9 +2548,6 @@ do
    if (ident^txt.equals("init")) then
 	   point :=  new POINTEUR(MPARF^typeClasse);   
            i := new INFOVAR (point, new Emplacement((-1), MPARF^regLB ));
-	   p := MPARF^hparams;
-           p.inserer(point);
-    	   MPARF^params := p;
            t := MPARF^htdspar;
            if (t.chercherLocalement("init") = null) then
               t.inserer("init", i);
@@ -2516,7 +2556,6 @@ do
            end
            MPARF^tdspar := t;
    else 
-      MPARF^params := MPARF^hparams;
       MPARF^tdspar := MPARF^htdspar;
    end 
 end
@@ -2556,18 +2595,22 @@ end
 }
 
 -- object nil
-F -> nil #type #aSupprimer;
-#aSupprimer {
-do
-  F^code := "";
-  F^est_adresse := false;
-  F^adresse := null;
+F -> nil  #getType #estAffectable #gen  ;
+#getType {
+do 
+   F^type := F^tNil;
 end
 }
-#type {
+#estAffectable{
+do 
+   F^affectable := false;
+end 
+} 
+#gen {
 do
-  F^type := F^tNil;
-  F^affectable := false;
+  F^code := F^machine.genComment("objet nil") + F^machine.genPushAdresse(F^emplNull);
+  F^est_adresse := true;
+  F^adresse := null;
 end
 }
 
@@ -2723,7 +2766,7 @@ end
 }
 
 -- Appel de methode
-F -> cro F #params MARGS crf #bonappel_type_initCorrect #gen  ;
+F -> cro F #params MARGS crf #bonappel_type_initCorrect #gen ;
 global
     ic : INFOCLASSE;
     im : INFOMETHODE;
@@ -2742,35 +2785,40 @@ local
     i2 : INFO;
     tds : TDS;
     params : PARAMETRES;
-do
+    ic_type : INFOCLASSE;
+do--
     im := null; -- initialisation forcee 
     t := F1^type;
-    match t with POINTEUR then -- on vérifie que l'instance est bien un pointeur
+    match t with POINTEUR then -- on vérifie que l'instance est bien un pointeur ----
         p := t;
         t2 := p.getType();
 	    match t2 with CLASSE then  -- on vérifie que l'instance est bien un pointeur sur un struct
 	        c := t2;
-            i := F^tds_classe.chercherLocalement(c.getNomClasse()); -- on recupere l'infoclasse
-	        if (i = null) then
+            	i := F^tds_classe.chercherLocalement(c.getNomClasse()); -- on recupere l'infoclasse
+	        if (i = null) then --
 	            error(classe_inexistante, c.getNomClasse());
-	        else
-	            match i with INFOCLASSE then
+	        else ---
+	            match i with INFOCLASSE then ---
 	                ic := i;
 	                tds := ic.getMethodes();
 	                i2 := tds.chercherGlobalement(MARGS^nom); -- in recupere l'infomethode
-	                if (i2 = null) then
+	                if (i2 = null) then --
 	                    error(methode_inexistante, c.getNomClasse(), MARGS^nom);
-	                else
-	                    match i2 with INFOMETHODE then
+	                else --
+	                    match i2 with INFOMETHODE then --
 	                        im := i2;
 	                        --== type de retour
 	                        ----== initCorrect : s'assurer que le resultat de l'init est affecte une instance de type compatible
-		    		if (MARGS^nom.equals("init") then
-			
-				  F^type := new POINTEUR(i.getClasse());
+		    		if (MARGS^nom.equals("init")) then
+				  match i with INFOCLASSE then
+					ic_type := i;					
+					F^type := new POINTEUR(ic_type.getType());
+				  else
+					error(Warning, c.getNomClasse()+" n'a pas d'INFOCLASSE");
+				  end
 		    		else
 				  F^type := im.getRetour();
-		    		end if;
+		    		end
 		    		----=/= initCorrect
 	                        F^affectable := false;
 	                        --=/= type de retour
@@ -2781,21 +2829,21 @@ do
 	                        if (!params.compareTo(MARGS^params)) then -- on vérifie les parametres
 	                            error(mauvais_parametres, c.getNomClasse(), MARGS^nom);
 	                        end
-	                    else
+	                    else---
 	                        error(pas_methode, "ceci n'est pas une methode");
-	                    end
-	                end
-	            else
+	                    end ---
+	                end  ---
+	            else ---
 	                error(pas_classe, "ceci n'est pas une classe");
-                end
-            end
-	    else
+                    end ---
+            	end ---
+	    else ---
 	        error(pas_instance, "ceci n'est pas une instance de classe");
-	    end
-    else
+	    end --
+    else ----
         error(pas_pointeur, "ceci n'est pas un pointeur");
-    end
-end
+    end ---
+end--
 }
 #gen {
 local 
@@ -2805,12 +2853,11 @@ do
    F^code := tComment + MARGS^code
                 + F^machine.genLire("", F1^type.getTaille(), F1^adresse)            -- to modify the self of the fonction and give it the current instance 
                 --+ F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()); -- to call the function depending on his number (deplacement)
-                + F^machine.genCallMethod(MARGS^nom, F1^adresse ,im.getNumero()); -- to call the function depending on his number (deplacement)
+                + F^machine.genCallMethod(MARGS^nom, F1^adresse ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
    F^est_adresse := false;
    F^adresse := null;
 end
 }
-
 
 -- pour appel methode de classe
 F -> cro identc #params MARGS crf #bonappel_type #gen  ;
@@ -2876,17 +2923,19 @@ do
       c := ic.getType();
       match c with CLASSE then 
          instance := F^machine.genMallocInstance(c.getTaille());
+         write ("zozi "+ic.getTv());
 	 -- ajouter l'instance dans la tds de la methode init 
          F^code := MARGS^code
                 + instance -- code pour ajouter l'instance en parametre
-                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()); -- to call the function depending on his number (deplacement)
+                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
       			-- je dois load l etiquette 
 	end 
    else
       F^code := F^machine.genComment("je passe pas init"); 
       c := ic.getType();
+      write ("zizo "+ic.getTv());
       F^code := MARGS^code
-                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()); -- to call the function depending on his number (deplacement)
+                + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
    end
    F^est_adresse := false;
    F^adresse := null;

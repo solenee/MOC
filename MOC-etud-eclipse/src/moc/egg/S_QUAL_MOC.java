@@ -57,10 +57,10 @@ this.att_qual=false;
   public void analyser () throws Exception {
     scanner.lit ( 1 ) ;
     switch ( scanner.fenetre[0].code ) {
-      case LEX_MOC.token_plus : // 154
+      case LEX_MOC.token_plus : // 1171
         regle77 () ;
       break ;
-      case LEX_MOC.token_moins : // 155
+      case LEX_MOC.token_moins : // 1172
         regle78 () ;
       break ;
       default :

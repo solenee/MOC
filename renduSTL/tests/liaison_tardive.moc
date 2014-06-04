@@ -16,7 +16,7 @@ asm {
 // la classe mere de toutes les classes
 @class NSObject{
 }
-+(void)init {}
++(id)init {}
 @end
 
 // un point
@@ -56,6 +56,15 @@ int z = [self colx];
 
 int main()
 {
-    
+    Point2DCol * q;
+    //if (YES) {
+      q =  [Point2DCol init]; 
+    //}
+    //else {
+    //  q =  [Point2D init];	
+    //}
+    [q x:4 y:3];
+    [q x:7 y:8 col:21];
+    int y = 4;    
     return y;
 }

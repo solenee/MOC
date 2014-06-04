@@ -31,7 +31,7 @@ void log(char *message, int valeur){
 // la classe mere de toutes les classes
 @class NSObject{
 }
-+(void)init {}
++(id)init {}
 @end
 
 // un point
@@ -40,6 +40,7 @@ void log(char *message, int valeur){
     int y;
 }
 -(int)x {
+    
     return x;
 }
 -(int)y {
@@ -67,15 +68,15 @@ int z = [self colx];
 
 int main()
 {
-    log(@"Hello, GEO!");
+    //log(@"Hello, GEO!");
     char c = 'a';
-    Point2DCol *org = [Point2DCol alloc];
+    Point2DCol *org = [Point2DCol init];
     id object = org;
     [org x:0 y:0 col:4];
     Point2D ** pp= nil;
-    org = [[Point2DCol alloc] init];
-    log(@"PointColore = ",[org x], [org y], [org col]);
+    org = [[Point2DCol init] init];
+    //log(@"PointColore = ",[org x], [org y], [org col]);
     int y = 999;
-    log(@"y = 36 = %d", y);
+    //log(@"y = 36 = %d", y);
     return y;
 }
