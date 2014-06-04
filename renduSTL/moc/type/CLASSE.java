@@ -11,7 +11,7 @@ public class CLASSE extends DTYPE {
 	private CLASSE classeMere;
 	
 	public CLASSE(String nom, LCHAMPS champs, CLASSE mere) {
-		super("classe", champs.getTaille());
+		super(nom, champs.getTaille());
 		nomClasse = nom;
 		attributs = champs;
 		classeMere = mere;
@@ -25,7 +25,7 @@ public class CLASSE extends DTYPE {
 	}
 	
 	public String toString(){
-		return super.toString() + " "+nomClasse+" herite de "+classeMere+" "+attributs.toString();
+		return super.toString(); // + " "+nomClasse+" herite de "+classeMere.getNomClasse()+" "+attributs.toString();
 	}
 	
 	/** Obtenir la liste des classes parentes. */
@@ -80,14 +80,8 @@ public class CLASSE extends DTYPE {
 		return compareTo(autre);
 	}
 
-	@Override 
-	public int getTaille() {
-		return attributs.getTaille();
+	public CHAMP isAttribut (String t){ //getAttribut
+		return attributs.chercher(t);
 	}
 
-	public CHAMP isAttribut (String t){
-		return attributs.chercher(t);
-	} 
-	
-	
 }

@@ -24,6 +24,7 @@ public class DTYPE {
 	}
 
 	public boolean compareTo(DTYPE autre) {
+		//mc
 		if (nom.equals("int")){
 			if (autre.nom.equals("char") || autre.taille != this.taille){
 				return false;
@@ -32,13 +33,17 @@ public class DTYPE {
 				return true; 
 			}
 		}
+		//moc
+		else if(nom.equals("id")) {
+			return CLASSE.estObjet(autre);
+		}
 		else {
 			return this.nom.equals(autre.nom);
 		}
 	}
 
         public boolean isOperable(){
-		if (nom.equals("int"))
+		if (nom.equals("int") || nom.equals("bool"))
 			return true; 
 		return false;
 	}

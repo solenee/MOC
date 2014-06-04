@@ -2,21 +2,20 @@ package moc.tds;
 
 import java.util.ArrayList;
 
-import moc.gc.Emplacement;
 import moc.type.DTYPE;
 
 public class INFOCLASSE implements INFO {
 	
 	protected DTYPE type;
 	protected TDS methodes; // Hashmap<String, INFOMETHODE>
-	protected Emplacement tv;
+	protected String tv;
 	
 	public INFOCLASSE(DTYPE type) {
 		this.type = type;
 		this.methodes = new TDS();
 	}
 	
-	public INFOCLASSE(DTYPE type, Emplacement tv) {
+	public INFOCLASSE(DTYPE type, String tv) {
 		this.type = type;
 		this.methodes = new TDS();
 		this.tv = tv;
@@ -31,7 +30,7 @@ public class INFOCLASSE implements INFO {
 		}
 	}
 	
-	public INFOCLASSE(DTYPE type, INFOCLASSE parent, Emplacement tv) {
+	public INFOCLASSE(DTYPE type, INFOCLASSE parent, String tv) {
 		this.type = type;
 		if (parent != null) {
 			this.methodes = new TDS(parent.getMethodes());
@@ -46,7 +45,7 @@ public class INFOCLASSE implements INFO {
 		this.methodes = new TDS(parent);
 	}
 	
-	public INFOCLASSE(DTYPE type, TDS parent, Emplacement tv) {
+	public INFOCLASSE(DTYPE type, TDS parent, String tv) {
 		this.type = type;
 		this.methodes = new TDS(parent);
 		this.tv = tv;
@@ -57,7 +56,7 @@ public class INFOCLASSE implements INFO {
 		this.methodes = new TDS(methodes);
 	}
 	
-	public INFOCLASSE(TDS methodes, DTYPE type, Emplacement tv) {
+	public INFOCLASSE(TDS methodes, DTYPE type, String tv) {
 		this.type = type;
 		this.methodes = new TDS(methodes);
 		this.tv = tv;
@@ -80,11 +79,11 @@ public class INFOCLASSE implements INFO {
 		this.methodes = methodes;
 	}
 
-	public Emplacement getTv() {
+	public String getTv() {
 		return tv;
 	}
 
-	public void setTv(Emplacement tv) {
+	public void setTv(String tv) {
 		this.tv = tv;
 	}
 	

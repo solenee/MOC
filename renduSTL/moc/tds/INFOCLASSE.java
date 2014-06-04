@@ -97,7 +97,7 @@ public class INFOCLASSE implements INFO {
 			temp = temp.getParente();
 		}
 		for(int i = ascendants.size() - 1; i >= 0; i--) {
-			liste.putAll(ascendants.get(i));      // et si avec le meme nom elle prend quoi
+			liste.putAll(ascendants.get(i));
 		}
 		return liste;
 	}

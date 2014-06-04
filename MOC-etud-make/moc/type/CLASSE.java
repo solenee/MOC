@@ -80,4 +80,8 @@ public class CLASSE extends DTYPE {
 		return compareTo(autre);
 	}
 
+	public CHAMP isAttribut (String t){ //getAttribut
+		return attributs.chercher(t);
+	}
+
 }
