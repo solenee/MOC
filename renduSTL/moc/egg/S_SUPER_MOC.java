@@ -100,7 +100,7 @@ att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMess
 }
 else {
 loc_attributs= new LCHAMPS();
-loc_tv= new CHAMP("tv",  new POINTEUR(null), 1);
+loc_tv= new CHAMP("tv",  new POINTEUR(null), 0);
 loc_attributs.inserer(loc_tv);
 this.att_attributs=loc_attributs;
 }

@@ -1,457 +1,457 @@
 <?xml version="1.0" encoding="ASCII"?>
-<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_4NOpsOu2EeO1-KD26ayC_A" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_4NOpseu2EeO1-KD26ayC_A" bindingContexts="_4NRGCeu2EeO1-KD26ayC_A">
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_oX0jUOvOEeO1-KD26ayC_A" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_oX0jUevOEeO1-KD26ayC_A" bindingContexts="_oX1K6OvOEeO1-KD26ayC_A">
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_4NOpseu2EeO1-KD26ayC_A" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_4NOpsuu2EeO1-KD26ayC_A" label="%trimmedwindow.label.eclipseSDK" x="574" y="25" width="1072" height="1028">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_oX0jUevOEeO1-KD26ayC_A" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_oX0jUuvOEeO1-KD26ayC_A" label="%trimmedwindow.label.eclipseSDK" x="290" y="25" width="1438" height="1028">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="false"/>
     <tags>topLevel</tags>
-    <children xsi:type="basic:PartSashContainer" xmi:id="_4NOpsuu2EeO1-KD26ayC_A" selectedElement="_4NOps-u2EeO1-KD26ayC_A" horizontal="true">
-      <children xsi:type="advanced:PerspectiveStack" xmi:id="_4NOps-u2EeO1-KD26ayC_A" containerData="7500" selectedElement="_4NOptOu2EeO1-KD26ayC_A">
-        <children xsi:type="advanced:Perspective" xmi:id="_4NOptOu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.perspective" selectedElement="_4NOpteu2EeO1-KD26ayC_A" label="Itam Perspective" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/default_persp.gif">
+    <children xsi:type="basic:PartSashContainer" xmi:id="_oX0jUuvOEeO1-KD26ayC_A" selectedElement="_oX0jU-vOEeO1-KD26ayC_A" horizontal="true">
+      <children xsi:type="advanced:PerspectiveStack" xmi:id="_oX0jU-vOEeO1-KD26ayC_A" containerData="7500" selectedElement="_oX0jVOvOEeO1-KD26ayC_A">
+        <children xsi:type="advanced:Perspective" xmi:id="_oX0jVOvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.perspective" selectedElement="_oX0jVevOEeO1-KD26ayC_A" label="Itam Perspective" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/default_persp.gif">
           <persistedState key="persp.hiddenItems" value="persp.hideToolbarSC:org.eclipse.ui.edit.text.toggleShowSelectedElementOnly,"/>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_4NOpteu2EeO1-KD26ayC_A" selectedElement="_4NOptuu2EeO1-KD26ayC_A">
-            <children xsi:type="basic:PartSashContainer" xmi:id="_4NOptuu2EeO1-KD26ayC_A" containerData="9000" selectedElement="_4NOpt-u2EeO1-KD26ayC_A" horizontal="true">
-              <children xsi:type="basic:PartStack" xmi:id="_4NOpt-u2EeO1-KD26ayC_A" elementId="Asm" containerData="4500" selectedElement="_4NOpueu2EeO1-KD26ayC_A">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_oX0jVevOEeO1-KD26ayC_A" selectedElement="_oX0jVuvOEeO1-KD26ayC_A">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_oX0jVuvOEeO1-KD26ayC_A" containerData="9000" selectedElement="_oX0jV-vOEeO1-KD26ayC_A" horizontal="true">
+              <children xsi:type="basic:PartStack" xmi:id="_oX0jV-vOEeO1-KD26ayC_A" elementId="Asm" containerData="4500" selectedElement="_oX0jWevOEeO1-KD26ayC_A">
                 <tags>newtablook</tags>
                 <tags>active</tags>
-                <children xsi:type="advanced:Placeholder" xmi:id="_4NOpuOu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView:*" toBeRendered="false" ref="_4NPQ3-u2EeO1-KD26ayC_A"/>
-                <children xsi:type="advanced:Placeholder" xmi:id="_4NOpueu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView" ref="_4NPQ4Ou2EeO1-KD26ayC_A"/>
+                <children xsi:type="advanced:Placeholder" xmi:id="_oX0jWOvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView:*" toBeRendered="false" ref="_oX1KbuvOEeO1-KD26ayC_A"/>
+                <children xsi:type="advanced:Placeholder" xmi:id="_oX0jWevOEeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView" ref="_oX1Kb-vOEeO1-KD26ayC_A"/>
               </children>
-              <children xsi:type="basic:PartSashContainer" xmi:id="_4NOpuuu2EeO1-KD26ayC_A" containerData="5500" horizontal="true">
-                <children xsi:type="advanced:Placeholder" xmi:id="_4NOpu-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.editorss" toBeRendered="false" containerData="5500" ref="_4NPQ0eu2EeO1-KD26ayC_A"/>
-                <children xsi:type="basic:PartStack" xmi:id="_4NOpvOu2EeO1-KD26ayC_A" elementId="Stack and Heap" containerData="4500" selectedElement="_4NPQweu2EeO1-KD26ayC_A">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_oX0jWuvOEeO1-KD26ayC_A" containerData="5500" selectedElement="_oX0jXOvOEeO1-KD26ayC_A" horizontal="true">
+                <children xsi:type="advanced:Placeholder" xmi:id="_oX0jW-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.editorss" toBeRendered="false" containerData="5500" ref="_oX1KYOvOEeO1-KD26ayC_A"/>
+                <children xsi:type="basic:PartStack" xmi:id="_oX0jXOvOEeO1-KD26ayC_A" elementId="Stack and Heap" containerData="4500" selectedElement="_oX0jXuvOEeO1-KD26ayC_A">
                   <tags>newtablook</tags>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_4NPQwOu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView:*" toBeRendered="false" ref="_4NPQ6-u2EeO1-KD26ayC_A"/>
-                  <children xsi:type="advanced:Placeholder" xmi:id="_4NPQweu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView" ref="_4NPQ7Ou2EeO1-KD26ayC_A"/>
+                  <children xsi:type="advanced:Placeholder" xmi:id="_oX0jXevOEeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView:*" toBeRendered="false" ref="_oX1KeuvOEeO1-KD26ayC_A"/>
+                  <children xsi:type="advanced:Placeholder" xmi:id="_oX0jXuvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView" ref="_oX1Ke-vOEeO1-KD26ayC_A"/>
                 </children>
               </children>
             </children>
-            <children xsi:type="basic:PartStack" xmi:id="_4NPQwuu2EeO1-KD26ayC_A" elementId="I/O Console" containerData="1000" selectedElement="_4NPQw-u2EeO1-KD26ayC_A">
+            <children xsi:type="basic:PartStack" xmi:id="_oX0jX-vOEeO1-KD26ayC_A" elementId="I/O Console" containerData="1000" selectedElement="_oX0jYOvOEeO1-KD26ayC_A">
               <tags>newtablook</tags>
-              <children xsi:type="advanced:Placeholder" xmi:id="_4NPQw-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView" ref="_4NPQ0-u2EeO1-KD26ayC_A"/>
+              <children xsi:type="advanced:Placeholder" xmi:id="_oX0jYOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView" ref="_oX1KYuvOEeO1-KD26ayC_A"/>
             </children>
           </children>
         </children>
       </children>
-      <children xsi:type="basic:PartStack" xmi:id="_4NPQxOu2EeO1-KD26ayC_A" elementId="stickyFolderRight" toBeRendered="false" containerData="2500">
-        <children xsi:type="advanced:Placeholder" xmi:id="_4NPQxeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.internal.introview" toBeRendered="false" ref="_4NPQ0Ou2EeO1-KD26ayC_A"/>
+      <children xsi:type="basic:PartStack" xmi:id="_oX0jYevOEeO1-KD26ayC_A" elementId="stickyFolderRight" toBeRendered="false" containerData="2500">
+        <children xsi:type="advanced:Placeholder" xmi:id="_oX0jYuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.internal.introview" toBeRendered="false" ref="_oX0jbevOEeO1-KD26ayC_A"/>
       </children>
     </children>
-    <sharedElements xsi:type="basic:Part" xmi:id="_4NPQ0Ou2EeO1-KD26ayC_A" elementId="org.eclipse.ui.internal.introview" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Welcome" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" closeable="true">
+    <sharedElements xsi:type="basic:Part" xmi:id="_oX0jbevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.internal.introview" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Welcome" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" closeable="true">
       <tags>View</tags>
       <tags>categoryTag:General</tags>
     </sharedElements>
-    <sharedElements xsi:type="advanced:Area" xmi:id="_4NPQ0eu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.editorss">
-      <children xsi:type="basic:PartStack" xmi:id="_4NPQ0uu2EeO1-KD26ayC_A" elementId="org.eclipse.e4.primaryDataStack">
+    <sharedElements xsi:type="advanced:Area" xmi:id="_oX1KYOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.editorss">
+      <children xsi:type="basic:PartStack" xmi:id="_oX1KYevOEeO1-KD26ayC_A" elementId="org.eclipse.e4.primaryDataStack">
         <tags>newtablook</tags>
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
       </children>
     </sharedElements>
-    <sharedElements xsi:type="basic:Part" xmi:id="_4NPQ0-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Console" iconURI="platform:/plugin/org.eclipse.ui.console/icons/full/cview16/console_view.gif" closeable="true">
+    <sharedElements xsi:type="basic:Part" xmi:id="_oX1KYuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Console" iconURI="platform:/plugin/org.eclipse.ui.console/icons/full/cview16/console_view.gif" closeable="true">
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
-      <menus xmi:id="_4NPQ1Ou2EeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView">
+      <menus xmi:id="_oX1KY-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
-      <menus xsi:type="menu:PopupMenu" xmi:id="_4NPQ1eu2EeO1-KD26ayC_A" elementId="#ContextMenu">
+      <menus xsi:type="menu:PopupMenu" xmi:id="_oX1KZOvOEeO1-KD26ayC_A" elementId="#ContextMenu">
         <tags>menuContribution:popup</tags>
         <tags>popup:#ContextMenu</tags>
       </menus>
-      <toolbar xmi:id="_4NPQ1uu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView"/>
+      <toolbar xmi:id="_oX1KZevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView"/>
     </sharedElements>
-    <sharedElements xsi:type="basic:Part" xmi:id="_4NPQ3-u2EeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView:*" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Asm" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" closeable="true">
+    <sharedElements xsi:type="basic:Part" xmi:id="_oX1KbuvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView:*" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Asm" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" closeable="true">
       <tags>View</tags>
       <tags>categoryTag:Other</tags>
     </sharedElements>
-    <sharedElements xsi:type="basic:Part" xmi:id="_4NPQ4Ou2EeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Asm" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" closeable="true">
+    <sharedElements xsi:type="basic:Part" xmi:id="_oX1Kb-vOEeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Asm" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" closeable="true">
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:Other</tags>
       <tags>active</tags>
-      <menus xmi:id="_4NPQ4eu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView">
+      <menus xmi:id="_oX1KcOvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
-      <toolbar xmi:id="_4NPQ4uu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView"/>
+      <toolbar xmi:id="_oX1KcevOEeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView"/>
     </sharedElements>
-    <sharedElements xsi:type="basic:Part" xmi:id="_4NPQ6-u2EeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView:*" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Stack &amp; Heap" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" closeable="true">
+    <sharedElements xsi:type="basic:Part" xmi:id="_oX1KeuvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView:*" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Stack &amp; Heap" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" closeable="true">
       <tags>View</tags>
       <tags>categoryTag:Other</tags>
     </sharedElements>
-    <sharedElements xsi:type="basic:Part" xmi:id="_4NPQ7Ou2EeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Stack &amp; Heap" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" closeable="true">
+    <sharedElements xsi:type="basic:Part" xmi:id="_oX1Ke-vOEeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Stack &amp; Heap" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" closeable="true">
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:Other</tags>
-      <menus xmi:id="_4NPQ7eu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView">
+      <menus xmi:id="_oX1KfOvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
       </menus>
-      <toolbar xmi:id="_4NPQ7uu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView"/>
+      <toolbar xmi:id="_oX1KfevOEeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView"/>
     </sharedElements>
-    <trimBars xmi:id="_4NPQ7-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.main.toolbar" visible="false">
-      <children xsi:type="menu:ToolBar" xmi:id="_4NPQ8Ou2EeO1-KD26ayC_A" elementId="main">
+    <trimBars xmi:id="_oX1KfuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.main.toolbar" visible="false">
+      <children xsi:type="menu:ToolBar" xmi:id="_oX1Kf-vOEeO1-KD26ayC_A" elementId="main">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_4NPQ8eu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.open"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_4NPQ8uu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.open"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_4NPQ8-u2EeO1-KD26ayC_A" elementId="mg.itam.rcp.open"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_oX1KgOvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.open"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_oX1KgevOEeO1-KD26ayC_A" elementId="mg.itam.rcp.open"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_oX1KguvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.open"/>
       </children>
-      <children xsi:type="menu:ToolControl" xmi:id="_4NPQ9Ou2EeO1-KD26ayC_A" elementId="PerspectiveSpacer" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+      <children xsi:type="menu:ToolControl" xmi:id="_oX1Kg-vOEeO1-KD26ayC_A" elementId="PerspectiveSpacer" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
         <tags>stretch</tags>
       </children>
-      <children xsi:type="menu:ToolControl" xmi:id="_4NPQ9eu2EeO1-KD26ayC_A" elementId="Spacer Glue" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+      <children xsi:type="menu:ToolControl" xmi:id="_oX1KhOvOEeO1-KD26ayC_A" elementId="Spacer Glue" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
         <tags>glue</tags>
       </children>
-      <children xsi:type="menu:ToolControl" xmi:id="_4NPQ9uu2EeO1-KD26ayC_A" elementId="SearchField" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.quickaccess.SearchField"/>
-      <children xsi:type="menu:ToolControl" xmi:id="_4NPQ9-u2EeO1-KD26ayC_A" elementId="Search-PS Glue" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+      <children xsi:type="menu:ToolControl" xmi:id="_oX1KhevOEeO1-KD26ayC_A" elementId="SearchField" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.quickaccess.SearchField"/>
+      <children xsi:type="menu:ToolControl" xmi:id="_oX1KhuvOEeO1-KD26ayC_A" elementId="Search-PS Glue" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
         <tags>glue</tags>
       </children>
-      <children xsi:type="menu:ToolControl" xmi:id="_4NPQ-Ou2EeO1-KD26ayC_A" elementId="PerspectiveSwitcher" toBeRendered="false" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.e4.ui.workbench.addons.perspectiveswitcher.PerspectiveSwitcher">
+      <children xsi:type="menu:ToolControl" xmi:id="_oX1Kh-vOEeO1-KD26ayC_A" elementId="PerspectiveSwitcher" toBeRendered="false" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.e4.ui.workbench.addons.perspectiveswitcher.PerspectiveSwitcher">
         <tags>Draggable</tags>
       </children>
     </trimBars>
-    <trimBars xmi:id="_4NPQ-eu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.trim.status" toBeRendered="false" side="Bottom">
-      <children xsi:type="menu:ToolControl" xmi:id="_4NPQ-uu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.StatusLine" toBeRendered="false" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim">
+    <trimBars xmi:id="_oX1KiOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.trim.status" toBeRendered="false" side="Bottom">
+      <children xsi:type="menu:ToolControl" xmi:id="_oX1KievOEeO1-KD26ayC_A" elementId="org.eclipse.ui.StatusLine" toBeRendered="false" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim">
         <tags>stretch</tags>
       </children>
-      <children xsi:type="menu:ToolControl" xmi:id="_4NP30Ou2EeO1-KD26ayC_A" elementId="org.eclipse.ui.HeapStatus" toBeRendered="false" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim"/>
-      <children xsi:type="menu:ToolControl" xmi:id="_4NP30eu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.ProgressBar" toBeRendered="false" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim">
+      <children xsi:type="menu:ToolControl" xmi:id="_oX1KiuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.HeapStatus" toBeRendered="false" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim"/>
+      <children xsi:type="menu:ToolControl" xmi:id="_oX1Ki-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.ProgressBar" toBeRendered="false" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim">
         <tags>Draggable</tags>
       </children>
     </trimBars>
-    <trimBars xmi:id="_4NP30uu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.trim.vertical1" side="Left"/>
-    <trimBars xmi:id="_4NP30-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.trim.vertical2" side="Right"/>
+    <trimBars xmi:id="_oX1KjOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.trim.vertical1" side="Left"/>
+    <trimBars xmi:id="_oX1KjevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.trim.vertical2" side="Right"/>
   </children>
-  <bindingTables xmi:id="_4NP31Ou2EeO1-KD26ayC_A" contributorURI="platform:/plugin/org.eclipse.ui.workbench" bindingContext="_4NRGCeu2EeO1-KD26ayC_A">
-    <bindings xmi:id="_4NP31eu2EeO1-KD26ayC_A" keySequence="CTRL+INSERT" command="_4NRtIeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP31uu2EeO1-KD26ayC_A" keySequence="CTRL+A" command="_4NRtFOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP31-u2EeO1-KD26ayC_A" keySequence="CTRL+F10" command="_4NSUFuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP32Ou2EeO1-KD26ayC_A" keySequence="CTRL+V" command="_4NSUL-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP32eu2EeO1-KD26ayC_A" keySequence="CTRL+X" command="_4NRtBOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP32uu2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+Z" command="_4NSUNeu2EeO1-KD26ayC_A">
+  <bindingTables xmi:id="_oX1KjuvOEeO1-KD26ayC_A" contributorURI="platform:/plugin/org.eclipse.ui.workbench" bindingContext="_oX1K6OvOEeO1-KD26ayC_A">
+    <bindings xmi:id="_oX1Kj-vOEeO1-KD26ayC_A" keySequence="CTRL+INSERT" command="_oX1xkOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KkOvOEeO1-KD26ayC_A" keySequence="CTRL+A" command="_oX1xg-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KkevOEeO1-KD26ayC_A" keySequence="CTRL+F10" command="_oX1xqOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KkuvOEeO1-KD26ayC_A" keySequence="CTRL+V" command="_oX1xwevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Kk-vOEeO1-KD26ayC_A" keySequence="CTRL+X" command="_oX1xc-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KlOvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+Z" command="_oX1xx-vOEeO1-KD26ayC_A">
       <tags>platform:gtk</tags>
     </bindings>
-    <bindings xmi:id="_4NP32-u2EeO1-KD26ayC_A" keySequence="CTRL+Z" command="_4NS7Ieu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP33Ou2EeO1-KD26ayC_A" keySequence="SHIFT+DEL" command="_4NRtBOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP33eu2EeO1-KD26ayC_A" keySequence="ALT+PAGE_UP" command="_4NSUKOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP33uu2EeO1-KD26ayC_A" keySequence="CTRL+C" command="_4NRtIeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP33-u2EeO1-KD26ayC_A" keySequence="ALT+PAGE_DOWN" command="_4NRtF-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP34Ou2EeO1-KD26ayC_A" keySequence="SHIFT+INSERT" command="_4NSUL-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP34eu2EeO1-KD26ayC_A" keySequence="CTRL+SPACE" command="_4NSULuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP34uu2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+SPACE" command="_4NRtGeu2EeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KlevOEeO1-KD26ayC_A" keySequence="CTRL+Z" command="_oX1x0-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KluvOEeO1-KD26ayC_A" keySequence="SHIFT+DEL" command="_oX1xc-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Kl-vOEeO1-KD26ayC_A" keySequence="ALT+PAGE_UP" command="_oX1xuuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KmOvOEeO1-KD26ayC_A" keySequence="CTRL+C" command="_oX1xkOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KmevOEeO1-KD26ayC_A" keySequence="ALT+PAGE_DOWN" command="_oX1xhuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KmuvOEeO1-KD26ayC_A" keySequence="SHIFT+INSERT" command="_oX1xwevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Km-vOEeO1-KD26ayC_A" keySequence="CTRL+SPACE" command="_oX1xwOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KnOvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+SPACE" command="_oX1xiOvOEeO1-KD26ayC_A"/>
   </bindingTables>
-  <bindingTables xmi:id="_4NP34-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.textEditorScope" bindingContext="_4NRGDeu2EeO1-KD26ayC_A">
-    <bindings xmi:id="_4NP35Ou2EeO1-KD26ayC_A" keySequence="CTRL+ARROW_DOWN" command="_4NSUMuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP35eu2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+J" command="_4NRtJ-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP35uu2EeO1-KD26ayC_A" keySequence="CTRL+ARROW_UP" command="_4NSUN-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP35-u2EeO1-KD26ayC_A" keySequence="CTRL+K" command="_4NSUM-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP36Ou2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+K" command="_4NS7LOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP36eu2EeO1-KD26ayC_A" keySequence="CTRL+J" command="_4NSUGeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP36uu2EeO1-KD26ayC_A" keySequence="CTRL+L" command="_4NRtEeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP36-u2EeO1-KD26ayC_A" keySequence="INSERT" command="_4NSUG-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP37Ou2EeO1-KD26ayC_A" keySequence="CTRL+F10" command="_4NS7Reu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP37eu2EeO1-KD26ayC_A" keySequence="SHIFT+CR" command="_4NSUKeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP37uu2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+CR" command="_4NRtEuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP37-u2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+X" command="_4NRtJOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP38Ou2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+Y" command="_4NTiPuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP38eu2EeO1-KD26ayC_A" keySequence="END" command="_4NS7Q-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP38uu2EeO1-KD26ayC_A" keySequence="ALT+/" command="_4NTiOOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP38-u2EeO1-KD26ayC_A" keySequence="F2" command="_4NSUGOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NP39Ou2EeO1-KD26ayC_A" keySequence="HOME" command="_4NS7Muu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe4Ou2EeO1-KD26ayC_A" keySequence="SHIFT+HOME" command="_4NRtIuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe4eu2EeO1-KD26ayC_A" keySequence="CTRL+ARROW_LEFT" command="_4NS7M-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe4uu2EeO1-KD26ayC_A" keySequence="SHIFT+END" command="_4NRtD-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe4-u2EeO1-KD26ayC_A" keySequence="CTRL+HOME" command="_4NS7Ruu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe5Ou2EeO1-KD26ayC_A" keySequence="ALT+ARROW_UP" command="_4NTiM-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe5eu2EeO1-KD26ayC_A" keySequence="CTRL+DEL" command="_4NS7IOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe5uu2EeO1-KD26ayC_A" keySequence="ALT+CTRL+ARROW_UP" command="_4NS7K-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe5-u2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+INSERT" command="_4NRtC-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe6Ou2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+DEL" command="_4NS7ROu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe6eu2EeO1-KD26ayC_A" keySequence="CTRL+D" command="_4NSUFeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe6uu2EeO1-KD26ayC_A" keySequence="CTRL+ARROW_RIGHT" command="_4NTiQuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe6-u2EeO1-KD26ayC_A" keySequence="ALT+CTRL+J" command="_4NSUNuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe7Ou2EeO1-KD26ayC_A" keySequence="CTRL+END" command="_4NSUHOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe7eu2EeO1-KD26ayC_A" keySequence="CTRL+BS" command="_4NTiNuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe7uu2EeO1-KD26ayC_A" keySequence="ALT+ARROW_DOWN" command="_4NRtBeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe7-u2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+ARROW_LEFT" command="_4NRGGuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe8Ou2EeO1-KD26ayC_A" keySequence="ALT+CTRL+ARROW_DOWN" command="_4NTiOeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe8eu2EeO1-KD26ayC_A" keySequence="ALT+SHIFT+A" command="_4NS7N-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe8uu2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+ARROW_RIGHT" command="_4NS7Peu2EeO1-KD26ayC_A"/>
+  <bindingTables xmi:id="_oX1KnevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.textEditorScope" bindingContext="_oX1K7OvOEeO1-KD26ayC_A">
+    <bindings xmi:id="_oX1KnuvOEeO1-KD26ayC_A" keySequence="CTRL+ARROW_DOWN" command="_oX1xxOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Kn-vOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+J" command="_oX1xluvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KoOvOEeO1-KD26ayC_A" keySequence="CTRL+ARROW_UP" command="_oX1xyevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KoevOEeO1-KD26ayC_A" keySequence="CTRL+K" command="_oX1xxevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KouvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+K" command="_oX2YguvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Ko-vOEeO1-KD26ayC_A" keySequence="CTRL+J" command="_oX1xq-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KpOvOEeO1-KD26ayC_A" keySequence="CTRL+L" command="_oX1xgOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KpevOEeO1-KD26ayC_A" keySequence="INSERT" command="_oX1xrevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KpuvOEeO1-KD26ayC_A" keySequence="CTRL+F10" command="_oX2Ym-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Kp-vOEeO1-KD26ayC_A" keySequence="SHIFT+CR" command="_oX1xu-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KqOvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+CR" command="_oX1xgevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KqevOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+X" command="_oX1xk-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KquvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+Y" command="_oX2YsuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Kq-vOEeO1-KD26ayC_A" keySequence="END" command="_oX2YmevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KrOvOEeO1-KD26ayC_A" keySequence="ALT+/" command="_oX2YrOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KrevOEeO1-KD26ayC_A" keySequence="F2" command="_oX1xquvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KruvOEeO1-KD26ayC_A" keySequence="HOME" command="_oX2YiOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Kr-vOEeO1-KD26ayC_A" keySequence="SHIFT+HOME" command="_oX1xkevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KsOvOEeO1-KD26ayC_A" keySequence="CTRL+ARROW_LEFT" command="_oX2YievOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KsevOEeO1-KD26ayC_A" keySequence="SHIFT+END" command="_oX1xfuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KsuvOEeO1-KD26ayC_A" keySequence="CTRL+HOME" command="_oX2YnOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Ks-vOEeO1-KD26ayC_A" keySequence="ALT+ARROW_UP" command="_oX2Yp-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KtOvOEeO1-KD26ayC_A" keySequence="CTRL+DEL" command="_oX1x0uvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KtevOEeO1-KD26ayC_A" keySequence="ALT+CTRL+ARROW_UP" command="_oX2YgevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KtuvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+INSERT" command="_oX1xeuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Kt-vOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+DEL" command="_oX2YmuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KuOvOEeO1-KD26ayC_A" keySequence="CTRL+D" command="_oX1xp-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KuevOEeO1-KD26ayC_A" keySequence="CTRL+ARROW_RIGHT" command="_oX2YtuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KuuvOEeO1-KD26ayC_A" keySequence="ALT+CTRL+J" command="_oX1xyOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Ku-vOEeO1-KD26ayC_A" keySequence="CTRL+END" command="_oX1xruvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KvOvOEeO1-KD26ayC_A" keySequence="CTRL+BS" command="_oX2YquvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KvevOEeO1-KD26ayC_A" keySequence="ALT+ARROW_DOWN" command="_oX1xdOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KvuvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+ARROW_LEFT" command="_oX1K-evOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Kv-vOEeO1-KD26ayC_A" keySequence="ALT+CTRL+ARROW_DOWN" command="_oX2YrevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KwOvOEeO1-KD26ayC_A" keySequence="ALT+SHIFT+A" command="_oX2YjevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KwevOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+ARROW_RIGHT" command="_oX2Yk-vOEeO1-KD26ayC_A"/>
   </bindingTables>
-  <bindingTables xmi:id="_4NQe8-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.window" bindingContext="_4NRGCuu2EeO1-KD26ayC_A">
-    <bindings xmi:id="_4NQe9Ou2EeO1-KD26ayC_A" keySequence="ALT+ARROW_RIGHT" command="_4NSUOeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe9eu2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+NUMPAD_MULTIPLY" command="_4NRtDOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe9uu2EeO1-KD26ayC_A" keySequence="CTRL+E" command="_4NSUJOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe9-u2EeO1-KD26ayC_A" keySequence="ALT+ARROW_LEFT" command="_4NTiNOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe-Ou2EeO1-KD26ayC_A" keySequence="ALT+SHIFT+F7" command="_4NRtKuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe-eu2EeO1-KD26ayC_A" keySequence="ALT+F7" command="_4NS7Teu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe-uu2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+NUMPAD_DIVIDE" command="_4NSUIuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe--u2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+F8" command="_4NS7KOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe_Ou2EeO1-KD26ayC_A" keySequence="CTRL+F8" command="_4NTiN-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe_eu2EeO1-KD26ayC_A" keySequence="CTRL+Q" command="_4NRtMOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe_uu2EeO1-KD26ayC_A" keySequence="F2" command="_4NRGHeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NQe_-u2EeO1-KD26ayC_A" keySequence="CTRL+," command="_4NSUNOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF8Ou2EeO1-KD26ayC_A" keySequence="CTRL+." command="_4NRGHuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF8eu2EeO1-KD26ayC_A" keySequence="DEL" command="_4NSUHeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF8uu2EeO1-KD26ayC_A" keySequence="CTRL+X" command="_4NTiQOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF8-u2EeO1-KD26ayC_A" keySequence="CTRL+N" command="_4NRtG-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF9Ou2EeO1-KD26ayC_A" keySequence="CTRL+W" command="_4NRtGOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF9eu2EeO1-KD26ayC_A" keySequence="CTRL+F4" command="_4NRtGOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF9uu2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+W" command="_4NS7O-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF9-u2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+F4" command="_4NS7O-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF-Ou2EeO1-KD26ayC_A" keySequence="CTRL+S" command="_4NS7Ouu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF-eu2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+S" command="_4NRtLuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF-uu2EeO1-KD26ayC_A" keySequence="CTRL+P" command="_4NSUOOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF--u2EeO1-KD26ayC_A" keySequence="ALT+CR" command="_4NS7Seu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF_Ou2EeO1-KD26ayC_A" keySequence="F5" command="_4NS7Qeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF_eu2EeO1-KD26ayC_A" keySequence="ALT+-" command="_4NTiO-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF_uu2EeO1-KD26ayC_A" keySequence="F12" command="_4NRtKeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRF_-u2EeO1-KD26ayC_A" keySequence="CTRL+M" command="_4NSUIeu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRGAOu2EeO1-KD26ayC_A" keySequence="CTRL+F6" command="_4NS7R-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRGAeu2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+F6" command="_4NSUIOu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRGAuu2EeO1-KD26ayC_A" keySequence="CTRL+F7" command="_4NS7Quu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRGA-u2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+F7" command="_4NSUP-u2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRGBOu2EeO1-KD26ayC_A" keySequence="ALT+SHIFT+Q C" command="_4NS7Luu2EeO1-KD26ayC_A">
-      <parameters xmi:id="_4NRGBeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.views.showView.viewId" name="org.eclipse.ui.views.showView.viewId" value="org.eclipse.ui.console.ConsoleView"/>
+  <bindingTables xmi:id="_oX1KwuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.window" bindingContext="_oX1K6evOEeO1-KD26ayC_A">
+    <bindings xmi:id="_oX1Kw-vOEeO1-KD26ayC_A" keySequence="ALT+ARROW_RIGHT" command="_oX1xy-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KxOvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+NUMPAD_MULTIPLY" command="_oX1xe-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KxevOEeO1-KD26ayC_A" keySequence="CTRL+E" command="_oX1xtuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KxuvOEeO1-KD26ayC_A" keySequence="ALT+ARROW_LEFT" command="_oX2YqOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Kx-vOEeO1-KD26ayC_A" keySequence="ALT+SHIFT+F7" command="_oX1xmevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KyOvOEeO1-KD26ayC_A" keySequence="ALT+F7" command="_oX2Yo-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KyevOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+NUMPAD_DIVIDE" command="_oX1xtOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KyuvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+F8" command="_oX1x2uvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Ky-vOEeO1-KD26ayC_A" keySequence="CTRL+F8" command="_oX2Yq-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KzOvOEeO1-KD26ayC_A" keySequence="CTRL+Q" command="_oX1xn-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KzevOEeO1-KD26ayC_A" keySequence="F2" command="_oX1K_OvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1KzuvOEeO1-KD26ayC_A" keySequence="CTRL+," command="_oX1xxuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1Kz-vOEeO1-KD26ayC_A" keySequence="CTRL+." command="_oX1K_evOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K0OvOEeO1-KD26ayC_A" keySequence="DEL" command="_oX1xr-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K0evOEeO1-KD26ayC_A" keySequence="CTRL+X" command="_oX2YtOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K0uvOEeO1-KD26ayC_A" keySequence="CTRL+N" command="_oX1xiuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K0-vOEeO1-KD26ayC_A" keySequence="CTRL+W" command="_oX1xh-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K1OvOEeO1-KD26ayC_A" keySequence="CTRL+F4" command="_oX1xh-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K1evOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+W" command="_oX2YkevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K1uvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+F4" command="_oX2YkevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K1-vOEeO1-KD26ayC_A" keySequence="CTRL+S" command="_oX2YkOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K2OvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+S" command="_oX1xnevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K2evOEeO1-KD26ayC_A" keySequence="CTRL+P" command="_oX1xyuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K2uvOEeO1-KD26ayC_A" keySequence="ALT+CR" command="_oX2Yn-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K2-vOEeO1-KD26ayC_A" keySequence="F5" command="_oX2Yl-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K3OvOEeO1-KD26ayC_A" keySequence="ALT+-" command="_oX2Yr-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K3evOEeO1-KD26ayC_A" keySequence="F12" command="_oX1xmOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K3uvOEeO1-KD26ayC_A" keySequence="CTRL+M" command="_oX1xs-vOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K3-vOEeO1-KD26ayC_A" keySequence="CTRL+F6" command="_oX2YnevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K4OvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+F6" command="_oX1xsuvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K4evOEeO1-KD26ayC_A" keySequence="CTRL+F7" command="_oX2YmOvOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K4uvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+F7" command="_oX1x0evOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K4-vOEeO1-KD26ayC_A" keySequence="ALT+SHIFT+Q C" command="_oX2YhOvOEeO1-KD26ayC_A">
+      <parameters xmi:id="_oX1K5OvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.views.showView.viewId" name="org.eclipse.ui.views.showView.viewId" value="org.eclipse.ui.console.ConsoleView"/>
     </bindings>
-    <bindings xmi:id="_4NRGBuu2EeO1-KD26ayC_A" keySequence="CTRL+F" command="_4NRtBuu2EeO1-KD26ayC_A"/>
-    <bindings xmi:id="_4NRGB-u2EeO1-KD26ayC_A" keySequence="CTRL+SHIFT+E" command="_4NSUPeu2EeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K5evOEeO1-KD26ayC_A" keySequence="CTRL+F" command="_oX1xdevOEeO1-KD26ayC_A"/>
+    <bindings xmi:id="_oX1K5uvOEeO1-KD26ayC_A" keySequence="CTRL+SHIFT+E" command="_oX1xz-vOEeO1-KD26ayC_A"/>
   </bindingTables>
-  <bindingTables xmi:id="_4NRGCOu2EeO1-KD26ayC_A" bindingContext="_4NRGEeu2EeO1-KD26ayC_A"/>
-  <rootContext xmi:id="_4NRGCeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.dialogAndWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" name="In Dialogs and Windows" description="Either a dialog or a window is open">
-    <children xmi:id="_4NRGCuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.window" contributorURI="platform:/plugin/org.eclipse.ui.workbench" name="In Windows" description="A window is open">
-      <children xmi:id="_4NRGC-u2EeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.contexts.views" contributorURI="platform:/plugin/org.eclipse.ui.workbench" name="%bindingcontext.name.bindingView"/>
-      <children xmi:id="_4NRGDOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView" name="In Console View" description="In Console View"/>
-      <children xmi:id="_4NRGDeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.textEditorScope" name="Editing Text" description="Editing Text Context"/>
+  <bindingTables xmi:id="_oX1K5-vOEeO1-KD26ayC_A" bindingContext="_oX1K8OvOEeO1-KD26ayC_A"/>
+  <rootContext xmi:id="_oX1K6OvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.dialogAndWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" name="In Dialogs and Windows" description="Either a dialog or a window is open">
+    <children xmi:id="_oX1K6evOEeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.window" contributorURI="platform:/plugin/org.eclipse.ui.workbench" name="In Windows" description="A window is open">
+      <children xmi:id="_oX1K6uvOEeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.contexts.views" contributorURI="platform:/plugin/org.eclipse.ui.workbench" name="%bindingcontext.name.bindingView"/>
+      <children xmi:id="_oX1K6-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView" name="In Console View" description="In Console View"/>
+      <children xmi:id="_oX1K7OvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.textEditorScope" name="Editing Text" description="Editing Text Context"/>
     </children>
-    <children xmi:id="_4NRGDuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.dialog" contributorURI="platform:/plugin/org.eclipse.ui.workbench" name="In Dialogs" description="A dialog is open"/>
+    <children xmi:id="_oX1K7evOEeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.dialog" contributorURI="platform:/plugin/org.eclipse.ui.workbench" name="In Dialogs" description="A dialog is open"/>
   </rootContext>
-  <rootContext xmi:id="_4NRGD-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.workbenchMenu" name="Workbench Menu" description="When no Workbench windows are active"/>
-  <rootContext xmi:id="_4NRGEOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.actionSet" name="Action Set" description="Parent context for action sets"/>
-  <rootContext xmi:id="_4NRGEeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.actionSet.presentation" name="Auto::org.eclipse.ui.edit.text.actionSet.presentation"/>
-  <descriptors xmi:id="_4NRGEuu2EeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.compatibility.editor" allowMultiple="true" category="org.eclipse.e4.primaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor">
+  <rootContext xmi:id="_oX1K7uvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.workbenchMenu" name="Workbench Menu" description="When no Workbench windows are active"/>
+  <rootContext xmi:id="_oX1K7-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.contexts.actionSet" name="Action Set" description="Parent context for action sets"/>
+  <rootContext xmi:id="_oX1K8OvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.actionSet.presentation" name="Auto::org.eclipse.ui.edit.text.actionSet.presentation"/>
+  <descriptors xmi:id="_oX1K8evOEeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.compatibility.editor" allowMultiple="true" category="org.eclipse.e4.primaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor">
     <tags>Editor</tags>
   </descriptors>
-  <descriptors xmi:id="_4NRGE-u2EeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView" label="Stack &amp; Heap" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+  <descriptors xmi:id="_oX1K8uvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.stackView" label="Stack &amp; Heap" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
     <tags>View</tags>
     <tags>categoryTag:Other</tags>
   </descriptors>
-  <descriptors xmi:id="_4NRGFOu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView" label="Asm" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+  <descriptors xmi:id="_oX1K8-vOEeO1-KD26ayC_A" elementId="mg.itam.rcp.asmView" label="Asm" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
     <tags>View</tags>
     <tags>categoryTag:Other</tags>
   </descriptors>
-  <descriptors xmi:id="_4NRGFeu2EeO1-KD26ayC_A" elementId="mg.itam.rcp.consoleView" label="I/O Console" iconURI="platform:/plugin/mg.itam.rcp/icons/console_view.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+  <descriptors xmi:id="_oX1K9OvOEeO1-KD26ayC_A" elementId="mg.itam.rcp.consoleView" label="I/O Console" iconURI="platform:/plugin/mg.itam.rcp/icons/console_view.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
     <tags>View</tags>
     <tags>categoryTag:Other</tags>
   </descriptors>
-  <descriptors xmi:id="_4NRGFuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.internal.introview" label="Welcome" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+  <descriptors xmi:id="_oX1K9evOEeO1-KD26ayC_A" elementId="org.eclipse.ui.internal.introview" label="Welcome" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.gif" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
     <tags>View</tags>
     <tags>categoryTag:General</tags>
   </descriptors>
-  <descriptors xmi:id="_4NRGF-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView" label="Console" iconURI="platform:/plugin/org.eclipse.ui.console/icons/full/cview16/console_view.gif" allowMultiple="true" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+  <descriptors xmi:id="_oX1K9uvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.console.ConsoleView" label="Console" iconURI="platform:/plugin/org.eclipse.ui.console/icons/full/cview16/console_view.gif" allowMultiple="true" category="org.eclipse.e4.secondaryDataStack" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
     <tags>View</tags>
     <tags>categoryTag:General</tags>
   </descriptors>
-  <commands xmi:id="_4NRGGOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.customizePerspective" commandName="Customize Perspective" description="Customize the current perspective" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRGGeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly" commandName="Show Selected Element Only" description="Show Selected Element Only" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRGGuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.wordPrevious" commandName="Select Previous Word" description="Select the previous word" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRGG-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.ToggleCoolbarAction" commandName="Toggle Toolbar Visibility" description="Toggles the visibility of the window toolbar" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRGHOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.up" commandName="Up" description="Navigate up one level" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRGHeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.rename" commandName="Rename" description="Rename the selected item" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRGHuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.next" commandName="Next" description="Navigate to the next item" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtAOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.closePerspective" commandName="Close Perspective" description="Close the current perspective" category="_4NTiTuu2EeO1-KD26ayC_A">
-    <parameters xmi:id="_4NRtAeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.closePerspective.perspectiveId" name="Perspective Id"/>
+  <commands xmi:id="_oX1K9-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.customizePerspective" commandName="Customize Perspective" description="Customize the current perspective" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1K-OvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly" commandName="Show Selected Element Only" description="Show Selected Element Only" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1K-evOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.wordPrevious" commandName="Select Previous Word" description="Select the previous word" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1K-uvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.ToggleCoolbarAction" commandName="Toggle Toolbar Visibility" description="Toggles the visibility of the window toolbar" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1K--vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.up" commandName="Up" description="Navigate up one level" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1K_OvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.rename" commandName="Rename" description="Rename the selected item" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1K_evOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.next" commandName="Next" description="Navigate to the next item" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1K_uvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.closePerspective" commandName="Close Perspective" description="Close the current perspective" category="_oX2YwuvOEeO1-KD26ayC_A">
+    <parameters xmi:id="_oX1xcOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.closePerspective.perspectiveId" name="Perspective Id"/>
   </commands>
-  <commands xmi:id="_4NRtAuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.hideShowEditors" commandName="Toggle Editor Area Visibility" description="Toggles the visibility of the editor area" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtA-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.textStart" commandName="Select Text Start" description="Select to the beginning of the text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtBOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.cut" commandName="Cut" description="Cut the selection to the clipboard" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtBeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.moveLineDown" commandName="Move Lines Down" description="Moves the selected lines down" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtBuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.findReplace" commandName="Find and Replace" description="Find and replace text" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtB-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.move" commandName="Move..." description="Move the selected item" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtCOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.clear.mark" commandName="Clear Mark" description="Clear the mark" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtCeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.lineUp" commandName="Select Line Up" description="Extend the selection to the previous line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtCuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.lockToolBar" commandName="Lock the Toolbars" description="Lock the Toolbars" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtC-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.toggleInsertMode" commandName="Toggle Insert Mode" description="Toggle insert mode" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtDOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.expandAll" commandName="Expand All" description="Expand the current tree" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtDeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.import" commandName="Import" description="Import" category="_4NTiVOu2EeO1-KD26ayC_A">
-    <parameters xmi:id="_4NRtDuu2EeO1-KD26ayC_A" elementId="importWizardId" name="Import Wizard"/>
+  <commands xmi:id="_oX1xcevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.hideShowEditors" commandName="Toggle Editor Area Visibility" description="Toggles the visibility of the editor area" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xcuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.textStart" commandName="Select Text Start" description="Select to the beginning of the text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xc-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.cut" commandName="Cut" description="Cut the selection to the clipboard" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xdOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.moveLineDown" commandName="Move Lines Down" description="Moves the selected lines down" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xdevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.findReplace" commandName="Find and Replace" description="Find and replace text" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xduvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.move" commandName="Move..." description="Move the selected item" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xd-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.clear.mark" commandName="Clear Mark" description="Clear the mark" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xeOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.lineUp" commandName="Select Line Up" description="Extend the selection to the previous line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xeevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.lockToolBar" commandName="Lock the Toolbars" description="Lock the Toolbars" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xeuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.toggleInsertMode" commandName="Toggle Insert Mode" description="Toggle insert mode" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xe-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.expandAll" commandName="Expand All" description="Expand the current tree" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xfOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.import" commandName="Import" description="Import" category="_oX2YyOvOEeO1-KD26ayC_A">
+    <parameters xmi:id="_oX1xfevOEeO1-KD26ayC_A" elementId="importWizardId" name="Import Wizard"/>
   </commands>
-  <commands xmi:id="_4NRtD-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.lineEnd" commandName="Select Line End" description="Select to the end of the line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtEOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.help.helpSearch" commandName="Help Search" description="Open the help search" category="_4NTiT-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtEeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.line" commandName="Go to Line" description="Go to a specified line of text" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtEuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.smartEnterInverse" commandName="Insert Line Above Current Line" description="Adds a new line above the current line" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtE-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.toggleShowWhitespaceCharacters" commandName="Show Whitespace Characters" description="Shows whitespace characters in current text editor" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtFOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.selectAll" commandName="Select All" description="Select all" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtFeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.preferences" commandName="Preferences" description="Open the preferences dialog" category="_4NTiTuu2EeO1-KD26ayC_A">
-    <parameters xmi:id="_4NRtFuu2EeO1-KD26ayC_A" elementId="preferencePageId" name="Preference Page"/>
+  <commands xmi:id="_oX1xfuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.lineEnd" commandName="Select Line End" description="Select to the end of the line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xf-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.help.helpSearch" commandName="Help Search" description="Open the help search" category="_oX2Yw-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xgOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.line" commandName="Go to Line" description="Go to a specified line of text" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xgevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.smartEnterInverse" commandName="Insert Line Above Current Line" description="Adds a new line above the current line" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xguvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.toggleShowWhitespaceCharacters" commandName="Show Whitespace Characters" description="Shows whitespace characters in current text editor" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xg-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.selectAll" commandName="Select All" description="Select all" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xhOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.preferences" commandName="Preferences" description="Open the preferences dialog" category="_oX2YwuvOEeO1-KD26ayC_A">
+    <parameters xmi:id="_oX1xhevOEeO1-KD26ayC_A" elementId="preferencePageId" name="Preference Page"/>
   </commands>
-  <commands xmi:id="_4NRtF-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.nextSubTab" commandName="Next Sub-Tab" description="Switch to the next sub-tab" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtGOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.close" commandName="Close" description="Close the active editor" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtGeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.contentAssist.contextInformation" commandName="Context Information" description="Show Context Information" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtGuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.windowEnd" commandName="Window End" description="Go to the end of the window" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtG-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.newWizard" commandName="New" description="Open the New item wizard" category="_4NTiVOu2EeO1-KD26ayC_A">
-    <parameters xmi:id="_4NRtHOu2EeO1-KD26ayC_A" elementId="newWizardId" name="New Wizard"/>
+  <commands xmi:id="_oX1xhuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.nextSubTab" commandName="Next Sub-Tab" description="Switch to the next sub-tab" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xh-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.close" commandName="Close" description="Close the active editor" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xiOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.contentAssist.contextInformation" commandName="Context Information" description="Show Context Information" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xievOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.windowEnd" commandName="Window End" description="Go to the end of the window" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xiuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.newWizard" commandName="New" description="Open the New item wizard" category="_oX2YyOvOEeO1-KD26ayC_A">
+    <parameters xmi:id="_oX1xi-vOEeO1-KD26ayC_A" elementId="newWizardId" name="New Wizard"/>
   </commands>
-  <commands xmi:id="_4NRtHeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.columnPrevious" commandName="Previous Column" description="Go to the previous column" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtHuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.help.tipsAndTricksAction" commandName="Tips and Tricks" description="Open the tips and tricks help page" category="_4NTiT-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtH-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.columnNext" commandName="Select Next Column" description="Select the next column" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtIOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.addBookmark" commandName="Add Bookmark" description="Add a bookmark" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtIeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.copy" commandName="Copy" description="Copy the selection to the clipboard" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtIuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.lineStart" commandName="Select Line Start" description="Select to the beginning of the line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtI-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.cut.line.to.end" commandName="Cut to End of Line" description="Cut to the end of a line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtJOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.upperCase" commandName="To Upper Case" description="Changes the selection to upper case" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtJeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.revertToSaved" commandName="Revert to Saved" description="Revert to the last saved state" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtJuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.pinEditor" commandName="Pin Editor" description="Pin the current editor" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtJ-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.findIncrementalReverse" commandName="Incremental Find Reverse" description="Incremental find reverse" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtKOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.columnNext" commandName="Next Column" description="Go to the next column" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtKeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.activateEditor" commandName="Activate Editor" description="Activate the editor" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtKuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.part.previousPage" commandName="Previous Page" description="Switch to the previous page" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtK-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.help.aboutAction" commandName="About" description="Open the about dialog" category="_4NTiT-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtLOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.help.helpContents" commandName="Help Contents" description="Open the help contents" category="_4NTiT-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtLeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.lineDown" commandName="Line Down" description="Go down one line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtLuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.saveAll" commandName="Save All" description="Save all current contents" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtL-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.previousTab" commandName="Previous Tab" description="Switch to the previous tab" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtMOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.gotoLastEditPosition" commandName="Last Edit Location" description="Last edit location" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtMeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.restartWorkbench" commandName="Restart" description="Restart the workbench" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NRtMuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.export" commandName="Export" description="Export" category="_4NTiVOu2EeO1-KD26ayC_A">
-    <parameters xmi:id="_4NSUEOu2EeO1-KD26ayC_A" elementId="exportWizardId" name="Export Wizard"/>
+  <commands xmi:id="_oX1xjOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.columnPrevious" commandName="Previous Column" description="Go to the previous column" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xjevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.help.tipsAndTricksAction" commandName="Tips and Tricks" description="Open the tips and tricks help page" category="_oX2Yw-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xjuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.columnNext" commandName="Select Next Column" description="Select the next column" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xj-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.addBookmark" commandName="Add Bookmark" description="Add a bookmark" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xkOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.copy" commandName="Copy" description="Copy the selection to the clipboard" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xkevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.lineStart" commandName="Select Line Start" description="Select to the beginning of the line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xkuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.cut.line.to.end" commandName="Cut to End of Line" description="Cut to the end of a line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xk-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.upperCase" commandName="To Upper Case" description="Changes the selection to upper case" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xlOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.revertToSaved" commandName="Revert to Saved" description="Revert to the last saved state" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xlevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.pinEditor" commandName="Pin Editor" description="Pin the current editor" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xluvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.findIncrementalReverse" commandName="Incremental Find Reverse" description="Incremental find reverse" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xl-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.columnNext" commandName="Next Column" description="Go to the next column" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xmOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.activateEditor" commandName="Activate Editor" description="Activate the editor" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xmevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.part.previousPage" commandName="Previous Page" description="Switch to the previous page" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xmuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.help.aboutAction" commandName="About" description="Open the about dialog" category="_oX2Yw-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xm-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.help.helpContents" commandName="Help Contents" description="Open the help contents" category="_oX2Yw-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xnOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.lineDown" commandName="Line Down" description="Go down one line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xnevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.saveAll" commandName="Save All" description="Save all current contents" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xnuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.previousTab" commandName="Previous Tab" description="Switch to the previous tab" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xn-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.gotoLastEditPosition" commandName="Last Edit Location" description="Last edit location" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xoOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.restartWorkbench" commandName="Restart" description="Restart the workbench" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xoevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.export" commandName="Export" description="Export" category="_oX2YyOvOEeO1-KD26ayC_A">
+    <parameters xmi:id="_oX1xouvOEeO1-KD26ayC_A" elementId="exportWizardId" name="Export Wizard"/>
   </commands>
-  <commands xmi:id="_4NSUEeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.lineDown" commandName="Select Line Down" description="Extend the selection to the next line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUEuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.resetPerspective" commandName="Reset Perspective" description="Reset the current perspective to its default state" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUE-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.showContextMenu" commandName="Show Context Menu" description="Show the context menu" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUFOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.textEnd" commandName="Select Text End" description="Select to the end of the text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUFeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.delete.line" commandName="Delete Line" description="Delete a line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUFuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.showViewMenu" commandName="Show View Menu" description="Show the view menu" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUF-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.savePerspective" commandName="Save Perspective As" description="Save the current perspective" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUGOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.showInformation" commandName="Show Tooltip Description" description="Displays information for the current caret location in a focused hover" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUGeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.findIncremental" commandName="Incremental Find" description="Incremental find" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUGuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.newWindow" commandName="New Window" description="Open another window" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUG-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.toggleOverwrite" commandName="Toggle Overwrite" description="Toggle overwrite mode" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUHOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.textEnd" commandName="Text End" description="Go to the end of the text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUHeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.delete" commandName="Delete" description="Delete the selection" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUHuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.showKeyAssist" commandName="Show Key Assist" description="Show the key assist dialog" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUH-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.saveAs" commandName="Save As" description="Save the current contents to another location" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUIOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.previousEditor" commandName="Previous Editor" description="Switch to the previous editor" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUIeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.maximizePart" commandName="Maximize Active View or Editor" description="Toggles maximize/restore state of active view or editor" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUIuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.collapseAll" commandName="Collapse All" description="Collapse the current tree" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUI-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.shiftLeft" commandName="Shift Left" description="Shift a block of text to the left" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUJOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.openEditorDropDown" commandName="Quick Switch Editor" description="Open the editor drop down list" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUJeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.perspectives.showPerspective" commandName="Show Perspective" description="Show a particular perspective" category="_4NTiTeu2EeO1-KD26ayC_A">
-    <parameters xmi:id="_4NSUJuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.perspectives.showPerspective.perspectiveId" name="Parameter"/>
-    <parameters xmi:id="_4NSUJ-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.perspectives.showPerspective.newWindow" name="In New Window"/>
+  <commands xmi:id="_oX1xo-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.lineDown" commandName="Select Line Down" description="Extend the selection to the next line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xpOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.resetPerspective" commandName="Reset Perspective" description="Reset the current perspective to its default state" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xpevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.showContextMenu" commandName="Show Context Menu" description="Show the context menu" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xpuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.textEnd" commandName="Select Text End" description="Select to the end of the text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xp-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.delete.line" commandName="Delete Line" description="Delete a line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xqOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.showViewMenu" commandName="Show View Menu" description="Show the view menu" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xqevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.savePerspective" commandName="Save Perspective As" description="Save the current perspective" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xquvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.showInformation" commandName="Show Tooltip Description" description="Displays information for the current caret location in a focused hover" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xq-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.findIncremental" commandName="Incremental Find" description="Incremental find" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xrOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.newWindow" commandName="New Window" description="Open another window" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xrevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.toggleOverwrite" commandName="Toggle Overwrite" description="Toggle overwrite mode" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xruvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.textEnd" commandName="Text End" description="Go to the end of the text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xr-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.delete" commandName="Delete" description="Delete the selection" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xsOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.showKeyAssist" commandName="Show Key Assist" description="Show the key assist dialog" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xsevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.saveAs" commandName="Save As" description="Save the current contents to another location" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xsuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.previousEditor" commandName="Previous Editor" description="Switch to the previous editor" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xs-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.maximizePart" commandName="Maximize Active View or Editor" description="Toggles maximize/restore state of active view or editor" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xtOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.collapseAll" commandName="Collapse All" description="Collapse the current tree" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xtevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.shiftLeft" commandName="Shift Left" description="Shift a block of text to the left" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xtuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.openEditorDropDown" commandName="Quick Switch Editor" description="Open the editor drop down list" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xt-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.perspectives.showPerspective" commandName="Show Perspective" description="Show a particular perspective" category="_oX2YwevOEeO1-KD26ayC_A">
+    <parameters xmi:id="_oX1xuOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.perspectives.showPerspective.perspectiveId" name="Parameter"/>
+    <parameters xmi:id="_oX1xuevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.perspectives.showPerspective.newWindow" name="In New Window"/>
   </commands>
-  <commands xmi:id="_4NSUKOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.previousSubTab" commandName="Previous Sub-Tab" description="Switch to the previous sub-tab" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUKeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.smartEnter" commandName="Insert Line Below Current Line" description="Adds a new line below the current line" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUKuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.pageDown" commandName="Page Down" description="Go down one page" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUK-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.windowStart" commandName="Window Start" description="Go to the start of the window" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSULOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.goInto" commandName="Go Into" description="Navigate into the selected item" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSULeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.activeContextInfo" commandName="Show activeContext Info" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSULuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.contentAssist.proposals" commandName="Content Assist" description="Content Assist" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUL-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.paste" commandName="Paste" description="Paste from the clipboard" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUMOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.revert" commandName="Revert" description="Revert to the last saved state" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUMeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.nextTab" commandName="Next Tab" description="Switch to the next tab" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUMuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.scroll.lineDown" commandName="Scroll Line Down" description="Scroll down one line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUM-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.findNext" commandName="Find Next" description="Find next item" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUNOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.previous" commandName="Previous" description="Navigate to the previous item" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUNeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.redo" commandName="Redo" description="Redo the last operation" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUNuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.join.lines" commandName="Join Lines" description="Join lines of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUN-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.scroll.lineUp" commandName="Scroll Line Up" description="Scroll up one line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUOOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.print" commandName="Print" description="Print" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUOeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.forwardHistory" commandName="Forward History" description="Move forward in the editor navigation history" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUOuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.pageUp" commandName="Select Page Up" description="Select to the top of the page" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUO-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.windowEnd" commandName="Select Window End" description="Select to the end of the window" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUPOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.lineUp" commandName="Line Up" description="Go up one line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUPeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.switchToEditor" commandName="Switch to Editor" description="Switch to an editor" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUPuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.deleteNext" commandName="Delete Next" description="Delete the next character" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NSUP-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.previousView" commandName="Previous View" description="Switch to the previous view" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7IOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.deleteNextWord" commandName="Delete Next Word" description="Delete the next word" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Ieu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.undo" commandName="Undo" description="Undo the last operation" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Iuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.back" commandName="Back" description="Navigate back" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7I-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.windowStart" commandName="Select Window Start" description="Select to the start of the window" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7JOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.linkWithEditor" commandName="Toggle Link with Editor " description="Toggles linking of a view's selection with the active editor's selection" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Jeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.help.dynamicHelp" commandName="Dynamic Help" description="Open the dynamic help" category="_4NTiT-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Juu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.help.displayHelp" commandName="Display Help" description="Display a Help topic" category="_4NTiT-u2EeO1-KD26ayC_A">
-    <parameters xmi:id="_4NS7J-u2EeO1-KD26ayC_A" elementId="href" name="Help topic href"/>
+  <commands xmi:id="_oX1xuuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.previousSubTab" commandName="Previous Sub-Tab" description="Switch to the previous sub-tab" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xu-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.smartEnter" commandName="Insert Line Below Current Line" description="Adds a new line below the current line" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xvOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.pageDown" commandName="Page Down" description="Go down one page" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xvevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.windowStart" commandName="Window Start" description="Go to the start of the window" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xvuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.goInto" commandName="Go Into" description="Navigate into the selected item" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xv-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.activeContextInfo" commandName="Show activeContext Info" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xwOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.contentAssist.proposals" commandName="Content Assist" description="Content Assist" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xwevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.paste" commandName="Paste" description="Paste from the clipboard" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xwuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.revert" commandName="Revert" description="Revert to the last saved state" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xw-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.nextTab" commandName="Next Tab" description="Switch to the next tab" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xxOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.scroll.lineDown" commandName="Scroll Line Down" description="Scroll down one line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xxevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.findNext" commandName="Find Next" description="Find next item" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xxuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.previous" commandName="Previous" description="Navigate to the previous item" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xx-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.redo" commandName="Redo" description="Redo the last operation" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xyOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.join.lines" commandName="Join Lines" description="Join lines of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xyevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.scroll.lineUp" commandName="Scroll Line Up" description="Scroll up one line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xyuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.print" commandName="Print" description="Print" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xy-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.forwardHistory" commandName="Forward History" description="Move forward in the editor navigation history" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xzOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.pageUp" commandName="Select Page Up" description="Select to the top of the page" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xzevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.windowEnd" commandName="Select Window End" description="Select to the end of the window" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xzuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.lineUp" commandName="Line Up" description="Go up one line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1xz-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.switchToEditor" commandName="Switch to Editor" description="Switch to an editor" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1x0OvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.deleteNext" commandName="Delete Next" description="Delete the next character" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1x0evOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.previousView" commandName="Previous View" description="Switch to the previous view" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1x0uvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.deleteNextWord" commandName="Delete Next Word" description="Delete the next word" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1x0-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.undo" commandName="Undo" description="Undo the last operation" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1x1OvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.back" commandName="Back" description="Navigate back" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1x1evOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.windowStart" commandName="Select Window Start" description="Select to the start of the window" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1x1uvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.linkWithEditor" commandName="Toggle Link with Editor " description="Toggles linking of a view's selection with the active editor's selection" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1x1-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.help.dynamicHelp" commandName="Dynamic Help" description="Open the dynamic help" category="_oX2Yw-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1x2OvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.help.displayHelp" commandName="Display Help" description="Display a Help topic" category="_oX2Yw-vOEeO1-KD26ayC_A">
+    <parameters xmi:id="_oX1x2evOEeO1-KD26ayC_A" elementId="href" name="Help topic href"/>
   </commands>
-  <commands xmi:id="_4NS7KOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.previousPerspective" commandName="Previous Perspective" description="Switch to the previous perspective" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Keu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.help.quickStartAction" commandName="Welcome" description="Show help for beginning users" category="_4NTiT-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Kuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.closeAllPerspectives" commandName="Close All Perspectives" description="Close all open perspectives" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7K-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.copyLineUp" commandName="Duplicate Lines" description="Duplicates the selected lines and leaves the selection unchanged" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7LOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.findPrevious" commandName="Find Previous" description="Find previous item" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Leu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.newEditor" commandName="New Editor" description="Open another editor on the active editor's input" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Luu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.views.showView" commandName="Show View" description="Shows a particular view" category="_4NTiUuu2EeO1-KD26ayC_A">
-    <parameters xmi:id="_4NS7L-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.views.showView.viewId" name="View"/>
-    <parameters xmi:id="_4NS7MOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.views.showView.secondaryId" name="Secondary Id"/>
-    <parameters xmi:id="_4NS7Meu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.views.showView.makeFast" name="As FastView"/>
+  <commands xmi:id="_oX1x2uvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.previousPerspective" commandName="Previous Perspective" description="Switch to the previous perspective" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX1x2-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.help.quickStartAction" commandName="Welcome" description="Show help for beginning users" category="_oX2Yw-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YgOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.closeAllPerspectives" commandName="Close All Perspectives" description="Close all open perspectives" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YgevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.copyLineUp" commandName="Duplicate Lines" description="Duplicates the selected lines and leaves the selection unchanged" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YguvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.findPrevious" commandName="Find Previous" description="Find previous item" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Yg-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.newEditor" commandName="New Editor" description="Open another editor on the active editor's input" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YhOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.views.showView" commandName="Show View" description="Shows a particular view" category="_oX2YxuvOEeO1-KD26ayC_A">
+    <parameters xmi:id="_oX2YhevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.views.showView.viewId" name="View"/>
+    <parameters xmi:id="_oX2YhuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.views.showView.secondaryId" name="Secondary Id"/>
+    <parameters xmi:id="_oX2Yh-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.views.showView.makeFast" name="As FastView"/>
   </commands>
-  <commands xmi:id="_4NS7Muu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.lineStart" commandName="Line Start" description="Go to the start of the line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7M-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.wordPrevious" commandName="Previous Word" description="Go to the previous word" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7NOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.recenter" commandName="Recenter" description="Recenter the window based on the cursor" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Neu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.help.installationDialog" commandName="Installation Information" description="Open the installation dialog" category="_4NTiT-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Nuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.cut.line" commandName="Cut Line" description="Cut a line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7N-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.toggleBlockSelectionMode" commandName="Toggle Block Selection" description="Toggle block / column selection in the current text editor" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7OOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.shiftRight" commandName="Shift Right" description="Shift a block of text to the right" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Oeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.columnPrevious" commandName="Select Previous Column" description="Select the previous column" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Ouu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.save" commandName="Save" description="Save the current contents" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7O-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.closeAll" commandName="Close All" description="Close all editors" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7POu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.cut.line.to.beginning" commandName="Cut to Beginning of Line" description="Cut to the beginning of a line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Peu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.wordNext" commandName="Select Next Word" description="Select the next word" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Puu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.spy" commandName="Show Contributing Plug-in" description="Shows contribution information for the currently selected element" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7P-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.closePart" commandName="Close Part" description="Close the active workbench part" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7QOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.quickAccess" commandName="Quick Access" description="Quickly access UI elements" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Qeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.refresh" commandName="Refresh" description="Refresh the selected items" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Quu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.nextView" commandName="Next View" description="Switch to the next view" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Q-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.lineEnd" commandName="Line End" description="Go to the end of the line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7ROu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.delete.line.to.end" commandName="Delete to End of Line" description="Delete to the end of a line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Reu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.showRulerContextMenu" commandName="Show Ruler Context Menu" description="Show the context menu for the ruler" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Ruu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.textStart" commandName="Text Start" description="Go to the beginning of the text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7R-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.nextEditor" commandName="Next Editor" description="Switch to the next editor" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7SOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.minimizePart" commandName="Minimize Active View or Editor" description="Minimizes the active view or editor" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Seu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.properties" commandName="Properties" description="Display the properties of the selected item" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Suu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.showIn" commandName="Show In" category="_4NTiUeu2EeO1-KD26ayC_A">
-    <parameters xmi:id="_4NS7S-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.showIn.targetId" name="Show In Target Id" optional="false"/>
+  <commands xmi:id="_oX2YiOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.lineStart" commandName="Line Start" description="Go to the start of the line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YievOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.wordPrevious" commandName="Previous Word" description="Go to the previous word" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YiuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.recenter" commandName="Recenter" description="Recenter the window based on the cursor" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Yi-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.help.installationDialog" commandName="Installation Information" description="Open the installation dialog" category="_oX2Yw-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YjOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.cut.line" commandName="Cut Line" description="Cut a line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YjevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.toggleBlockSelectionMode" commandName="Toggle Block Selection" description="Toggle block / column selection in the current text editor" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YjuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.shiftRight" commandName="Shift Right" description="Shift a block of text to the right" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Yj-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.columnPrevious" commandName="Select Previous Column" description="Select the previous column" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YkOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.save" commandName="Save" description="Save the current contents" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YkevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.closeAll" commandName="Close All" description="Close all editors" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YkuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.cut.line.to.beginning" commandName="Cut to Beginning of Line" description="Cut to the beginning of a line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Yk-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.wordNext" commandName="Select Next Word" description="Select the next word" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YlOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.spy" commandName="Show Contributing Plug-in" description="Shows contribution information for the currently selected element" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YlevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.closePart" commandName="Close Part" description="Close the active workbench part" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YluvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.quickAccess" commandName="Quick Access" description="Quickly access UI elements" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Yl-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.refresh" commandName="Refresh" description="Refresh the selected items" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YmOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.nextView" commandName="Next View" description="Switch to the next view" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YmevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.lineEnd" commandName="Line End" description="Go to the end of the line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YmuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.delete.line.to.end" commandName="Delete to End of Line" description="Delete to the end of a line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Ym-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.showRulerContextMenu" commandName="Show Ruler Context Menu" description="Show the context menu for the ruler" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YnOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.textStart" commandName="Text Start" description="Go to the beginning of the text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YnevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.nextEditor" commandName="Next Editor" description="Switch to the next editor" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YnuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.minimizePart" commandName="Minimize Active View or Editor" description="Minimizes the active view or editor" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Yn-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.properties" commandName="Properties" description="Display the properties of the selected item" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YoOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.showIn" commandName="Show In" category="_oX2YxevOEeO1-KD26ayC_A">
+    <parameters xmi:id="_oX2YoevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.showIn.targetId" name="Show In Target Id" optional="false"/>
   </commands>
-  <commands xmi:id="_4NS7TOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.forward" commandName="Forward" description="Navigate forward" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NS7Teu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.part.nextPage" commandName="Next Page" description="Switch to the next page" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiMOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.pageUp" commandName="Page Up" description="Go up one page" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiMeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.closeAllSaved" commandName="Close All Saved" description="Close all saved editors" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiMuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.delete.line.to.beginning" commandName="Delete to Beginning of Line" description="Delete to the beginning of a line of text" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiM-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.moveLineUp" commandName="Move Lines Up" description="Moves the selected lines up" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiNOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.backwardHistory" commandName="Backward History" description="Move backward in the editor navigation history" category="_4NTiUeu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiNeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.swap.mark" commandName="Swap Mark" description="Swap the mark with the cursor position" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiNuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.deletePreviousWord" commandName="Delete Previous Word" description="Delete the previous word" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiN-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.nextPerspective" commandName="Next Perspective" description="Switch to the next perspective" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiOOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.hippieCompletion" commandName="Word Completion" description="Context insensitive completion" category="_4NTiU-u2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiOeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.copyLineDown" commandName="Copy Lines" description="Duplicates the selected lines and moves the selection to the copy" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiOuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.deletePrevious" commandName="Delete Previous" description="Delete the previous character" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiO-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.window.showSystemMenu" commandName="Show System Menu" description="Show the system menu" category="_4NTiTuu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiPOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.closeOthers" commandName="Close Others" description="Close all editors except the one that is active" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiPeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.set.mark" commandName="Set Mark" description="Set the mark" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiPuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.lowerCase" commandName="To Lower Case" description="Changes the selection to lower case" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiP-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.pageDown" commandName="Select Page Down" description="Select to the bottom of the page" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiQOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.file.exit" commandName="Exit" description="Exit the application" category="_4NTiVOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiQeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.open.hyperlink" commandName="Open Hyperlink" description="Opens the hyperlink at the caret location or opens a chooser if more than one hyperlink is available" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <commands xmi:id="_4NTiQuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.wordNext" commandName="Next Word" description="Go to the next word" category="_4NTiUOu2EeO1-KD26ayC_A"/>
-  <addons xmi:id="_4NTiQ-u2EeO1-KD26ayC_A" elementId="org.eclipse.e4.core.commands.service" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
-  <addons xmi:id="_4NTiROu2EeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.contexts.service" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
-  <addons xmi:id="_4NTiReu2EeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.bindings.service" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
-  <addons xmi:id="_4NTiRuu2EeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.workbench.commands.model" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
-  <addons xmi:id="_4NTiR-u2EeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
-  <addons xmi:id="_4NTiSOu2EeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
-  <addons xmi:id="_4NTiSeu2EeO1-KD26ayC_A" elementId="Cleanup Addon" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.cleanupaddon.CleanupAddon"/>
-  <addons xmi:id="_4NTiSuu2EeO1-KD26ayC_A" elementId="DnD Addon" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.dndaddon.DnDAddon"/>
-  <addons xmi:id="_4NTiS-u2EeO1-KD26ayC_A" elementId="MinMax Addon" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
-  <addons xmi:id="_4NTiTOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.workbench.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
-  <categories xmi:id="_4NTiTeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.category.perspectives" name="Perspectives" description="Commands for opening perspectives"/>
-  <categories xmi:id="_4NTiTuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.category.window" name="Window"/>
-  <categories xmi:id="_4NTiT-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.category.help" name="Help"/>
-  <categories xmi:id="_4NTiUOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.category.textEditor" name="Text Editing" description="Text Editing Commands"/>
-  <categories xmi:id="_4NTiUeu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.category.navigate" name="Navigate"/>
-  <categories xmi:id="_4NTiUuu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.category.views" name="Views" description="Commands for opening views"/>
-  <categories xmi:id="_4NTiU-u2EeO1-KD26ayC_A" elementId="org.eclipse.ui.category.edit" name="Edit"/>
-  <categories xmi:id="_4NTiVOu2EeO1-KD26ayC_A" elementId="org.eclipse.ui.category.file" name="File"/>
-  <categories xmi:id="_4NTiVeu2EeO1-KD26ayC_A" elementId="org.eclipse.core.commands.categories.autogenerated" name="Uncategorized" description="Commands that were either auto-generated or have no category"/>
+  <commands xmi:id="_oX2YouvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.forward" commandName="Forward" description="Navigate forward" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Yo-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.part.nextPage" commandName="Next Page" description="Switch to the next page" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YpOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.pageUp" commandName="Page Up" description="Go up one page" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YpevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.closeAllSaved" commandName="Close All Saved" description="Close all saved editors" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YpuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.delete.line.to.beginning" commandName="Delete to Beginning of Line" description="Delete to the beginning of a line of text" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Yp-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.moveLineUp" commandName="Move Lines Up" description="Moves the selected lines up" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YqOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.navigate.backwardHistory" commandName="Backward History" description="Move backward in the editor navigation history" category="_oX2YxevOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YqevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.swap.mark" commandName="Swap Mark" description="Swap the mark with the cursor position" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YquvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.deletePreviousWord" commandName="Delete Previous Word" description="Delete the previous word" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Yq-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.nextPerspective" commandName="Next Perspective" description="Switch to the next perspective" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YrOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.hippieCompletion" commandName="Word Completion" description="Context insensitive completion" category="_oX2Yx-vOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YrevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.copyLineDown" commandName="Copy Lines" description="Duplicates the selected lines and moves the selection to the copy" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YruvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.deletePrevious" commandName="Delete Previous" description="Delete the previous character" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Yr-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.window.showSystemMenu" commandName="Show System Menu" description="Show the system menu" category="_oX2YwuvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YsOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.closeOthers" commandName="Close Others" description="Close all editors except the one that is active" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YsevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.set.mark" commandName="Set Mark" description="Set the mark" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YsuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.lowerCase" commandName="To Lower Case" description="Changes the selection to lower case" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2Ys-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.select.pageDown" commandName="Select Page Down" description="Select to the bottom of the page" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YtOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.file.exit" commandName="Exit" description="Exit the application" category="_oX2YyOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YtevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.open.hyperlink" commandName="Open Hyperlink" description="Opens the hyperlink at the caret location or opens a chooser if more than one hyperlink is available" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <commands xmi:id="_oX2YtuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.edit.text.goto.wordNext" commandName="Next Word" description="Go to the next word" category="_oX2YxOvOEeO1-KD26ayC_A"/>
+  <addons xmi:id="_oX2Yt-vOEeO1-KD26ayC_A" elementId="org.eclipse.e4.core.commands.service" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_oX2YuOvOEeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.contexts.service" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_oX2YuevOEeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.bindings.service" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_oX2YuuvOEeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.workbench.commands.model" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_oX2Yu-vOEeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_oX2YvOvOEeO1-KD26ayC_A" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+  <addons xmi:id="_oX2YvevOEeO1-KD26ayC_A" elementId="Cleanup Addon" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.cleanupaddon.CleanupAddon"/>
+  <addons xmi:id="_oX2YvuvOEeO1-KD26ayC_A" elementId="DnD Addon" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.dndaddon.DnDAddon"/>
+  <addons xmi:id="_oX2Yv-vOEeO1-KD26ayC_A" elementId="MinMax Addon" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
+  <addons xmi:id="_oX2YwOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.workbench.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+  <categories xmi:id="_oX2YwevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.category.perspectives" name="Perspectives" description="Commands for opening perspectives"/>
+  <categories xmi:id="_oX2YwuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.category.window" name="Window"/>
+  <categories xmi:id="_oX2Yw-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.category.help" name="Help"/>
+  <categories xmi:id="_oX2YxOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.category.textEditor" name="Text Editing" description="Text Editing Commands"/>
+  <categories xmi:id="_oX2YxevOEeO1-KD26ayC_A" elementId="org.eclipse.ui.category.navigate" name="Navigate"/>
+  <categories xmi:id="_oX2YxuvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.category.views" name="Views" description="Commands for opening views"/>
+  <categories xmi:id="_oX2Yx-vOEeO1-KD26ayC_A" elementId="org.eclipse.ui.category.edit" name="Edit"/>
+  <categories xmi:id="_oX2YyOvOEeO1-KD26ayC_A" elementId="org.eclipse.ui.category.file" name="File"/>
+  <categories xmi:id="_oX2YyevOEeO1-KD26ayC_A" elementId="org.eclipse.core.commands.categories.autogenerated" name="Uncategorized" description="Commands that were either auto-generated or have no category"/>
 </application:Application>

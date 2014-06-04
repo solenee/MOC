@@ -25,7 +25,7 @@ public class CLASSE extends DTYPE {
 	}
 	
 	public String toString(){
-		return super.toString(); // + " "+nomClasse+" herite de "+classeMere.getNomClasse()+" "+attributs.toString();
+		return super.toString() + "attributs : "+attributs.toString() ; // + " "+nomClasse+" herite de "+classeMere.getNomClasse()+" "
 	}
 	
 	/** Obtenir la liste des classes parentes. */

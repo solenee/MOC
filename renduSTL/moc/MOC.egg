@@ -600,19 +600,23 @@ end
 }
 #gen {
 local 
-  inst : INFO;
+  inst1 : INFO;
+  inst2 : INFO;
   --ic   : INFO;
 do
    --INST^
    -- si c est la fonction init c est a dire d instancialtion d une classe : le retour est implicite du coup je le met ici 	 
    if INSTS^classe /= null then
-      inst := INSTS^tds.chercherGlobalement("init");  
-      if (inst /= null) then
-         match inst with INFOVAR then 
-            INSTS^code := INSTS^machine.genRetourInstance(INSTS^htailleparams, inst.getEmpl(), INSTS^classe); -- je lui passe juste le nombre d arguments : elle se debrouille pour ce reste
-            INSTS^isRet := true;  -- *********
-         end      
-      else     
+      inst1 := INSTS^tds.chercherGlobalement("init");  
+      inst2 := INSTS^tds.chercherGlobalement("tvString");  
+      if (inst1 /= null & inst2 /= null) then
+         match inst1 with INFOVAR then 
+            match inst2 with INFOVAR then 
+               INSTS^code := INSTS^machine.genRetourInstance(INSTS^htailleparams, inst1.getEmpl(), inst2.getEmpl()); -- je lui passe juste le nombre d arguments : elle se debrouille pour ce reste
+               INSTS^isRet := true;  -- *********
+            end
+         end       
+     else     
       -- no code
          INSTS^code := "";
       end 
@@ -918,9 +922,7 @@ end
 #gen {
 do
   -- sortir de la fonction courante en retournant la valeur de E
-  write "je passe par le retour \n";
   if INST^machine.genRetour(INST^htailleparams, E^type.getTaille(), E^code) = null then
-     write "Aye                           AAAAAAye                       ddddddddddd";
   end   
   INST^code := INST^machine.genRetour(INST^htailleparams, E^type.getTaille(), E^code); -- + E^code;
 end
@@ -1873,34 +1875,29 @@ local
   c                : DTYPE;
   champAttribut    : CHAMP;
 do 
-  write "pour la variable : "+ident^txt+"\n";
+  --write "pour la variable : "+ident^txt+"\n";
   t := F^tds;
   iTemp := t.chercherGlobalement(ident^txt);
   if (iTemp = null) then
-      write "n 2 pour la variable : "+ident^txt+"\n";
     	-- je verifie si c est un attribut 
       classeEnglobante := F^tds.chercherGlobalement("self");
-      write "n 3 pour la variable : "+ident^txt+"\n";
       if (classeEnglobante = null ) then 	 
          classeEnglobante := F^tds.chercherGlobalement("init");
-      write "n 4 pour la variable : "+ident^txt+"\n";
       end 
       if (classeEnglobante /= null) then                        
-      write "n 5 pour la variable : "+ident^txt+"\n";
          match classeEnglobante with INFOVAR then
 	    p := classeEnglobante.getType();
-      write "n 6 pour la variable : "+ident^txt+"\n";
 	    match p with POINTEUR then 
-      write "n 7 pour la variable : "+ident^txt+"\n";
 	       c := p.getType();
-	       match c with CLASSE then 
+	       match c with CLASSE then
+                  write "\n tds classe \n";
+		  write c; 
 	          champAttribut := c.isAttribut(ident^txt); 
-      write "n 8 pour la variable : "+ident^txt+"\n";
                   if champAttribut = null then
      	             error(B_16 , "la variable n existe pas :"+ident^txt); 
                   else -- c est un attribut  
-      write "n 9 pour la variable : "+ident^txt+"\n";
 	             type := champAttribut.getType();
+		     write ("\ndep : "+ ident^txt +" : "+ champAttribut.getDep() +"\n");
 	             -- recuperation de l adresse du champs 
                      F^code := F^machine.genComment("acces a l attribut  "+ident^txt)
                              + F^machine.genLire("", 1, classeEnglobante.getEmpl())   -- a revoir la taille de la variable avec leger  
@@ -2116,7 +2113,7 @@ do
   lc := SUPER^attributs;
   -- le champ tv existe deja par heritage de la classe mere
   ATTRIBUTS^hattributs := SUPER^attributs;
-  c := lc.get(lc.size());
+  c := lc.get(lc.size() - 1);
   tc := c.getType();
   ATTRIBUTS^hdep := c.getDep() + tc.getTaille();
 end
@@ -2165,7 +2162,7 @@ end
 #genTV{
 local 
  ic    : INFO;
- tdsM  : TDS;
+ tdsM  : ArrayList<String>;
  genTv : String;
 do
    ic := METHODES^stds_classe.chercherLocalement(identc^txt);
@@ -2197,7 +2194,7 @@ do
     -- inserer d'abord le champ qui contiendra l'Emplacement du code des methodes du type reel des instances 
     -- recuperer tv et le mettre en unique champ de la classe
     attributs := new LCHAMPS();
-    tv := new CHAMP("tv", new POINTEUR(null), 1);
+    tv := new CHAMP("tv", new POINTEUR(null), 0);
     attributs.inserer(tv);
     SUPER^attributs := attributs;
    end 
@@ -2407,8 +2404,8 @@ local
     tRetour : DTYPE;
     leCode  : STRING;
 do
-  write "le code de "+MPARFS^nom+" :\n";
-  write BLOC^code+"\n*******\n";
+  --write "le code de "+MPARFS^nom+" :\n";
+  --write BLOC^code+"\n*******\n";
   leCode := METHODE^machine.genFonction(METHODE^classe +"_" + MPARFS^nom , BLOC^code);
   --write "le code :\n";
   --write leCode;
@@ -2530,7 +2527,7 @@ end
 #adresse {
 do
    if (ident^txt.equals("init")) then
-      MPARF^adr := MPARF^hadr - 1;
+      MPARF^adr := MPARF^hadr - 2;
    else
       MPARF^adr := MPARF^hadr;
    end 
@@ -2539,18 +2536,21 @@ end
 
 #verifMethodeInit{
 local
-  p : PARAMETRES;
-  i : INFOVAR;
-  t : TDS;
+  p   : PARAMETRES;
+  i   : INFOVAR;
+  iTv : INFOVAR;
+  t   : TDS;
   point : POINTEUR;
 do
    
    if (ident^txt.equals("init")) then
 	   point :=  new POINTEUR(MPARF^typeClasse);   
-           i := new INFOVAR (point, new Emplacement((-1), MPARF^regLB ));
+           i   := new INFOVAR (point, new Emplacement((-1), MPARF^regLB));
+           iTv := new INFOVAR (new EMPLACEMENTTV(""), new Emplacement((-2), MPARF^regLB));
            t := MPARF^htdspar;
            if (t.chercherLocalement("init") = null) then
               t.inserer("init", i);
+	      t.inserer("tvString", iTv);
            else
               error(param_exists, "init");
            end
@@ -2582,7 +2582,7 @@ do
         error(param_exists, ident1^txt);
     end
     MPARF^tdspar := t;
-    MPARF^nom := ident^txt + ":";
+    MPARF^nom := ident^txt + "_";
 end
 }
 #adresse {
@@ -2926,6 +2926,7 @@ do
          write ("zozi "+ic.getTv());
 	 -- ajouter l'instance dans la tds de la methode init 
          F^code := MARGS^code
+                + F^machine.genPushAdresse(ic.getTv())
                 + instance -- code pour ajouter l'instance en parametre
                 + F^machine.genCallMethod(MARGS^nom, ic.getTv() ,im.getNumero()-1); -- to call the function depending on his number (deplacement)
       			-- je dois load l etiquette 
@@ -2996,7 +2997,7 @@ end
 do
     MARG^hparams.inserer(E^type);
     MARG^params := MARG^hparams;
-    MARG^nom := ident^txt + ":";
+    MARG^nom := ident^txt + "_";
 end
 }
 

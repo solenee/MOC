@@ -276,36 +276,30 @@ DTYPE loc_p;
 DTYPE loc_c;
 CHAMP loc_champAttribut;
 // instructions
-System.out.print(""+"pour la variable : "+x_2.att_txt+"\n");
 loc_t=this.att_tds;
 loc_iTemp=loc_t.chercherGlobalement(x_2.att_txt);
 if ((loc_iTemp==null)){
-System.out.print(""+"n 2 pour la variable : "+x_2.att_txt+"\n");
 loc_classeEnglobante=this.att_tds.chercherGlobalement("self");
-System.out.print(""+"n 3 pour la variable : "+x_2.att_txt+"\n");
 if ((loc_classeEnglobante==null)){
 loc_classeEnglobante=this.att_tds.chercherGlobalement("init");
-System.out.print(""+"n 4 pour la variable : "+x_2.att_txt+"\n");
 }
 
 if ((loc_classeEnglobante!=null)){
-System.out.print(""+"n 5 pour la variable : "+x_2.att_txt+"\n");
 if (loc_classeEnglobante instanceof INFOVAR ){
 loc_p=((INFOVAR)loc_classeEnglobante).getType();
-System.out.print(""+"n 6 pour la variable : "+x_2.att_txt+"\n");
 if (loc_p instanceof POINTEUR ){
-System.out.print(""+"n 7 pour la variable : "+x_2.att_txt+"\n");
 loc_c=((POINTEUR)loc_p).getType();
 if (loc_c instanceof CLASSE ){
+System.out.print(""+"\n tds classe \n");
+System.out.print(""+((CLASSE)loc_c));
 loc_champAttribut=((CLASSE)loc_c).isAttribut(x_2.att_txt);
-System.out.print(""+"n 8 pour la variable : "+x_2.att_txt+"\n");
 if (loc_champAttribut==null){
 att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMessages.id_B_16, MOCMessages.B_16,new Object[]{""+"la variable n existe pas :"+x_2.att_txt});
 
 }
 else {
-System.out.print(""+"n 9 pour la variable : "+x_2.att_txt+"\n");
 glob_62_type=loc_champAttribut.getType();
+System.out.print(""+("\ndep : "+x_2.att_txt+" : "+loc_champAttribut.getDep()+"\n"));
 this.att_code=this.att_machine.genComment("acces a l attribut  "+x_2.att_txt)+this.att_machine.genLire("", 1, ((INFOVAR)loc_classeEnglobante).getEmpl())+this.att_machine.genAdrField(loc_champAttribut.getDep());
 this.att_adresse=null;
 this.att_est_adresse=true;
@@ -1128,13 +1122,15 @@ this.att_code=this.att_machine.genComment("je passe par init");
 loc_c=glob_94_ic.getType();
 if (loc_c instanceof CLASSE ){
 loc_instance=this.att_machine.genMallocInstance(((CLASSE)loc_c).getTaille());
-this.att_code=x_5.att_code+loc_instance+this.att_machine.genCallMethod(x_5.att_nom, glob_94_ic.getTv(), glob_94_im.getNumero()-1);
+System.out.print(""+("zozi "+glob_94_ic.getTv()));
+this.att_code=x_5.att_code+this.att_machine.genPushAdresse(glob_94_ic.getTv())+loc_instance+this.att_machine.genCallMethod(x_5.att_nom, glob_94_ic.getTv(), glob_94_im.getNumero()-1);
 }
 
 }
 else {
 this.att_code=this.att_machine.genComment("je passe pas init");
 loc_c=glob_94_ic.getType();
+System.out.print(""+("zizo "+glob_94_ic.getTv()));
 this.att_code=x_5.att_code+this.att_machine.genCallMethod(x_5.att_nom, glob_94_ic.getTv(), glob_94_im.getNumero()-1);
 }
 this.att_est_adresse=false;

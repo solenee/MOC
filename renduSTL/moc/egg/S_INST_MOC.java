@@ -416,9 +416,7 @@ this.att_adr=this.att_hadr;
 private void action_gen_25(S_E_MOC x_4) throws Exception {
 try {
 // instructions
-System.out.print(""+"je passe par le retour \n");
 if (this.att_machine.genRetour(this.att_htailleparams, x_4.att_type.getTaille(), x_4.att_code)==null){
-System.out.print(""+"Aye                           AAAAAAye                       ddddddddddd");
 }
 
 this.att_code=this.att_machine.genRetour(this.att_htailleparams, x_4.att_type.getTaille(), x_4.att_code);
