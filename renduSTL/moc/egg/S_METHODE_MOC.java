@@ -166,8 +166,6 @@ try {
 DTYPE loc_tRetour;
 String loc_leCode;
 // instructions
-System.out.print(""+"le code de "+x_6.att_nom+" :\n");
-System.out.print(""+x_11.att_code+"\n*******\n");
 loc_leCode=this.att_machine.genFonction(this.att_classe+"_"+x_6.att_nom, x_11.att_code);
 loc_tRetour=x_3.att_type;
 if ((loc_tRetour.isVoid())){

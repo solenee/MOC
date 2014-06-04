@@ -67,7 +67,7 @@ try {
 // instructions
 this.att_hparams.inserer(x_5.att_type);
 this.att_params=this.att_hparams;
-this.att_nom=x_2.att_txt+":";
+this.att_nom=x_2.att_txt+"_";
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#parametres","MARG -> ident dpts #lire_resultat E #parametres #gen ;"});
 }
   }

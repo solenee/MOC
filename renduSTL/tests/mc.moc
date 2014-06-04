@@ -67,14 +67,14 @@ int bar(int a, int b){
 
 // point d'entree du programme.
 int main(){
-    log("Hello, world ! ", bar(98,99));
+//    log("Hello, world ! ", bar(98,99));
     char c = 'a';
     int y = 999;
     // instruction conditionnelle
     if (y ==0){
-       log("alors",y);}
+//       log("alors",y);}
     else {
-       log("sinon", y);
+//       log("sinon", y);
     }
     return y;
 }

@@ -1,7 +1,7 @@
 package moc.gc;
 
 import moc.compiler.MOCException;
-import moc.tds.TDS;
+import java.util.*;
 /**
  * Cette interface décrit une machine cible. A compléter, selon votre modèle
  * 
@@ -16,7 +16,7 @@ public interface IMachine {
 	 */
 	String getSuffixe();
 
-	public String genTv (String nomClasse, TDS tdsMethode);
+	public String genTv (String nomClasse, ArrayList<String> tdsMethode);
 
 	/**
 	 * Ecrit le code dans un fichier à partir du nom du fichier source et du
@@ -325,7 +325,7 @@ public interface IMachine {
 	public String genAdrField(int d);
 	public String genMallocInstance(int t);
 
-	public String genRetourInstance(int tParam, Emplacement e, String etiq);
+	public String genRetourInstance(int tParam, Emplacement e, Emplacement tv);
 
 	/**
 	 * Check if 'codeAccesPtr' is an access to null and generate NPE if necessary

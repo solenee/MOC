@@ -118,14 +118,19 @@ x_6.att_emplNull=this.att_emplNull;
 private void action_gen_17() throws Exception {
 try {
 // locales
-INFO loc_inst;
+INFO loc_inst1;
+INFO loc_inst2;
 // instructions
 if (this.att_classe!=null){
-loc_inst=this.att_tds.chercherGlobalement("init");
-if ((loc_inst!=null)){
-if (loc_inst instanceof INFOVAR ){
-this.att_code=this.att_machine.genRetourInstance(this.att_htailleparams, ((INFOVAR)loc_inst).getEmpl(), this.att_classe);
+loc_inst1=this.att_tds.chercherGlobalement("init");
+loc_inst2=this.att_tds.chercherGlobalement("tvString");
+if ((loc_inst1!=null&&loc_inst2!=null)){
+if (loc_inst1 instanceof INFOVAR ){
+if (loc_inst2 instanceof INFOVAR ){
+this.att_code=this.att_machine.genRetourInstance(this.att_htailleparams, ((INFOVAR)loc_inst1).getEmpl(), ((INFOVAR)loc_inst2).getEmpl());
 this.att_isRet=true;
+}
+
 }
 
 }

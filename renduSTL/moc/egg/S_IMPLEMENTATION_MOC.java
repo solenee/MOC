@@ -101,7 +101,7 @@ private void action_genTV_69(T_MOC x_3, S_SUPER_MOC x_5, S_ATTRIBUTS_MOC x_8, S_
 try {
 // locales
 INFO loc_ic;
-TDS loc_tdsM;
+ArrayList<String> loc_tdsM;
 String loc_genTv;
 // instructions
 loc_ic=x_11.att_stds_classe.chercherLocalement(x_3.att_txt);
@@ -125,7 +125,7 @@ DTYPE loc_tc;
 // instructions
 loc_lc=x_5.att_attributs;
 x_8.att_hattributs=x_5.att_attributs;
-loc_c=loc_lc.get(loc_lc.size());
+loc_c=loc_lc.get(loc_lc.size()-1);
 loc_tc=loc_c.getType();
 x_8.att_hdep=loc_c.getDep()+loc_tc.getTaille();
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#hattributs","IMPLEMENTATION -> classe identc #hclasse_fille SUPER aco #hattributs ATTRIBUTS acf #tds_classe METHODES #stds_classe #genTV fin #aff ;"});

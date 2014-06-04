@@ -87,7 +87,7 @@ att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMess
 
 }
 this.att_tdspar=loc_t;
-this.att_nom=x_2.att_txt+":";
+this.att_nom=x_2.att_txt+"_";
 }catch(RuntimeException e) {       att_scanner._interrompre(IProblem.Internal,att_scanner.getBeginLine(),ICoreMessages.id_EGG_runtime_error, CoreMessages.EGG_runtime_error,new Object[] { "MOC", "#parametres","MPARF -> ident dpts PTYPE ident1 #parametres #adresse ;"});
 }
   }
@@ -113,7 +113,7 @@ private void action_adresse_85(T_MOC x_2) throws Exception {
 try {
 // instructions
 if ((x_2.att_txt.equals("init"))){
-this.att_adr=this.att_hadr-1;
+this.att_adr=this.att_hadr-2;
 }
 else {
 this.att_adr=this.att_hadr;
@@ -142,15 +142,18 @@ try {
 // locales
 PARAMETRES loc_p;
 INFOVAR loc_i;
+INFOVAR loc_iTv;
 TDS loc_t;
 POINTEUR loc_point;
 // instructions
 if ((x_2.att_txt.equals("init"))){
 loc_point= new POINTEUR(this.att_typeClasse);
 loc_i= new INFOVAR(loc_point,  new Emplacement((-(1)), this.att_regLB));
+loc_iTv= new INFOVAR( new EMPLACEMENTTV(""),  new Emplacement((-(2)), this.att_regLB));
 loc_t=this.att_htdspar;
 if ((loc_t.chercherLocalement("init")==null)){
 loc_t.inserer("init", loc_i);
+loc_t.inserer("tvString", loc_iTv);
 }
 else {
 att_scanner._interrompre(IProblem.Semantic, att_scanner.getBeginLine(), IMOCMessages.id_param_exists, MOCMessages.param_exists,new Object[]{""+"init"});
